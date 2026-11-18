@@ -1,0 +1,138 @@
+DrugHX 第三方组件与数据源声明
+Third-Party Notices for DrugHX
+最后更新：2026-11-15（随 DrugHX 2.5.1）
+
+本文件列出 DrugHX 使用、调用或随附的第三方软件、二进制程序与数据源，以及
+各自适用的许可。发布或销售 DrugHX 时，本文件必须随软件一同提供。
+
+================================================================================
+一、Python 运行时依赖
+================================================================================
+
+组件                版本        许可                  说明
+------------------  ----------  --------------------  --------------------------
+fastapi             >=0.115     MIT                   
+starlette           (随 fastapi) BSD-3-Clause         
+pydantic            (随 fastapi) MIT                  
+uvicorn             >=0.34      BSD-3-Clause          
+python-multipart    >=0.0.20    Apache-2.0            
+rdkit               >=2024.3    BSD-3-Clause          化学信息学核心
+meeko               >=0.8       LGPL-2.1              PDBQT 生成
+gemmi               >=0.7       MPL-2.0               结构文件解析
+numpy               >=1.26      BSD-3-Clause          
+scipy               >=1.14      BSD-3-Clause          
+matplotlib          >=3.8       PSF 类许可（含 DejaVu、STIX 字体）
+pypdf               >=5         BSD-3-Clause          PDF 合并
+pillow              >=10        HPND                  
+networkx            >=3.2       BSD-3-Clause          
+posebusters         >=0.6.5     BSD-3-Clause          构象物理合理性校验
+onnxruntime         (随 posebusters) MIT             
+
+义务：
+* 保留上述组件中的著作权与许可声明；随安装包提供其许可全文或官方链接。
+* meeko 为 LGPL-2.1：必须以可被用户替换的方式安装和调用，且不得修改其源码后
+  闭源分发；如需修改，修改部分须以 LGPL 公开。
+* gemmi 为 MPL-2.0：文件级 copyleft。不得修改其源文件后闭源分发；如修改，
+  被修改文件须以 MPL-2.0 公开。
+* matplotlib 随附的 DejaVu 与 STIX 字体许可见
+  site-packages/matplotlib/mpl-data/fonts/ttf/LICENSE_DEJAVU 与 LICENSE_STIX。
+
+已移除：PyMuPDF（AGPL-3.0）。自 2.5.1 起，PDF 合并改用 pypdf（BSD-3-Clause），
+软件不再包含任何 AGPL 组件。
+
+================================================================================
+二、随附的对接引擎与本地二进制（bin/）
+================================================================================
+
+文件                      许可            版权 / 来源
+------------------------  --------------  ------------------------------------
+vina.exe                  Apache-2.0      AutoDock Vina 1.2.5, The Scripps
+                                          Research Institute
+vina-gpu.exe              Apache-2.0      Vina-GPU 2.x（Vina 的 OpenCL 移植）
+vina-gpu-kernels/         Apache-2.0      同上
+qvina2.exe                Apache-2.0      QuickVina 2（Vina 的加速派生版本）
+boost_*.dll               BSL-1.0         Boost C++ Libraries
+inchi.dll                 InChI 许可      InChI Trust / IUPAC
+
+义务：
+* 随包提供 Apache-2.0 许可全文与 NOTICE 信息，保留原始版权行。
+* 注明 qvina2 与 vina-gpu 为 AutoDock Vina 的派生作品（modified work）。
+* “AutoDock”“AutoDock Vina”“Vina”为其 respective 权利人的名称或商标，
+  本软件仅作事实性指称，与上述机构无隶属或背书关系。
+
+================================================================================
+三、用户按需下载的可选组件（不随安装包分发）
+================================================================================
+
+组件            许可          说明
+--------------  ------------  ------------------------------------------------
+smina           Apache-2.0    Vina 的增强分支，由用户在界面中按需下载安装
+Open Babel 3    GPL-2.0       smina 的运行时依赖。包含 openbabel-3.dll、
+                              .obf 插件与 share/openbabel 数据文件
+
+重要提示（商业发行方必读）：
+* smina 与 Open Babel 由本软件在用户主动操作时从 conda-forge 下载，不在
+  DrugHX 安装包内，因此其分发义务由相应渠道承担。
+* 若您将其预装、打包进发行介质，或以“内置引擎”宣传，则 GPL-2.0 义务将
+  适用于您：必须提供对应源码，且与之结合分发可能被认定为衍生作品。
+* 商业发行建议：仅随包分发 Apache-2.0 的 Vina / Vina-GPU / QuickVina 2；
+  保留 smina 的按需下载入口（功能不丢失），但不预装、不打包。
+
+================================================================================
+四、Web 前端
+================================================================================
+
+组件        许可          说明
+----------  ------------  ----------------------------------------------------
+3Dmol.js    BSD-3-Clause  见 web/vendor/3Dmol-min.js.LICENSE.txt
+                          （内含 GLmol MIT/LGPL 双许可、Three.js MIT、jQuery MIT）
+
+================================================================================
+五、在线数据源与服务
+================================================================================
+
+数据源 / 服务              许可或条款                 商业使用与署名要求
+-------------------------  -------------------------  --------------------------
+AlphaFold DB               CC BY 4.0                  可商用，需署名
+ESM Atlas / ESMFold API    CC BY 4.0（预测结果）      可商用，需署名；本地部署
+                                                      权重需另行核实 Meta 条款
+UniProt                    CC BY 4.0                  可商用，需署名
+RCSB PDB                   CC0 1.0                    可商用，建议署名
+PubChem                    公共领域数据；需遵守      可商用，建议署名并控制频率
+                          PUG REST 访问策略
+Open Targets               CC0 1.0                    可商用
+STRING                     CC BY 4.0                  可商用，需署名
+ChEMBL                     CC BY-SA 4.0               可商用，需署名；若内置或
+                                                      再分发其数据集合，衍生数据库
+                                                      须以相同许可开放
+BindingDB                  CC BY 4.0（含源自 ChEMBL   可商用，需署名；避免整体
+                          的 CC BY-SA 记录）         再分发其数据快照
+DGIdb                      代码 MIT；整合的上游数据   仅建议实时查询；商业发行前
+                          含非商业条款（如 DrugBank） 应逐项核实或取得许可
+SwissTargetPrediction      学术用途为主              商业使用需 SIB 书面授权，
+                                                      建议商业版关闭该数据源
+KEGG（经 Enrichr）         商业使用需 KEGG 授权       商业发行前应取得授权或改用
+                                                      Reactome / GO
+DisGeNET（经 Enrichr）     商业使用需授权             建议改用 Open Targets
+Enrichr                    聚合服务，条款随底层库      遵守其 API 使用条款
+Human Protein Atlas        CC BY 4.0                  可商用，需署名
+
+署名文本建议（置于“关于”、报告附录或网站页脚）：
+
+  “本软件整合或查询了以下公开资源：AlphaFold DB（CC BY 4.0）、UniProt
+  （CC BY 4.0）、RCSB PDB（CC0）、PubChem、ChEMBL（CC BY-SA 4.0）、
+  BindingDB、STRING（CC BY 4.0）、Open Targets（CC0）、Enrichr。
+  各资源版权归其原始提供者所有。”
+
+说明：DrugHX 不内置上述数据库的离线快照；数据在用户操作时实时查询并仅展示
+于当前会话与本地报告中，以降低再分发带来的许可冲突。
+
+================================================================================
+六、名称与商标
+================================================================================
+
+* DrugHX 为许可方使用的产品名称。
+* “AutoDock”“AutoDock Vina”“smina”“QuickVina”“3Dmol.js”“AlphaFold”
+  “ESMFold”“ChEMBL”“KEGG”等名称归各自权利人所有，本软件仅作事实性指称。
+* 本软件与 Schrödinger LLC、CCG、Dassault Systèmes 等商业软件厂商无任何
+  隶属、合作或背书关系；文档中的方法学对比仅为技术说明。

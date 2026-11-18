@@ -1,0 +1,65 @@
+DrugHX 最终用户许可协议（EULA）
+DrugHX End User License Agreement
+版本 1.0 · 随 DrugHX 2.5.0 及以后版本提供
+
+一、定义
+1. “软件”指 DrugHX 的可执行程序、脚本、界面资源、内置数据与随附文档。
+2. “许可方”指软件著作权人 HX。
+3. “您”指安装或使用软件的自然人或法人。
+
+二、授权范围
+1. 许可方授予您一项非独占、不可转让、不可再许可的许可，允许您在自有设备上
+   安装并使用软件，用于科研、教学或内部药物设计工作。
+2. 您可以为备份目的复制软件，但备份件同样受本协议约束。
+3. 若您通过书面合同取得商业授权，商业使用的范围以该合同为准。
+
+三、限制
+1. 您不得对软件进行反向工程、反编译或反汇编，除非适用法律明确允许且不可
+   通过合同排除。
+2. 您不得移除或修改软件中的著作权、商标或其他权利声明。
+3. 您不得将软件或其核心算法作为独立产品销售、出租、出借或再分发，除非取得
+   书面授权。
+4. 您不得使用软件提供面向第三方的商业计算服务（含云端对接服务），除非取得
+   书面授权。
+
+四、第三方组件
+软件包含或调用若干第三方开源组件，各自适用其原始许可，详见
+THIRD_PARTY_NOTICES.txt。该等组件不因本协议而改变其许可条件；如本协议与
+第三方许可冲突，就相应组件而言以第三方许可为准。
+
+五、数据与在线服务
+1. 软件可向第三方公共数据库与服务发起查询（如 AlphaFold DB、PubChem、
+   UniProt、STRING、Enrichr 等）。您应自行遵守各服务的使用条款与访问频率限制。
+2. 使用在线查询即表示相关查询内容（如 SMILES、基因名、蛋白序列）会发送至
+   相应第三方服务器。请勿上传涉及人类遗传资源、个人信息或商业秘密的数据，
+   除非您已取得合法授权并完成必要合规程序。
+3. 第三方数据库的内容与可用性由第三方控制，许可方不保证其持续可用或准确。
+
+六、科研用途与免责
+1. 软件为科研与教学工具，输出结果为计算预测，不构成医疗建议，不得用于临床
+   诊断、治疗决策、药品注册申报或任何需要监管批准的用途。
+2. 软件按“现状”提供，不附带任何明示或默示担保，包括适销性、特定用途适用性
+   与不侵权担保。
+3. 在法律允许的最大范围内，许可方不对任何间接、附带、特殊或后果性损害承担
+   责任；许可方的累计责任不超过您为该许可实际支付的费用。
+
+七、终止
+您违反本协议任一条款时，许可自动终止。终止后您应停止使用并删除软件及其副本。
+
+八、其他
+本协议适用中华人民共和国法律（不含冲突法规则）。因本协议产生的争议，双方
+应友好协商；协商不成的，提交许可方所在地有管辖权的人民法院。
+
+---
+
+DrugHX End User License Agreement (summary of the Chinese text above)
+The Software is licensed, not sold. You may install and use it on your own
+devices for research, teaching or internal drug-design work. You may not
+reverse engineer it, remove proprietary notices, resell or redistribute it, or
+operate it as a commercial service for third parties without a written
+commercial license. Third-party components remain under their own licenses
+(see THIRD_PARTY_NOTICES.txt). The Software is a research tool: its predictions
+are not medical advice and must not be used for clinical diagnosis, treatment
+decisions or regulatory submissions. The Software is provided "AS IS" without
+warranty, and the licensor's aggregate liability is limited to the fees you
+paid for this license.

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DrugHX · 分子对接工作台</title>
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/style.css?v=2.13.0">
+</head>
+<body>
+  <div id="app">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 40 40" fill="none">
+            <circle cx="12" cy="20" r="5" stroke="currentColor" stroke-width="2.2"/>
+            <circle cx="28" cy="12" r="4" stroke="currentColor" stroke-width="2.2"/>
+            <circle cx="29" cy="28" r="4" stroke="currentColor" stroke-width="2.2"/>
+            <path d="M16.5 18.2L23.8 13.6M16.8 21.6L24.9 26.4M27.2 16L28 24" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <strong>DrugHX</strong>
+          <span>AutoDock Vina 分子对接工作台</span>
+        </div>
+      </div>
+
+      <div class="project-chip" id="project-chip" title="">
+        <div class="project-chip-main">
+          <span class="eyebrow">当前项目</span>
+          <span id="project-name">加载中…</span>
+        </div>
+        <button class="icon-btn" data-action="open-tools" title="项目与工具">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+
+      <div class="top-actions">
+        <button class="icon-btn mobile-viewer-btn" data-action="toggle-viewer-drawer" title="显示 3D 视图">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9" stroke="currentColor" stroke-width="1.4"/></svg>
+        </button>
+        <span class="status-pill" id="vina-status" title="">
+          <span class="dot"></span><span>Vina</span>
+        </span>
+        <button class="btn ghost sm" data-action="full-report" data-lang="zh" title="输出中文完整 PDF 报告">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M7 3h7l4 4v14H7V3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 3v4h4M10 12h5M10 16h5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+          中文报告
+        </button>
+        <button class="btn ghost sm" data-action="full-report" data-lang="en" title="输出英文完整 PDF 报告（内容与中文版一致）">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M7 3h7l4 4v14H7V3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 3v4h4M10 12h5M10 16h5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+          英文报告
+        </button>
+        <button class="btn ghost sm" data-action="open-tools">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M14.7 6.3a4 4 0 00-5.4 5.4L4 17v3h3l5.3-5.3a4 4 0 005.4-5.4l-2.6 2.6-2.2-2.2 2.8-3.4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          工具
+        </button>
+      </div>
+    </header>
+
+    <div class="workspace">
+      <aside class="rail">
+        <div class="rail-label">工作流</div>
+        <nav class="steps" id="steps">
+          <button class="step" data-step="auto" title="自动模式：上传受体与配体后自动跑完整流程">
+            <span class="step-num">00</span>
+            <span class="step-text"><strong>自动模式</strong><small>一键全流程</small></span>
+            <span class="step-state"></span>
+          </button>
+          <button class="step" data-step="receptor" title="受体准备">
+            <span class="step-num">01</span>
+            <span class="step-text"><strong>受体</strong><small>结构准备</small></span>
+            <span class="step-state"></span>
+          </button>
+          <button class="step" data-step="ligands" title="配体准备">
+            <span class="step-num">02</span>
+            <span class="step-text"><strong>配体</strong><small>输入与 3D 构象</small></span>
+            <span class="step-state"></span>
+          </button>
+          <button class="step" data-step="site" title="结合位点">
+            <span class="step-num">03</span>
+            <span class="step-text"><strong>结合位点</strong><small>口袋与对接盒</small></span>
+            <span class="step-state"></span>
+          </button>
+          <button class="step" data-step="dock" title="分子对接">
+            <span class="step-num">04</span>
+            <span class="step-text"><strong>分子对接</strong><small>参数与运行</small></span>
+            <span class="step-state"></span>
+          </button>
+          <button class="step" data-step="results" title="结果分析">
+            <span class="step-num">05</span>
+            <span class="step-text"><strong>结果分析</strong><small>打分、构象、作用力</small></span>
+            <span class="step-state"></span>
+          </button>
+          <button class="step" data-step="optimize" title="药物优化">
+            <span class="step-num">06</span>
+            <span class="step-text"><strong>药物优化</strong><small>骨架跃迁与自动改进</small></span>
+            <span class="step-state"></span>
+          </button>
+          <button class="step" data-step="design" title="分子设计">
+            <span class="step-num">07</span>
+            <span class="step-text"><strong>分子设计</strong><small>靶向生成与数据库检索</small></span>
+            <span class="step-state"></span>
+          </button>
+          <button class="step" data-step="fishing" title="靶点垂钓">
+            <span class="step-num">08</span>
+            <span class="step-text"><strong>靶点垂钓</strong><small>反向寻找潜在靶点</small></span>
+            <span class="step-state"></span>
+          </button>
+          <button class="step" data-step="netpharm" title="网络药理学">
+            <span class="step-num">09</span>
+            <span class="step-text"><strong>网络药理学</strong><small>PPI 网络与通路富集</small></span>
+            <span class="step-state"></span>
+          </button>
+          <button class="step" data-step="synthesis" title="可合成性">
+            <span class="step-num">10</span>
+            <span class="step-text"><strong>可合成性</strong><small>SAscore 与逆合成路线</small></span>
+            <span class="step-state"></span>
+          </button>
+          <button class="step" data-step="admet" title="ADMET">
+            <span class="step-num">11</span>
+            <span class="step-text"><strong>ADMET</strong><small>吸收、分布、代谢、毒性</small></span>
+            <span class="step-state"></span>
+          </button>
+          <button class="step" data-step="experts" title="专家分析">
+            <span class="step-num">12</span>
+            <span class="step-text"><strong>专家分析</strong><small>代谢·组织分布·口袋</small></span>
+            <span class="step-state"></span>
+          </button>
+          <button class="step" data-step="ddi" title="药物互作">
+            <span class="step-num">13</span>
+            <span class="step-text"><strong>药物互作</strong><small>联用风险与机制</small></span>
+            <span class="step-state"></span>
+          </button>
+          <button class="step" data-step="drugref" title="FDA 参考">
+            <span class="step-num">14</span>
+            <span class="step-text"><strong>FDA 参考</strong><small>结构、靶点、ADMET 对照</small></span>
+            <span class="step-state"></span>
+          </button>
+          <button class="step" data-step="pharm" title="综合药理预测">
+            <span class="step-num">15</span>
+            <span class="step-text"><strong>综合药理</strong><small>物种·口服·瘤胃·风险</small></span>
+            <span class="step-state"></span>
+          </button>
+          <button class="step" data-step="online" title="在线智能资源：结构、靶点、化合物与通路">
+            <span class="step-num">16</span>
+            <span class="step-text"><strong>在线智能</strong><small>结构·靶点·化合物·通路</small></span>
+            <span class="step-state"></span>
+          </button>
+        </nav>
+
+        <div class="rail-foot">
+          <div class="sys-line"><span class="dot ok"></span><span id="sys-engine">RDKit · Meeko</span></div>
+          <div class="sys-line muted" id="sys-version">v2.1.0</div>
+          <div class="sys-line muted">作者：HX · 致谢见完整报告</div>
+          <button class="btn ghost tiny" data-action="open-tools">系统信息</button>
+        </div>
+      </aside>
+
+      <main class="main">
+        <div class="step-head">
+          <div>
+            <div class="eyebrow" id="step-eyebrow">STEP 01</div>
+            <h1 id="step-title">受体准备</h1>
+            <p id="step-subtitle">导入 PDB 结构，自动去水、补氢并转换为 Vina 可用的 PDBQT。</p>
+          </div>
+          <div class="step-head-actions" id="step-actions"></div>
+        </div>
+
+        <div id="panel-body" class="panel-body">
+          <div class="skeleton-wrap">
+            <div class="skeleton h32 w40"></div>
+            <div class="skeleton h96"></div>
+            <div class="skeleton h96"></div>
+          </div>
+        </div>
+      </main>
+
+      <aside class="viewer-panel" id="viewer-panel">
+        <div class="viewer-head">
+          <div class="viewer-title">
+            <span class="live-dot"></span>
+            <span id="viewer-title">3D 视图</span>
+          </div>
+          <div class="viewer-actions">
+            <button class="icon-btn" data-action="viewer-reset" title="重置视角">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M4 4v6h6M20 20v-6h-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M5.5 9A7 7 0 0119 12M18.5 15A7 7 0 015 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </button>
+            <button class="icon-btn" data-action="viewer-surface" id="surface-btn" title="显示/隐藏表面">
+              <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.6"/><path d="M4.5 9.5c3 2 6 2 9 0s5.5-2 6 0M4.5 14.5c3-2 6-2 9 0s5.5 2 6 0" stroke="currentColor" stroke-width="1.3"/></svg>
+            </button>
+            <button class="icon-btn viewer-close" data-action="toggle-viewer-drawer" title="关闭 3D 视图">×</button>
+          </div>
+        </div>
+        <div id="viewer"></div>
+        <div class="viewer-empty" id="viewer-empty">
+          <div class="viewer-empty-icon">
+            <svg viewBox="0 0 48 48" fill="none"><circle cx="16" cy="24" r="6" stroke="currentColor" stroke-width="1.6"/><circle cx="33" cy="15" r="4.5" stroke="currentColor" stroke-width="1.6"/><circle cx="34" cy="33" r="4.5" stroke="currentColor" stroke-width="1.6"/><path d="M21.5 21.5l7.5-4M22 26.5l8 4.5" stroke="currentColor" stroke-width="1.6"/></svg>
+          </div>
+          <p>选择受体或配体后在此显示 3D 结构</p>
+        </div>
+        <div class="viewer-foot">
+          <div class="legend" id="viewer-legend"></div>
+          <div class="viewer-hint">拖拽旋转 · 滚轮缩放 · 右键平移</div>
+        </div>
+      </aside>
+    </div>
+
+    <section class="console collapsed" id="console">
+      <div class="console-head">
+        <div class="console-title">
+          <button class="icon-btn" data-action="toggle-console" title="展开/收起日志">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </button>
+          <span>运行日志</span>
+          <span class="job-state" id="job-state">空闲</span>
+        </div>
+        <div class="console-progress">
+          <span id="job-message"></span>
+          <div class="progress"><div class="progress-fill" id="job-progress"></div></div>
+          <button class="btn danger tiny hidden" id="job-cancel" data-action="cancel-job">取消</button>
+        </div>
+        <button class="console-clear" data-action="clear-log">清空</button>
+      </div>
+      <pre class="console-body" id="console-body"></pre>
+    </section>
+  </div>
+
+  <div id="modal-root"></div>
+  <div id="toast-root" class="toast-root"></div>
+
+  <script src="/static/vendor/3Dmol-min.js"></script>
+  <script src="/static/app.js?v=2.13.0"></script>
+</body>
+</html>

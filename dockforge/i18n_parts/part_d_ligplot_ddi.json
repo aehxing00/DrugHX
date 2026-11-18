@@ -1,0 +1,401 @@
+[
+ {
+  "key": "未命名药物",
+  "file": "ddi.py",
+  "line": 75,
+  "context": "merged[\"name\"] = merged.get(\"name\") or name or \"未命名药物\"",
+  "en": "Unnamed drug"
+ },
+ {
+  "key": "候选分子",
+  "file": "ddi.py",
+  "line": 131,
+  "context": "candidate_name: str = \"候选分子\",",
+  "en": "Candidate"
+ },
+ {
+  "key": "候选分子 SMILES 无法解析",
+  "file": "ddi.py",
+  "line": 139,
+  "context": "raise ValueError(\"候选分子 SMILES 无法解析\")",
+  "en": "Candidate SMILES could not be parsed"
+ },
+ {
+  "key": "请至少选择一个同时使用的药物",
+  "file": "ddi.py",
+  "line": 145,
+  "context": "raise ValueError(\"请至少选择一个同时使用的药物\")",
+  "en": "Select at least one co-administered drug"
+ },
+ {
+  "key": "药物",
+  "file": "ddi.py",
+  "line": 157,
+  "context": "drug_profile = _profile(str(drug[\"smiles\"]), str(drug.get(\"name\") or \"药物\"))",
+  "en": "Drug"
+ },
+ {
+  "key": "信息不足",
+  "file": "ddi.py",
+  "line": 176,
+  "context": "\"category\": \"信息不足\",",
+  "en": "Insufficient information"
+ },
+ {
+  "key": "缺少靶点与结构信息，无法判断",
+  "file": "ddi.py",
+  "line": 178,
+  "context": "\"mechanism\": \"缺少靶点与结构信息，无法判断\",",
+  "en": "Insufficient target and structural information to assess"
+ },
+ {
+  "key": "高",
+  "file": "ddi.py",
+  "line": 191,
+  "context": "category = \"高\"",
+  "en": "High"
+ },
+ {
+  "key": "中",
+  "file": "ddi.py",
+  "line": 193,
+  "context": "category = \"中\"",
+  "en": "Medium"
+ },
+ {
+  "key": "低",
+  "file": "ddi.py",
+  "line": 195,
+  "context": "category = \"低\"",
+  "en": "Low"
+ },
+ {
+  "key": "共享靶点：",
+  "file": "ddi.py",
+  "line": 198,
+  "context": "mechanisms.append(\"共享靶点：\" + \"、\".join(shared[:5]))",
+  "en": "Shared targets: "
+ },
+ {
+  "key": "候选分子可能抑制共同代谢酶，抬高联用药暴露",
+  "file": "ddi.py",
+  "line": 200,
+  "context": "mechanisms.append(\"候选分子可能抑制共同代谢酶，抬高联用药暴露\")",
+  "en": "The candidate may inhibit a shared metabolic enzyme and raise exposure to the co-administered drug"
+ },
+ {
+  "key": "两者 hERG 风险叠加，需关注 QT 间期",
+  "file": "ddi.py",
+  "line": 202,
+  "context": "mechanisms.append(\"两者 hERG 风险叠加，需关注 QT 间期\")",
+  "en": "Additive hERG risk for both drugs; monitor the QT interval"
+ },
+ {
+  "key": "结构/类别相近，药理作用可能重叠",
+  "file": "ddi.py",
+  "line": 204,
+  "context": "mechanisms.append(\"结构/类别相近，药理作用可能重叠\")",
+  "en": "Similar structure/class; pharmacological effects may overlap"
+ },
+ {
+  "key": "现有规则未发现明确互作机制",
+  "file": "ddi.py",
+  "line": 206,
+  "context": "mechanisms.append(\"现有规则未发现明确互作机制\")",
+  "en": "No clear interaction mechanism identified by the current rules"
+ },
+ {
+  "key": "规则式 DDI 假设：靶点重叠（靶点垂钓/参考库）、CYP3A4/2D6 竞争、hERG 风险叠加与结构类别相似度加权",
+  "file": "ddi.py",
+  "line": 232,
+  "context": "\"规则式 DDI 假设：靶点重叠（靶点垂钓/参考库）、CYP3A4/2D6 竞争、\"",
+  "en": "Rule-based DDI hypothesis: weighted combination of target overlap (target fishing/reference library), CYP3A4/2D6 competition, additive hERG risk and structural-class similarity"
+ },
+ {
+  "key": "该分析不是临床 DDI 预测。共享靶点不代表同向或拮抗，CYP 与 hERG 为计算风险，必须结合说明书、相互作用数据库与实验数据判断。",
+  "file": "ddi.py",
+  "line": 236,
+  "context": "\"该分析不是临床 DDI 预测。共享靶点不代表同向或拮抗，CYP 与 hERG 为计算风险，\"",
+  "en": "This analysis is not a clinical DDI prediction. Shared targets do not imply same-direction or antagonistic effects; CYP and hERG results are computational risks and must be interpreted alongside prescribing information, interaction databases and experimental data."
+ },
+ {
+  "key": "没有可用于绘图的药物互作记录",
+  "file": "ddi.py",
+  "line": 256,
+  "context": "raise ValueError(\"没有可用于绘图的药物互作记录\")",
+  "en": "No drug–drug interaction records available for plotting"
+ },
+ {
+  "key": "图 20　候选分子–已上市药物相互作用假设",
+  "file": "ddi.py",
+  "line": 260,
+  "context": "\"图 20　候选分子–已上市药物相互作用假设\",",
+  "en": "Fig. 20　Candidate–marketed drug interaction hypotheses"
+ },
+ {
+  "key": "与",
+  "file": "ddi.py",
+  "line": 261,
+  "context": "f\"{candidate.get('name', '候选分子')} 与 {len(data.get('co_drugs') or [])} 个联用药物的规则式 DDI 画像\",",
+  "en": "with"
+ },
+ {
+  "key": "个联用药物的规则式 DDI 画像",
+  "file": "ddi.py",
+  "line": 261,
+  "context": "f\"{candidate.get('name', '候选分子')} 与 {len(data.get('co_drugs') or [])} 个联用药物的规则式 DDI 画像\",",
+  "en": "co-administered drugs: rule-based DDI profile"
+ },
+ {
+  "key": "综合互作风险（0–100）",
+  "file": "ddi.py",
+  "line": 286,
+  "context": "ax1.set_xlabel(\"综合互作风险（0–100）\", fontsize=10.5)",
+  "en": "Composite interaction risk (0–100)"
+ },
+ {
+  "key": "联用药物风险排序",
+  "file": "ddi.py",
+  "line": 287,
+  "context": "ax1.set_title(\"联用药物风险排序\", loc=\"left\", fontsize=13.5, pad=10)",
+  "en": "Co-administered drugs ranked by risk"
+ },
+ {
+  "key": "结构相似",
+  "file": "ddi.py",
+  "line": 292,
+  "context": "columns = [\"结构相似\", \"靶点重叠\", \"CYP3A4\", \"CYP2D6\", \"hERG 叠加\", \"综合风险\"]",
+  "en": "Structural similarity"
+ },
+ {
+  "key": "靶点重叠",
+  "file": "ddi.py",
+  "line": 292,
+  "context": "columns = [\"结构相似\", \"靶点重叠\", \"CYP3A4\", \"CYP2D6\", \"hERG 叠加\", \"综合风险\"]",
+  "en": "Target overlap"
+ },
+ {
+  "key": "hERG 叠加",
+  "file": "ddi.py",
+  "line": 292,
+  "context": "columns = [\"结构相似\", \"靶点重叠\", \"CYP3A4\", \"CYP2D6\", \"hERG 叠加\", \"综合风险\"]",
+  "en": "hERG additivity"
+ },
+ {
+  "key": "综合风险",
+  "file": "ddi.py",
+  "line": 292,
+  "context": "columns = [\"结构相似\", \"靶点重叠\", \"CYP3A4\", \"CYP2D6\", \"hERG 叠加\", \"综合风险\"]",
+  "en": "Composite risk"
+ },
+ {
+  "key": "互作证据矩阵",
+  "file": "ddi.py",
+  "line": 311,
+  "context": "ax2.set_title(\"互作证据矩阵\", loc=\"left\", fontsize=13.5, pad=10)",
+  "en": "Interaction evidence matrix"
+ },
+ {
+  "key": "分值（0–100）",
+  "file": "ddi.py",
+  "line": 320,
+  "context": "cbar.set_label(\"分值（0–100）\", fontsize=8.5)",
+  "en": "Score (0–100)"
+ },
+ {
+  "key": "候选",
+  "file": "ddi.py",
+  "line": 330,
+  "context": "ax3.text(0, 0, \"候选\", ha=\"center\", va=\"center\", fontsize=10, color=\"white\", fontweight=\"bold\", zorder=6)",
+  "en": "Candidate"
+ },
+ {
+  "key": "候选–联用药物互作网络",
+  "file": "ddi.py",
+  "line": 346,
+  "context": "ax3.set_title(\"候选–联用药物互作网络\", loc=\"left\", fontsize=13.5, pad=10)",
+  "en": "Candidate–co-administered drug interaction network"
+ },
+ {
+  "key": "优先核查清单",
+  "file": "ddi.py",
+  "line": 353,
+  "context": "ax4.set_title(\"优先核查清单\", loc=\"left\", fontsize=13.5, pad=10)",
+  "en": "Priority review checklist"
+ },
+ {
+  "key": "共享",
+  "file": "ddi.py",
+  "line": 361,
+  "context": "detail.append(\"共享 \" + \"、\".join(item[\"shared_targets\"][:3]))",
+  "en": "Shared"
+ },
+ {
+  "key": "按共享靶点、CYP3A4/2D6 竞争、hERG 风险叠加与结构/类别相似度加权的综合风险；各项证据的分值矩阵；候选–联用药物互作网络，边宽表示综合风险；（d）优先核查清单。共享靶点不代表同向或拮抗，CYP 与 hERG 为计算风险；本图只生成 DDI 假设，必须结合说明书、相互作用数据库与实验数据判断。",
+  "file": "ddi.py",
+  "line": 374,
+  "context": "\"（a）按共享靶点、CYP3A4/2D6 竞争、hERG 风险叠加与结构/类别相似度加权的综合风险；\"",
+  "en": "(a) Composite risk weighted by shared targets, CYP3A4/2D6 competition, additive hERG risk and structural/class similarity; (b) score matrix of the individual evidence terms; (c) candidate–co-administered drug interaction network, with edge width proportional to composite risk; (d) priority review checklist. Shared targets do not imply same-direction or antagonistic effects, and CYP and hERG results are computational risks; this figure only generates DDI hypotheses and must be interpreted alongside prescribing information, interaction databases and experimental data."
+ },
+ {
+  "key": "没有可绘制的作用力",
+  "file": "ligplot.py",
+  "line": 77,
+  "context": "raise ValueError(\"没有可绘制的作用力\")",
+  "en": "No interactions available for plotting"
+ },
+ {
+  "key": "图 18 蛋白–配体二维作用图（LigPlot 风格）",
+  "file": "ligplot.py",
+  "line": 108,
+  "context": "\"图 18 蛋白–配体二维作用图（LigPlot 风格）\",",
+  "en": "Fig. 18 Protein–ligand 2D interaction map (LigPlot style)"
+ },
+ {
+  "key": "配体：",
+  "file": "ligplot.py",
+  "line": 109,
+  "context": "f\"配体：{ligand_name}　受体：{receptor_name}\",",
+  "en": "Ligand: "
+ },
+ {
+  "key": "受体：",
+  "file": "ligplot.py",
+  "line": 109,
+  "context": "f\"配体：{ligand_name}　受体：{receptor_name}\",",
+  "en": "Receptor: "
+ },
+ {
+  "key": "缺少可用的配体结构（SMILES 与 pose 均不可用）",
+  "file": "ligplot.py",
+  "line": 256,
+  "context": "raise ValueError(\"缺少可用的配体结构（SMILES 与 pose 均不可用）\")",
+  "en": "No usable ligand structure (neither SMILES nor pose is available)"
+ },
+ {
+  "key": "配体结构为空",
+  "file": "ligplot.py",
+  "line": 272,
+  "context": "raise ValueError(\"配体结构为空\")",
+  "en": "Ligand structure is empty"
+ },
+ {
+  "key": "无法生成配体二维坐标：",
+  "file": "ligplot.py",
+  "line": 280,
+  "context": "raise ValueError(f\"无法生成配体二维坐标：{exc}\") from exc",
+  "en": "Cannot generate 2D ligand coordinates: "
+ },
+ {
+  "key": "配体没有可绘制的重原子",
+  "file": "ligplot.py",
+  "line": 293,
+  "context": "raise ValueError(\"配体没有可绘制的重原子\")",
+  "en": "Ligand has no heavy atoms to draw"
+ },
+ {
+  "key": "盐桥",
+  "file": "ligplot.py",
+  "line": 698,
+  "context": "tag = \"盐桥\" if kind == \"salt\" else (\"π-堆积\" if kind == \"pi\" else \"\")",
+  "en": "Salt bridge"
+ },
+ {
+  "key": "氢键",
+  "file": "ligplot.py",
+  "line": 949,
+  "context": "(\"氢键\", TEAL, (0, (3.6, 2.4)), 1.3, False),",
+  "en": "Hydrogen bond"
+ },
+ {
+  "key": "π-堆积",
+  "file": "ligplot.py",
+  "line": 951,
+  "context": "(\"π-堆积\", AMBER, \"-\", 1.25, True),",
+  "en": "π-stacking"
+ },
+ {
+  "key": "疏水",
+  "file": "ligplot.py",
+  "line": 952,
+  "context": "(\"疏水\", RED, \"-\", 1.8, False),",
+  "en": "Hydrophobic"
+ },
+ {
+  "key": "（作用力较多，仅显示距离最近的若干条目）",
+  "file": "ligplot.py",
+  "line": 976,
+  "context": "tail = \"（作用力较多，仅显示距离最近的若干条目）\" if truncated else \"\"",
+  "en": " (many interactions; only the closest entries are shown)"
+ },
+ {
+  "key": "图 18　蛋白–配体二维作用图。共识别氢键",
+  "file": "ligplot.py",
+  "line": 978,
+  "context": "f\"图 18　蛋白–配体二维作用图。共识别氢键 {counts['hbond']} 个、\"",
+  "en": "Fig. 18　Protein–ligand 2D interaction map. Identified"
+ },
+ {
+  "key": "个、盐桥",
+  "file": "ligplot.py",
+  "line": 978,
+  "context": "f\"图 18　蛋白–配体二维作用图。共识别氢键 {counts['hbond']} 个、\"",
+  "en": "hydrogen bonds,"
+ },
+ {
+  "key": "个、π-堆积",
+  "file": "ligplot.py",
+  "line": 979,
+  "context": "f\"盐桥 {counts['salt']} 个、π-堆积 {counts['pi']} 个、\"",
+  "en": "salt bridges,"
+ },
+ {
+  "key": "个、疏水残基",
+  "file": "ligplot.py",
+  "line": 979,
+  "context": "f\"盐桥 {counts['salt']} 个、π-堆积 {counts['pi']} 个、\"",
+  "en": "π-stacking interactions,"
+ },
+ {
+  "key": "个",
+  "file": "ligplot.py",
+  "line": 980,
+  "context": "f\"疏水残基 {counts['hydrophobic']} 个{tail}。\"",
+  "en": "hydrophobic residues"
+ },
+ {
+  "key": "。绿色虚线为氢键（N/O/S 供受体距离 ≤",
+  "file": "ligplot.py",
+  "line": 980,
+  "context": "f\"疏水残基 {counts['hydrophobic']} 个{tail}。\"",
+  "en": ". Green dashed lines indicate hydrogen bonds (N/O/S donor–acceptor distance ≤"
+ },
+ {
+  "key": "Å）；蓝色粗虚线为盐桥（异号电荷原子距离 ≤",
+  "file": "ligplot.py",
+  "line": 981,
+  "context": "f\"绿色虚线为氢键（N/O/S 供受体距离 ≤ {HBOND_CUTOFF:.1f} Å）；\"",
+  "en": "Å); blue thick dashed lines indicate salt bridges (distance between oppositely charged atoms ≤"
+ },
+ {
+  "key": "Å）；橙色双线为 π-堆积（环心距 ≤",
+  "file": "ligplot.py",
+  "line": 982,
+  "context": "f\"蓝色粗虚线为盐桥（异号电荷原子距离 ≤ {SALT_CUTOFF:.1f} Å）；\"",
+  "en": "Å); orange double lines indicate π-stacking (ring-centroid distance ≤"
+ },
+ {
+  "key": "Å，平行 ≤ 35° 或 T 型 ≥ 55°）；红色辐条示意疏水残基（C···C ≤",
+  "file": "ligplot.py",
+  "line": 983,
+  "context": "f\"橙色双线为 π-堆积（环心距 ≤ {PI_CUTOFF:.1f} Å，平行 ≤ 35° 或 T 型 ≥ 55°）；\"",
+  "en": "Å; parallel ≤ 35° or T-shaped ≥ 55°); red spokes indicate hydrophobic residues (C···C ≤"
+ },
+ {
+  "key": "Å），辐条连接最近配体原子方向，仅示意方位，不代表具体接触原子。二维示意由几何判据生成，不替代三维构象与能量分解结果。",
+  "file": "ligplot.py",
+  "line": 984,
+  "context": "f\"红色辐条示意疏水残基（C···C ≤ {HYDROPHOBIC_CUTOFF:.1f} Å），\"",
+  "en": "Å); the spokes point toward the nearest ligand atom and indicate direction only, not the specific contacting atom. The 2D schematic is derived from geometric criteria and does not replace 3D conformations or energy decomposition results."
+ }
+]

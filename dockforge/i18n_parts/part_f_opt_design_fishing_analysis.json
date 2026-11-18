@@ -1,0 +1,1535 @@
+[
+ {
+  "key": "无法从该 PDBQT 重建分子（缺少坐标或原子信息）",
+  "file": "analysis.py",
+  "line": 182,
+  "context": "raise ValueError(\"无法从该 PDBQT 重建分子（缺少坐标或原子信息）\")",
+  "en": "Molecule could not be rebuilt from this PDBQT (missing coordinates or atom records)"
+ },
+ {
+  "key": "受体结构为空",
+  "file": "analysis.py",
+  "line": 215,
+  "context": "raise ValueError(\"受体结构为空\")",
+  "en": "Receptor structure is empty"
+ },
+ {
+  "key": "卤键",
+  "file": "analysis.py",
+  "line": 388,
+  "context": "add_summary(item, \"卤键\")",
+  "en": "Halogen bond"
+ },
+ {
+  "key": "金属配位",
+  "file": "analysis.py",
+  "line": 390,
+  "context": "add_summary(item, \"金属配位\")",
+  "en": "Metal coordination"
+ },
+ {
+  "key": "平行",
+  "file": "analysis.py",
+  "line": 502,
+  "context": "kind = \"平行\"",
+  "en": "Parallel"
+ },
+ {
+  "key": "T 型",
+  "file": "analysis.py",
+  "line": 504,
+  "context": "kind = \"T 型\"",
+  "en": "T-shaped"
+ },
+ {
+  "key": "未能从受体中提取参考配体",
+  "file": "analysis.py",
+  "line": 559,
+  "context": "raise ValueError(\"未能从受体中提取参考配体\")",
+  "en": "Reference ligand could not be extracted from the receptor"
+ },
+ {
+  "key": "参考配体无法解析",
+  "file": "analysis.py",
+  "line": 562,
+  "context": "raise ValueError(\"参考配体无法解析\")",
+  "en": "Reference ligand could not be parsed"
+ },
+ {
+  "key": "原子数不一致（对接构象",
+  "file": "analysis.py",
+  "line": 578,
+  "context": "\"error\": f\"原子数不一致（对接构象 {pose_heavy.GetNumAtoms()}，参考配体 {ref_heavy.GetNumAtoms()}）\",",
+  "en": "Atom counts do not match (docked pose"
+ },
+ {
+  "key": "，参考配体",
+  "file": "analysis.py",
+  "line": 578,
+  "context": "\"error\": f\"原子数不一致（对接构象 {pose_heavy.GetNumAtoms()}，参考配体 {ref_heavy.GetNumAtoms()}）\",",
+  "en": ", reference ligand"
+ },
+ {
+  "key": "参考配体缺少三维坐标",
+  "file": "analysis.py",
+  "line": 606,
+  "context": "return {\"available\": False, \"error\": \"参考配体缺少三维坐标\"}",
+  "en": "Reference ligand has no 3D coordinates"
+ },
+ {
+  "key": "构象与参考配体的元素组成不匹配",
+  "file": "analysis.py",
+  "line": 630,
+  "context": "return {\"available\": False, \"error\": \"构象与参考配体的元素组成不匹配\"}",
+  "en": "Pose and reference ligand have different elemental compositions"
+ },
+ {
+  "key": "苯",
+  "file": "design.py",
+  "line": 18,
+  "context": "(\"苯\", \"c1ccccc1\"),",
+  "en": "Benzene"
+ },
+ {
+  "key": "吡啶",
+  "file": "design.py",
+  "line": 19,
+  "context": "(\"吡啶\", \"c1ccncc1\"),",
+  "en": "Pyridine"
+ },
+ {
+  "key": "嘧啶",
+  "file": "design.py",
+  "line": 20,
+  "context": "(\"嘧啶\", \"c1cncnc1\"),",
+  "en": "Pyrimidine"
+ },
+ {
+  "key": "吡嗪",
+  "file": "design.py",
+  "line": 21,
+  "context": "(\"吡嗪\", \"c1cnccn1\"),",
+  "en": "Pyrazine"
+ },
+ {
+  "key": "噻吩",
+  "file": "design.py",
+  "line": 22,
+  "context": "(\"噻吩\", \"c1ccsc1\"),",
+  "en": "Thiophene"
+ },
+ {
+  "key": "呋喃",
+  "file": "design.py",
+  "line": 23,
+  "context": "(\"呋喃\", \"c1ccoc1\"),",
+  "en": "Furan"
+ },
+ {
+  "key": "吡咯",
+  "file": "design.py",
+  "line": 24,
+  "context": "(\"吡咯\", \"c1cc[nH]c1\"),",
+  "en": "Pyrrole"
+ },
+ {
+  "key": "咪唑",
+  "file": "design.py",
+  "line": 25,
+  "context": "(\"咪唑\", \"c1cnc[nH]1\"),",
+  "en": "Imidazole"
+ },
+ {
+  "key": "噁唑",
+  "file": "design.py",
+  "line": 26,
+  "context": "(\"噁唑\", \"c1occn1\"),",
+  "en": "Oxazole"
+ },
+ {
+  "key": "噻唑",
+  "file": "design.py",
+  "line": 27,
+  "context": "(\"噻唑\", \"c1scnc1\"),",
+  "en": "Thiazole"
+ },
+ {
+  "key": "萘",
+  "file": "design.py",
+  "line": 28,
+  "context": "(\"萘\", \"c1ccc2ccccc2c1\"),",
+  "en": "Naphthalene"
+ },
+ {
+  "key": "喹啉",
+  "file": "design.py",
+  "line": 29,
+  "context": "(\"喹啉\", \"c1ccc2ncccc2c1\"),",
+  "en": "Quinoline"
+ },
+ {
+  "key": "吲哚",
+  "file": "design.py",
+  "line": 30,
+  "context": "(\"吲哚\", \"c1ccc2[nH]ccc2c1\"),",
+  "en": "Indole"
+ },
+ {
+  "key": "苯并咪唑",
+  "file": "design.py",
+  "line": 31,
+  "context": "(\"苯并咪唑\", \"c1ccc2[nH]cnc2c1\"),",
+  "en": "Benzimidazole"
+ },
+ {
+  "key": "氟",
+  "file": "design.py",
+  "line": 36,
+  "context": "(\"氟\", \"F\"),",
+  "en": "Fluoro"
+ },
+ {
+  "key": "氯",
+  "file": "design.py",
+  "line": 37,
+  "context": "(\"氯\", \"Cl\"),",
+  "en": "Chloro"
+ },
+ {
+  "key": "羟基",
+  "file": "design.py",
+  "line": 38,
+  "context": "(\"羟基\", \"O\"),",
+  "en": "Hydroxy"
+ },
+ {
+  "key": "氨基",
+  "file": "design.py",
+  "line": 39,
+  "context": "(\"氨基\", \"N\"),",
+  "en": "Amino"
+ },
+ {
+  "key": "甲基",
+  "file": "design.py",
+  "line": 40,
+  "context": "(\"甲基\", \"C\"),",
+  "en": "Methyl"
+ },
+ {
+  "key": "三氟甲基",
+  "file": "design.py",
+  "line": 41,
+  "context": "(\"三氟甲基\", \"C(F)(F)F\"),",
+  "en": "Trifluoromethyl"
+ },
+ {
+  "key": "甲氧基",
+  "file": "design.py",
+  "line": 42,
+  "context": "(\"甲氧基\", \"OC\"),",
+  "en": "Methoxy"
+ },
+ {
+  "key": "氰基",
+  "file": "design.py",
+  "line": 43,
+  "context": "(\"氰基\", \"C#N\"),",
+  "en": "Cyano"
+ },
+ {
+  "key": "酰胺",
+  "file": "design.py",
+  "line": 44,
+  "context": "(\"酰胺\", \"C(=O)N\"),",
+  "en": "Amide"
+ },
+ {
+  "key": "羧酸",
+  "file": "design.py",
+  "line": 45,
+  "context": "(\"羧酸\", \"C(=O)O\"),",
+  "en": "Carboxylic acid"
+ },
+ {
+  "key": "磺酰胺",
+  "file": "design.py",
+  "line": 46,
+  "context": "(\"磺酰胺\", \"S(=O)(=O)N\"),",
+  "en": "Sulfonamide"
+ },
+ {
+  "key": "乙酰基",
+  "file": "design.py",
+  "line": 47,
+  "context": "(\"乙酰基\", \"C(=O)C\"),",
+  "en": "Acetyl"
+ },
+ {
+  "key": "阿司匹林",
+  "file": "design.py",
+  "line": 205,
+  "context": "(\"阿司匹林\", \"CC(=O)Oc1ccccc1C(=O)O\"),",
+  "en": "Aspirin"
+ },
+ {
+  "key": "咖啡因",
+  "file": "design.py",
+  "line": 206,
+  "context": "(\"咖啡因\", \"Cn1c(=O)c2c(ncn2C)n(C)c1=O\"),",
+  "en": "Caffeine"
+ },
+ {
+  "key": "布洛芬",
+  "file": "design.py",
+  "line": 207,
+  "context": "(\"布洛芬\", \"CC(C)Cc1ccc(cc1)[C@@H](C)C(=O)O\"),",
+  "en": "Ibuprofen"
+ },
+ {
+  "key": "对乙酰氨基酚",
+  "file": "design.py",
+  "line": 208,
+  "context": "(\"对乙酰氨基酚\", \"CC(=O)Nc1ccc(O)cc1\"),",
+  "en": "Acetaminophen"
+ },
+ {
+  "key": "华法林",
+  "file": "design.py",
+  "line": 209,
+  "context": "(\"华法林\", \"CC(=O)CC(c1ccccc1)c1c(O)c2ccccc2oc1=O\"),",
+  "en": "Warfarin"
+ },
+ {
+  "key": "伊马替尼",
+  "file": "design.py",
+  "line": 210,
+  "context": "(\"伊马替尼\", \"Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1\"),",
+  "en": "Imatinib"
+ },
+ {
+  "key": "吉非替尼",
+  "file": "design.py",
+  "line": 211,
+  "context": "(\"吉非替尼\", \"COc1cc2ncnc(Nc3ccc(F)c(Cl)c3)c2cc1OCCN1CCOCC1\"),",
+  "en": "Gefitinib"
+ },
+ {
+  "key": "厄洛替尼",
+  "file": "design.py",
+  "line": 212,
+  "context": "(\"厄洛替尼\", \"C#Cc1cccc(Nc2ncnc3cc(OCCOC)c(OCCOC)cc23)c1\"),",
+  "en": "Erlotinib"
+ },
+ {
+  "key": "索拉非尼",
+  "file": "design.py",
+  "line": 213,
+  "context": "(\"索拉非尼\", \"CNC(=O)c1cc(Oc2ccc(NC(=O)Nc3cc(C(F)(F)F)ccc3Cl)cc2)ccn1\"),",
+  "en": "Sorafenib"
+ },
+ {
+  "key": "苯甲酸",
+  "file": "design.py",
+  "line": 214,
+  "context": "(\"苯甲酸\", \"O=C(O)c1ccccc1\"),",
+  "en": "Benzoic acid"
+ },
+ {
+  "key": "苯酚",
+  "file": "design.py",
+  "line": 215,
+  "context": "(\"苯酚\", \"Oc1ccccc1\"),",
+  "en": "Phenol"
+ },
+ {
+  "key": "苯胺",
+  "file": "design.py",
+  "line": 216,
+  "context": "(\"苯胺\", \"Nc1ccccc1\"),",
+  "en": "Aniline"
+ },
+ {
+  "key": "找不到受体",
+  "file": "design.py",
+  "line": 303,
+  "context": "raise ValueError(\"找不到受体\")",
+  "en": "Receptor not found"
+ },
+ {
+  "key": "请先设置结合位点盒子",
+  "file": "design.py",
+  "line": 305,
+  "context": "raise ValueError(\"请先设置结合位点盒子\")",
+  "en": "Set the binding site box first"
+ },
+ {
+  "key": "[设计] 靶点",
+  "file": "design.py",
+  "line": 307,
+  "context": "job.log(f\"[设计] 靶点 {receptor['name']}，生成 {max_designs} 个候选\")",
+  "en": "[Design] target"
+ },
+ {
+  "key": "，生成",
+  "file": "design.py",
+  "line": 307,
+  "context": "job.log(f\"[设计] 靶点 {receptor['name']}，生成 {max_designs} 个候选\")",
+  "en": ", generating"
+ },
+ {
+  "key": "个候选",
+  "file": "design.py",
+  "line": 307,
+  "context": "job.log(f\"[设计] 靶点 {receptor['name']}，生成 {max_designs} 个候选\")",
+  "en": "candidates"
+ },
+ {
+  "key": "生成候选分子",
+  "file": "design.py",
+  "line": 308,
+  "context": "job.set_progress(0.05, \"生成候选分子\")",
+  "en": "Generating candidate molecules"
+ },
+ {
+  "key": "未能生成有效设计分子",
+  "file": "design.py",
+  "line": 311,
+  "context": "raise ValueError(\"未能生成有效设计分子\")",
+  "en": "No valid designed molecules were generated"
+ },
+ {
+  "key": "[设计] 生成",
+  "file": "design.py",
+  "line": 312,
+  "context": "job.log(f\"[设计] 生成 {len(designs)} 个类药候选\")",
+  "en": "[Design] generated"
+ },
+ {
+  "key": "个类药候选",
+  "file": "design.py",
+  "line": 312,
+  "context": "job.log(f\"[设计] 生成 {len(designs)} 个类药候选\")",
+  "en": "drug-like candidates"
+ },
+ {
+  "key": "准备设计分子",
+  "file": "design.py",
+  "line": 318,
+  "context": "job.set_progress(0.08 + 0.17 * index / max(1, len(designs)), f\"准备设计分子 {index}/{len(designs)}\")",
+  "en": "Preparing designed molecule"
+ },
+ {
+  "key": "分子设计候选",
+  "file": "design.py",
+  "line": 341,
+  "context": "\"message\": \"分子设计候选\",",
+  "en": "Molecular design candidate"
+ },
+ {
+  "key": "所有设计分子准备失败",
+  "file": "design.py",
+  "line": 352,
+  "context": "raise ValueError(\"所有设计分子准备失败\")",
+  "en": "Preparation failed for all designed molecules"
+ },
+ {
+  "key": "[设计] 开始对接",
+  "file": "design.py",
+  "line": 377,
+  "context": "job.log(f\"[设计] 开始对接 {len(prepared)} 个候选\")",
+  "en": "[Design] docking"
+ },
+ {
+  "key": "[设计] 数据库相似性检索：",
+  "file": "design.py",
+  "line": 390,
+  "context": "job.log(f\"[设计] 数据库相似性检索：{len(database)} 条记录\")",
+  "en": "[Design] database similarity search: "
+ },
+ {
+  "key": "条记录",
+  "file": "design.py",
+  "line": 390,
+  "context": "job.log(f\"[设计] 数据库相似性检索：{len(database)} 条记录\")",
+  "en": "records"
+ },
+ {
+  "key": "分子设计完成",
+  "file": "design.py",
+  "line": 494,
+  "context": "job.set_progress(1.0, \"分子设计完成\")",
+  "en": "Molecular design complete"
+ },
+ {
+  "key": "被拒绝（HTTP",
+  "file": "fishing.py",
+  "line": 97,
+  "context": "f\"{label or 'ChEMBL 请求'}被拒绝（HTTP {exc.code}），\"",
+  "en": " rejected (HTTP"
+ },
+ {
+  "key": "），请检查输入 SMILES 是否合法。",
+  "file": "fishing.py",
+  "line": 97,
+  "context": "f\"{label or 'ChEMBL 请求'}被拒绝（HTTP {exc.code}），\"",
+  "en": "); check that the input SMILES is valid."
+ },
+ {
+  "key": "[垂钓]",
+  "file": "fishing.py",
+  "line": 105,
+  "context": "f\"[垂钓] {label or '网络请求'} 返回 HTTP {exc.code}，\"",
+  "en": "[Fishing]"
+ },
+ {
+  "key": "返回 HTTP",
+  "file": "fishing.py",
+  "line": 105,
+  "context": "f\"[垂钓] {label or '网络请求'} 返回 HTTP {exc.code}，\"",
+  "en": "returned HTTP"
+ },
+ {
+  "key": "网络请求",
+  "file": "fishing.py",
+  "line": 105,
+  "context": "f\"[垂钓] {label or '网络请求'} 返回 HTTP {exc.code}，\"",
+  "en": "network request"
+ },
+ {
+  "key": "秒后重试（",
+  "file": "fishing.py",
+  "line": 106,
+  "context": "f\"{wait} 秒后重试（{attempt + 1}/{attempts}）\"",
+  "en": "s; retrying ("
+ },
+ {
+  "key": "超时或连接失败，",
+  "file": "fishing.py",
+  "line": 115,
+  "context": "f\"[垂钓] {label or '网络请求'} 超时或连接失败，\"",
+  "en": "timed out or the connection failed; waiting "
+ },
+ {
+  "key": "失败（已尝试",
+  "file": "fishing.py",
+  "line": 120,
+  "context": "f\"{label or 'ChEMBL 请求'}失败（已尝试 {attempts} 次）：{last_error}\"",
+  "en": " failed (after"
+ },
+ {
+  "key": "次）：",
+  "file": "fishing.py",
+  "line": 120,
+  "context": "f\"{label or 'ChEMBL 请求'}失败（已尝试 {attempts} 次）：{last_error}\"",
+  "en": "attempts): "
+ },
+ {
+  "key": "ChEMBL 请求",
+  "file": "fishing.py",
+  "line": 120,
+  "context": "f\"{label or 'ChEMBL 请求'}失败（已尝试 {attempts} 次）：{last_error}\"",
+  "en": "ChEMBL request"
+ },
+ {
+  "key": "外部数据请求",
+  "file": "fishing.py",
+  "line": 154,
+  "context": "f\"{label or '外部数据请求'}失败（已尝试 {attempts} 次）：{last_error}\"",
+  "en": "External data request"
+ },
+ {
+  "key": "ChEMBL 精确匹配",
+  "file": "fishing.py",
+  "line": 248,
+  "context": "url, timeout=30, job=job, label=\"ChEMBL 精确匹配\",",
+  "en": "ChEMBL exact match"
+ },
+ {
+  "key": "[垂钓] 精确匹配未完成：",
+  "file": "fishing.py",
+  "line": 252,
+  "context": "job.log(f\"[垂钓] 精确匹配未完成：{exc}\")",
+  "en": "[Fishing] exact match incomplete: "
+ },
+ {
+  "key": "% 使用本地缓存（",
+  "file": "fishing.py",
+  "line": 283,
+  "context": "f\"[垂钓] Tanimoto ≥ {threshold}% 使用本地缓存\"",
+  "en": "% similarity, using the local cache ("
+ },
+ {
+  "key": "个分子）",
+  "file": "fishing.py",
+  "line": 284,
+  "context": "f\"（{len(cached)} 个分子）\"",
+  "en": "molecules)"
+ },
+ {
+  "key": "[垂钓] ChEMBL 相似性检索（Tanimoto ≥",
+  "file": "fishing.py",
+  "line": 293,
+  "context": "f\"[垂钓] ChEMBL 相似性检索（Tanimoto ≥ {threshold}%，\"",
+  "en": "[Fishing] ChEMBL similarity search (Tanimoto ≥"
+ },
+ {
+  "key": "%，上限",
+  "file": "fishing.py",
+  "line": 293,
+  "context": "f\"[垂钓] ChEMBL 相似性检索（Tanimoto ≥ {threshold}%，\"",
+  "en": "%, limit"
+ },
+ {
+  "key": "个分子，单次最多等待",
+  "file": "fishing.py",
+  "line": 294,
+  "context": "f\"上限 {limit} 个分子，单次最多等待 {SIMILARITY_TIMEOUT} 秒）\"",
+  "en": "molecules, longest wait per query"
+ },
+ {
+  "key": "秒）",
+  "file": "fishing.py",
+  "line": 294,
+  "context": "f\"上限 {limit} 个分子，单次最多等待 {SIMILARITY_TIMEOUT} 秒）\"",
+  "en": "s)"
+ },
+ {
+  "key": "ChEMBL 相似性检索（",
+  "file": "fishing.py",
+  "line": 300,
+  "context": "label=f\"ChEMBL 相似性检索（{threshold}%）\",",
+  "en": "ChEMBL similarity search ("
+ },
+ {
+  "key": "[垂钓] Tanimoto ≥",
+  "file": "fishing.py",
+  "line": 326,
+  "context": "job.log(f\"[垂钓] Tanimoto ≥ {threshold}% 命中 {len(molecules)} 个已知分子\")",
+  "en": "[Fishing] Tanimoto ≥"
+ },
+ {
+  "key": "% 命中",
+  "file": "fishing.py",
+  "line": 326,
+  "context": "job.log(f\"[垂钓] Tanimoto ≥ {threshold}% 命中 {len(molecules)} 个已知分子\")",
+  "en": "%; matched"
+ },
+ {
+  "key": "个已知分子",
+  "file": "fishing.py",
+  "line": 326,
+  "context": "job.log(f\"[垂钓] Tanimoto ≥ {threshold}% 命中 {len(molecules)} 个已知分子\")",
+  "en": "known molecules"
+ },
+ {
+  "key": "[垂钓] 精确匹配到",
+  "file": "fishing.py",
+  "line": 343,
+  "context": "f\"[垂钓] 精确匹配到 {exact['chembl_id']}\"",
+  "en": "[Fishing] exact match:"
+ },
+ {
+  "key": "），将纳入活性汇总",
+  "file": "fishing.py",
+  "line": 344,
+  "context": "f\"（{exact['pref_name'] or '未命名'}），将纳入活性汇总\"",
+  "en": "), included in the activity summary"
+ },
+ {
+  "key": "未命名",
+  "file": "fishing.py",
+  "line": 344,
+  "context": "f\"（{exact['pref_name'] or '未命名'}），将纳入活性汇总\"",
+  "en": "unnamed"
+ },
+ {
+  "key": "[垂钓] ChEMBL 检索耗时过长，停止扩展并改用其他证据",
+  "file": "fishing.py",
+  "line": 363,
+  "context": "job.log(\"[垂钓] ChEMBL 检索耗时过长，停止扩展并改用其他证据\")",
+  "en": "[Fishing] ChEMBL search is taking too long; stopping expansion and using other evidence"
+ },
+ {
+  "key": "% 检索失败：",
+  "file": "fishing.py",
+  "line": 371,
+  "context": "job.log(f\"[垂钓] Tanimoto ≥ {level}% 检索失败：{exc}\")",
+  "en": "% similarity search failed: "
+ },
+ {
+  "key": "[垂钓] 累计",
+  "file": "fishing.py",
+  "line": 380,
+  "context": "f\"[垂钓] 累计 {len(pool)} 个候选分子\"",
+  "en": "[Fishing] collected"
+ },
+ {
+  "key": "个候选分子（目标至少",
+  "file": "fishing.py",
+  "line": 380,
+  "context": "f\"[垂钓] 累计 {len(pool)} 个候选分子\"",
+  "en": " candidate molecules (target at least"
+ },
+ {
+  "key": "[垂钓] 候选仍偏少，自动降低相似度阈值继续扩展",
+  "file": "fishing.py",
+  "line": 384,
+  "context": "job.log(\"[垂钓] 候选仍偏少，自动降低相似度阈值继续扩展\")",
+  "en": "[Fishing] still too few candidates; lowering the similarity threshold to keep expanding"
+ },
+ {
+  "key": "ChEMBL 活性记录",
+  "file": "fishing.py",
+  "line": 411,
+  "context": "url, timeout=DEFAULT_TIMEOUT, job=job, label=\"ChEMBL 活性记录\"",
+  "en": "ChEMBL activity records"
+ },
+ {
+  "key": "[垂钓] 读取活性记录",
+  "file": "fishing.py",
+  "line": 417,
+  "context": "job.log(f\"[垂钓] 读取活性记录 {len(records)} 条（分子批次 {start // 20 + 1}）\")",
+  "en": "[Fishing] reading activity records"
+ },
+ {
+  "key": "条（分子批次",
+  "file": "fishing.py",
+  "line": 417,
+  "context": "job.log(f\"[垂钓] 读取活性记录 {len(records)} 条（分子批次 {start // 20 + 1}）\")",
+  "en": "entries (molecule batch"
+ },
+ {
+  "key": "ChEMBL 作用机制",
+  "file": "fishing.py",
+  "line": 434,
+  "context": "url, timeout=DEFAULT_TIMEOUT, job=job, label=\"ChEMBL 作用机制\"",
+  "en": "ChEMBL mechanism of action"
+ },
+ {
+  "key": "[垂钓] 作用机制获取失败：",
+  "file": "fishing.py",
+  "line": 437,
+  "context": "job.log(f\"[垂钓] 作用机制获取失败：{exc}\")",
+  "en": "[Fishing] mechanism of action could not be fetched: "
+ },
+ {
+  "key": "[垂钓] 读取作用机制记录",
+  "file": "fishing.py",
+  "line": 440,
+  "context": "job.log(f\"[垂钓] 读取作用机制记录 {len(records)} 条\")",
+  "en": "[Fishing] reading mechanism of action records"
+ },
+ {
+  "key": "条",
+  "file": "fishing.py",
+  "line": 440,
+  "context": "job.log(f\"[垂钓] 读取作用机制记录 {len(records)} 条\")",
+  "en": ""
+ },
+ {
+  "key": "[垂钓] UniProt 基因映射失败：",
+  "file": "fishing.py",
+  "line": 463,
+  "context": "job.log(f\"[垂钓] UniProt 基因映射失败：{exc}\")",
+  "en": "[Fishing] UniProt gene mapping failed: "
+ },
+ {
+  "key": "[垂钓] 解析基因符号",
+  "file": "fishing.py",
+  "line": 469,
+  "context": "job.log(f\"[垂钓] 解析基因符号 {len(mapping)} 个\")",
+  "en": "[Fishing] resolved gene symbols"
+ },
+ {
+  "key": "个",
+  "file": "fishing.py",
+  "line": 469,
+  "context": "job.log(f\"[垂钓] 解析基因符号 {len(mapping)} 个\")",
+  "en": ""
+ },
+ {
+  "key": "[垂钓] BindingDB 蛋白名映射基因",
+  "file": "fishing.py",
+  "line": 514,
+  "context": "job.log(f\"[垂钓] BindingDB 蛋白名映射基因 {len(mapping)} 个\")",
+  "en": "[Fishing] BindingDB protein names mapped to genes"
+ },
+ {
+  "key": "ChEMBL 靶点详情",
+  "file": "fishing.py",
+  "line": 534,
+  "context": "url, timeout=DEFAULT_TIMEOUT, job=job, label=\"ChEMBL 靶点详情\"",
+  "en": "ChEMBL target details"
+ },
+ {
+  "key": "[垂钓] 靶点详情获取失败：",
+  "file": "fishing.py",
+  "line": 537,
+  "context": "job.log(f\"[垂钓] 靶点详情获取失败：{exc}\")",
+  "en": "[Fishing] target details could not be fetched: "
+ },
+ {
+  "key": "DGIdb 药物–基因检索",
+  "file": "fishing.py",
+  "line": 643,
+  "context": "label=\"DGIdb 药物–基因检索\",",
+  "en": "DGIdb drug-gene query"
+ },
+ {
+  "key": "[垂钓] DGIdb 查询失败：",
+  "file": "fishing.py",
+  "line": 646,
+  "context": "job.log(f\"[垂钓] DGIdb 查询失败：{exc}\")",
+  "en": "[Fishing] DGIdb query failed: "
+ },
+ {
+  "key": "[垂钓] DGIdb（",
+  "file": "fishing.py",
+  "line": 675,
+  "context": "f\"[垂钓] DGIdb（{node.get('name', candidate)}）命中 {len(genes)} 个基因\"",
+  "en": "[Fishing] DGIdb ("
+ },
+ {
+  "key": "）命中",
+  "file": "fishing.py",
+  "line": 675,
+  "context": "f\"[垂钓] DGIdb（{node.get('name', candidate)}）命中 {len(genes)} 个基因\"",
+  "en": ") matched"
+ },
+ {
+  "key": "个基因",
+  "file": "fishing.py",
+  "line": 675,
+  "context": "f\"[垂钓] DGIdb（{node.get('name', candidate)}）命中 {len(genes)} 个基因\"",
+  "en": "genes"
+ },
+ {
+  "key": "RCSB PDB 配体检索（",
+  "file": "fishing.py",
+  "line": 703,
+  "context": "label=f\"RCSB PDB 配体检索（{match_type}）\",",
+  "en": "RCSB PDB ligand search ("
+ },
+ {
+  "key": "[垂钓] PDB 配体检索失败：",
+  "file": "fishing.py",
+  "line": 706,
+  "context": "job.log(f\"[垂钓] PDB 配体检索失败：{exc}\")",
+  "en": "[Fishing] PDB ligand search failed: "
+ },
+ {
+  "key": "RCSB PDB 实体注释",
+  "file": "fishing.py",
+  "line": 727,
+  "context": "label=\"RCSB PDB 实体注释\",",
+  "en": "RCSB PDB entity annotation"
+ },
+ {
+  "key": "[垂钓] PDB 实体注释失败：",
+  "file": "fishing.py",
+  "line": 730,
+  "context": "job.log(f\"[垂钓] PDB 实体注释失败：{exc}\")",
+  "en": "[Fishing] PDB entity annotation failed: "
+ },
+ {
+  "key": "[垂钓] PDB 共晶结构命中",
+  "file": "fishing.py",
+  "line": 779,
+  "context": "f\"[垂钓] PDB 共晶结构命中 {len(items)} 个蛋白\"",
+  "en": "[Fishing] PDB co-crystal structure hits:"
+ },
+ {
+  "key": "个蛋白（人源",
+  "file": "fishing.py",
+  "line": 779,
+  "context": "f\"[垂钓] PDB 共晶结构命中 {len(items)} 个蛋白\"",
+  "en": "proteins (human:"
+ },
+ {
+  "key": "个）",
+  "file": "fishing.py",
+  "line": 780,
+  "context": "f\"（人源 {human_count} 个）\"",
+  "en": ")"
+ },
+ {
+  "key": "BindingDB 反向靶点检索",
+  "file": "fishing.py",
+  "line": 792,
+  "context": "url, timeout=90, job=job, label=\"BindingDB 反向靶点检索\", attempts=1",
+  "en": "BindingDB reverse target search"
+ },
+ {
+  "key": "[垂钓] BindingDB 查询失败：",
+  "file": "fishing.py",
+  "line": 795,
+  "context": "job.log(f\"[垂钓] BindingDB 查询失败：{exc}\")",
+  "en": "[Fishing] BindingDB query failed: "
+ },
+ {
+  "key": "[垂钓] BindingDB 未找到结构类似物",
+  "file": "fishing.py",
+  "line": 801,
+  "context": "job.log(\"[垂钓] BindingDB 未找到结构类似物\")",
+  "en": "[Fishing] BindingDB found no structural analogs"
+ },
+ {
+  "key": "[垂钓] BindingDB 命中",
+  "file": "fishing.py",
+  "line": 847,
+  "context": "f\"[垂钓] BindingDB 命中 {len(targets)} 个人源蛋白靶点\"",
+  "en": "[Fishing] BindingDB hits:"
+ },
+ {
+  "key": "个人源蛋白靶点（相似度 ≥",
+  "file": "fishing.py",
+  "line": 847,
+  "context": "f\"[垂钓] BindingDB 命中 {len(targets)} 个人源蛋白靶点\"",
+  "en": "human protein targets (similarity ≥"
+ },
+ {
+  "key": "PubChem 化合物检索",
+  "file": "fishing.py",
+  "line": 879,
+  "context": "url, timeout=45, job=job, label=\"PubChem 化合物检索\", attempts=1",
+  "en": "PubChem compound search"
+ },
+ {
+  "key": "[垂钓] PubChem 未找到该结构或名称",
+  "file": "fishing.py",
+  "line": 889,
+  "context": "job.log(\"[垂钓] PubChem 未找到该结构或名称\")",
+  "en": "[Fishing] PubChem found no match for this structure or name"
+ },
+ {
+  "key": "PubChem 生物试验摘要",
+  "file": "fishing.py",
+  "line": 910,
+  "context": "label=\"PubChem 生物试验摘要\", attempts=1,",
+  "en": "PubChem bioassay summary"
+ },
+ {
+  "key": "[垂钓] PubChem 没有可用的生物试验摘要",
+  "file": "fishing.py",
+  "line": 917,
+  "context": "job.log(\"[垂钓] PubChem 没有可用的生物试验摘要\")",
+  "en": "[Fishing] PubChem returned no usable bioassay summary"
+ },
+ {
+  "key": "[垂钓] PubChem 没有可用的人源蛋白试验记录",
+  "file": "fishing.py",
+  "line": 955,
+  "context": "job.log(\"[垂钓] PubChem 没有可用的人源蛋白试验记录\")",
+  "en": "[Fishing] PubChem returned no usable human protein assay records"
+ },
+ {
+  "key": "（PubChem 生物试验）",
+  "file": "fishing.py",
+  "line": 978,
+  "context": "\"name\": f\"{gene}（PubChem 生物试验）\",",
+  "en": " (PubChem bioassay)"
+ },
+ {
+  "key": "[垂钓] PubChem 命中",
+  "file": "fishing.py",
+  "line": 996,
+  "context": "f\"[垂钓] PubChem 命中 {len(targets)} 个人源蛋白靶点\"",
+  "en": "[Fishing] PubChem hits:"
+ },
+ {
+  "key": "个人源蛋白靶点（CID",
+  "file": "fishing.py",
+  "line": 996,
+  "context": "f\"[垂钓] PubChem 命中 {len(targets)} 个人源蛋白靶点\"",
+  "en": "human protein targets (CID"
+ },
+ {
+  "key": "Open Targets 作用机制",
+  "file": "fishing.py",
+  "line": 1017,
+  "context": "label=\"Open Targets 作用机制\",",
+  "en": "Open Targets mechanism of action"
+ },
+ {
+  "key": "[垂钓] Open Targets 查询失败：",
+  "file": "fishing.py",
+  "line": 1020,
+  "context": "job.log(f\"[垂钓] Open Targets 查询失败：{exc}\")",
+  "en": "[Fishing] Open Targets query failed: "
+ },
+ {
+  "key": "[垂钓] Open Targets 命中",
+  "file": "fishing.py",
+  "line": 1043,
+  "context": "f\"[垂钓] Open Targets 命中 {len(targets)} 个已知作用机制靶点\"",
+  "en": "[Fishing] Open Targets hits:"
+ },
+ {
+  "key": "个已知作用机制靶点",
+  "file": "fishing.py",
+  "line": 1043,
+  "context": "f\"[垂钓] Open Targets 命中 {len(targets)} 个已知作用机制靶点\"",
+  "en": "targets with a known mechanism of action"
+ },
+ {
+  "key": "检索 ChEMBL 相似分子",
+  "file": "fishing.py",
+  "line": 1104,
+  "context": "job.set_progress(0.05, \"检索 ChEMBL 相似分子\")",
+  "en": "Searching ChEMBL for similar molecules"
+ },
+ {
+  "key": "[垂钓] ChEMBL 未返回相似分子（可能服务繁忙），继续尝试 DGIdb 与 PDB 证据",
+  "file": "fishing.py",
+  "line": 1111,
+  "context": "\"[垂钓] ChEMBL 未返回相似分子（可能服务繁忙），\"",
+  "en": "[Fishing] ChEMBL returned no similar molecules (the service may be busy); continuing with DGIdb and PDB evidence"
+ },
+ {
+  "key": "读取生物活性与作用机制",
+  "file": "fishing.py",
+  "line": 1115,
+  "context": "job.set_progress(0.3, \"读取生物活性与作用机制\")",
+  "en": "Reading bioactivity and mechanism of action"
+ },
+ {
+  "key": "[垂钓] ChEMBL 活性记录不可用：",
+  "file": "fishing.py",
+  "line": 1120,
+  "context": "job.log(f\"[垂钓] ChEMBL 活性记录不可用：{exc}\")",
+  "en": "[Fishing] ChEMBL activity records unavailable: "
+ },
+ {
+  "key": "[垂钓] ChEMBL 作用机制不可用：",
+  "file": "fishing.py",
+  "line": 1125,
+  "context": "job.log(f\"[垂钓] ChEMBL 作用机制不可用：{exc}\")",
+  "en": "[Fishing] ChEMBL mechanism of action unavailable: "
+ },
+ {
+  "key": "[垂钓] ChEMBL 相似分子没有可用的人源蛋白记录，改用 DGIdb 与 PDB 证据",
+  "file": "fishing.py",
+  "line": 1185,
+  "context": "\"[垂钓] ChEMBL 相似分子没有可用的人源蛋白记录，\"",
+  "en": "[Fishing] no usable human protein records for the ChEMBL similar molecules; falling back to DGIdb and PDB evidence"
+ },
+ {
+  "key": "汇总靶点并解析基因符号",
+  "file": "fishing.py",
+  "line": 1189,
+  "context": "job.set_progress(0.6, \"汇总靶点并解析基因符号\")",
+  "en": "Aggregating targets and resolving gene symbols"
+ },
+ {
+  "key": "[垂钓] ChEMBL 靶点未能解析为人源蛋白，改用其他证据来源",
+  "file": "fishing.py",
+  "line": 1219,
+  "context": "job.log(\"[垂钓] ChEMBL 靶点未能解析为人源蛋白，改用其他证据来源\")",
+  "en": "[Fishing] ChEMBL targets could not be resolved to human proteins; using other evidence sources"
+ },
+ {
+  "key": "[垂钓] PDB 宽松图匹配补充",
+  "file": "fishing.py",
+  "line": 1341,
+  "context": "f\"[垂钓] PDB 宽松图匹配补充 {len(relaxed)} 个蛋白结构\"",
+  "en": "[Fishing] relaxed PDB graph matching added"
+ },
+ {
+  "key": "个蛋白结构",
+  "file": "fishing.py",
+  "line": 1341,
+  "context": "f\"[垂钓] PDB 宽松图匹配补充 {len(relaxed)} 个蛋白结构\"",
+  "en": "protein structures"
+ },
+ {
+  "key": "非人源",
+  "file": "fishing.py",
+  "line": 1357,
+  "context": "label = f\"{label}（{item.get('organism', '非人源')}）\"",
+  "en": "non-human"
+ },
+ {
+  "key": "（PDB 共晶）",
+  "file": "fishing.py",
+  "line": 1360,
+  "context": "name=f\"{label}（PDB 共晶）\",",
+  "en": " (PDB co-crystal)"
+ },
+ {
+  "key": "ChEMBL、BindingDB、PubChem、DGIdb、Open Targets 与 PDB 都没有找到该分子的蛋白靶点。请确认 SMILES 合法、稍后重试，或在网络药理学页面手动补充人源基因。",
+  "file": "fishing.py",
+  "line": 1458,
+  "context": "\"ChEMBL、BindingDB、PubChem、DGIdb、Open Targets 与 PDB \"",
+  "en": "No protein targets were found for this molecule in ChEMBL, BindingDB, PubChem, DGIdb, Open Targets or PDB. Check that the SMILES is valid, retry later, or add human genes manually on the network pharmacology page."
+ },
+ {
+  "key": "[垂钓] 仅找到非人源靶点或缺少基因注释，不能用于人源网络药理学；请换用已知药物名称或补充基因列表。",
+  "file": "fishing.py",
+  "line": 1481,
+  "context": "\"[垂钓] 仅找到非人源靶点或缺少基因注释，\"",
+  "en": "[Fishing] only non-human targets or targets without gene annotation were found, so they cannot be used for human network pharmacology; use a known drug name or supply a gene list."
+ },
+ {
+  "key": "[垂钓] 人源基因靶点",
+  "file": "fishing.py",
+  "line": 1486,
+  "context": "f\"[垂钓] 人源基因靶点 {human_targets} 个，数量偏少；\"",
+  "en": "[Fishing] human gene targets:"
+ },
+ {
+  "key": "个，数量偏少；网络药理学将使用 STRING 一阶邻居扩展网络，扩展节点只作为网络背景，不会冒充直接靶点。",
+  "file": "fishing.py",
+  "line": 1486,
+  "context": "f\"[垂钓] 人源基因靶点 {human_targets} 个，数量偏少；\"",
+  "en": "- too few; network pharmacology will expand the network with STRING first-order neighbors, and expanded nodes serve only as background, never as direct targets."
+ },
+ {
+  "key": "[垂钓] 当前得到",
+  "file": "fishing.py",
+  "line": 1492,
+  "context": "f\"[垂钓] 当前得到 {len(targets)} 个蛋白靶点，\"",
+  "en": "[Fishing] currently"
+ },
+ {
+  "key": "个蛋白靶点，已把阈值扩展到 Tanimoto ≥",
+  "file": "fishing.py",
+  "line": 1492,
+  "context": "f\"[垂钓] 当前得到 {len(targets)} 个蛋白靶点，\"",
+  "en": "protein targets; the threshold was relaxed to Tanimoto ≥"
+ },
+ {
+  "key": "个相似分子；可在网络药理学页面补充基因。",
+  "file": "fishing.py",
+  "line": 1494,
+  "context": "f\"{len(molecules)} 个相似分子；可在网络药理学页面补充基因。\"",
+  "en": "similar molecules; genes can be added on the network pharmacology page."
+ },
+ {
+  "key": "查询分子",
+  "file": "fishing.py",
+  "line": 1504,
+  "context": "\"name\": name if name and name.strip().lower() != \"query\" else \"查询分子\",",
+  "en": "Query molecule"
+ },
+ {
+  "key": "靶点垂钓完成",
+  "file": "fishing.py",
+  "line": 1552,
+  "context": "job.set_progress(1.0, \"靶点垂钓完成\")",
+  "en": "Target fishing complete"
+ },
+ {
+  "key": "氢键",
+  "file": "optimization.py",
+  "line": 20,
+  "context": "if \"氢键\" in types and label not in groups[\"hbonds\"]:",
+  "en": "Hydrogen bond"
+ },
+ {
+  "key": "疏水",
+  "file": "optimization.py",
+  "line": 22,
+  "context": "if \"疏水\" in types and label not in groups[\"hydrophobic\"]:",
+  "en": "Hydrophobic"
+ },
+ {
+  "key": "π-堆积",
+  "file": "optimization.py",
+  "line": 26,
+  "context": "if \"π-堆积\" in types and label not in groups[\"pi\"]:",
+  "en": "π-stacking"
+ },
+ {
+  "key": "邻近",
+  "file": "optimization.py",
+  "line": 38,
+  "context": "interaction = \"、\".join(types) or \"邻近\"",
+  "en": "Nearby"
+ },
+ {
+  "key": "盐桥",
+  "file": "optimization.py",
+  "line": 39,
+  "context": "if \"盐桥\" in types:",
+  "en": "Salt bridge"
+ },
+ {
+  "key": "保留或强化与",
+  "file": "optimization.py",
+  "line": 41,
+  "context": "f\"保留或强化与 {residue} 的静电作用：保持相反电荷，\"",
+  "en": "Retain or strengthen the electrostatic interaction with"
+ },
+ {
+  "key": "的静电作用：保持相反电荷，可用四唑/磺酰胺等生物电子等排体调节 pKa 与电荷分布。",
+  "file": "optimization.py",
+  "line": 41,
+  "context": "f\"保留或强化与 {residue} 的静电作用：保持相反电荷，\"",
+  "en": "to keep complementary charges. Tetrazole or sulfonamide bioisosteres can be used to tune pKa and charge distribution."
+ },
+ {
+  "key": "该残基提供关键氢键。优先保留配体对应供体/受体；若需提高亲和力，可在邻近位置引入羟基、氨基或酰胺。",
+  "file": "optimization.py",
+  "line": 46,
+  "context": "f\"该残基提供关键氢键。优先保留配体对应供体/受体；\"",
+  "en": "This residue provides a key hydrogen bond; keep the matching ligand donor/acceptor. To gain affinity, introduce a hydroxyl, amino or amide group nearby."
+ },
+ {
+  "key": "与",
+  "file": "optimization.py",
+  "line": 51,
+  "context": "f\"与 {residue} 存在 π-堆积。可引入缺电子/富电子芳环或杂环，\"",
+  "en": "π-stacking with"
+ },
+ {
+  "key": "存在 π-堆积。可引入缺电子/富电子芳环或杂环，增强静电互补，同时避免过度增大 logP。",
+  "file": "optimization.py",
+  "line": 51,
+  "context": "f\"与 {residue} 存在 π-堆积。可引入缺电子/富电子芳环或杂环，\"",
+  "en": "π-stacking detected; introduce electron-poor or electron-rich aromatic or heteroaromatic rings to enhance electrostatic complementarity while avoiding an excessive logP increase."
+ },
+ {
+  "key": "该残基构成疏水口袋。可在朝向它的位置引入卤素、甲基或环丙基，填充空腔；若 logP 偏高，优先用吡啶/氟代平衡极性。",
+  "file": "optimization.py",
+  "line": 56,
+  "context": "f\"该残基构成疏水口袋。可在朝向它的位置引入卤素、甲基或环丙基，\"",
+  "en": "This residue lines a hydrophobic pocket; add a halogen, methyl or cyclopropyl group facing it to fill the cavity. If logP is too high, use pyridine or fluorination to restore polarity."
+ },
+ {
+  "key": "该残基位于配体邻近区域，可尝试在对应方向增加极性基团或调整环系取代位置，形成新的远端接触。",
+  "file": "optimization.py",
+  "line": 61,
+  "context": "f\"该残基位于配体邻近区域，可尝试在对应方向增加极性基团或\"",
+  "en": "This residue lies near the ligand; add a polar group in that direction or shift the ring substitution pattern to create a new distal contact."
+ },
+ {
+  "key": "整体",
+  "file": "optimization.py",
+  "line": 76,
+  "context": "\"residue\": \"整体\",",
+  "en": "Overall"
+ },
+ {
+  "key": "未检测到强作用",
+  "file": "optimization.py",
+  "line": 78,
+  "context": "\"interaction\": \"未检测到强作用\",",
+  "en": "No strong interaction detected"
+ },
+ {
+  "key": "建议先做骨架跃迁（苯环→吡啶/嘧啶、五元杂环）与极性替换，再根据新构象重新分析残基接触。",
+  "file": "optimization.py",
+  "line": 81,
+  "context": "\"建议先做骨架跃迁（苯环→吡啶/嘧啶、五元杂环）与极性替换，\"",
+  "en": "Start with scaffold hopping (benzene → pyridine/pyrimidine, five-membered heterocycles) and polar replacements, then reanalyze residue contacts for the new pose."
+ },
+ {
+  "key": "母体 SMILES 无法解析",
+  "file": "optimization.py",
+  "line": 203,
+  "context": "raise ValueError(\"母体 SMILES 无法解析\")",
+  "en": "Parent SMILES could not be parsed"
+ },
+ {
+  "key": "极性残基",
+  "file": "optimization.py",
+  "line": 205,
+  "context": "hbonds = groups[\"hbonds\"] or [\"极性残基\"]",
+  "en": "Polar residue"
+ },
+ {
+  "key": "疏水残基",
+  "file": "optimization.py",
+  "line": 206,
+  "context": "hydrophobic = groups[\"hydrophobic\"] or [\"疏水残基\"]",
+  "en": "Hydrophobic residue"
+ },
+ {
+  "key": "羧酸→四唑",
+  "file": "optimization.py",
+  "line": 234,
+  "context": "\"羧酸→四唑\",",
+  "en": "Carboxylic acid → tetrazole"
+ },
+ {
+  "key": "生物电子等排",
+  "file": "optimization.py",
+  "line": 235,
+  "context": "\"生物电子等排\",",
+  "en": "Bioisosteric replacement"
+ },
+ {
+  "key": "羧酸根主要与",
+  "file": "optimization.py",
+  "line": 237,
+  "context": "f\"羧酸根主要与 {'、'.join(hbonds[:3])} 形成氢键/盐桥；\"",
+  "en": "The carboxylate interacts mainly with"
+ },
+ {
+  "key": "形成氢键/盐桥；四唑是经典羧酸生物电子等排体，可增强氢键网络并改善代谢稳定性。",
+  "file": "optimization.py",
+  "line": 237,
+  "context": "f\"羧酸根主要与 {'、'.join(hbonds[:3])} 形成氢键/盐桥；\"",
+  "en": "through hydrogen bonds or salt bridges; tetrazole is the classic carboxylic acid bioisostere and strengthens the hydrogen-bond network while improving metabolic stability."
+ },
+ {
+  "key": "酯→酰胺",
+  "file": "optimization.py",
+  "line": 258,
+  "context": "\"酯→酰胺\",",
+  "en": "Ester → amide"
+ },
+ {
+  "key": "稳定性改造",
+  "file": "optimization.py",
+  "line": 259,
+  "context": "\"稳定性改造\",",
+  "en": "Stability improvement"
+ },
+ {
+  "key": "酯基在血浆中易水解；改为酰胺可提高稳定性，并保留氢键受体/供体方向。",
+  "file": "optimization.py",
+  "line": 261,
+  "context": "\"酯基在血浆中易水解；改为酰胺可提高稳定性，并保留氢键受体/供体方向。\",",
+  "en": "Esters hydrolyze readily in plasma; the amide improves stability while preserving the hydrogen-bond acceptor/donor geometry."
+ },
+ {
+  "key": "苯环→吡啶",
+  "file": "optimization.py",
+  "line": 281,
+  "context": "\"苯环→吡啶\",",
+  "en": "Benzene → pyridine"
+ },
+ {
+  "key": "骨架跃迁",
+  "file": "optimization.py",
+  "line": 282,
+  "context": "\"骨架跃迁\",",
+  "en": "Scaffold hopping"
+ },
+ {
+  "key": "苯环与",
+  "file": "optimization.py",
+  "line": 284,
+  "context": "f\"苯环与 {'、'.join(hydrophobic[:3])} 存在疏水/π 接触；\"",
+  "en": "The benzene ring shows hydrophobic and π contacts with"
+ },
+ {
+  "key": "存在疏水/π 接触；将其中一个碳替换为氮形成吡啶，可降低 logP、增加极性并保留环几何。",
+  "file": "optimization.py",
+  "line": 284,
+  "context": "f\"苯环与 {'、'.join(hydrophobic[:3])} 存在疏水/π 接触；\"",
+  "en": "that can be exploited: replacing one carbon with nitrogen to give a pyridine lowers logP, adds polarity and preserves the ring geometry."
+ },
+ {
+  "key": "芳环氟代",
+  "file": "optimization.py",
+  "line": 300,
+  "context": "\"芳环氟代\",",
+  "en": "Aromatic fluorination"
+ },
+ {
+  "key": "卤素修饰",
+  "file": "optimization.py",
+  "line": 301,
+  "context": "\"卤素修饰\",",
+  "en": "Halogen substitution"
+ },
+ {
+  "key": "在朝向",
+  "file": "optimization.py",
+  "line": 303,
+  "context": "f\"在朝向 {'、'.join(hydrophobic[:3])} 的芳环位置引入氟，\"",
+  "en": "Introducing fluorine on the aromatic ring facing"
+ },
+ {
+  "key": "的芳环位置引入氟，可填充小疏水腔、调节 pKa/偶极并提高代谢稳定性。",
+  "file": "optimization.py",
+  "line": 303,
+  "context": "f\"在朝向 {'、'.join(hydrophobic[:3])} 的芳环位置引入氟，\"",
+  "en": "fills a small hydrophobic cavity, tunes pKa/dipole and improves metabolic stability."
+ },
+ {
+  "key": "甲基→CF3",
+  "file": "optimization.py",
+  "line": 313,
+  "context": "\"甲基→CF3\",",
+  "en": "Methyl → CF3"
+ },
+ {
+  "key": "代谢稳定化",
+  "file": "optimization.py",
+  "line": 314,
+  "context": "\"代谢稳定化\",",
+  "en": "Metabolic stabilization"
+ },
+ {
+  "key": "末端甲基是弱疏水点且易被代谢；CF3 可填充疏水腔并阻断代谢软点。",
+  "file": "optimization.py",
+  "line": 316,
+  "context": "\"末端甲基是弱疏水点且易被代谢；CF3 可填充疏水腔并阻断代谢软点。\",",
+  "en": "A terminal methyl is a weak hydrophobic contact that is readily metabolized; CF3 fills the hydrophobic cavity and blocks the metabolic soft spot."
+ },
+ {
+  "key": "引入酚羟基",
+  "file": "optimization.py",
+  "line": 327,
+  "context": "\"引入酚羟基\",",
+  "en": "Add phenolic hydroxyl"
+ },
+ {
+  "key": "极性修饰",
+  "file": "optimization.py",
+  "line": 328,
+  "context": "\"极性修饰\",",
+  "en": "Polar modification"
+ },
+ {
+  "key": "当前氢键供体较少；在朝向",
+  "file": "optimization.py",
+  "line": 330,
+  "context": "f\"当前氢键供体较少；在朝向 {'、'.join(hbonds[:3])} 的位置引入酚羟基，\"",
+  "en": "Hydrogen-bond donors are scarce; adding a phenolic hydroxyl facing"
+ },
+ {
+  "key": "的位置引入酚羟基，可新增供体/受体并改善极性互补。",
+  "file": "optimization.py",
+  "line": 330,
+  "context": "f\"当前氢键供体较少；在朝向 {'、'.join(hbonds[:3])} 的位置引入酚羟基，\"",
+  "en": "introduces a new donor/acceptor and improves polar complementarity."
+ },
+ {
+  "key": "母体配体没有 SMILES/键级信息，无法自动生成类似物。请使用 SDF 或 SMILES 准备的配体后重试。",
+  "file": "optimization.py",
+  "line": 370,
+  "context": "\"母体配体没有 SMILES/键级信息，无法自动生成类似物。\"",
+  "en": "The parent ligand has no SMILES or bond-order information, so analogs cannot be generated automatically. Retry with a ligand prepared from SDF or SMILES."
+ },
+ {
+  "key": "无效的母体结果编号",
+  "file": "optimization.py",
+  "line": 396,
+  "context": "raise ValueError(\"无效的母体结果编号\")",
+  "en": "Invalid parent result index"
+ },
+ {
+  "key": "母体结果未成功，无法进行改进",
+  "file": "optimization.py",
+  "line": 399,
+  "context": "raise ValueError(\"母体结果未成功，无法进行改进\")",
+  "en": "The parent result did not succeed, so it cannot be optimized"
+ },
+ {
+  "key": "找不到母体对应的受体，请重新准备受体",
+  "file": "optimization.py",
+  "line": 402,
+  "context": "raise ValueError(\"找不到母体对应的受体，请重新准备受体\")",
+  "en": "No receptor found for the parent; prepare the receptor again"
+ },
+ {
+  "key": "[优化] 母体",
+  "file": "optimization.py",
+  "line": 413,
+  "context": "job.log(f\"[优化] 母体 {parent_result.get('ligand_name')}，SMILES {parent_smiles}\")",
+  "en": "[Optimization] parent"
+ },
+ {
+  "key": "[优化] 基于",
+  "file": "optimization.py",
+  "line": 414,
+  "context": "job.log(f\"[优化] 基于 {len(suggestions)} 个残基接触点生成改进方案\")",
+  "en": "[Optimization] generating improvement ideas from"
+ },
+ {
+  "key": "个残基接触点生成改进方案",
+  "file": "optimization.py",
+  "line": 414,
+  "context": "job.log(f\"[优化] 基于 {len(suggestions)} 个残基接触点生成改进方案\")",
+  "en": "residue contacts"
+ },
+ {
+  "key": "未能生成有效的改进候选，请尝试提供更完整的母体结构",
+  "file": "optimization.py",
+  "line": 417,
+  "context": "raise ValueError(\"未能生成有效的改进候选，请尝试提供更完整的母体结构\")",
+  "en": "No valid improvement candidates were generated; provide a more complete parent structure"
+ },
+ {
+  "key": "[优化] 生成",
+  "file": "optimization.py",
+  "line": 418,
+  "context": "job.log(f\"[优化] 生成 {len(candidates)} 个候选：\")",
+  "en": "[Optimization] generated"
+ },
+ {
+  "key": "个候选：",
+  "file": "optimization.py",
+  "line": 418,
+  "context": "job.log(f\"[优化] 生成 {len(candidates)} 个候选：\")",
+  "en": "candidates:"
+ },
+ {
+  "key": "准备候选",
+  "file": "optimization.py",
+  "line": 428,
+  "context": "job.set_progress(0.05 + 0.20 * index / total, f\"准备候选 {index}/{total}\")",
+  "en": "Preparing candidate"
+ },
+ {
+  "key": "! 候选",
+  "file": "optimization.py",
+  "line": 440,
+  "context": "job.log(f\"  ! 候选 {candidate['label']} 准备失败：{exc}\")",
+  "en": "! Candidate"
+ },
+ {
+  "key": "准备失败：",
+  "file": "optimization.py",
+  "line": 440,
+  "context": "job.log(f\"  ! 候选 {candidate['label']} 准备失败：{exc}\")",
+  "en": " preparation failed: "
+ },
+ {
+  "key": "药物优化候选",
+  "file": "optimization.py",
+  "line": 452,
+  "context": "\"message\": \"药物优化候选\",",
+  "en": "Lead optimization candidate"
+ },
+ {
+  "key": "所有候选均准备失败，请检查母体结构",
+  "file": "optimization.py",
+  "line": 465,
+  "context": "raise ValueError(\"所有候选均准备失败，请检查母体结构\")",
+  "en": "Preparation failed for every candidate; check the parent structure"
+ },
+ {
+  "key": "[优化] 开始对接",
+  "file": "optimization.py",
+  "line": 492,
+  "context": "job.log(f\"[优化] 开始对接 {len(prepared)} 个候选，引擎 {params['engine'].upper()}\")",
+  "en": "[Optimization] docking"
+ },
+ {
+  "key": "个候选，引擎",
+  "file": "optimization.py",
+  "line": 492,
+  "context": "job.log(f\"[优化] 开始对接 {len(prepared)} 个候选，引擎 {params['engine'].upper()}\")",
+  "en": "candidates, engine"
+ },
+ {
+  "key": "母体",
+  "file": "optimization.py",
+  "line": 552,
+  "context": "\"label\": parent_result.get(\"ligand_name\", \"母体\"),",
+  "en": "Parent"
+ },
+ {
+  "key": "药物优化完成",
+  "file": "optimization.py",
+  "line": 644,
+  "context": "job.set_progress(1.0, \"药物优化完成\")",
+  "en": "Lead optimization complete"
+ }
+]

@@ -1,0 +1,18 @@
+# DrugHX 2.7.3 已验证依赖组合（Windows / Python 3.12 x64）。
+# 全部锁定精确版本，保证不同机器上的报告排版与数值结果一致。
+# 根目录 requirements.txt 是开发依赖的唯一来源；本文件是发布锁定版本，
+# 两者必须同步（新增运行时依赖时先改根文件，再在此锁定同一版本）。
+fastapi==0.162.2
+uvicorn==0.54.0
+python-multipart==0.0.33
+rdkit==2026.9.1
+meeko==0.8.0
+gemmi==0.7.5
+numpy==2.5.4
+scipy==1.18.1
+matplotlib==3.11.2
+pypdf==7.0.0
+pillow==13.0.0
+networkx==3.7
+posebusters==0.6.5
+onnxruntime==1.31.1

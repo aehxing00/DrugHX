@@ -1,0 +1,1241 @@
+[
+ {
+  "key": "KEGG 通路",
+  "file": "netpharm.py",
+  "line": 53,
+  "context": "\"kegg\": \"KEGG 通路\",",
+  "en": "KEGG pathway"
+ },
+ {
+  "key": "GO 生物学过程（BP）",
+  "file": "netpharm.py",
+  "line": 54,
+  "context": "\"go_bp\": \"GO 生物学过程（BP）\",",
+  "en": "GO biological process (BP)"
+ },
+ {
+  "key": "GO 细胞组分（CC）",
+  "file": "netpharm.py",
+  "line": 55,
+  "context": "\"go_cc\": \"GO 细胞组分（CC）\",",
+  "en": "GO cellular component (CC)"
+ },
+ {
+  "key": "GO 分子功能（MF）",
+  "file": "netpharm.py",
+  "line": 56,
+  "context": "\"go_mf\": \"GO 分子功能（MF）\",",
+  "en": "GO molecular function (MF)"
+ },
+ {
+  "key": "Reactome 通路",
+  "file": "netpharm.py",
+  "line": 57,
+  "context": "\"reactome\": \"Reactome 通路\",",
+  "en": "Reactome pathway"
+ },
+ {
+  "key": "WikiPathway 通路",
+  "file": "netpharm.py",
+  "line": 58,
+  "context": "\"wikipathway\": \"WikiPathway 通路\",",
+  "en": "WikiPathway pathway"
+ },
+ {
+  "key": "DisGeNET 疾病关联",
+  "file": "netpharm.py",
+  "line": 59,
+  "context": "\"disgenet\": \"DisGeNET 疾病关联\",",
+  "en": "DisGeNET disease associations"
+ },
+ {
+  "key": "MSigDB Hallmark 基因集",
+  "file": "netpharm.py",
+  "line": 60,
+  "context": "\"hallmark\": \"MSigDB Hallmark 基因集\",",
+  "en": "MSigDB Hallmark gene set"
+ },
+ {
+  "key": "[网络] STRING 未映射",
+  "file": "netpharm.py",
+  "line": 118,
+  "context": "f\"[网络] STRING 未映射 {len(missing)} 个基因：\"",
+  "en": ""
+ },
+ {
+  "key": "个基因：",
+  "file": "netpharm.py",
+  "line": 118,
+  "context": "f\"[网络] STRING 未映射 {len(missing)} 个基因：\"",
+  "en": ""
+ },
+ {
+  "key": "[网络] STRING 一阶邻居扩展",
+  "file": "netpharm.py",
+  "line": 123,
+  "context": "f\"[网络] STRING 一阶邻居扩展 {len(expanded)} 个基因\"",
+  "en": ""
+ },
+ {
+  "key": "个基因（仅作为网络背景，不计为直接靶点）",
+  "file": "netpharm.py",
+  "line": 123,
+  "context": "f\"[网络] STRING 一阶邻居扩展 {len(expanded)} 个基因\"",
+  "en": ""
+ },
+ {
+  "key": "[网络] STRING 返回",
+  "file": "netpharm.py",
+  "line": 127,
+  "context": "f\"[网络] STRING 返回 {len(edges)} 条边、{len(nodes)} 个节点\"",
+  "en": ""
+ },
+ {
+  "key": "条边、",
+  "file": "netpharm.py",
+  "line": 127,
+  "context": "f\"[网络] STRING 返回 {len(edges)} 条边、{len(nodes)} 个节点\"",
+  "en": ""
+ },
+ {
+  "key": "个节点（种子",
+  "file": "netpharm.py",
+  "line": 127,
+  "context": "f\"[网络] STRING 返回 {len(edges)} 条边、{len(nodes)} 个节点\"",
+  "en": ""
+ },
+ {
+  "key": "个）",
+  "file": "netpharm.py",
+  "line": 128,
+  "context": "f\"（种子 {len(mapped)} 个）\"",
+  "en": ""
+ },
+ {
+  "key": "Enrichr 未返回 userListId",
+  "file": "netpharm.py",
+  "line": 159,
+  "context": "raise ValueError(\"Enrichr 未返回 userListId\")",
+  "en": ""
+ },
+ {
+  "key": "[网络]",
+  "file": "netpharm.py",
+  "line": 184,
+  "context": "job.log(f\"[网络] {library} 富集条目 {len(rows)} 个\")",
+  "en": ""
+ },
+ {
+  "key": "富集条目",
+  "file": "netpharm.py",
+  "line": 184,
+  "context": "job.log(f\"[网络] {library} 富集条目 {len(rows)} 个\")",
+  "en": ""
+ },
+ {
+  "key": "个",
+  "file": "netpharm.py",
+  "line": 184,
+  "context": "job.log(f\"[网络] {library} 富集条目 {len(rows)} 个\")",
+  "en": ""
+ },
+ {
+  "key": "富集失败，已跳过：",
+  "file": "netpharm.py",
+  "line": 197,
+  "context": "job.log(f\"[网络] {library} 富集失败，已跳过：{exc}\")",
+  "en": ""
+ },
+ {
+  "key": "中 FDR < 0.05 的条目",
+  "file": "netpharm.py",
+  "line": 216,
+  "context": "job.log(f\"[网络] {library} 中 FDR < 0.05 的条目 {significant} 个\")",
+  "en": ""
+ },
+ {
+  "key": "[网络] DisGeNET 无与输入基因重叠的疾病条目，跳过 C-T-D 网络",
+  "file": "netpharm.py",
+  "line": 280,
+  "context": "job.log(\"[网络] DisGeNET 无与输入基因重叠的疾病条目，跳过 C-T-D 网络\")",
+  "en": ""
+ },
+ {
+  "key": "查询分子",
+  "file": "netpharm.py",
+  "line": 285,
+  "context": "compound_name = str((compound or {}).get(\"name\") or \"查询分子\").strip() or \"查询分子\"",
+  "en": "Query compound"
+ },
+ {
+  "key": "[网络] C-T-D 网络：1 个化合物、",
+  "file": "netpharm.py",
+  "line": 334,
+  "context": "f\"[网络] C-T-D 网络：1 个化合物、{len(genes)} 个基因、\"",
+  "en": ""
+ },
+ {
+  "key": "个基因、",
+  "file": "netpharm.py",
+  "line": 334,
+  "context": "f\"[网络] C-T-D 网络：1 个化合物、{len(genes)} 个基因、\"",
+  "en": ""
+ },
+ {
+  "key": "个疾病条目、",
+  "file": "netpharm.py",
+  "line": 335,
+  "context": "f\"{len(diseases)} 个疾病条目、{len(edges)} 条边\"",
+  "en": ""
+ },
+ {
+  "key": "条边",
+  "file": "netpharm.py",
+  "line": 335,
+  "context": "f\"{len(diseases)} 个疾病条目、{len(edges)} 条边\"",
+  "en": ""
+ },
+ {
+  "key": "[网络] 无 ≥2 个输入基因命中的显著 KEGG/Reactome 通路，跳过桑基图",
+  "file": "netpharm.py",
+  "line": 377,
+  "context": "job.log(\"[网络] 无 ≥2 个输入基因命中的显著 KEGG/Reactome 通路，跳过桑基图\")",
+  "en": ""
+ },
+ {
+  "key": "[网络] 桑基图：",
+  "file": "netpharm.py",
+  "line": 415,
+  "context": "f\"[网络] 桑基图：{len(pathways)} 条通路、{len(links)} 条基因–通路连接\"",
+  "en": ""
+ },
+ {
+  "key": "条通路、",
+  "file": "netpharm.py",
+  "line": 415,
+  "context": "f\"[网络] 桑基图：{len(pathways)} 条通路、{len(links)} 条基因–通路连接\"",
+  "en": ""
+ },
+ {
+  "key": "条基因–通路连接（仅保留至少 2 个输入基因命中的显著通路）",
+  "file": "netpharm.py",
+  "line": 415,
+  "context": "f\"[网络] 桑基图：{len(pathways)} 条通路、{len(links)} 条基因–通路连接\"",
+  "en": ""
+ },
+ {
+  "key": "（显著",
+  "file": "netpharm.py",
+  "line": 441,
+  "context": "f\"（显著 {int(block.get('significant') or 0)} 条）\"",
+  "en": " ("
+ },
+ {
+  "key": "条）",
+  "file": "netpharm.py",
+  "line": 441,
+  "context": "f\"（显著 {int(block.get('significant') or 0)} 条）\"",
+  "en": " significant terms)"
+ },
+ {
+  "key": "未获取到可用条目",
+  "file": "netpharm.py",
+  "line": 447,
+  "context": "0.5, 0.5, \"未获取到可用条目\", transform=ax.transAxes,",
+  "en": "No usable terms available"
+ },
+ {
+  "key": "图 21　多库富集分析",
+  "file": "netpharm.py",
+  "line": 488,
+  "context": "\"图 21　多库富集分析\", \"Enrichr 未返回可用富集结果\",",
+  "en": "Figure 21　Multi-library enrichment analysis"
+ },
+ {
+  "key": "Enrichr 未返回可用富集结果",
+  "file": "netpharm.py",
+  "line": 488,
+  "context": "\"图 21　多库富集分析\", \"Enrichr 未返回可用富集结果\",",
+  "en": "Enrichr returned no usable enrichment results"
+ },
+ {
+  "key": "Enrichr 未返回可用富集条目",
+  "file": "netpharm.py",
+  "line": 494,
+  "context": "0.5, 0.5, \"Enrichr 未返回可用富集条目\", transform=ax.transAxes,",
+  "en": "Enrichr returned no usable enrichment terms"
+ },
+ {
+  "key": "Enrichr 请求均失败或未返回条目，本页仅作说明。",
+  "file": "netpharm.py",
+  "line": 497,
+  "context": "figures._caption(fig, \"Enrichr 请求均失败或未返回条目，本页仅作说明。\")",
+  "en": "All Enrichr requests failed or returned no terms; this page is provided for reference only."
+ },
+ {
+  "key": "（续）",
+  "file": "netpharm.py",
+  "line": 503,
+  "context": "suffix = \"\" if page_index == 0 else \"（续）\"",
+  "en": " (continued)"
+ },
+ {
+  "key": "Enrichr 多库富集：点大小为命中基因数，颜色为 −log10 FDR",
+  "file": "netpharm.py",
+  "line": 506,
+  "context": "\"Enrichr 多库富集：点大小为命中基因数，颜色为 −log10 FDR\",",
+  "en": "Enrichr multi-library enrichment: dot size is the number of hit genes, color is −log10 FDR"
+ },
+ {
+  "key": "）Enrichr 多库富集分析点图：横轴为 −log10 P，点大小为条目命中的输入基因数，颜色为 −log10 FDR（越亮越显著），虚线为 P = 0.05 参考线（−log10 0.05 ≈ 1.30）。每个库仅展示 FDR 最小的前 5 条条目，条目名称截断至 42 字符。Enrichr 库包括 KEGG 2021 Human、GO BP/CC/MF 2023、Reactome 2022、WikiPathway 2023 Human、DisGeNET 与 MSigDB Hallmark 2020；富集结果依赖数据库既有注释，仅用于机制假设生成。",
+  "file": "netpharm.py",
+  "line": 540,
+  "context": "f\"（{span}）\"",
+  "en": "）Enrichr multi-library enrichment dot plots: the x axis is −log10 P, dot size is the number of input genes hit by the term, and color is −log10 FDR (brighter indicates greater significance); the dashed line is the P = 0.05 reference (−log10 0.05 ≈ 1.30). Each library shows only the five terms with the smallest FDR, and term names are truncated to 42 characters. Enrichr libraries include KEGG 2021 Human, GO BP/CC/MF 2023, Reactome 2022, WikiPathway 2023 Human, DisGeNET, and MSigDB Hallmark 2020; enrichment results depend on existing database annotations and are used only to generate mechanistic hypotheses."
+ },
+ {
+  "key": "图 22　化合物–靶点–疾病网络",
+  "file": "netpharm.py",
+  "line": 566,
+  "context": "\"图 22　化合物–靶点–疾病网络\",",
+  "en": "Figure 22　Compound–target–disease network"
+ },
+ {
+  "key": "C-T-D 网络：",
+  "file": "netpharm.py",
+  "line": 567,
+  "context": "f\"C-T-D 网络：{compound_name[:28]} 居中，靶点基因中环，DisGeNET 疾病条目外环\",",
+  "en": "C-T-D network: "
+ },
+ {
+  "key": "居中，靶点基因中环，DisGeNET 疾病条目外环",
+  "file": "netpharm.py",
+  "line": 567,
+  "context": "f\"C-T-D 网络：{compound_name[:28]} 居中，靶点基因中环，DisGeNET 疾病条目外环\",",
+  "en": " at the center, target genes in the middle ring, and DisGeNET disease terms in the outer ring"
+ },
+ {
+  "key": "DisGeNET 富集未返回可用疾病条目\n未构建 C-T-D 网络",
+  "file": "netpharm.py",
+  "line": 574,
+  "context": "0.5, 0.5, \"DisGeNET 富集未返回可用疾病条目\\n未构建 C-T-D 网络\",",
+  "en": "DisGeNET enrichment returned no usable disease terms\nNo C-T-D network was constructed"
+ },
+ {
+  "key": "DisGeNET 富集结果中没有与输入基因重叠的疾病条目，为避免伪造疾病关联，",
+  "file": "netpharm.py",
+  "line": 580,
+  "context": "\"DisGeNET 富集结果中没有与输入基因重叠的疾病条目，为避免伪造疾病关联，\"",
+  "en": "The DisGeNET enrichment results contained no disease terms overlapping the input genes; to avoid fabricating disease associations,"
+ },
+ {
+  "key": "化合物",
+  "file": "netpharm.py",
+  "line": 652,
+  "context": "*positions[compound_node[\"id\"]], \"化合物\",",
+  "en": "Compound"
+ },
+ {
+  "key": "靶点基因",
+  "file": "netpharm.py",
+  "line": 692,
+  "context": "markeredgecolor=\"white\", markersize=11, label=\"靶点基因\"),",
+  "en": "Target genes"
+ },
+ {
+  "key": "疾病条目（DisGeNET）",
+  "file": "netpharm.py",
+  "line": 695,
+  "context": "label=\"疾病条目（DisGeNET）\"),",
+  "en": "Disease terms (DisGeNET)"
+ },
+ {
+  "key": "化合物（",
+  "file": "netpharm.py",
+  "line": 704,
+  "context": "f\"化合物（{compound_name}）位于中心，{len(gene_nodes)} 个靶点基因构成中间环，\"",
+  "en": "The compound ("
+ },
+ {
+  "key": "）位于中心，",
+  "file": "netpharm.py",
+  "line": 704,
+  "context": "f\"化合物（{compound_name}）位于中心，{len(gene_nodes)} 个靶点基因构成中间环，\"",
+  "en": ") is at the center, "
+ },
+ {
+  "key": "个靶点基因构成中间环，",
+  "file": "netpharm.py",
+  "line": 704,
+  "context": "f\"化合物（{compound_name}）位于中心，{len(gene_nodes)} 个靶点基因构成中间环，\"",
+  "en": "target genes form the middle ring, and "
+ },
+ {
+  "key": "个疾病条目位于外环；节点大小与连接度成正比，浅灰色细线为化合物–靶点关系（C–T），较深的细线为基因–疾病关系（T–D，线宽与 −log10 P 归一化权重成正比）。疾病条目取自 DisGeNET 富集结果中与输入基因有重叠的前 12 条（按 P 值排序），仅代表数据库中已有的关联记录，属于待验证的假设，不表示因果关系。",
+  "file": "netpharm.py",
+  "line": 705,
+  "context": "f\"{len(disease_nodes)} 个疾病条目位于外环；节点大小与连接度成正比，\"",
+  "en": "disease terms lie in the outer ring; node size is proportional to degree, pale gray thin lines denote compound–target (C–T) relations, and darker thin lines denote gene–disease (T–D) relations (line width is proportional to the normalized −log10 P weight). Disease terms are the top 12 entries of the DisGeNET enrichment results that overlap the input genes (sorted by P value); they represent only existing association records in the database and are hypotheses awaiting validation, not evidence of causality."
+ },
+ {
+  "key": "图 23　靶点–通路桑基图",
+  "file": "netpharm.py",
+  "line": 751,
+  "context": "\"图 23　靶点–通路桑基图\",",
+  "en": "Figure 23　Target–pathway Sankey diagram"
+ },
+ {
+  "key": "左列输入基因、右列 KEGG / Reactome 显著通路，流宽度为命中基因数",
+  "file": "netpharm.py",
+  "line": 752,
+  "context": "\"左列输入基因、右列 KEGG / Reactome 显著通路，流宽度为命中基因数\",",
+  "en": "Input genes in the left column and significant KEGG / Reactome pathways in the right column; ribbon width is the number of hit genes"
+ },
+ {
+  "key": "无 ≥2 个输入基因命中的显著通路\n未绘制桑基图",
+  "file": "netpharm.py",
+  "line": 759,
+  "context": "0.5, 0.5, \"无 ≥2 个输入基因命中的显著通路\\n未绘制桑基图\",",
+  "en": "No significant pathway is hit by ≥2 input genes\nNo Sankey diagram was drawn"
+ },
+ {
+  "key": "KEGG 与 Reactome 富集中没有同时满足 FDR < 0.05 且至少 2 个输入基因命中的通路，",
+  "file": "netpharm.py",
+  "line": 765,
+  "context": "\"KEGG 与 Reactome 富集中没有同时满足 FDR < 0.05 且至少 2 个输入基因命中的通路，\"",
+  "en": "In the KEGG and Reactome enrichment results, no pathway satisfied both FDR < 0.05 and at least two input genes;"
+ },
+ {
+  "key": "基因（",
+  "file": "netpharm.py",
+  "line": 853,
+  "context": "left_x - 0.014, 1.035, f\"基因（{len(gene_nodes)}）\",",
+  "en": "Genes ("
+ },
+ {
+  "key": "通路（",
+  "file": "netpharm.py",
+  "line": 859,
+  "context": "f\"通路（{len(path_nodes)}，KEGG / Reactome）\",",
+  "en": "Pathways ("
+ },
+ {
+  "key": "桑基图展示",
+  "file": "netpharm.py",
+  "line": 865,
+  "context": "f\"桑基图展示 {len(gene_nodes)} 个输入基因与 {len(path_nodes)} 条显著通路之间的映射：\"",
+  "en": "This Sankey diagram shows the mapping between "
+ },
+ {
+  "key": "个输入基因与",
+  "file": "netpharm.py",
+  "line": 865,
+  "context": "f\"桑基图展示 {len(gene_nodes)} 个输入基因与 {len(path_nodes)} 条显著通路之间的映射：\"",
+  "en": " input genes and "
+ },
+ {
+  "key": "条显著通路之间的映射：左列为基因、右列为通路，每条基因–通路连接计 1，因此流带宽度正比于该通路命中的输入基因数，流带颜色仅用于区分不同通路。仅保留 KEGG 2021 Human 与 Reactome 2022 中 FDR < 0.05 且至少 2 个输入基因命中的通路（按命中基因数取前 12 条），以避免单基因噪声；通路名称截断至 44 字符。该映射反映数据库中已有注释，不构成功能验证。",
+  "file": "netpharm.py",
+  "line": 865,
+  "context": "f\"桑基图展示 {len(gene_nodes)} 个输入基因与 {len(path_nodes)} 条显著通路之间的映射：\"",
+  "en": " significant pathways: genes are in the left column and pathways in the right column, and each gene–pathway link counts as 1, so ribbon width is proportional to the number of input genes hit by that pathway; ribbon color only distinguishes different pathways. Only pathways with FDR < 0.05 and at least two input genes in KEGG 2021 Human and Reactome 2022 were retained (top 12 by number of hit genes) to avoid single-gene noise; pathway names are truncated to 44 characters. This mapping reflects existing database annotations and does not constitute functional validation."
+ },
+ {
+  "key": "至少需要 2 个带基因符号的靶点才能构建网络；",
+  "file": "netpharm.py",
+  "line": 888,
+  "context": "\"至少需要 2 个带基因符号的靶点才能构建网络；\"",
+  "en": ""
+ },
+ {
+  "key": "构建 STRING 蛋白互作网络",
+  "file": "netpharm.py",
+  "line": 895,
+  "context": "job.set_progress(0.15, \"构建 STRING 蛋白互作网络\")",
+  "en": "Building the STRING protein–protein interaction network"
+ },
+ {
+  "key": "STRING 未返回任何互作边（输入",
+  "file": "netpharm.py",
+  "line": 899,
+  "context": "f\"STRING 未返回任何互作边（输入 {len(genes)} 个基因，0 条边）。\"",
+  "en": ""
+ },
+ {
+  "key": "个基因，0 条边）。这些基因可能不是人源符号或置信度过高；请补充人源基因、降低 STRING 阈值，或增大网络扩展节点数。",
+  "file": "netpharm.py",
+  "line": 899,
+  "context": "f\"STRING 未返回任何互作边（输入 {len(genes)} 个基因，0 条边）。\"",
+  "en": ""
+ },
+ {
+  "key": "多库富集分析（Enrichr，8 个库）",
+  "file": "netpharm.py",
+  "line": 904,
+  "context": "job.set_progress(0.45, \"多库富集分析（Enrichr，8 个库）\")",
+  "en": "Multi-library enrichment analysis (Enrichr, 8 libraries)"
+ },
+ {
+  "key": "八个 Enrichr 库（KEGG、GO BP/CC/MF、Reactome、WikiPathway、DisGeNET、Hallmark）都没有 FDR < 0.05 的条目，数据不足，未生成网络药理学结果。请增加或更换基因列表。",
+  "file": "netpharm.py",
+  "line": 911,
+  "context": "\"八个 Enrichr 库（KEGG、GO BP/CC/MF、Reactome、WikiPathway、\"",
+  "en": ""
+ },
+ {
+  "key": "[网络] 八个库共",
+  "file": "netpharm.py",
+  "line": 916,
+  "context": "f\"[网络] 八个库共 {significant_total} 个 FDR < 0.05 的条目\"",
+  "en": ""
+ },
+ {
+  "key": "个 FDR < 0.05 的条目",
+  "file": "netpharm.py",
+  "line": 916,
+  "context": "f\"[网络] 八个库共 {significant_total} 个 FDR < 0.05 的条目\"",
+  "en": ""
+ },
+ {
+  "key": "构建化合物–靶点–疾病网络",
+  "file": "netpharm.py",
+  "line": 923,
+  "context": "job.set_progress(0.70, \"构建化合物–靶点–疾病网络\")",
+  "en": "Building the compound–target–disease network"
+ },
+ {
+  "key": "构建靶点–通路桑基图数据",
+  "file": "netpharm.py",
+  "line": 925,
+  "context": "job.set_progress(0.78, \"构建靶点–通路桑基图数据\")",
+  "en": "Building target–pathway Sankey data"
+ },
+ {
+  "key": "绘制多库富集、C-T-D 与桑基图",
+  "file": "netpharm.py",
+  "line": 970,
+  "context": "job.set_progress(0.88, \"绘制多库富集、C-T-D 与桑基图\")",
+  "en": "Drawing the multi-library enrichment, C-T-D, and Sankey figures"
+ },
+ {
+  "key": "[网络] 已生成图件",
+  "file": "netpharm.py",
+  "line": 982,
+  "context": "job.log(f\"[网络] 已生成图件 {target.name}\")",
+  "en": ""
+ },
+ {
+  "key": "图件生成失败：",
+  "file": "netpharm.py",
+  "line": 984,
+  "context": "job.log(f\"[网络] {name} 图件生成失败：{exc}\")",
+  "en": ""
+ },
+ {
+  "key": "网络药理学分析完成",
+  "file": "netpharm.py",
+  "line": 1033,
+  "context": "job.set_progress(1.0, \"网络药理学分析完成\")",
+  "en": "Network pharmacology analysis complete"
+ },
+ {
+  "key": "HATU / DIPEA / DMF，室温",
+  "file": "synth.py",
+  "line": 78,
+  "context": "\"conditions\": \"HATU / DIPEA / DMF，室温\",",
+  "en": "HATU / DIPEA / DMF, room temperature"
+ },
+ {
+  "key": "酸与胺缩合；多官能底物需检查化学选择性。",
+  "file": "synth.py",
+  "line": 79,
+  "context": "\"note\": \"酸与胺缩合；多官能底物需检查化学选择性。\",",
+  "en": "Carboxylic acid–amine condensation; check chemoselectivity for polyfunctional substrates."
+ },
+ {
+  "key": "酸催化或 EDC / DMAP",
+  "file": "synth.py",
+  "line": 87,
+  "context": "\"conditions\": \"酸催化或 EDC / DMAP\",",
+  "en": "acid catalysis or EDC / DMAP"
+ },
+ {
+  "key": "酸与醇酯化；位阻大时产率下降。",
+  "file": "synth.py",
+  "line": 88,
+  "context": "\"note\": \"酸与醇酯化；位阻大时产率下降。\",",
+  "en": "Acid–alcohol esterification; yield drops with steric hindrance."
+ },
+ {
+  "key": "磺酰氯 + 胺，碱中和",
+  "file": "synth.py",
+  "line": 96,
+  "context": "\"conditions\": \"磺酰氯 + 胺，碱中和\",",
+  "en": "sulfonyl chloride + amine, neutralized with base"
+ },
+ {
+  "key": "磺酰氯对水敏感，需无水条件。",
+  "file": "synth.py",
+  "line": 97,
+  "context": "\"note\": \"磺酰氯对水敏感，需无水条件。\",",
+  "en": "Sulfonyl chlorides are moisture-sensitive and require anhydrous conditions."
+ },
+ {
+  "key": "氨基甲酰氯 + 胺，或 CDI 活化",
+  "file": "synth.py",
+  "line": 105,
+  "context": "\"conditions\": \"氨基甲酰氯 + 胺，或 CDI 活化\",",
+  "en": "carbamoyl chloride + amine, or CDI activation"
+ },
+ {
+  "key": "也可用异氰酸酯路线，需注意放热与选择性。",
+  "file": "synth.py",
+  "line": 106,
+  "context": "\"note\": \"也可用异氰酸酯路线，需注意放热与选择性。\",",
+  "en": "An isocyanate route is also possible; note the exotherm and selectivity."
+ },
+ {
+  "key": "酚 + 苄溴，K2CO3 / DMF",
+  "file": "synth.py",
+  "line": 114,
+  "context": "\"conditions\": \"酚 + 苄溴，K2CO3 / DMF\",",
+  "en": "phenol + benzyl bromide, K2CO3 / DMF"
+ },
+ {
+  "key": "酚氧负离子与亲电试剂；注意 O/N 竞争烷基化。",
+  "file": "synth.py",
+  "line": 115,
+  "context": "\"note\": \"酚氧负离子与亲电试剂；注意 O/N 竞争烷基化。\",",
+  "en": "Phenoxide with an electrophile; watch for competing O/N alkylation."
+ },
+ {
+  "key": "Pd 催化，芳卤 + 芳硼酸，碱 / 水-有机相",
+  "file": "synth.py",
+  "line": 123,
+  "context": "\"conditions\": \"Pd 催化，芳卤 + 芳硼酸，碱 / 水-有机相\",",
+  "en": "Pd-catalyzed, aryl halide + arylboronic acid, base / aqueous–organic phases"
+ },
+ {
+  "key": "需预先制备或采购卤代物与硼酸；注意杂环配位。",
+  "file": "synth.py",
+  "line": 124,
+  "context": "\"note\": \"需预先制备或采购卤代物与硼酸；注意杂环配位。\",",
+  "en": "The aryl halide and boronic acid must be prepared or purchased beforehand; note heterocycle coordination."
+ },
+ {
+  "key": "醛 + 胺，NaBH3CN / MeOH",
+  "file": "synth.py",
+  "line": 132,
+  "context": "\"conditions\": \"醛 + 胺，NaBH3CN / MeOH\",",
+  "en": "aldehyde + amine, NaBH3CN / MeOH"
+ },
+ {
+  "key": "苄位醛与胺还原胺化；需控制亚胺还原选择性。",
+  "file": "synth.py",
+  "line": 133,
+  "context": "\"note\": \"苄位醛与胺还原胺化；需控制亚胺还原选择性。\",",
+  "en": "Reductive amination of a benzylic aldehyde with an amine; control the selectivity of imine reduction."
+ },
+ {
+  "key": "酮 + 胺，NaBH3CN 或 Ru 催化",
+  "file": "synth.py",
+  "line": 141,
+  "context": "\"conditions\": \"酮 + 胺，NaBH3CN 或 Ru 催化\",",
+  "en": "ketone + amine, NaBH3CN or Ru catalysis"
+ },
+ {
+  "key": "空间位阻较大时需筛选还原剂与溶剂。",
+  "file": "synth.py",
+  "line": 142,
+  "context": "\"note\": \"空间位阻较大时需筛选还原剂与溶剂。\",",
+  "en": "With high steric hindrance, screen the reducing agent and solvent."
+ },
+ {
+  "key": "缺电子芳卤 + 胺，碱 / 加热",
+  "file": "synth.py",
+  "line": 150,
+  "context": "\"conditions\": \"缺电子芳卤 + 胺，碱 / 加热\",",
+  "en": "electron-poor aryl halide + amine, base / heating"
+ },
+ {
+  "key": "仅适用于邻/对位有吸电子基的杂芳环。",
+  "file": "synth.py",
+  "line": 151,
+  "context": "\"note\": \"仅适用于邻/对位有吸电子基的杂芳环。\",",
+  "en": "Applies only to heteroarenes bearing an electron-withdrawing group at the ortho or para position."
+ },
+ {
+  "key": "酰氯",
+  "file": "synth.py",
+  "line": 175,
+  "context": "(\"酰氯\", \"[CX3](=O)[Cl,Br]\"),",
+  "en": "acyl chloride"
+ },
+ {
+  "key": "叠氮",
+  "file": "synth.py",
+  "line": 176,
+  "context": "(\"叠氮\", \"[N-]=[N+]=N\"),",
+  "en": "azide"
+ },
+ {
+  "key": "重氮",
+  "file": "synth.py",
+  "line": 177,
+  "context": "(\"重氮\", \"[N+]#N\"),",
+  "en": "diazo"
+ },
+ {
+  "key": "环氧化物",
+  "file": "synth.py",
+  "line": 178,
+  "context": "(\"环氧化物\", \"C1OC1\"),",
+  "en": "epoxide"
+ },
+ {
+  "key": "醛",
+  "file": "synth.py",
+  "line": 179,
+  "context": "(\"醛\", \"[CX3H1](=O)\"),",
+  "en": "aldehyde"
+ },
+ {
+  "key": "Michael 受体",
+  "file": "synth.py",
+  "line": 180,
+  "context": "(\"Michael 受体\", \"C=CC=O\"),",
+  "en": "Michael acceptor"
+ },
+ {
+  "key": "硝基",
+  "file": "synth.py",
+  "line": 181,
+  "context": "(\"硝基\", \"[N+](=O)[O-]\"),",
+  "en": "nitro"
+ },
+ {
+  "key": "硼酸",
+  "file": "synth.py",
+  "line": 182,
+  "context": "(\"硼酸\", \"B(O)O\"),",
+  "en": "boronic acid"
+ },
+ {
+  "key": "烷基卤",
+  "file": "synth.py",
+  "line": 183,
+  "context": "(\"烷基卤\", \"[CX4][Cl,Br,I]\"),",
+  "en": "alkyl halide"
+ },
+ {
+  "key": "按 BRICS 断键选择商品化砌块，再匹配偶联/缩合条件",
+  "file": "synth.py",
+  "line": 267,
+  "context": "\"conditions\": \"按 BRICS 断键选择商品化砌块，再匹配偶联/缩合条件\",",
+  "en": "Select commercial building blocks by BRICS disconnection, then match coupling/condensation conditions"
+ },
+ {
+  "key": "仅给出断键方案，不代表已找到可行反应；需人工匹配条件。",
+  "file": "synth.py",
+  "line": 268,
+  "context": "\"note\": \"仅给出断键方案，不代表已找到可行反应；需人工匹配条件。\",",
+  "en": "This gives only disconnection proposals, not a confirmed feasible reaction; conditions must be matched manually."
+ },
+ {
+  "key": "含",
+  "file": "synth.py",
+  "line": 439,
+  "context": "f\"含 {len(stereocenters)} 个手性中心：需手性合成、酶拆分或手性色谱，\"",
+  "en": "Contains "
+ },
+ {
+  "key": "个手性中心：需手性合成、酶拆分或手性色谱，是路线中最可能拉长步骤的环节。",
+  "file": "synth.py",
+  "line": 439,
+  "context": "f\"含 {len(stereocenters)} 个手性中心：需手性合成、酶拆分或手性色谱，\"",
+  "en": " stereocenters: chiral synthesis, enzymatic resolution, or chiral chromatography is required, and this is the element most likely to lengthen the route."
+ },
+ {
+  "key": "个大环（最大",
+  "file": "synth.py",
+  "line": 448,
+  "context": "f\"含 {len(macro)} 个大环（最大 {max(macro)} 元）：成环步骤通常需要高稀释条件。\"",
+  "en": " macrocycles (largest "
+ },
+ {
+  "key": "元）：成环步骤通常需要高稀释条件。",
+  "file": "synth.py",
+  "line": 448,
+  "context": "f\"含 {len(macro)} 个大环（最大 {max(macro)} 元）：成环步骤通常需要高稀释条件。\"",
+  "en": "-membered): ring-closing steps usually require high-dilution conditions."
+ },
+ {
+  "key": "检测到",
+  "file": "synth.py",
+  "line": 454,
+  "context": "f\"检测到 {label}（{len(hits)} 处）：作为砌块或中间体时需要单独评估稳定性与兼容性。\"",
+  "en": "Detected "
+ },
+ {
+  "key": "处）：作为砌块或中间体时需要单独评估稳定性与兼容性。",
+  "file": "synth.py",
+  "line": 454,
+  "context": "f\"检测到 {label}（{len(hits)} 处）：作为砌块或中间体时需要单独评估稳定性与兼容性。\"",
+  "en": " occurrences): stability and compatibility must be assessed separately when the compound is used as a building block or intermediate."
+ },
+ {
+  "key": "酰胺路线中存在游离羟基或多个氨基：可能需要保护基或选择正交活化条件。",
+  "file": "synth.py",
+  "line": 461,
+  "context": "\"酰胺路线中存在游离羟基或多个氨基：可能需要保护基或选择正交活化条件。\"",
+  "en": "The amide route contains a free hydroxyl group or multiple amino groups: protecting groups or orthogonal activation conditions may be required."
+ },
+ {
+  "key": "Suzuki 路线需要卤代物与硼酸两个砌块；杂环存在时需检查 Pd 配位与脱卤副反应。",
+  "file": "synth.py",
+  "line": 465,
+  "context": "\"Suzuki 路线需要卤代物与硼酸两个砌块；杂环存在时需检查 Pd 配位与脱卤副反应。\"",
+  "en": "The Suzuki route requires two building blocks, an aryl halide and a boronic acid; with heterocycles, check Pd coordination and dehalogenation side reactions."
+ },
+ {
+  "key": "SAscore 偏高：优先减少非必要手性中心、避免大环，或把复杂片段拆成商品化砌块。",
+  "file": "synth.py",
+  "line": 474,
+  "context": "\"SAscore 偏高：优先减少非必要手性中心、避免大环，或把复杂片段拆成商品化砌块。\"",
+  "en": "The SAscore is high: preferentially reduce non-essential stereocenters, avoid macrocycles, or split complex fragments into commercial building blocks."
+ },
+ {
+  "key": "首选路线为",
+  "file": "synth.py",
+  "line": 479,
+  "context": "f\"首选路线为 {best['label']}，预计 {len(best['steps'])} 步、\"",
+  "en": "The preferred route is "
+ },
+ {
+  "key": "，预计",
+  "file": "synth.py",
+  "line": 479,
+  "context": "f\"首选路线为 {best['label']}，预计 {len(best['steps'])} 步、\"",
+  "en": ", estimated "
+ },
+ {
+  "key": "步、总产率约",
+  "file": "synth.py",
+  "line": 479,
+  "context": "f\"首选路线为 {best['label']}，预计 {len(best['steps'])} 步、\"",
+  "en": " steps, with an overall yield of about "
+ },
+ {
+  "key": "%；建议先做小试确认第一步。",
+  "file": "synth.py",
+  "line": 480,
+  "context": "f\"总产率约 {best['overall_yield']:.0f}%；建议先做小试确认第一步。\"",
+  "en": "%; run a small-scale trial first to confirm the first step."
+ },
+ {
+  "key": "若采用 Suzuki 偶联，先确认卤代物与硼酸的可得性，并准备备用非 Pd 偶联路线。",
+  "file": "synth.py",
+  "line": 484,
+  "context": "\"若采用 Suzuki 偶联，先确认卤代物与硼酸的可得性，并准备备用非 Pd 偶联路线。\"",
+  "en": "If Suzuki coupling is used, first confirm the availability of the aryl halide and boronic acid, and prepare a backup non-Pd coupling route."
+ },
+ {
+  "key": "酰胺缩合步骤建议筛选 HATU/EDC 两套条件，并检查游离 OH/NH 的竞争反应。",
+  "file": "synth.py",
+  "line": 488,
+  "context": "\"酰胺缩合步骤建议筛选 HATU/EDC 两套条件，并检查游离 OH/NH 的竞争反应。\"",
+  "en": "For the amide coupling step, screen both HATU and EDC conditions and check for competing reactions of free OH/NH groups."
+ },
+ {
+  "key": "路线中的硬步骤已在左侧标注，建议逐条做文献检索或供应商询价。",
+  "file": "synth.py",
+  "line": 491,
+  "context": "advice.append(\"路线中的硬步骤已在左侧标注，建议逐条做文献检索或供应商询价。\")",
+  "en": "Hard steps in the route are marked on the left; perform a literature search or request supplier quotes for each."
+ },
+ {
+  "key": "以上路线来自规则模板，不是 SYNTHIA 级全库逆合成；产率为经验估计，必须经实验验证。",
+  "file": "synth.py",
+  "line": 493,
+  "context": "\"以上路线来自规则模板，不是 SYNTHIA 级全库逆合成；产率为经验估计，必须经实验验证。\"",
+  "en": "The routes above come from rule templates and are not SYNTHIA-level full-library retrosynthesis; yields are empirical estimates and must be validated experimentally."
+ },
+ {
+  "key": "SMILES 无法解析，请检查输入",
+  "file": "synth.py",
+  "line": 501,
+  "context": "raise ValueError(\"SMILES 无法解析，请检查输入\")",
+  "en": ""
+ },
+ {
+  "key": "未安装 SAscore，无法判定",
+  "file": "synth.py",
+  "line": 548,
+  "context": "verdict = \"未安装 SAscore，无法判定\"",
+  "en": "SAscore unavailable"
+ },
+ {
+  "key": "易合成",
+  "file": "synth.py",
+  "line": 550,
+  "context": "verdict = \"易合成\"",
+  "en": "Easy to synthesize"
+ },
+ {
+  "key": "中等",
+  "file": "synth.py",
+  "line": 552,
+  "context": "verdict = \"中等\"",
+  "en": "Moderate"
+ },
+ {
+  "key": "偏难",
+  "file": "synth.py",
+  "line": 554,
+  "context": "verdict = \"偏难\"",
+  "en": "Difficult"
+ },
+ {
+  "key": "困难",
+  "file": "synth.py",
+  "line": 556,
+  "context": "verdict = \"困难\"",
+  "en": "Very difficult"
+ },
+ {
+  "key": "候选分子",
+  "file": "synth.py",
+  "line": 562,
+  "context": "\"compound\": {\"name\": name or \"候选分子\", \"smiles\": canonical},",
+  "en": "Candidate molecule"
+ },
+ {
+  "key": "酰胺缩合",
+  "file": "synth.py",
+  "line": 690,
+  "context": "\"酰胺缩合\": \"酰胺\",",
+  "en": "Amide coupling"
+ },
+ {
+  "key": "酰胺",
+  "file": "synth.py",
+  "line": 690,
+  "context": "\"酰胺缩合\": \"酰胺\",",
+  "en": "Amide"
+ },
+ {
+  "key": "酯化",
+  "file": "synth.py",
+  "line": 691,
+  "context": "\"酯化\": \"酯化\",",
+  "en": "Esterification"
+ },
+ {
+  "key": "磺酰胺",
+  "file": "synth.py",
+  "line": 692,
+  "context": "\"磺酰胺\": \"磺酰胺\",",
+  "en": "Sulfonamide"
+ },
+ {
+  "key": "脲",
+  "file": "synth.py",
+  "line": 693,
+  "context": "\"脲\": \"脲\",",
+  "en": "Urea"
+ },
+ {
+  "key": "芳醚（Williamson）",
+  "file": "synth.py",
+  "line": 694,
+  "context": "\"芳醚（Williamson）\": \"芳醚\",",
+  "en": "Aryl ether (Williamson)"
+ },
+ {
+  "key": "芳醚",
+  "file": "synth.py",
+  "line": 694,
+  "context": "\"芳醚（Williamson）\": \"芳醚\",",
+  "en": "Aryl ether"
+ },
+ {
+  "key": "Suzuki 偶联",
+  "file": "synth.py",
+  "line": 695,
+  "context": "\"Suzuki 偶联\": \"Suzuki\",",
+  "en": "Suzuki coupling"
+ },
+ {
+  "key": "还原胺化",
+  "file": "synth.py",
+  "line": 696,
+  "context": "\"还原胺化\": \"还原胺化\",",
+  "en": "Reductive amination"
+ },
+ {
+  "key": "酮还原胺化",
+  "file": "synth.py",
+  "line": 697,
+  "context": "\"酮还原胺化\": \"酮还原胺化\",",
+  "en": "Ketone reductive amination"
+ },
+ {
+  "key": "芳香亲核取代",
+  "file": "synth.py",
+  "line": 698,
+  "context": "\"芳香亲核取代\": \"SNAr\",",
+  "en": "Nucleophilic aromatic substitution"
+ },
+ {
+  "key": "BRICS 拆解",
+  "file": "synth.py",
+  "line": 699,
+  "context": "\"BRICS 拆解\": \"BRICS\",",
+  "en": "BRICS disconnection"
+ },
+ {
+  "key": "砌块建议",
+  "file": "synth.py",
+  "line": 708,
+  "context": "text = \" → \".join(labels) if labels else \"砌块建议\"",
+  "en": "Building blocks"
+ },
+ {
+  "key": "图 16　候选分子可合成性画像",
+  "file": "synth.py",
+  "line": 730,
+  "context": "\"图 16　候选分子可合成性画像\",",
+  "en": "Figure 16　Synthesizability profile of the candidate molecule"
+ },
+ {
+  "key": "的 SAscore、路线评分与砌块复杂度",
+  "file": "synth.py",
+  "line": 731,
+  "context": "f\"{data.get('compound', {}).get('name', '候选分子')} 的 SAscore、路线评分与砌块复杂度\",",
+  "en": ": SAscore, route score, and building-block complexity"
+ },
+ {
+  "key": "合成可及性",
+  "file": "synth.py",
+  "line": 741,
+  "context": "ax1.set_title(\"合成可及性\", loc=\"left\", fontsize=13.5, pad=12)",
+  "en": "Synthetic accessibility"
+ },
+ {
+  "key": "· 重原子",
+  "file": "synth.py",
+  "line": 745,
+  "context": "f\"MW {metrics.get('mw', 0):.0f} · 重原子 {metrics.get('heavy', 0)}\\n\"",
+  "en": "· heavy atoms"
+ },
+ {
+  "key": "环",
+  "file": "synth.py",
+  "line": 745,
+  "context": "f\"MW {metrics.get('mw', 0):.0f} · 重原子 {metrics.get('heavy', 0)}\\n\"",
+  "en": "rings"
+ },
+ {
+  "key": "· 手性",
+  "file": "synth.py",
+  "line": 746,
+  "context": "f\"环 {metrics.get('rings', 0)} · 手性 {metrics.get('stereocenters', 0)}\",",
+  "en": "· stereocenters"
+ },
+ {
+  "key": "步 ·",
+  "file": "synth.py",
+  "line": 763,
+  "context": "f\"{item['score']:.1f} · {item['step_count']} 步 · \"",
+  "en": "steps ·"
+ },
+ {
+  "key": "路线评分（0–100）",
+  "file": "synth.py",
+  "line": 771,
+  "context": "ax2.set_xlabel(\"路线评分（0–100）\", fontsize=10.5)",
+  "en": "Route score (0–100)"
+ },
+ {
+  "key": "候选路线排序",
+  "file": "synth.py",
+  "line": 772,
+  "context": "ax2.set_title(\"候选路线排序\", loc=\"left\", fontsize=13.5, pad=12)",
+  "en": "Ranked candidate routes"
+ },
+ {
+  "key": "没有匹配到逆合成模板",
+  "file": "synth.py",
+  "line": 776,
+  "context": "ax2.text(0.5, 0.5, \"没有匹配到逆合成模板\", ha=\"center\", va=\"center\",",
+  "en": "No retrosynthesis template matched"
+ },
+ {
+  "key": "常见砌块（启发式）",
+  "file": "synth.py",
+  "line": 790,
+  "context": "(True, \"#0f766e\", \"常见砌块（启发式）\"),",
+  "en": "Common building block (heuristic)"
+ },
+ {
+  "key": "需进一步拆解",
+  "file": "synth.py",
+  "line": 791,
+  "context": "(False, \"#94a3b8\", \"需进一步拆解\"),",
+  "en": "Requires further disassembly"
+ },
+ {
+  "key": "砌块重原子数",
+  "file": "synth.py",
+  "line": 808,
+  "context": "ax3.set_xlabel(\"砌块重原子数\", fontsize=10.5)",
+  "en": "Building-block heavy atoms"
+ },
+ {
+  "key": "砌块 SAscore",
+  "file": "synth.py",
+  "line": 809,
+  "context": "ax3.set_ylabel(\"砌块 SAscore\", fontsize=10.5)",
+  "en": "Building-block SAscore"
+ },
+ {
+  "key": "末端砌块复杂度",
+  "file": "synth.py",
+  "line": 810,
+  "context": "ax3.set_title(\"末端砌块复杂度\", loc=\"left\", fontsize=13.5, pad=12)",
+  "en": "Terminal building-block complexity"
+ },
+ {
+  "key": "没有末端砌块记录",
+  "file": "synth.py",
+  "line": 816,
+  "context": "ax3.text(0.5, 0.5, \"没有末端砌块记录\", ha=\"center\", va=\"center\",",
+  "en": "No terminal building-block records"
+ },
+ {
+  "key": "硬步骤与建议",
+  "file": "synth.py",
+  "line": 822,
+  "context": "ax4.set_title(\"硬步骤与建议\", loc=\"left\", fontsize=13.5, pad=12)",
+  "en": "Hard steps and recommendations"
+ },
+ {
+  "key": "未发现明显硬步骤；仍建议逐条核对文献与供应商目录。",
+  "file": "synth.py",
+  "line": 829,
+  "context": "lines.append(\"未发现明显硬步骤；仍建议逐条核对文献与供应商目录。\")",
+  "en": "No obvious hard steps were found; still, check the literature and supplier catalogs step by step."
+ },
+ {
+  "key": "Ertl/Schuffenhauer SAscore（1 易、10 难）与分子复杂度；模板逆合成路线按产率、砌块复杂度与步骤数综合评分；末端砌块的 SAscore 与重原子数，绿色为启发式常见砌块；（d）手性、大环、活性官能团与保护基风险。路线来自有限反应模板库，不代表 SYNTHIA 级全库搜索；产率与条件仅为经验估计，需实验验证。",
+  "file": "synth.py",
+  "line": 837,
+  "context": "f\"（a）Ertl/Schuffenhauer SAscore（1 易、10 难）与分子复杂度；\"",
+  "en": "(a) Ertl/Schuffenhauer SAscore (1 = easy, 10 = hard) and molecular complexity; (b) template retrosynthetic routes scored jointly by yield, building-block complexity, and step count; (c) SAscore versus heavy atom count of terminal building blocks, with green marking heuristically common blocks; (d) chirality, macrocycle, reactive functional group, and protecting-group risks. Routes come from a limited reaction-template library and do not represent a SYNTHIA-level full-library search; yields and conditions are empirical estimates and require experimental validation."
+ },
+ {
+  "key": "图 17　最佳合成路线",
+  "file": "synth.py",
+  "line": 859,
+  "context": "\"图 17　最佳合成路线\",",
+  "en": "Figure 17　Best synthetic route"
+ },
+ {
+  "key": "的模板逆合成路线与步骤表",
+  "file": "synth.py",
+  "line": 860,
+  "context": "f\"{data.get('compound', {}).get('name', '候选分子')} 的模板逆合成路线与步骤表\",",
+  "en": ": template retrosynthetic route and step table"
+ },
+ {
+  "key": "没有匹配到可展示的逆合成路线",
+  "file": "synth.py",
+  "line": 864,
+  "context": "fig.text(0.5, 0.5, \"没有匹配到可展示的逆合成路线\", ha=\"center\",",
+  "en": "No retrosynthetic route available for display"
+ },
+ {
+  "key": "路线",
+  "file": "synth.py",
+  "line": 873,
+  "context": "f\"路线 {route['rank']} · 评分 {route['score']:.1f}/100 · \"",
+  "en": "Route"
+ },
+ {
+  "key": "· 评分",
+  "file": "synth.py",
+  "line": 873,
+  "context": "f\"路线 {route['rank']} · 评分 {route['score']:.1f}/100 · \"",
+  "en": "· Score"
+ },
+ {
+  "key": "步 · 估计总产率",
+  "file": "synth.py",
+  "line": 874,
+  "context": "f\"{route['step_count']} 步 · 估计总产率 {route['overall_yield']:.0f}%\",",
+  "en": "steps · Estimated overall yield"
+ },
+ {
+  "key": "· 估计产率",
+  "file": "synth.py",
+  "line": 915,
+  "context": "f\"{step['conditions']} · 估计产率 {step['yield'] * 100:.0f}%\"",
+  "en": "· Estimated yield"
+ },
+ {
+  "key": "目标分子",
+  "file": "synth.py",
+  "line": 934,
+  "context": "0.82, y - 0.004, f\"中间体 {index + 1}\" if index < len(steps) - 1 else \"目标分子\",",
+  "en": "Target molecule"
+ },
+ {
+  "key": "中间体",
+  "file": "synth.py",
+  "line": 934,
+  "context": "0.82, y - 0.004, f\"中间体 {index + 1}\" if index < len(steps) - 1 else \"目标分子\",",
+  "en": "Intermediate"
+ },
+ {
+  "key": "步骤",
+  "file": "synth.py",
+  "line": 939,
+  "context": "rows = [[\"步骤\", \"反应类型\", \"条件\", \"估计产率\", \"备注\"]]",
+  "en": "Step"
+ },
+ {
+  "key": "反应类型",
+  "file": "synth.py",
+  "line": 939,
+  "context": "rows = [[\"步骤\", \"反应类型\", \"条件\", \"估计产率\", \"备注\"]]",
+  "en": "Reaction type"
+ },
+ {
+  "key": "条件",
+  "file": "synth.py",
+  "line": 939,
+  "context": "rows = [[\"步骤\", \"反应类型\", \"条件\", \"估计产率\", \"备注\"]]",
+  "en": "Conditions"
+ },
+ {
+  "key": "估计产率",
+  "file": "synth.py",
+  "line": 939,
+  "context": "rows = [[\"步骤\", \"反应类型\", \"条件\", \"估计产率\", \"备注\"]]",
+  "en": "Estimated yield"
+ },
+ {
+  "key": "备注",
+  "file": "synth.py",
+  "line": 939,
+  "context": "rows = [[\"步骤\", \"反应类型\", \"条件\", \"估计产率\", \"备注\"]]",
+  "en": "Notes"
+ },
+ {
+  "key": "路线按正向顺序展示：左侧为砌块/中间体，箭头上方为反应类型、下方为常见条件与经验产率，右侧为产物。末端的“常见砌块”仅为启发式标记，不代表已核实库存或价格；所有反应条件与产率均为规则估计，必须通过文献检索、小试与供应商询价验证。",
+  "file": "synth.py",
+  "line": 956,
+  "context": "\"路线按正向顺序展示：左侧为砌块/中间体，箭头上方为反应类型、下方为常见条件与经验产率，右侧为产物。\"",
+  "en": "The route is shown in the forward direction: building blocks/intermediates on the left, the reaction type above the arrow with common conditions and empirical yield below, and the product on the right. The terminal “common building block” flag is heuristic only and does not mean inventory or price has been verified; all reaction conditions and yields are rule-based estimates and must be validated by literature search, small-scale trials, and supplier quotations."
+ }
+]

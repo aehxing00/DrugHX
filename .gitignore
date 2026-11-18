@@ -1,0 +1,32 @@
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Runtime data and user projects (never commit)
+data/
+prj/
+logs/
+exports/
+*.log
+.dockforge_recent.json
+
+# Downloaded engines and binaries
+bin/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
+*.swp
+
+# Local temp
+_tmp_*
+*.tmp

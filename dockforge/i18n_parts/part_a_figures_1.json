@@ -1,0 +1,1234 @@
+[
+ {
+  "key": "氢键",
+  "file": "figures.py",
+  "line": 424,
+  "context": "(\"hbonds\", \"氢键\", \"#b45309\", (0, (4, 2))),",
+  "en": "Hydrogen bond"
+ },
+ {
+  "key": "盐桥",
+  "file": "figures.py",
+  "line": 425,
+  "context": "(\"salt_bridges\", \"盐桥\", \"#b91c1c\", (0, (4, 2))),",
+  "en": "Salt bridge"
+ },
+ {
+  "key": "π-堆积",
+  "file": "figures.py",
+  "line": 426,
+  "context": "(\"pi_stacking\", \"π-堆积\", \"#6d28d9\", (0, (2, 2))),",
+  "en": "π-stacking"
+ },
+ {
+  "key": "卤键",
+  "file": "figures.py",
+  "line": 427,
+  "context": "(\"halogens\", \"卤键\", \"#0369a1\", (0, (3, 2))),",
+  "en": "Halogen bond"
+ },
+ {
+  "key": "金属配位",
+  "file": "figures.py",
+  "line": 428,
+  "context": "(\"metals\", \"金属配位\", \"#475569\", (0, (1, 2))),",
+  "en": "Metal coordination"
+ },
+ {
+  "key": "疏水接触：",
+  "file": "figures.py",
+  "line": 553,
+  "context": "label = _wrap_tokens(\"疏水接触：\", names, 24)",
+  "en": "Hydrophobic contacts: "
+ },
+ {
+  "key": "分子式",
+  "file": "figures.py",
+  "line": 582,
+  "context": "(\"分子式\", rdMolDescriptors.CalcMolFormula(heavy)),",
+  "en": "Molecular formula"
+ },
+ {
+  "key": "分子量",
+  "file": "figures.py",
+  "line": 583,
+  "context": "(\"分子量\", f\"{Descriptors.MolWt(heavy):.1f} Da\"),",
+  "en": "Molecular weight"
+ },
+ {
+  "key": "氢键供体",
+  "file": "figures.py",
+  "line": 586,
+  "context": "(\"氢键供体\", str(rdMolDescriptors.CalcNumHBD(heavy))),",
+  "en": "H-bond donors"
+ },
+ {
+  "key": "氢键受体",
+  "file": "figures.py",
+  "line": 587,
+  "context": "(\"氢键受体\", str(rdMolDescriptors.CalcNumHBA(heavy))),",
+  "en": "H-bond acceptors"
+ },
+ {
+  "key": "可旋转键",
+  "file": "figures.py",
+  "line": 588,
+  "context": "(\"可旋转键\", str(rdMolDescriptors.CalcNumRotatableBonds(heavy))),",
+  "en": "Rotatable bonds"
+ },
+ {
+  "key": "重原子数",
+  "file": "figures.py",
+  "line": 589,
+  "context": "(\"重原子数\", str(heavy.GetNumHeavyAtoms())),",
+  "en": "Heavy atoms"
+ },
+ {
+  "key": "· 2D 结构",
+  "file": "figures.py",
+  "line": 595,
+  "context": "_draw_molecule(ax, heavy, title=f\"{ligand_name} · 2D 结构\")",
+  "en": "· 2D structure"
+ },
+ {
+  "key": "结合性质",
+  "file": "figures.py",
+  "line": 596,
+  "context": "txt = \"结合性质\\n\\n\" + \"\\n\".join(f\"{key}：{value}\" for key, value in properties)",
+  "en": "Binding properties"
+ },
+ {
+  "key": "DockForge 矢量图 · PDF",
+  "file": "figures.py",
+  "line": 607,
+  "context": "0.63, 0.875, \"DockForge 矢量图 · PDF\", fontsize=10, color=MUTED,",
+  "en": "DockForge vector figure · PDF"
+ },
+ {
+  "key": "图 7　代表配体的二维结构、分子式与理化性质。数值由 RDKit 依据对接前的质子化状态计算，与实验测定值存在系统差异，仅用于同系列分子的相对比较。",
+  "file": "figures.py",
+  "line": 612,
+  "context": "\"图 7　代表配体的二维结构、分子式与理化性质。数值由 RDKit 依据对接前的质子化状态计算，\"",
+  "en": "Figure 7. Two-dimensional structure, molecular formula and physicochemical properties of the representative ligand. Values were calculated by RDKit from the protonation state used before docking and differ systematically from experimental measurements; they are intended only for relative comparison within the same series."
+ },
+ {
+  "key": "· 蛋白–配体作用力",
+  "file": "figures.py",
+  "line": 622,
+  "context": "ax, mol, analysis, f\"{ligand_name} · 蛋白–配体作用力\"",
+  "en": "· protein–ligand interactions"
+ },
+ {
+  "key": "图 8　蛋白–配体作用力示意：虚线区分氢键、盐桥、π-堆积、卤键与金属配位，标注残基编号与距离（Å）。作用力由几何判据识别，不等同于能量分解结果。",
+  "file": "figures.py",
+  "line": 627,
+  "context": "\"图 8　蛋白–配体作用力示意：虚线区分氢键、盐桥、π-堆积、卤键与金属配位，\"",
+  "en": "Figure 8. Schematic of protein–ligand interactions: dashed lines distinguish hydrogen bonds, salt bridges, π-stacking, halogen bonds and metal coordination, with residue numbers and distances (Å) annotated. Interactions are identified by geometric criteria and are not equivalent to free-energy decomposition results."
+ },
+ {
+  "key": "DockForge 药物分子改进报告",
+  "file": "figures.py",
+  "line": 641,
+  "context": "fig.text(0.06, 0.955, \"DockForge 药物分子改进报告\", fontsize=24, fontweight=\"bold\", color=INK)",
+  "en": "DockForge Drug Molecule Optimization Report"
+ },
+ {
+  "key": "母体：",
+  "file": "figures.py",
+  "line": 644,
+  "context": "f\"母体：{parent.get('ligand_name', '—')}    靶点：{parent.get('receptor_name', '—')}    \"",
+  "en": "Parent: "
+ },
+ {
+  "key": "靶点：",
+  "file": "figures.py",
+  "line": 644,
+  "context": "f\"母体：{parent.get('ligand_name', '—')}    靶点：{parent.get('receptor_name', '—')}    \"",
+  "en": "Target: "
+ },
+ {
+  "key": "母体 Vina：",
+  "file": "figures.py",
+  "line": 644,
+  "context": "f\"母体：{parent.get('ligand_name', '—')}    靶点：{parent.get('receptor_name', '—')}    \"",
+  "en": "Parent Vina: "
+ },
+ {
+  "key": "改造策略：基于母体作用力谱，生成骨架跃迁与生物电子等排类似物，",
+  "file": "figures.py",
+  "line": 649,
+  "context": "\"改造策略：基于母体作用力谱，生成骨架跃迁与生物电子等排类似物，\",",
+  "en": "Strategy: starting from the parent interaction profile, scaffold-hopping and bioisosteric analogues were generated"
+ },
+ {
+  "key": "并在同一位点、同一打分函数下自动重新对接。所有数值为相对排序，",
+  "file": "figures.py",
+  "line": 650,
+  "context": "\"并在同一位点、同一打分函数下自动重新对接。所有数值为相对排序，\",",
+  "en": "and automatically re-docked at the same site with the same scoring function. All values are relative rankings"
+ },
+ {
+  "key": "不等同于实验结合自由能。",
+  "file": "figures.py",
+  "line": 651,
+  "context": "\"不等同于实验结合自由能。\",",
+  "en": "and are not equivalent to experimental binding free energies."
+ },
+ {
+  "key": "疏水",
+  "file": "figures.py",
+  "line": 658,
+  "context": "header = [\"候选\"] + ([\"改造类型\"] if has_type else []) + [\"Vina\", \"ΔVina\", \"氢键\", \"疏水\"]",
+  "en": "Hydrophobic"
+ },
+ {
+  "key": "候选",
+  "file": "figures.py",
+  "line": 658,
+  "context": "header = [\"候选\"] + ([\"改造类型\"] if has_type else []) + [\"Vina\", \"ΔVina\", \"氢键\", \"疏水\"]",
+  "en": "Candidate"
+ },
+ {
+  "key": "改造类型",
+  "file": "figures.py",
+  "line": 658,
+  "context": "header = [\"候选\"] + ([\"改造类型\"] if has_type else []) + [\"Vina\", \"ΔVina\", \"氢键\", \"疏水\"]",
+  "en": "Modification"
+ },
+ {
+  "key": "残基层面的改进方案",
+  "file": "figures.py",
+  "line": 690,
+  "context": "fig.text(0.06, 0.575, \"残基层面的改进方案\", fontsize=14, fontweight=\"bold\", color=INK)",
+  "en": "Residue-level optimization strategies"
+ },
+ {
+  "key": "母体与改进候选的打分比较",
+  "file": "figures.py",
+  "line": 732,
+  "context": "ax.set_title(\"母体与改进候选的打分比较\", loc=\"left\", fontweight=\"bold\", fontsize=15, pad=10)",
+  "en": "Score comparison of the parent and optimized candidates"
+ },
+ {
+  "key": "母体与候选的作用力谱",
+  "file": "figures.py",
+  "line": 741,
+  "context": "ax.set_title(\"母体与候选的作用力谱\", loc=\"left\", fontweight=\"bold\", fontsize=15, pad=10)",
+  "en": "Interaction profiles of the parent and candidates"
+ },
+ {
+  "key": "母体与改进候选的 2D 结构",
+  "file": "figures.py",
+  "line": 756,
+  "context": "fig.suptitle(\"母体与改进候选的 2D 结构\", fontsize=16, fontweight=\"bold\")",
+  "en": "2D structures of the parent and optimized candidates"
+ },
+ {
+  "key": "· 作用力",
+  "file": "figures.py",
+  "line": 775,
+  "context": "f\"{item.get('label', item.get('ligand_name', ''))} · 作用力\",",
+  "en": "· interactions"
+ },
+ {
+  "key": "DockForge 分子设计报告",
+  "file": "figures.py",
+  "line": 790,
+  "context": "fig.text(0.06, 0.955, \"DockForge 分子设计报告\", fontsize=24, fontweight=\"bold\", color=INK)",
+  "en": "DockForge Molecular Design Report"
+ },
+ {
+  "key": "设计分子：",
+  "file": "figures.py",
+  "line": 793,
+  "context": "f\"靶点：{target}    设计分子：{len(ok)} 个    方法：片段生长 + AutoDock Vina 重新对接\",",
+  "en": "Designed molecules: "
+ },
+ {
+  "key": "个    方法：片段生长 + AutoDock Vina 重新对接",
+  "file": "figures.py",
+  "line": 793,
+  "context": "f\"靶点：{target}    设计分子：{len(ok)} 个    方法：片段生长 + AutoDock Vina 重新对接\",",
+  "en": "    Method: fragment growth + AutoDock Vina re-docking"
+ },
+ {
+  "key": "设计策略：从芳环/杂环核心出发，枚举卤素、羟基、氨基、甲基、三氟甲基、甲氧基、氰基、酰胺、羧酸、磺酰胺等取代基，先按类药性预筛，再在同一位点对接排序。所有分值用于相对排序，不等同于实验结合自由能。",
+  "file": "figures.py",
+  "line": 797,
+  "context": "\"设计策略：从芳环/杂环核心出发，枚举卤素、羟基、氨基、甲基、三氟甲基、\"",
+  "en": "Design strategy: starting from aromatic or heteroaromatic cores, substituents such as halogen, hydroxyl, amino, methyl, trifluoromethyl, methoxy, cyano, amide, carboxylic acid and sulfonamide were enumerated; candidates were pre-screened for drug-likeness and then docked and ranked at the same site. All scores are used for relative ranking only and are not equivalent to experimental binding free energies."
+ },
+ {
+  "key": "最佳设计：",
+  "file": "figures.py",
+  "line": 804,
+  "context": "f\"最佳设计：{ok[0].get('name', ok[0].get('label', '—'))}    \"",
+  "en": "Best design: "
+ },
+ {
+  "key": "尚未得到成功对接的设计分子",
+  "file": "figures.py",
+  "line": 806,
+  "context": "if ok else \"尚未得到成功对接的设计分子\"",
+  "en": "No designed molecule was successfully docked"
+ },
+ {
+  "key": "设计分子",
+  "file": "figures.py",
+  "line": 809,
+  "context": "rows = [[\"设计分子\", \"Vina\", \"MW\", \"cLogP\", \"TPSA\", \"最近邻\", \"Tanimoto\"]]",
+  "en": "Designed molecule"
+ },
+ {
+  "key": "最近邻",
+  "file": "figures.py",
+  "line": 809,
+  "context": "rows = [[\"设计分子\", \"Vina\", \"MW\", \"cLogP\", \"TPSA\", \"最近邻\", \"Tanimoto\"]]",
+  "en": "Nearest neighbour"
+ },
+ {
+  "key": "本轮共枚举并完成对接",
+  "file": "figures.py",
+  "line": 846,
+  "context": "f\"本轮共枚举并完成对接 {len(ok)} 个设计分子，打分区间 \"",
+  "en": "A total of"
+ },
+ {
+  "key": "个设计分子，打分区间",
+  "file": "figures.py",
+  "line": 846,
+  "context": "f\"本轮共枚举并完成对接 {len(ok)} 个设计分子，打分区间 \"",
+  "en": " designed molecules were enumerated and docked, with scores ranging from"
+ },
+ {
+  "key": "至",
+  "file": "figures.py",
+  "line": 847,
+  "context": "f\"{max(scores):.2f} 至 {min(scores):.2f} kcal/mol，中位数 \"",
+  "en": "to"
+ },
+ {
+  "key": "kcal/mol，中位数",
+  "file": "figures.py",
+  "line": 847,
+  "context": "f\"{max(scores):.2f} 至 {min(scores):.2f} kcal/mol，中位数 \"",
+  "en": "kcal/mol; median"
+ },
+ {
+  "key": "，说明取代基组合对结合能有实质影响。",
+  "file": "figures.py",
+  "line": 848,
+  "context": "f\"{float(np.median(scores)):.2f}，说明取代基组合对结合能有实质影响。\",",
+  "en": ", indicating that the substituent combination has a substantial effect on binding energy."
+ },
+ {
+  "key": "分子量范围",
+  "file": "figures.py",
+  "line": 856,
+  "context": "f\"分子量范围 {min(weights):.0f}–{max(weights):.0f} Da，\"",
+  "en": "Molecular weights range from"
+ },
+ {
+  "key": "Da，全部落在类药空间内；表中最后两列为数据库 Morgan 指纹检索的最近邻与 Tanimoto 相似度（当前最高",
+  "file": "figures.py",
+  "line": 856,
+  "context": "f\"分子量范围 {min(weights):.0f}–{max(weights):.0f} Da，\"",
+  "en": " Da, all within drug-like space; the last two columns report the nearest neighbour and Tanimoto similarity from a Morgan-fingerprint database search (current maximum"
+ },
+ {
+  "key": "），相似度越低说明与已知分子骨架的差异越大。",
+  "file": "figures.py",
+  "line": 858,
+  "context": "f\"最近邻与 Tanimoto 相似度（当前最高 {max(tans):.2f}），\"",
+  "en": "), where lower similarity indicates greater divergence from known molecular scaffolds."
+ },
+ {
+  "key": "建议优先合成打分最优且相似度最低的 2–3 个分子，并用分子动力学检验磺酰胺与卤素取代基在结合口袋中的稳定性，再决定是否扩展取代基范围。",
+  "file": "figures.py",
+  "line": 862,
+  "context": "\"建议优先合成打分最优且相似度最低的 2–3 个分子，并用分子动力学检验\"",
+  "en": "We recommend prioritizing the synthesis of the two or three best-scoring molecules with the lowest similarity, using molecular dynamics to test the stability of the sulfonamide and halogen substituents in the binding pocket, and then deciding whether to expand the substituent scope."
+ },
+ {
+  "key": "设计结果解读",
+  "file": "figures.py",
+  "line": 869,
+  "context": "fig.text(0.06, 0.295, \"设计结果解读\", fontsize=13, fontweight=\"bold\", color=TEAL)",
+  "en": "Interpretation of design results"
+ },
+ {
+  "key": "类药性空间（点标注为设计编号，颜色越深结合越强）",
+  "file": "figures.py",
+  "line": 892,
+  "context": "axp.set_title(\"类药性空间（点标注为设计编号，颜色越深结合越强）\", loc=\"left\",",
+  "en": "Drug-like space (points labelled with design IDs; darker colour indicates stronger binding)"
+ },
+ {
+  "key": "设计分子 2D 结构",
+  "file": "figures.py",
+  "line": 919,
+  "context": "fig.suptitle(\"设计分子 2D 结构\", fontsize=16, fontweight=\"bold\")",
+  "en": "2D structures of designed molecules"
+ },
+ {
+  "key": "数据库相似性检索",
+  "file": "figures.py",
+  "line": 925,
+  "context": "fig.text(0.06, 0.95, \"数据库相似性检索\", fontsize=20, fontweight=\"bold\", color=INK)",
+  "en": "Database similarity search"
+ },
+ {
+  "key": "对每个设计分子计算 Morgan 指纹（半径 2，2048 bit）与数据库的 Tanimoto 相似度。",
+  "file": "figures.py",
+  "line": 928,
+  "context": "\"对每个设计分子计算 Morgan 指纹（半径 2，2048 bit）与数据库的 Tanimoto 相似度。\",",
+  "en": "For each designed molecule, Morgan fingerprints (radius 2, 2048 bit) were used to compute Tanimoto similarity against the database."
+ },
+ {
+  "key": "数据库 SMILES",
+  "file": "figures.py",
+  "line": 931,
+  "context": "db_rows = [[\"设计分子\", \"最近邻\", \"Tanimoto\", \"数据库 SMILES\"]]",
+  "en": "Database SMILES"
+ },
+ {
+  "key": "最近邻结构",
+  "file": "figures.py",
+  "line": 965,
+  "context": "fig.text(0.06, 0.52, \"最近邻结构\", fontsize=13, fontweight=\"bold\", color=INK)",
+  "en": "Nearest-neighbour structure"
+ },
+ {
+  "key": "DockForge · 完整科研报告",
+  "file": "figures.py",
+  "line": 1022,
+  "context": "0.93, 0.038, \"DockForge · 完整科研报告\", fontsize=9.5,",
+  "en": "DockForge · Complete scientific report"
+ },
+ {
+  "key": "单配体打分概览",
+  "file": "figures.py",
+  "line": 1177,
+  "context": "ax.set_title(\"单配体打分概览\", loc=\"left\", fontsize=14.5, pad=14)",
+  "en": "Single-ligand score overview"
+ },
+ {
+  "key": "输出构象",
+  "file": "figures.py",
+  "line": 1211,
+  "context": "f\"输出构象 {len(modes)} 个；仅 1 个成功配体，不计算跨配体均值、\"",
+  "en": "Output poses:"
+ },
+ {
+  "key": "个；仅 1 个成功配体，不计算跨配体均值、中位数区间与 Vina–Vinardo 相关性。",
+  "file": "figures.py",
+  "line": 1211,
+  "context": "f\"输出构象 {len(modes)} 个；仅 1 个成功配体，不计算跨配体均值、\"",
+  "en": "; with only one successfully docked ligand, cross-ligand means, median ranges and Vina–Vinardo correlations are not computed."
+ },
+ {
+  "key": "没有构象能量记录",
+  "file": "figures.py",
+  "line": 1233,
+  "context": "ax.text(0.5, 0.5, \"没有构象能量记录\", ha=\"center\", va=\"center\",",
+  "en": "No conformational energy records"
+ },
+ {
+  "key": "Vina 打分 (kcal/mol)",
+  "file": "figures.py",
+  "line": 1253,
+  "context": "ax.set_xlabel(\"Vina 打分 (kcal/mol)\", fontsize=12.5)",
+  "en": "Vina score (kcal/mol)"
+ },
+ {
+  "key": "相对最优构象 RMSD (Å)",
+  "file": "figures.py",
+  "line": 1254,
+  "context": "ax.set_ylabel(\"相对最优构象 RMSD (Å)\", fontsize=12.5)",
+  "en": "RMSD relative to the best conformation (Å)"
+ },
+ {
+  "key": "构象能量–RMSD 分布（",
+  "file": "figures.py",
+  "line": 1256,
+  "context": "f\"构象能量–RMSD 分布（{len(points)} 个输出构象）\",",
+  "en": "Conformation energy–RMSD distribution ("
+ },
+ {
+  "key": "个输出构象）",
+  "file": "figures.py",
+  "line": 1256,
+  "context": "f\"构象能量–RMSD 分布（{len(points)} 个输出构象）\",",
+  "en": " output conformations)"
+ },
+ {
+  "key": "图 1　结合亲和力全景",
+  "file": "figures.py",
+  "line": 1264,
+  "context": "\"图 1　结合亲和力全景\",",
+  "en": "Figure 1. Overview of binding affinity"
+ },
+ {
+  "key": "打分排序与两套经验打分函数的共识程度",
+  "file": "figures.py",
+  "line": 1265,
+  "context": "\"打分排序与两套经验打分函数的共识程度\",",
+  "en": "Score ranking and agreement between the two empirical scoring functions"
+ },
+ {
+  "key": "结合亲和力 −ΔG$_{bind}$ (kcal/mol)",
+  "file": "figures.py",
+  "line": 1290,
+  "context": "ax.set_xlabel(\"结合亲和力 −ΔG$_{bind}$ (kcal/mol)\", fontsize=13)",
+  "en": "Binding affinity −ΔG$_{bind}$ (kcal/mol)"
+ },
+ {
+  "key": "按 Vina 打分排序的配体",
+  "file": "figures.py",
+  "line": 1291,
+  "context": "ax.set_title(\"按 Vina 打分排序的配体\", loc=\"left\", fontsize=14.5, pad=14)",
+  "en": "Ligands ranked by Vina score"
+ },
+ {
+  "key": "Vinardo 打分 (kcal/mol)",
+  "file": "figures.py",
+  "line": 1326,
+  "context": "ax2.set_ylabel(\"Vinardo 打分 (kcal/mol)\", fontsize=13)",
+  "en": "Vinardo score (kcal/mol)"
+ },
+ {
+  "key": "两套打分函数的一致性",
+  "file": "figures.py",
+  "line": 1327,
+  "context": "ax2.set_title(\"两套打分函数的一致性\", loc=\"left\", fontsize=14.5, pad=12)",
+  "en": "Agreement between the two scoring functions"
+ },
+ {
+  "key": "仅有 1 个配体，无法绘制 Vina–Vinardo 相关性\nVinardo 二次打分见附录 A",
+  "file": "figures.py",
+  "line": 1338,
+  "context": "\"仅有 1 个配体，无法绘制 Vina–Vinardo 相关性\\n\"",
+  "en": "Only one ligand, so the Vina–Vinardo correlation cannot be plotted\nVinardo rescoring is given in Appendix A"
+ },
+ {
+  "key": "未启用 Vinardo 交叉打分",
+  "file": "figures.py",
+  "line": 1341,
+  "context": "else \"未启用 Vinardo 交叉打分\"",
+  "en": "Vinardo cross-scoring was not enabled"
+ },
+ {
+  "key": "的 Vina 与 Vinardo 打分概览；本次只有 1 个成功配体，因此不计算跨配体均值、中位数区间或 Vina–Vinardo 相关性。该配体全部输出构象的能量–RMSD 分布，红圈标出最优构象；RMSD 为相对最优构象的重原子偏差，用于判断构象采样是否收敛。",
+  "file": "figures.py",
+  "line": 1350,
+  "context": "f\"（a）{shown[0].get('ligand_name', '配体')} 的 Vina 与 Vinardo 打分概览；\"",
+  "en": "’s Vina and Vinardo score overview; only one ligand was docked successfully here, so cross-ligand means, median ranges and Vina–Vinardo correlations are not computed. (b) Energy–RMSD distribution of all output conformations of this ligand, with the best conformation circled in red; RMSD is the heavy-atom deviation from the best conformation and indicates whether conformational sampling has converged."
+ },
+ {
+  "key": "按 AutoDock Vina 打分升序排列的配体，条形长度为 −ΔG_bind，末端标注数值（kcal/mol）。Vina 与 Vinardo 两套经验打分的散点比较，虚线为 y = x；左上角给出 Pearson r、Spearman ρ 与样本量 n。仅当两套函数高度相关（|r| ≥ 0.8）时，才可认为排序不依赖单一打分函数。",
+  "file": "figures.py",
+  "line": 1355,
+  "context": "else \"（a）按 AutoDock Vina 打分升序排列的配体，条形长度为 −ΔG_bind，\"",
+  "en": "(a) Ligands sorted by ascending AutoDock Vina score, with bar length equal to −ΔG_bind and values (kcal/mol) annotated at the bar ends. (b) Scatter comparison of the Vina and Vinardo empirical scores, with the dashed line y = x; Pearson r, Spearman ρ and sample size n are given in the upper-left corner. The ranking can be considered independent of a single scoring function only when the two functions are highly correlated (|r| ≥ 0.8)."
+ },
+ {
+  "key": "图 2　配体效率与类药化学空间",
+  "file": "figures.py",
+  "line": 1367,
+  "context": "\"图 2　配体效率与类药化学空间\",",
+  "en": "Figure 2. Ligand efficiency and drug-like chemical space"
+ },
+ {
+  "key": "结合能随分子大小的增长趋势，以及分子量–脂溶性分布",
+  "file": "figures.py",
+  "line": 1368,
+  "context": "\"结合能随分子大小的增长趋势，以及分子量–脂溶性分布\",",
+  "en": "Growth of binding energy with molecular size, and the molecular weight–lipophilicity distribution"
+ },
+ {
+  "key": "配体效率等值线",
+  "file": "figures.py",
+  "line": 1419,
+  "context": "ax.set_title(\"配体效率等值线\", loc=\"left\", fontsize=14.5, pad=12)",
+  "en": "Ligand efficiency contours"
+ },
+ {
+  "key": "平均 LE =",
+  "file": "figures.py",
+  "line": 1422,
+  "context": "0.97, 0.06, f\"平均 LE = {mean_le:.2f} kcal/mol/HA\",",
+  "en": "Mean LE ="
+ },
+ {
+  "key": "缺少分子性质数据",
+  "file": "figures.py",
+  "line": 1429,
+  "context": "ax.text(0.5, 0.5, \"缺少分子性质数据\", ha=\"center\", va=\"center\",",
+  "en": "No molecular property data"
+ },
+ {
+  "key": "类药空间上限（MW ≤ 500，cLogP ≤ 5）",
+  "file": "figures.py",
+  "line": 1452,
+  "context": "ax2.text(202, 5.2, \"类药空间上限（MW ≤ 500，cLogP ≤ 5）\",",
+  "en": "Drug-like space limit (MW ≤ 500, cLogP ≤ 5)"
+ },
+ {
+  "key": "lead-like 区间",
+  "file": "figures.py",
+  "line": 1460,
+  "context": "ax2.text(252, -1.35, \"lead-like 区间\", fontsize=9.8, color=TEAL,",
+  "en": "Lead-like region"
+ },
+ {
+  "key": "分子量–脂溶性化学空间",
+  "file": "figures.py",
+  "line": 1467,
+  "context": "ax2.set_title(\"分子量–脂溶性化学空间\", loc=\"left\", fontsize=14.5,",
+  "en": "Molecular weight–lipophilicity chemical space"
+ },
+ {
+  "key": "−ΔG_bind 随重原子数的变化，虚线为配体效率等值线（LE = 0.2–0.5 kcal/mol/HA）；位于同一等值线上的分子具有可比性，落在右下方（同尺寸但 −ΔG 偏低）的分子效率较差。分子量–cLogP 化学空间，点色表示 Vina 打分；虚线框为类药空间上限（MW ≤ 500、cLogP ≤ 5），点线框为 lead-like 区间（MW 250–450、cLogP −1–3.5）。",
+  "file": "figures.py",
+  "line": 1478,
+  "context": "\"（a）−ΔG_bind 随重原子数的变化，虚线为配体效率等值线（LE = 0.2–0.5 kcal/mol/HA）；\"",
+  "en": "(a) −ΔG_bind as a function of heavy-atom count, with dashed lines showing ligand efficiency contours (LE = 0.2–0.5 kcal/mol/HA); molecules on the same contour are directly comparable, and those in the lower right (same size but lower −ΔG) are less efficient. (b) Molecular weight–cLogP chemical space, with point colour indicating the Vina score; the dashed box marks the drug-like space limit (MW ≤ 500, cLogP ≤ 5) and the dotted box the lead-like region (MW 250–450, cLogP −1–3.5)."
+ },
+ {
+  "key": "图 3　蛋白–配体相互作用指纹",
+  "file": "figures.py",
+  "line": 1494,
+  "context": "\"图 3　蛋白–配体相互作用指纹\",",
+  "en": "Figure 3. Protein–ligand interaction fingerprints"
+ },
+ {
+  "key": "各配体的作用力计数与残基接触频率",
+  "file": "figures.py",
+  "line": 1495,
+  "context": "\"各配体的作用力计数与残基接触频率\",",
+  "en": "Interaction counts per ligand and residue contact frequencies"
+ },
+ {
+  "key": "作用力数量",
+  "file": "figures.py",
+  "line": 1525,
+  "context": "cbar.set_label(\"作用力数量\", fontsize=10.5)",
+  "en": "Number of interactions"
+ },
+ {
+  "key": "作用力计数矩阵",
+  "file": "figures.py",
+  "line": 1527,
+  "context": "ax.set_title(\"作用力计数矩阵\", loc=\"left\", fontsize=14.5, pad=12)",
+  "en": "Interaction count matrix"
+ },
+ {
+  "key": "金属",
+  "file": "figures.py",
+  "line": 1535,
+  "context": "(\"metals\", \"金属\", \"#475569\"),",
+  "en": "Metal"
+ },
+ {
+  "key": "发生该作用的配体数",
+  "file": "figures.py",
+  "line": 1569,
+  "context": "ax2.set_xlabel(\"发生该作用的配体数\", fontsize=13)",
+  "en": "Number of ligands with this interaction"
+ },
+ {
+  "key": "关键残基接触频率",
+  "file": "figures.py",
+  "line": 1570,
+  "context": "ax2.set_title(\"关键残基接触频率\", loc=\"left\", fontsize=14.5, pad=12)",
+  "en": "Contact frequency of key residues"
+ },
+ {
+  "key": "缺少作用力数据",
+  "file": "figures.py",
+  "line": 1578,
+  "context": "ax2.text(0.5, 0.5, \"缺少作用力数据\", ha=\"center\", va=\"center\",",
+  "en": "No interaction data"
+ },
+ {
+  "key": "各配体最优构象中氢键、疏水接触、盐桥、π-堆积、卤键与金属配位的计数矩阵，色标为接触数。跨配体统计的残基接触频率，条形按作用类型堆叠，横轴为发生该作用的配体数；排名靠前的残基构成口袋的主要锚点。",
+  "file": "figures.py",
+  "line": 1584,
+  "context": "\"（a）各配体最优构象中氢键、疏水接触、盐桥、π-堆积、卤键与金属配位的计数矩阵，色标为接触数。\"",
+  "en": "(a) Count matrix of hydrogen bonds, hydrophobic contacts, salt bridges, π-stacking, halogen bonds and metal coordination in the best conformation of each ligand, with the colour scale giving the contact count. (b) Residue contact frequencies aggregated across ligands, with bars stacked by interaction type and the horizontal axis giving the number of ligands with that interaction; the top-ranked residues form the main anchors of the pocket."
+ },
+ {
+  "key": "图 4　构象能量谱",
+  "file": "figures.py",
+  "line": 1597,
+  "context": "\"图 4　构象能量谱\",",
+  "en": "Figure 4. Conformational energy landscape"
+ },
+ {
+  "key": "多构象打分分布与结合模式的构象收敛性",
+  "file": "figures.py",
+  "line": 1598,
+  "context": "\"多构象打分分布与结合模式的构象收敛性\",",
+  "en": "Score distribution across conformations and conformational convergence of binding modes"
+ },
+ {
+  "key": "相对最优构象的 RMSD (Å)",
+  "file": "figures.py",
+  "line": 1617,
+  "context": "ax.set_xlabel(\"相对最优构象的 RMSD (Å)\", fontsize=13)",
+  "en": "RMSD relative to the best conformation (Å)"
+ },
+ {
+  "key": "构象空间采样",
+  "file": "figures.py",
+  "line": 1619,
+  "context": "ax.set_title(\"构象空间采样\", loc=\"left\", fontsize=14.5, pad=12)",
+  "en": "Conformational space sampling"
+ },
+ {
+  "key": "个构象)",
+  "file": "figures.py",
+  "line": 1639,
+  "context": "ax2.text(span + 0.04, index, f\"{span:.2f}　({count} 个构象)\",",
+  "en": " conformations)"
+ },
+ {
+  "key": "构象打分跨度 (kcal/mol)",
+  "file": "figures.py",
+  "line": 1644,
+  "context": "ax2.set_xlabel(\"构象打分跨度 (kcal/mol)\", fontsize=13)",
+  "en": "Conformational score span (kcal/mol)"
+ },
+ {
+  "key": "构象收敛性（跨度越小越集中）",
+  "file": "figures.py",
+  "line": 1645,
+  "context": "ax2.set_title(\"构象收敛性（跨度越小越集中）\", loc=\"left\", fontsize=14.5,",
+  "en": "Conformational convergence (smaller span indicates tighter clustering)"
+ },
+ {
+  "key": "每个配体输出的全部构象的 Vina 打分与其相对最优构象的重原子 RMSD；同一条线上的点越靠左且越靠下，说明高分组装越接近全局最优。各配体构象打分跨度，括号内为输出构象数；跨度越小表示构象越集中。本图只反映单次运行的构象采样，不等同于多随机种子的重复性验证。",
+  "file": "figures.py",
+  "line": 1653,
+  "context": "\"（a）每个配体输出的全部构象的 Vina 打分与其相对最优构象的重原子 RMSD；同一条线上的点越靠左且越靠下，\"",
+  "en": "(a) Vina scores of all output conformations of each ligand versus their heavy-atom RMSD from the best conformation; points further left and lower on the same line indicate that high-scoring poses are closer to the global optimum. (b) Score span of the conformations of each ligand, with the number of output conformations in parentheses; a smaller span indicates more concentrated conformations. This figure reflects conformational sampling from a single run only and is not equivalent to reproducibility testing with multiple random seeds."
+ },
+ {
+  "key": "图 5　药物分子改进效果",
+  "file": "figures.py",
+  "line": 1668,
+  "context": "\"图 5　药物分子改进效果\",",
+  "en": "Figure 5. Effect of drug molecule optimization"
+ },
+ {
+  "key": "母体与改造候选的结合能变化及关键性质对比",
+  "file": "figures.py",
+  "line": 1669,
+  "context": "\"母体与改造候选的结合能变化及关键性质对比\",",
+  "en": "Changes in binding energy and comparison of key properties between the parent and optimized candidates"
+ },
+ {
+  "key": "改善",
+  "file": "figures.py",
+  "line": 1680,
+  "context": "color, _tag = TEAL, \"改善\"",
+  "en": "Improved"
+ },
+ {
+  "key": "下降",
+  "file": "figures.py",
+  "line": 1682,
+  "context": "color, _tag = RED, \"下降\"",
+  "en": "Reduced"
+ },
+ {
+  "key": "持平",
+  "file": "figures.py",
+  "line": 1684,
+  "context": "color, _tag = MUTED, \"持平\"",
+  "en": "Unchanged"
+ },
+ {
+  "key": "母体",
+  "file": "figures.py",
+  "line": 1697,
+  "context": "ax.text(base, -0.75, f\"母体 {base:.2f}\", fontsize=10.5,",
+  "en": "Parent"
+ },
+ {
+  "key": "结合能变化（哑铃图）",
+  "file": "figures.py",
+  "line": 1708,
+  "context": "ax.set_title(\"结合能变化（哑铃图）\", loc=\"left\", fontsize=14.5, pad=12)",
+  "en": "Change in binding energy (dumbbell plot)"
+ },
+ {
+  "key": "配体效率 LE",
+  "file": "figures.py",
+  "line": 1715,
+  "context": "(\"配体效率 LE\", \"le\", 3.0),",
+  "en": "Ligand efficiency LE"
+ },
+ {
+  "key": "最佳候选",
+  "file": "figures.py",
+  "line": 1733,
+  "context": "[\"母体\", \"最佳候选\"], [parent_value, best_value],",
+  "en": "Best candidate"
+ },
+ {
+  "key": "优化母体（空心点与虚线）与各改造候选（实心点）的结合能哑铃图，青色表示相对母体改善、红色表示下降，括号内为 ΔVina（kcal/mol）；母体与最佳候选的分子量、cLogP、QED 与配体效率对比。所有候选与母体使用同一受体、同一结合盒与同一打分函数，ΔVina 仅表示相对排序，不代表实验结合自由能。",
+  "file": "figures.py",
+  "line": 1750,
+  "context": "\"（a）优化母体（空心点与虚线）与各改造候选（实心点）的结合能哑铃图，青色表示相对母体改善、\"",
+  "en": "(a) Dumbbell plot of binding energies for the optimized parent (open circles and dashed line) and each optimized candidate (filled circles); teal indicates improvement over the parent and red indicates a decrease, with ΔVina (kcal/mol) in parentheses. (b) Comparison of molecular weight, cLogP, QED and ligand efficiency between the parent and the best candidate. All candidates and the parent used the same receptor, the same binding box and the same scoring function; ΔVina reflects relative ranking only and does not represent an experimental binding free energy."
+ },
+ {
+  "key": "图 6　骨架枚举设计分子的评价",
+  "file": "figures.py",
+  "line": 1783,
+  "context": "\"图 6　骨架枚举设计分子的评价\",",
+  "en": "Figure 6. Evaluation of scaffold-enumerated designed molecules"
+ },
+ {
+  "key": "设计分子的打分排序、化学空间位置与类药性雷达",
+  "file": "figures.py",
+  "line": 1784,
+  "context": "\"设计分子的打分排序、化学空间位置与类药性雷达\",",
+  "en": "Score ranking, chemical space position and drug-likeness radar of designed molecules"
+ },
+ {
+  "key": "结合亲和力 −ΔG (kcal/mol)",
+  "file": "figures.py",
+  "line": 1809,
+  "context": "ax.set_xlabel(\"结合亲和力 −ΔG (kcal/mol)\", fontsize=13)",
+  "en": "Binding affinity −ΔG (kcal/mol)"
+ },
+ {
+  "key": "设计分子打分排序",
+  "file": "figures.py",
+  "line": 1810,
+  "context": "ax.set_title(\"设计分子打分排序\", loc=\"left\", fontsize=14.5, pad=12)",
+  "en": "Score ranking of designed molecules"
+ },
+ {
+  "key": "最优设计",
+  "file": "figures.py",
+  "line": 1835,
+  "context": "\"最优设计\", (masses[0], logps[0]),",
+  "en": "Best design"
+ },
+ {
+  "key": "分子量 (Da)",
+  "file": "figures.py",
+  "line": 1839,
+  "context": "ax2.set_xlabel(\"分子量 (Da)\", fontsize=12.5)",
+  "en": "Molecular weight (Da)"
+ },
+ {
+  "key": "设计分子化学空间",
+  "file": "figures.py",
+  "line": 1841,
+  "context": "ax2.set_title(\"设计分子化学空间\", loc=\"left\", fontsize=13.5, pad=10)",
+  "en": "Chemical space of designed molecules"
+ },
+ {
+  "key": "设计中位",
+  "file": "figures.py",
+  "line": 1856,
+  "context": "(median_scores, MUTED, \"设计中位\"),",
+  "en": "Median of designs"
+ },
+ {
+  "key": "类药性雷达",
+  "file": "figures.py",
+  "line": 1869,
+  "context": "ax3.set_title(\"类药性雷达\", fontsize=13.5, pad=18)",
+  "en": "Drug-likeness radar"
+ },
+ {
+  "key": "骨架枚举设计分子的打分排序，条形长度为 −ΔG，末端标注数值与 QED。设计分子在分子量–cLogP 空间中的分布，颜色由深到浅表示 Vina 打分由优到劣，橙色圆环标记最优设计。最优设计与全部设计中位数的类药性雷达，各轴按 0–1 归一化。设计分子由核心骨架与取代基枚举生成，并非严格意义上的全新骨架设计。",
+  "file": "figures.py",
+  "line": 1877,
+  "context": "\"（a）骨架枚举设计分子的打分排序，条形长度为 −ΔG，末端标注数值与 QED。（b）设计分子在分子量–cLogP \"",
+  "en": "(a) Score ranking of scaffold-enumerated designed molecules, with bar length equal to −ΔG and values and QED annotated at the bar ends. (b) Distribution of designed molecules in molecular weight–cLogP space, with colour from dark to light indicating Vina score from best to worst and an orange ring marking the best design. (c) Drug-likeness radar of the best design and the median of all designs, with each axis normalized to 0–1. The designed molecules were generated by enumerating substituents on core scaffolds and are not de novo scaffold designs in the strict sense."
+ },
+ {
+  "key": "1.5　对接方案验证（重对接）",
+  "file": "figures.py",
+  "line": 1892,
+  "context": "\"1.5　对接方案验证（重对接）\",",
+  "en": "1.5 Validation of the docking protocol (re-docking)"
+ },
+ {
+  "key": "对称校正 RMSD 与晶体构象叠合",
+  "file": "figures.py",
+  "line": 1893,
+  "context": "\"对称校正 RMSD 与晶体构象叠合\",",
+  "en": "Symmetry-corrected RMSD and overlay with the crystal conformation"
+ },
+ {
+  "key": "2.0 Å 判据",
+  "file": "figures.py",
+  "line": 1911,
+  "context": "ax.text(2.06, -0.62, \"2.0 Å 判据\", fontsize=10.5, color=AMBER, va=\"bottom\")",
+  "en": "2.0 Å criterion"
+ },
+ {
+  "key": "对称校正重原子 RMSD (Å)",
+  "file": "figures.py",
+  "line": 1915,
+  "context": "ax.set_xlabel(\"对称校正重原子 RMSD (Å)\", fontsize=13)",
+  "en": "Symmetry-corrected heavy-atom RMSD (Å)"
+ },
+ {
+  "key": "重对接构象与晶体构象的偏差",
+  "file": "figures.py",
+  "line": 1916,
+  "context": "ax.set_title(\"重对接构象与晶体构象的偏差\", loc=\"left\", fontsize=14.5, pad=12)",
+  "en": "Deviation of re-docked conformations from the crystal conformation"
+ },
+ {
+  "key": "通过",
+  "file": "figures.py",
+  "line": 1920,
+  "context": "verdict = \"通过\" if rows[0].get(\"passed\") else \"未通过\"",
+  "en": "Passed"
+ },
+ {
+  "key": "未通过",
+  "file": "figures.py",
+  "line": 1920,
+  "context": "verdict = \"通过\" if rows[0].get(\"passed\") else \"未通过\"",
+  "en": "Failed"
+ },
+ {
+  "key": "2.0 Å 判据（RMSD",
+  "file": "figures.py",
+  "line": 1923,
+  "context": "f\"{verdict} 2.0 Å 判据（RMSD {rmsds[0]:.2f} Å）\",",
+  "en": "2.0 Å criterion (RMSD"
+ },
+ {
+  "key": "晶体构象",
+  "file": "figures.py",
+  "line": 1942,
+  "context": "label=\"晶体构象\")",
+  "en": "Crystal conformation"
+ },
+ {
+  "key": "对接构象",
+  "file": "figures.py",
+  "line": 1944,
+  "context": "linewidth=1.6, zorder=3, label=\"对接构象\")",
+  "en": "Docked conformation"
+ },
+ {
+  "key": "叠合投影（",
+  "file": "figures.py",
+  "line": 1949,
+  "context": "f\"叠合投影（{overlay.get('name', '')}，RMSD {overlay.get('rmsd', 0):.2f} Å，\"",
+  "en": "Overlay projection ("
+ },
+ {
+  "key": "个重原子）",
+  "file": "figures.py",
+  "line": 1950,
+  "context": "f\"{overlay.get('atoms', 0)} 个重原子）\",",
+  "en": " heavy atoms)"
+ },
+ {
+  "key": "缺少可供叠合的晶体构象",
+  "file": "figures.py",
+  "line": 1955,
+  "context": "ax2.text(0.5, 0.5, \"缺少可供叠合的晶体构象\", ha=\"center\", va=\"center\",",
+  "en": "No crystal conformation available for overlay"
+ },
+ {
+  "key": "重对接配体的对称校正重原子 RMSD，虚线为 2.0 Å 判据；绿色通过、红色未通过。晶体构象（灰色圆点）与对接构象（青色叉号）沿主平面的叠合投影，细线连接对应原子。本次共",
+  "file": "figures.py",
+  "line": 1962,
+  "context": "\"（a）重对接配体的对称校正重原子 RMSD，虚线为 2.0 Å 判据；绿色通过、红色未通过。\"",
+  "en": "(a) Symmetry-corrected heavy-atom RMSD of the re-docked ligands, with the dashed line marking the 2.0 Å criterion; green indicates pass and red indicates fail. (b) Overlay projection of the crystal conformation (grey dots) and the docked conformation (teal crosses) onto the principal plane, with thin lines connecting corresponding atoms. In total,"
+ },
+ {
+  "key": "个配体参与验证，",
+  "file": "figures.py",
+  "line": 1964,
+  "context": "f\"本次共 {len(rows)} 个配体参与验证，{passed} 个通过。若晶体配体为共价抑制剂，\"",
+  "en": " ligands were validated, "
+ },
+ {
+  "key": "个通过。若晶体配体为共价抑制剂，Vina 无法描述共价键，RMSD 与打分只反映非共价部分的叠合程度，需改用共价对接或非共价阳性对照复核。",
+  "file": "figures.py",
+  "line": 1964,
+  "context": "f\"本次共 {len(rows)} 个配体参与验证，{passed} 个通过。若晶体配体为共价抑制剂，\"",
+  "en": " passed. If the crystal ligand is a covalent inhibitor, Vina cannot describe covalent bonds; RMSD and scores then reflect only the overlay of the non-covalent portions, and covalent docking or a non-covalent positive control should be used for verification."
+ },
+ {
+  "key": "中位 pChEMBL",
+  "file": "figures.py",
+  "line": 1997,
+  "context": "\"median pChEMBL\": \"中位 pChEMBL\",",
+  "en": "Median pChEMBL"
+ },
+ {
+  "key": "定性活性记录",
+  "file": "figures.py",
+  "line": 1998,
+  "context": "\"qualitative activity records\": \"定性活性记录\",",
+  "en": "Qualitative activity records"
+ },
+ {
+  "key": "作用机制",
+  "file": "figures.py",
+  "line": 1999,
+  "context": "\"mechanism of action\": \"作用机制\",",
+  "en": "Mechanism of action"
+ },
+ {
+  "key": "共晶结构",
+  "file": "figures.py",
+  "line": 2000,
+  "context": "\"co-crystal structure\": \"共晶结构\",",
+  "en": "Co-crystal structure"
+ },
+ {
+  "key": "已知药物–基因关系",
+  "file": "figures.py",
+  "line": 2001,
+  "context": "\"known drug–gene interaction\": \"已知药物–基因关系\",",
+  "en": "Known drug–gene interaction"
+ },
+ {
+  "key": "相似化合物活性",
+  "file": "figures.py",
+  "line": 2002,
+  "context": "\"similar-compound bioactivity\": \"相似化合物活性\",",
+  "en": "Similar-compound bioactivity"
+ },
+ {
+  "key": "PubChem 生物试验",
+  "file": "figures.py",
+  "line": 2003,
+  "context": "\"PubChem bioassay\": \"PubChem 生物试验\",",
+  "en": "PubChem bioassay"
+ },
+ {
+  "key": "已批准药物机制",
+  "file": "figures.py",
+  "line": 2004,
+  "context": "\"approved drug mechanism\": \"已批准药物机制\",",
+  "en": "Approved drug mechanism"
+ },
+ {
+  "key": "外部证据",
+  "file": "figures.py",
+  "line": 2005,
+  "context": "\"external evidence\": \"外部证据\",",
+  "en": "External evidence"
+ },
+ {
+  "key": "外部证据（旧记录）",
+  "file": "figures.py",
+  "line": 2006,
+  "context": "\"external evidence (legacy record)\": \"外部证据（旧记录）\",",
+  "en": "External evidence (legacy record)"
+ },
+ {
+  "key": "（PDB 共晶）",
+  "file": "figures.py",
+  "line": 2017,
+  "context": "name = name.replace(\"（PDB 共晶）\", \"\")",
+  "en": ""
+ },
+ {
+  "key": "配体",
+  "file": "figures.py",
+  "line": 2063,
+  "context": "ax.text(0, -0.17, fishing.get(\"compound\", {}).get(\"name\", \"配体\"),",
+  "en": "Ligand"
+ },
+ {
+  "key": "配体–靶点网络",
+  "file": "figures.py",
+  "line": 2070,
+  "context": "ax.set_title(\"配体–靶点网络\", loc=\"left\", fontsize=14.5, pad=10)",
+  "en": "Ligand–target network"
+ },
+ {
+  "key": "图 9　靶点垂钓（反向筛选）",
+  "file": "figures.py",
+  "line": 2082,
+  "context": "\"图 9　靶点垂钓（反向筛选）\",",
+  "en": "Figure 9. Target fishing (reverse screening)"
+ },
+ {
+  "key": "整合 ChEMBL、BindingDB、PubChem、DGIdb、Open Targets 与 PDB 的潜在蛋白靶点",
+  "file": "figures.py",
+  "line": 2083,
+  "context": "\"整合 ChEMBL、BindingDB、PubChem、DGIdb、Open Targets 与 PDB 的潜在蛋白靶点\",",
+  "en": "Potential protein targets integrated from ChEMBL, BindingDB, PubChem, DGIdb, Open Targets and PDB"
+ },
+ {
+  "key": "综合证据分（定量 pChEMBL 优先，外部证据单独计分）",
+  "file": "figures.py",
+  "line": 2113,
+  "context": "ax.set_xlabel(\"综合证据分（定量 pChEMBL 优先，外部证据单独计分）\", fontsize=11.4)",
+  "en": "Composite evidence score (quantitative pChEMBL prioritized; external evidence scored separately)"
+ },
+ {
+  "key": "潜在靶点排序",
+  "file": "figures.py",
+  "line": 2114,
+  "context": "ax.set_title(\"潜在靶点排序\", loc=\"left\", fontsize=14.5, pad=10)",
+  "en": "Ranking of potential targets"
+ },
+ {
+  "key": "没有来源返回命中",
+  "file": "figures.py",
+  "line": 2125,
+  "context": ") or \"没有来源返回命中\"",
+  "en": "No hits returned by any source"
+ },
+ {
+  "key": "以",
+  "file": "figures.py",
+  "line": 2128,
+  "context": "f\"（a）以 {compound.get('name', '查询分子')} 为查询，合并 ChEMBL 相似分子\"",
+  "en": "(a) With"
+ },
+ {
+  "key": "为查询，合并 ChEMBL 相似分子（最终 Tanimoto ≥",
+  "file": "figures.py",
+  "line": 2128,
+  "context": "f\"（a）以 {compound.get('name', '查询分子')} 为查询，合并 ChEMBL 相似分子\"",
+  "en": " as the query, ChEMBL similar compounds (final Tanimoto ≥"
+ },
+ {
+  "key": "查询分子",
+  "file": "figures.py",
+  "line": 2128,
+  "context": "f\"（a）以 {compound.get('name', '查询分子')} 为查询，合并 ChEMBL 相似分子\"",
+  "en": "query molecule"
+ },
+ {
+  "key": "%）、BindingDB、DGIdb、PubChem、Open Targets 与 PDB 共晶证据；本次实际命中来源：",
+  "file": "figures.py",
+  "line": 2129,
+  "context": "f\"（最终 Tanimoto ≥ {(fishing.get('parameters') or {}).get('similarity', 70)}%）、\"",
+  "en": "%), BindingDB, DGIdb, PubChem, Open Targets and PDB co-crystal evidence were merged; sources actually hit in this run:"
+ },
+ {
+  "key": "。ChEMBL 靶点使用中位 pChEMBL，外部证据使用单独的证据强度分，两者不混为 pChEMBL；带 * 的条目没有定量 pChEMBL，只显示证据分。配体–靶点网络，边宽表示综合证据分，节点大小表示记录数。非人源共晶靶点在表中单独标注物种，不进入人源网络药理学。排序仅反映已有数据，不代表本分子的实测亲和力，需实验验证。",
+  "file": "figures.py",
+  "line": 2131,
+  "context": "f\"本次实际命中来源：{source_text}。ChEMBL 靶点使用中位 pChEMBL，\"",
+  "en": ". ChEMBL targets use median pChEMBL, whereas external evidence uses a separate evidence-strength score and the two are not merged into pChEMBL. Entries marked with * lack a quantitative pChEMBL and show only the evidence score. (b) Ligand–target network, with edge width representing the composite evidence score and node size the number of records. Non-human co-crystal targets are annotated with their species in the table and are excluded from human network pharmacology. The ranking reflects existing data only, does not represent the measured affinity of this molecule, and requires experimental validation."
+ },
+ {
+  "key": "靶点",
+  "file": "figures.py",
+  "line": 2141,
+  "context": "rows = [[\"靶点\", \"基因\", \"类型\", \"n\", \"pChEMBL\", \"最佳 (nM)\", \"证据分\", \"来源\", \"物种\"]]",
+  "en": "Target"
+ },
+ {
+  "key": "基因",
+  "file": "figures.py",
+  "line": 2141,
+  "context": "rows = [[\"靶点\", \"基因\", \"类型\", \"n\", \"pChEMBL\", \"最佳 (nM)\", \"证据分\", \"来源\", \"物种\"]]",
+  "en": "Gene"
+ },
+ {
+  "key": "类型",
+  "file": "figures.py",
+  "line": 2141,
+  "context": "rows = [[\"靶点\", \"基因\", \"类型\", \"n\", \"pChEMBL\", \"最佳 (nM)\", \"证据分\", \"来源\", \"物种\"]]",
+  "en": "Type"
+ },
+ {
+  "key": "最佳 (nM)",
+  "file": "figures.py",
+  "line": 2141,
+  "context": "rows = [[\"靶点\", \"基因\", \"类型\", \"n\", \"pChEMBL\", \"最佳 (nM)\", \"证据分\", \"来源\", \"物种\"]]",
+  "en": "Best (nM)"
+ },
+ {
+  "key": "证据分",
+  "file": "figures.py",
+  "line": 2141,
+  "context": "rows = [[\"靶点\", \"基因\", \"类型\", \"n\", \"pChEMBL\", \"最佳 (nM)\", \"证据分\", \"来源\", \"物种\"]]",
+  "en": "Evidence score"
+ },
+ {
+  "key": "来源",
+  "file": "figures.py",
+  "line": 2141,
+  "context": "rows = [[\"靶点\", \"基因\", \"类型\", \"n\", \"pChEMBL\", \"最佳 (nM)\", \"证据分\", \"来源\", \"物种\"]]",
+  "en": "Source"
+ },
+ {
+  "key": "物种",
+  "file": "figures.py",
+  "line": 2141,
+  "context": "rows = [[\"靶点\", \"基因\", \"类型\", \"n\", \"pChEMBL\", \"最佳 (nM)\", \"证据分\", \"来源\", \"物种\"]]",
+  "en": "Species"
+ },
+ {
+  "key": "附表 F1　靶点垂钓完整数据",
+  "file": "figures.py",
+  "line": 2168,
+  "context": "\"附表 F1　靶点垂钓完整数据\",",
+  "en": "Supplementary Table F1. Complete target fishing data"
+ },
+ {
+  "key": "按综合证据分排序的前 22 个靶点",
+  "file": "figures.py",
+  "line": 2169,
+  "context": "\"按综合证据分排序的前 22 个靶点\",",
+  "en": "Top 22 targets ranked by composite evidence score"
+ },
+ {
+  "key": "无",
+  "file": "figures.py",
+  "line": 2178,
+  "context": ") or \"无\"",
+  "en": "None"
+ },
+ {
+  "key": "检索来源：",
+  "file": "figures.py",
+  "line": 2180,
+  "context": "f\"检索来源：{fishing.get('source', 'ChEMBL')}；本次命中：{hits}；\"",
+  "en": "Source: "
+ },
+ {
+  "key": "；本次命中：",
+  "file": "figures.py",
+  "line": 2180,
+  "context": "f\"检索来源：{fishing.get('source', 'ChEMBL')}；本次命中：{hits}；\"",
+  "en": "; hits in this run: "
+ },
+ {
+  "key": "；检索时间",
+  "file": "figures.py",
+  "line": 2180,
+  "context": "f\"检索来源：{fishing.get('source', 'ChEMBL')}；本次命中：{hits}；\"",
+  "en": "; retrieval date"
+ },
+ {
+  "key": "。pChEMBL = −log10(摩尔活性值)；外部证据（PDB 共晶、DGIdb、BindingDB、PubChem、Open Targets）没有 pChEMBL 时以“—”显示，证据分只用于排序，不冒充 pChEMBL。",
+  "file": "figures.py",
+  "line": 2181,
+  "context": "f\"检索时间 {fishing.get('created', '—')}。pChEMBL = −log10(摩尔活性值)；\"",
+  "en": ". pChEMBL = −log10(molar activity); external evidence (PDB co-crystal, DGIdb, BindingDB, PubChem, Open Targets) without a pChEMBL value is shown as “—”, and the evidence score is used for ranking only and does not substitute for pChEMBL."
+ },
+ {
+  "key": "无显著富集条目",
+  "file": "figures.py",
+  "line": 2199,
+  "context": "ax.text(0.5, 0.5, \"无显著富集条目\", ha=\"center\", va=\"center\",",
+  "en": "No significantly enriched terms"
+ }
+]

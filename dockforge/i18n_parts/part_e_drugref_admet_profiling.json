@@ -1,0 +1,1962 @@
+[
+ {
+  "key": "Lipinski 五规则",
+  "file": "admet.py",
+  "line": 20,
+  "context": "\"lipinski\": \"Lipinski 五规则\",",
+  "en": "Lipinski's rule of five"
+ },
+ {
+  "key": "Veber 口服规则",
+  "file": "admet.py",
+  "line": 21,
+  "context": "\"veber\": \"Veber 口服规则\",",
+  "en": "Veber oral bioavailability rules"
+ },
+ {
+  "key": "Egan 吸收规则",
+  "file": "admet.py",
+  "line": 22,
+  "context": "\"egan\": \"Egan 吸收规则\",",
+  "en": "Egan absorption rules"
+ },
+ {
+  "key": "类先导规则",
+  "file": "admet.py",
+  "line": 23,
+  "context": "\"leadlike\": \"类先导规则\",",
+  "en": "Lead-like rules"
+ },
+ {
+  "key": "人肠吸收 HIA",
+  "file": "admet.py",
+  "line": 27,
+  "context": "\"人肠吸收 HIA\": \"HIA 吸收\",",
+  "en": "Human intestinal absorption (HIA)"
+ },
+ {
+  "key": "HIA 吸收",
+  "file": "admet.py",
+  "line": 27,
+  "context": "\"人肠吸收 HIA\": \"HIA 吸收\",",
+  "en": "HIA absorption"
+ },
+ {
+  "key": "Caco-2 通透性",
+  "file": "admet.py",
+  "line": 28,
+  "context": "\"Caco-2 通透性\": \"Caco-2\",",
+  "en": "Caco-2 permeability"
+ },
+ {
+  "key": "血脑屏障 logBB",
+  "file": "admet.py",
+  "line": 29,
+  "context": "\"血脑屏障 logBB\": \"logBB\",",
+  "en": "Blood–brain barrier logBB"
+ },
+ {
+  "key": "血浆蛋白结合",
+  "file": "admet.py",
+  "line": 30,
+  "context": "\"血浆蛋白结合\": \"蛋白结合\",",
+  "en": "Plasma protein binding"
+ },
+ {
+  "key": "蛋白结合",
+  "file": "admet.py",
+  "line": 30,
+  "context": "\"血浆蛋白结合\": \"蛋白结合\",",
+  "en": "Protein binding"
+ },
+ {
+  "key": "hERG 抑制风险",
+  "file": "admet.py",
+  "line": 31,
+  "context": "\"hERG 抑制风险\": \"hERG\",",
+  "en": "hERG inhibition risk"
+ },
+ {
+  "key": "CYP3A4 抑制风险",
+  "file": "admet.py",
+  "line": 32,
+  "context": "\"CYP3A4 抑制风险\": \"CYP3A4\",",
+  "en": "CYP3A4 inhibition risk"
+ },
+ {
+  "key": "CYP2D6 抑制风险",
+  "file": "admet.py",
+  "line": 33,
+  "context": "\"CYP2D6 抑制风险\": \"CYP2D6\",",
+  "en": "CYP2D6 inhibition risk"
+ },
+ {
+  "key": "致突变（Ames）风险",
+  "file": "admet.py",
+  "line": 34,
+  "context": "\"致突变（Ames）风险\": \"Ames\",",
+  "en": "Mutagenicity (Ames) risk"
+ },
+ {
+  "key": "肝清除率",
+  "file": "admet.py",
+  "line": 35,
+  "context": "\"肝清除率\": \"清除率\",",
+  "en": "Hepatic clearance"
+ },
+ {
+  "key": "清除率",
+  "file": "admet.py",
+  "line": 35,
+  "context": "\"肝清除率\": \"清除率\",",
+  "en": "Clearance"
+ },
+ {
+  "key": "预测半衰期",
+  "file": "admet.py",
+  "line": 36,
+  "context": "\"预测半衰期\": \"半衰期\",",
+  "en": "Predicted half-life"
+ },
+ {
+  "key": "半衰期",
+  "file": "admet.py",
+  "line": 36,
+  "context": "\"预测半衰期\": \"半衰期\",",
+  "en": "Half-life"
+ },
+ {
+  "key": "P-gp 外排风险",
+  "file": "admet.py",
+  "line": 37,
+  "context": "\"P-gp 外排风险\": \"P-gp\",",
+  "en": "P-gp efflux risk"
+ },
+ {
+  "key": "水溶性 logS",
+  "file": "admet.py",
+  "line": 38,
+  "context": "\"水溶性 logS\": \"logS\",",
+  "en": "Aqueous solubility logS"
+ },
+ {
+  "key": "硝基芳环",
+  "file": "admet.py",
+  "line": 42,
+  "context": "(\"nitro\", \"硝基芳环\", \"[$([N+](=O)[O-])]\"),",
+  "en": "Nitroaromatic"
+ },
+ {
+  "key": "芳香伯/仲胺",
+  "file": "admet.py",
+  "line": 43,
+  "context": "(\"aniline\", \"芳香伯/仲胺\", \"[NX3;H2,H1][c]\"),",
+  "en": "Aromatic primary/secondary amine"
+ },
+ {
+  "key": "环氧化物",
+  "file": "admet.py",
+  "line": 44,
+  "context": "(\"epoxide\", \"环氧化物\", \"C1OC1\"),",
+  "en": "Epoxide"
+ },
+ {
+  "key": "氮丙啶",
+  "file": "admet.py",
+  "line": 45,
+  "context": "(\"aziridine\", \"氮丙啶\", \"C1CN1\"),",
+  "en": "Aziridine"
+ },
+ {
+  "key": "Michael 受体",
+  "file": "admet.py",
+  "line": 46,
+  "context": "(\"michael\", \"Michael 受体\", \"[CX3]=[CX3][CX3]=[OX1]\"),",
+  "en": "Michael acceptor"
+ },
+ {
+  "key": "肼/腙",
+  "file": "admet.py",
+  "line": 47,
+  "context": "(\"hydrazine\", \"肼/腙\", \"[NX3][NX3]\"),",
+  "en": "Hydrazine/hydrazone"
+ },
+ {
+  "key": "亚硝基",
+  "file": "admet.py",
+  "line": 48,
+  "context": "(\"nitroso\", \"亚硝基\", \"[NX2]=O\"),",
+  "en": "Nitroso"
+ },
+ {
+  "key": "脂肪醛",
+  "file": "admet.py",
+  "line": 49,
+  "context": "(\"aldehyde\", \"脂肪醛\", \"[CX3H1](=O)[#6]\"),",
+  "en": "Aliphatic aldehyde"
+ },
+ {
+  "key": "烷基卤",
+  "file": "admet.py",
+  "line": 50,
+  "context": "(\"alkyl_halide\", \"烷基卤\", \"[CX4][Cl,Br,I]\"),",
+  "en": "Alkyl halide"
+ },
+ {
+  "key": "优",
+  "file": "admet.py",
+  "line": 65,
+  "context": "return \"优\"",
+  "en": "Good"
+ },
+ {
+  "key": "中",
+  "file": "admet.py",
+  "line": 67,
+  "context": "return \"中\"",
+  "en": "Moderate"
+ },
+ {
+  "key": "差",
+  "file": "admet.py",
+  "line": 68,
+  "context": "return \"差\"",
+  "en": "Poor"
+ },
+ {
+  "key": "易溶",
+  "file": "admet.py",
+  "line": 78,
+  "context": "return \"易溶\"",
+  "en": "Soluble"
+ },
+ {
+  "key": "中等",
+  "file": "admet.py",
+  "line": 80,
+  "context": "return \"中等\"",
+  "en": "Moderately soluble"
+ },
+ {
+  "key": "难溶",
+  "file": "admet.py",
+  "line": 82,
+  "context": "return \"难溶\"",
+  "en": "Poorly soluble"
+ },
+ {
+  "key": "极难溶",
+  "file": "admet.py",
+  "line": 83,
+  "context": "return \"极难溶\"",
+  "en": "Very poorly soluble"
+ },
+ {
+  "key": "分子为空",
+  "file": "admet.py",
+  "line": 110,
+  "context": "raise ValueError(\"分子为空\")",
+  "en": "Molecule is empty"
+ },
+ {
+  "key": "· 可旋转键",
+  "file": "admet.py",
+  "line": 168,
+  "context": "\"detail\": f\"MW {mw:.0f} · logP {logp:.1f} · 可旋转键 {rotb}\",",
+  "en": "· rotatable bonds"
+ },
+ {
+  "key": "TPSA、MW 与 logP 的经验吸收模型",
+  "file": "admet.py",
+  "line": 220,
+  "context": "\"note\": \"TPSA、MW 与 logP 的经验吸收模型\",",
+  "en": "Empirical absorption model based on TPSA, MW and logP"
+ },
+ {
+  "key": "被动扩散通透性，-4.5 以上较理想",
+  "file": "admet.py",
+  "line": 228,
+  "context": "\"note\": \"被动扩散通透性，-4.5 以上较理想\",",
+  "en": "Passive diffusion permeability; values above -4.5 are preferable"
+ },
+ {
+  "key": "Clark 方程；> 0.3 提示可入脑",
+  "file": "admet.py",
+  "line": 236,
+  "context": "\"note\": \"Clark 方程；> 0.3 提示可入脑\",",
+  "en": "Clark equation; > 0.3 indicates brain penetration"
+ },
+ {
+  "key": "结合率越低游离药物越多",
+  "file": "admet.py",
+  "line": 244,
+  "context": "\"note\": \"结合率越低游离药物越多\",",
+  "en": "Lower binding leaves more free drug"
+ },
+ {
+  "key": "亲脂性与碱性胺是主要风险因素",
+  "file": "admet.py",
+  "line": 252,
+  "context": "\"note\": \"亲脂性与碱性胺是主要风险因素\",",
+  "en": "Lipophilicity and basic amines are the main risk factors"
+ },
+ {
+  "key": "大体积亲脂芳环体系风险较高",
+  "file": "admet.py",
+  "line": 260,
+  "context": "\"note\": \"大体积亲脂芳环体系风险较高\",",
+  "en": "Bulky lipophilic aromatic systems carry higher risk"
+ },
+ {
+  "key": "碱性氮与亲脂性共同驱动",
+  "file": "admet.py",
+  "line": 268,
+  "context": "\"note\": \"碱性氮与亲脂性共同驱动\",",
+  "en": "Driven jointly by basic nitrogen and lipophilicity"
+ },
+ {
+  "key": "基于结构警示子",
+  "file": "admet.py",
+  "line": 276,
+  "context": "\"note\": \"基于结构警示子\",",
+  "en": "Based on structural alerts"
+ },
+ {
+  "key": "中等清除更利于维持暴露",
+  "file": "admet.py",
+  "line": 284,
+  "context": "\"note\": \"中等清除更利于维持暴露\",",
+  "en": "Moderate clearance better sustains exposure"
+ },
+ {
+  "key": "经验估算，仅用于排序",
+  "file": "admet.py",
+  "line": 292,
+  "context": "\"note\": \"经验估算，仅用于排序\",",
+  "en": "Empirical estimate, for ranking only"
+ },
+ {
+  "key": "高 TPSA 与碱性氮增加外排概率",
+  "file": "admet.py",
+  "line": 300,
+  "context": "\"note\": \"高 TPSA 与碱性氮增加外排概率\",",
+  "en": "High TPSA and basic nitrogen increase efflux probability"
+ },
+ {
+  "key": "ESOL 预测 ·",
+  "file": "admet.py",
+  "line": 308,
+  "context": "\"note\": f\"ESOL 预测 · {_solubility_class(logs)}\",",
+  "en": "ESOL prediction ·"
+ },
+ {
+  "key": "吸收",
+  "file": "admet.py",
+  "line": 315,
+  "context": "(\"吸收\", (hia + admet[1][\"score\"]) / 2),",
+  "en": "Absorption"
+ },
+ {
+  "key": "分布",
+  "file": "admet.py",
+  "line": 316,
+  "context": "(\"分布\", (admet[3][\"score\"] + admet[2][\"score\"]) / 2),",
+  "en": "Distribution"
+ },
+ {
+  "key": "代谢",
+  "file": "admet.py",
+  "line": 317,
+  "context": "(\"代谢\", (admet[5][\"score\"] + admet[6][\"score\"]) / 2),",
+  "en": "Metabolism"
+ },
+ {
+  "key": "排泄",
+  "file": "admet.py",
+  "line": 318,
+  "context": "(\"排泄\", (admet[8][\"score\"] + admet[9][\"score\"]) / 2),",
+  "en": "Excretion"
+ },
+ {
+  "key": "毒性",
+  "file": "admet.py",
+  "line": 319,
+  "context": "(\"毒性\", (admet[4][\"score\"] + admet[7][\"score\"]) / 2),",
+  "en": "Toxicity"
+ },
+ {
+  "key": "类药性",
+  "file": "admet.py",
+  "line": 320,
+  "context": "(\"类药性\", qed * 100),",
+  "en": "Drug-likeness"
+ },
+ {
+  "key": "RDKit 描述符 + 公开经验相关式（ESOL / Clark）",
+  "file": "admet.py",
+  "line": 356,
+  "context": "\"method\": \"RDKit 描述符 + 公开经验相关式（ESOL / Clark）\",",
+  "en": "RDKit descriptors + published empirical correlations (ESOL / Clark)"
+ },
+ {
+  "key": "无法解析 SMILES：",
+  "file": "admet.py",
+  "line": 385,
+  "context": "raise ValueError(f\"无法解析 SMILES：{smiles[:80]}\")",
+  "en": "Cannot parse SMILES: "
+ },
+ {
+  "key": "ADMET 与类药性预测",
+  "file": "admet.py",
+  "line": 433,
+  "context": "0.07, 0.955, \"ADMET 与类药性预测\",",
+  "en": "ADMET and drug-likeness prediction"
+ },
+ {
+  "key": "个结构警示",
+  "file": "admet.py",
+  "line": 439,
+  "context": "f\"{len(drug.get('alerts', []))} 个结构警示\",",
+  "en": "structural alerts"
+ },
+ {
+  "key": "综合成药性雷达",
+  "file": "admet.py",
+  "line": 460,
+  "context": "ax.set_title(\"综合成药性雷达\", fontsize=14, pad=22)",
+  "en": "Overall developability radar"
+ },
+ {
+  "key": "分子量 MW",
+  "file": "admet.py",
+  "line": 467,
+  "context": "(\"分子量 MW\", f\"{phys['mw']:.1f}\"),",
+  "en": "MW"
+ },
+ {
+  "key": "氢键供体 / 受体",
+  "file": "admet.py",
+  "line": 471,
+  "context": "(\"氢键供体 / 受体\", f\"{phys['hbd']} / {phys['hba']}\"),",
+  "en": "H-bond donor / acceptor"
+ },
+ {
+  "key": "可旋转键",
+  "file": "admet.py",
+  "line": 472,
+  "context": "(\"可旋转键\", f\"{phys['rotb']}\"),",
+  "en": "Rotatable bonds"
+ },
+ {
+  "key": "环 / 芳环",
+  "file": "admet.py",
+  "line": 473,
+  "context": "(\"环 / 芳环\", f\"{phys['rings']} / {phys['aromatic_rings']}\"),",
+  "en": "Rings / aromatic rings"
+ },
+ {
+  "key": "摩尔折射率",
+  "file": "admet.py",
+  "line": 475,
+  "context": "(\"摩尔折射率\", f\"{phys['mr']:.1f}\"),",
+  "en": "Molar refractivity"
+ },
+ {
+  "key": "合成复杂度",
+  "file": "admet.py",
+  "line": 477,
+  "context": "(\"合成复杂度\", f\"{drug['complexity']:.0f} / 100\"),",
+  "en": "Synthetic complexity"
+ },
+ {
+  "key": "理化性质",
+  "file": "admet.py",
+  "line": 496,
+  "context": "ax.set_title(\"理化性质\", fontsize=14, pad=12, loc=\"left\")",
+  "en": "Physicochemical properties"
+ },
+ {
+  "key": "预测质量分数（越高越有利）",
+  "file": "admet.py",
+  "line": 518,
+  "context": "ax.set_xlabel(\"预测质量分数（越高越有利）\", fontsize=11)",
+  "en": "Predicted quality score (higher is better)"
+ },
+ {
+  "key": "ADMET 端点预测",
+  "file": "admet.py",
+  "line": 519,
+  "context": "ax.set_title(\"ADMET 端点预测\", fontsize=14, loc=\"left\", pad=10)",
+  "en": "ADMET endpoint predictions"
+ },
+ {
+  "key": "口服与类药规则",
+  "file": "admet.py",
+  "line": 529,
+  "context": "ax.set_title(\"口服与类药规则\", fontsize=14, loc=\"left\", pad=12)",
+  "en": "Oral and drug-likeness rules"
+ },
+ {
+  "key": "通过",
+  "file": "admet.py",
+  "line": 537,
+  "context": "ax.text(0.94, y, \"通过\" if ok else f\"违反 {rule['violations']} 项\",",
+  "en": "Pass"
+ },
+ {
+  "key": "违反",
+  "file": "admet.py",
+  "line": 537,
+  "context": "ax.text(0.94, y, \"通过\" if ok else f\"违反 {rule['violations']} 项\",",
+  "en": "Violations: "
+ },
+ {
+  "key": "项",
+  "file": "admet.py",
+  "line": 537,
+  "context": "ax.text(0.94, y, \"通过\" if ok else f\"违反 {rule['violations']} 项\",",
+  "en": " rules"
+ },
+ {
+  "key": "结构警示：",
+  "file": "admet.py",
+  "line": 542,
+  "context": "ax.text(0.0, 0.02, \"结构警示：\" + \"、\".join(drug[\"alerts\"]),",
+  "en": "Structural alerts: "
+ },
+ {
+  "key": "二维结构",
+  "file": "admet.py",
+  "line": 553,
+  "context": "ax.set_title(\"二维结构\", fontsize=12, loc=\"left\", pad=8)",
+  "en": "2D structure"
+ },
+ {
+  "key": "方法：RDKit 描述符 + ESOL（Delaney 2004）+ Clark logBB；结果为计算排序依据，不替代实验 ADMET。",
+  "file": "admet.py",
+  "line": 557,
+  "context": "\"方法：RDKit 描述符 + ESOL（Delaney 2004）+ Clark logBB；结果为计算排序依据，不替代实验 ADMET。\",",
+  "en": "Methods: RDKit descriptors + ESOL (Delaney 2004) + Clark logBB; the results serve as a basis for computational ranking and do not replace experimental ADMET."
+ },
+ {
+  "key": "FDA 已上市药物参考集与候选分子的结构、靶点与 ADMET 参考分析。\n\n数据来源：公开 FDA 标签、DrugBank/PubChem/ChEMBL 汇总，仅作参考。\n\n本模块提供三件事：\n\n1. ``FDA_DRUGS``：45 个结构简单、SMILES 确定、靶点明确的 FDA 已上市药物，\n   字段覆盖药物类别、HGNC 靶点、适应证、批准年份、给药途径、典型半衰期与\n   CYP 代谢酶。所有 SMILES 均经 RDKit 解析校验；半衰期与批准年份只在有把握\n   时填写，否则为 ``None``。\n2. ``compare``：把候选分子与参考集逐一比较（Morgan 指纹 Tanimoto、Bemis–Murcko\n   骨架、最大公共子结构 MCS、靶点 Jaccard、ADMET 与理化属性相似度），输出可\n   排序的参考列表。不伪造 pIC50，药效关联只依据靶点重叠与机制邻近描述。\n3. ``drugref_pdf``：A4 竖版 CNS 风格多面板图（结构相似度条形图、结构–靶点散点、\n   ADMET 雷达、属性表、参考药二维结构），可直接并入最终报告。\n\n所有 ADMET 数值均来自 :mod:`dockforge.admet` 的透明经验模型，是计算值，\n不能替代临床或实验数据；综合分是启发式排序指标，不是概率或置信度。",
+  "file": "drugref.py",
+  "line": 1,
+  "context": "\"\"\"FDA 已上市药物参考集与候选分子的结构、靶点与 ADMET 参考分析。",
+  "en": "FDA-approved drug reference set and reference analyses of candidate molecules against it for structure, target and ADMET.\n\nData sources: public FDA labels and DrugBank/PubChem/ChEMBL summaries; for reference only.\n\nThis module provides three things:\n\n1. ``FDA_DRUGS``: 45 FDA-approved drugs with simple structures, defined SMILES and well-characterized targets, with fields covering drug class, HGNC target, indication, approval year, route of administration, typical half-life and CYP metabolizing enzymes. All SMILES are validated by RDKit parsing; half-life and approval year are filled in only when certain, otherwise ``None``.\n2. ``compare``: compares a candidate molecule with the reference set one by one (Morgan fingerprint Tanimoto, Bemis–Murcko scaffold, maximum common substructure MCS, target Jaccard, ADMET and physicochemical property similarity) and returns a sortable reference list. No pIC50 values are fabricated; pharmacodynamic associations rely only on target overlap and mechanism proximity.\n3. ``drugref_pdf``: A4 portrait CNS-style multi-panel figure (structural similarity bar chart, structure–target scatter, ADMET radar, property table, 2D structures of reference drugs) that can be included directly in the final report.\n\nAll ADMET values come from the transparent empirical models in :mod:`dockforge.admet`; they are calculated values and cannot replace clinical or experimental data. The composite score is a heuristic ranking metric, not a probability or confidence."
+ },
+ {
+  "key": "非甾体抗炎药（COX-1/2 抑制剂）",
+  "file": "drugref.py",
+  "line": 43,
+  "context": "\"drug_class\": \"非甾体抗炎药（COX-1/2 抑制剂）\",",
+  "en": "NSAID (COX-1/2 inhibitor)"
+ },
+ {
+  "key": "解热镇痛、抗血小板（低剂量）",
+  "file": "drugref.py",
+  "line": 45,
+  "context": "\"indication\": \"解热镇痛、抗血小板（低剂量）\",",
+  "en": "Antipyretic and analgesic; antiplatelet (low dose)"
+ },
+ {
+  "key": "口服",
+  "file": "drugref.py",
+  "line": 47,
+  "context": "\"route\": \"口服\",",
+  "en": "Oral"
+ },
+ {
+  "key": "血浆酯酶快速水解为水杨酸；对血小板 COX-1 的抑制不可逆。",
+  "file": "drugref.py",
+  "line": 50,
+  "context": "\"notes\": \"血浆酯酶快速水解为水杨酸；对血小板 COX-1 的抑制不可逆。\",",
+  "en": "Rapidly hydrolyzed by plasma esterases to salicylic acid; inhibition of platelet COX-1 is irreversible."
+ },
+ {
+  "key": "非甾体抗炎药（COX 抑制剂）",
+  "file": "drugref.py",
+  "line": 55,
+  "context": "\"drug_class\": \"非甾体抗炎药（COX 抑制剂）\",",
+  "en": "NSAID (COX inhibitor)"
+ },
+ {
+  "key": "镇痛、抗炎、退热",
+  "file": "drugref.py",
+  "line": 57,
+  "context": "\"indication\": \"镇痛、抗炎、退热\",",
+  "en": "Analgesic, anti-inflammatory and antipyretic"
+ },
+ {
+  "key": "手性药物，S-构型对 COX 抑制活性更强。",
+  "file": "drugref.py",
+  "line": 62,
+  "context": "\"notes\": \"手性药物，S-构型对 COX 抑制活性更强。\",",
+  "en": "Chiral drug; the S-enantiomer has stronger COX inhibitory activity."
+ },
+ {
+  "key": "解热镇痛药",
+  "file": "drugref.py",
+  "line": 67,
+  "context": "\"drug_class\": \"解热镇痛药\",",
+  "en": "Antipyretic and analgesic"
+ },
+ {
+  "key": "解热镇痛（中枢为主）",
+  "file": "drugref.py",
+  "line": 69,
+  "context": "\"indication\": \"解热镇痛（中枢为主）\",",
+  "en": "Antipyretic and analgesic (mainly central)"
+ },
+ {
+  "key": "过量时 CYP2E1 生成 NAPQI，耗竭谷胱甘肽可致肝损伤。",
+  "file": "drugref.py",
+  "line": 74,
+  "context": "\"notes\": \"过量时 CYP2E1 生成 NAPQI，耗竭谷胱甘肽可致肝损伤。\",",
+  "en": "In overdose, CYP2E1 forms NAPQI; glutathione depletion can cause liver injury."
+ },
+ {
+  "key": "选择性 COX-2 抑制剂",
+  "file": "drugref.py",
+  "line": 79,
+  "context": "\"drug_class\": \"选择性 COX-2 抑制剂\",",
+  "en": "Selective COX-2 inhibitor"
+ },
+ {
+  "key": "骨关节炎、类风湿关节炎镇痛",
+  "file": "drugref.py",
+  "line": 81,
+  "context": "\"indication\": \"骨关节炎、类风湿关节炎镇痛\",",
+  "en": "Osteoarthritis and rheumatoid arthritis pain"
+ },
+ {
+  "key": "含磺胺结构；需评估心血管与胃肠道风险。",
+  "file": "drugref.py",
+  "line": 86,
+  "context": "\"notes\": \"含磺胺结构；需评估心血管与胃肠道风险。\",",
+  "en": "Contains a sulfonamide moiety; cardiovascular and gastrointestinal risks should be assessed."
+ },
+ {
+  "key": "维生素 K 拮抗剂",
+  "file": "drugref.py",
+  "line": 91,
+  "context": "\"drug_class\": \"维生素 K 拮抗剂\",",
+  "en": "Vitamin K antagonist"
+ },
+ {
+  "key": "抗凝（房颤、静脉血栓栓塞）",
+  "file": "drugref.py",
+  "line": 93,
+  "context": "\"indication\": \"抗凝（房颤、静脉血栓栓塞）\",",
+  "en": "Anticoagulation (atrial fibrillation, venous thromboembolism)"
+ },
+ {
+  "key": "治疗窗窄需 INR 监测；S-华法林主要经 CYP2C9 代谢。",
+  "file": "drugref.py",
+  "line": 98,
+  "context": "\"notes\": \"治疗窗窄需 INR 监测；S-华法林主要经 CYP2C9 代谢。\",",
+  "en": "Narrow therapeutic window requiring INR monitoring; S-warfarin is mainly metabolized by CYP2C9."
+ },
+ {
+  "key": "P2Y12 受体拮抗剂（前药）",
+  "file": "drugref.py",
+  "line": 103,
+  "context": "\"drug_class\": \"P2Y12 受体拮抗剂（前药）\",",
+  "en": "P2Y12 receptor antagonist (prodrug)"
+ },
+ {
+  "key": "抗血小板（急性冠脉综合征、支架术后）",
+  "file": "drugref.py",
+  "line": 105,
+  "context": "\"indication\": \"抗血小板（急性冠脉综合征、支架术后）\",",
+  "en": "Antiplatelet therapy (acute coronary syndrome, post-stenting)"
+ },
+ {
+  "key": "需经 CYP2C19 等活化；慢代谢者活性代谢物暴露降低。",
+  "file": "drugref.py",
+  "line": 110,
+  "context": "\"notes\": \"需经 CYP2C19 等活化；慢代谢者活性代谢物暴露降低。\",",
+  "en": "Requires activation by CYP2C19 and other enzymes; poor metabolizers have lower exposure to the active metabolite."
+ },
+ {
+  "key": "Xa 因子抑制剂",
+  "file": "drugref.py",
+  "line": 115,
+  "context": "\"drug_class\": \"Xa 因子抑制剂\",",
+  "en": "Factor Xa inhibitor"
+ },
+ {
+  "key": "口服直接 Xa 因子抑制剂，通常无需常规凝血监测。",
+  "file": "drugref.py",
+  "line": 122,
+  "context": "\"notes\": \"口服直接 Xa 因子抑制剂，通常无需常规凝血监测。\",",
+  "en": "Oral direct factor Xa inhibitor; routine coagulation monitoring is usually unnecessary."
+ },
+ {
+  "key": "双胍类降糖药",
+  "file": "drugref.py",
+  "line": 127,
+  "context": "\"drug_class\": \"双胍类降糖药\",",
+  "en": "Biguanide antihyperglycemic agent"
+ },
+ {
+  "key": "2 型糖尿病一线用药",
+  "file": "drugref.py",
+  "line": 129,
+  "context": "\"indication\": \"2 型糖尿病一线用药\",",
+  "en": "First-line therapy for type 2 diabetes"
+ },
+ {
+  "key": "无公认单一蛋白靶点，主要经线粒体复合物 I/AMPK 途径起效；原型经肾排泄。",
+  "file": "drugref.py",
+  "line": 134,
+  "context": "\"notes\": \"无公认单一蛋白靶点，主要经线粒体复合物 I/AMPK 途径起效；原型经肾排泄。\",",
+  "en": "No single recognized protein target; acts mainly through mitochondrial complex I/AMPK pathways; excreted unchanged in urine."
+ },
+ {
+  "key": "他汀类（HMG-CoA 还原酶抑制剂）",
+  "file": "drugref.py",
+  "line": 139,
+  "context": "\"drug_class\": \"他汀类（HMG-CoA 还原酶抑制剂）\",",
+  "en": "Statin (HMG-CoA reductase inhibitor)"
+ },
+ {
+  "key": "高脂血症、动脉粥样硬化一级/二级预防",
+  "file": "drugref.py",
+  "line": 141,
+  "context": "\"indication\": \"高脂血症、动脉粥样硬化一级/二级预防\",",
+  "en": "Hyperlipidemia; primary/secondary prevention of atherosclerosis"
+ },
+ {
+  "key": "亲脂性他汀，活性代谢物同样抑制 HMGCR。",
+  "file": "drugref.py",
+  "line": 146,
+  "context": "\"notes\": \"亲脂性他汀，活性代谢物同样抑制 HMGCR。\",",
+  "en": "Lipophilic statin; its active metabolites also inhibit HMGCR."
+ },
+ {
+  "key": "高脂血症",
+  "file": "drugref.py",
+  "line": 153,
+  "context": "\"indication\": \"高脂血症\",",
+  "en": "Hyperlipidemia"
+ },
+ {
+  "key": "内酯前药，经 CYP3A4 水解为活性羟酸；与葡萄柚汁相互作用明显。",
+  "file": "drugref.py",
+  "line": 158,
+  "context": "\"notes\": \"内酯前药，经 CYP3A4 水解为活性羟酸；与葡萄柚汁相互作用明显。\",",
+  "en": "Lactone prodrug hydrolyzed by CYP3A4 to the active hydroxy acid; marked interaction with grapefruit juice."
+ },
+ {
+  "key": "亲水性他汀，多以原型经胆汁与肾排泄。",
+  "file": "drugref.py",
+  "line": 170,
+  "context": "\"notes\": \"亲水性他汀，多以原型经胆汁与肾排泄。\",",
+  "en": "Hydrophilic statin; largely excreted unchanged in bile and urine."
+ },
+ {
+  "key": "二氢吡啶类钙通道阻滞剂",
+  "file": "drugref.py",
+  "line": 175,
+  "context": "\"drug_class\": \"二氢吡啶类钙通道阻滞剂\",",
+  "en": "Dihydropyridine calcium channel blocker"
+ },
+ {
+  "key": "高血压、稳定型心绞痛",
+  "file": "drugref.py",
+  "line": 177,
+  "context": "\"indication\": \"高血压、稳定型心绞痛\",",
+  "en": "Hypertension and stable angina"
+ },
+ {
+  "key": "半衰期长，可每日给药一次。",
+  "file": "drugref.py",
+  "line": 182,
+  "context": "\"notes\": \"半衰期长，可每日给药一次。\",",
+  "en": "Long half-life allows once-daily dosing."
+ },
+ {
+  "key": "血管紧张素 II AT1 受体拮抗剂",
+  "file": "drugref.py",
+  "line": 187,
+  "context": "\"drug_class\": \"血管紧张素 II AT1 受体拮抗剂\",",
+  "en": "Angiotensin II AT1 receptor antagonist"
+ },
+ {
+  "key": "高血压、糖尿病肾病",
+  "file": "drugref.py",
+  "line": 189,
+  "context": "\"indication\": \"高血压、糖尿病肾病\",",
+  "en": "Hypertension and diabetic nephropathy"
+ },
+ {
+  "key": "活性代谢物 EXP3174 亲和力更强、半衰期更长。",
+  "file": "drugref.py",
+  "line": 194,
+  "context": "\"notes\": \"活性代谢物 EXP3174 亲和力更强、半衰期更长。\",",
+  "en": "The active metabolite EXP3174 has higher affinity and a longer half-life."
+ },
+ {
+  "key": "高血压、心力衰竭",
+  "file": "drugref.py",
+  "line": 201,
+  "context": "\"indication\": \"高血压、心力衰竭\",",
+  "en": "Hypertension and heart failure"
+ },
+ {
+  "key": "非前药，CYP 代谢占比很低，多以原型经胆汁排泄。",
+  "file": "drugref.py",
+  "line": 206,
+  "context": "\"notes\": \"非前药，CYP 代谢占比很低，多以原型经胆汁排泄。\",",
+  "en": "Not a prodrug; CYP metabolism is minimal and most of the dose is excreted unchanged in bile."
+ },
+ {
+  "key": "β1 选择性肾上腺素受体阻滞剂",
+  "file": "drugref.py",
+  "line": 211,
+  "context": "\"drug_class\": \"β1 选择性肾上腺素受体阻滞剂\",",
+  "en": "β1-selective adrenergic receptor blocker"
+ },
+ {
+  "key": "高血压、心绞痛、慢性心力衰竭",
+  "file": "drugref.py",
+  "line": 213,
+  "context": "\"indication\": \"高血压、心绞痛、慢性心力衰竭\",",
+  "en": "Hypertension, angina and chronic heart failure"
+ },
+ {
+  "key": "CYP2D6 多态性显著影响血药浓度。",
+  "file": "drugref.py",
+  "line": 218,
+  "context": "\"notes\": \"CYP2D6 多态性显著影响血药浓度。\",",
+  "en": "CYP2D6 polymorphisms markedly affect plasma concentrations."
+ },
+ {
+  "key": "袢利尿剂",
+  "file": "drugref.py",
+  "line": 223,
+  "context": "\"drug_class\": \"袢利尿剂\",",
+  "en": "Loop diuretic"
+ },
+ {
+  "key": "水肿、心力衰竭、高血压",
+  "file": "drugref.py",
+  "line": 225,
+  "context": "\"indication\": \"水肿、心力衰竭、高血压\",",
+  "en": "Edema, heart failure and hypertension"
+ },
+ {
+  "key": "抑制髓袢 Na+-K+-2Cl- 共转运体 NKCC2；主要经葡萄糖醛酸化排泄。",
+  "file": "drugref.py",
+  "line": 230,
+  "context": "\"notes\": \"抑制髓袢 Na+-K+-2Cl- 共转运体 NKCC2；主要经葡萄糖醛酸化排泄。\",",
+  "en": "Inhibits the Na+-K+-2Cl- cotransporter NKCC2 in the thick ascending limb of the loop of Henle; eliminated mainly by glucuronidation."
+ },
+ {
+  "key": "噻嗪类利尿剂",
+  "file": "drugref.py",
+  "line": 235,
+  "context": "\"drug_class\": \"噻嗪类利尿剂\",",
+  "en": "Thiazide diuretic"
+ },
+ {
+  "key": "高血压、水肿",
+  "file": "drugref.py",
+  "line": 237,
+  "context": "\"indication\": \"高血压、水肿\",",
+  "en": "Hypertension and edema"
+ },
+ {
+  "key": "抑制远曲小管 Na+-Cl- 共转运体 NCC；原型经肾排泄。",
+  "file": "drugref.py",
+  "line": 242,
+  "context": "\"notes\": \"抑制远曲小管 Na+-Cl- 共转运体 NCC；原型经肾排泄。\",",
+  "en": "Inhibits the Na+-Cl- cotransporter NCC in the distal convoluted tubule; excreted unchanged in urine."
+ },
+ {
+  "key": "质子泵抑制剂（前药）",
+  "file": "drugref.py",
+  "line": 247,
+  "context": "\"drug_class\": \"质子泵抑制剂（前药）\",",
+  "en": "Proton pump inhibitor (prodrug)"
+ },
+ {
+  "key": "胃食管反流、消化性溃疡",
+  "file": "drugref.py",
+  "line": 249,
+  "context": "\"indication\": \"胃食管反流、消化性溃疡\",",
+  "en": "Gastroesophageal reflux and peptic ulcer"
+ },
+ {
+  "key": "酸性环境中活化后与 H+/K+-ATP 酶共价结合。",
+  "file": "drugref.py",
+  "line": 254,
+  "context": "\"notes\": \"酸性环境中活化后与 H+/K+-ATP 酶共价结合。\",",
+  "en": "Activated in an acidic environment and binds covalently to H+/K+-ATPase."
+ },
+ {
+  "key": "CYP 介导的药物相互作用相对较少。",
+  "file": "drugref.py",
+  "line": 266,
+  "context": "\"notes\": \"CYP 介导的药物相互作用相对较少。\",",
+  "en": "Relatively few CYP-mediated drug interactions."
+ },
+ {
+  "key": "第二代 H1 受体拮抗剂",
+  "file": "drugref.py",
+  "line": 271,
+  "context": "\"drug_class\": \"第二代 H1 受体拮抗剂\",",
+  "en": "Second-generation H1 receptor antagonist"
+ },
+ {
+  "key": "过敏性鼻炎、慢性荨麻疹",
+  "file": "drugref.py",
+  "line": 273,
+  "context": "\"indication\": \"过敏性鼻炎、慢性荨麻疹\",",
+  "en": "Allergic rhinitis and chronic urticaria"
+ },
+ {
+  "key": "羟嗪的活性羧酸代谢物，多以原型经肾排泄。",
+  "file": "drugref.py",
+  "line": 278,
+  "context": "\"notes\": \"羟嗪的活性羧酸代谢物，多以原型经肾排泄。\",",
+  "en": "Active carboxylic acid metabolite of hydroxyzine; largely excreted unchanged in urine."
+ },
+ {
+  "key": "经 CYP 生成活性代谢物地氯雷他定。",
+  "file": "drugref.py",
+  "line": 290,
+  "context": "\"notes\": \"经 CYP 生成活性代谢物地氯雷他定。\",",
+  "en": "Metabolized by CYP to the active metabolite desloratadine."
+ },
+ {
+  "key": "β-内酰胺类抗生素（氨基青霉素）",
+  "file": "drugref.py",
+  "line": 295,
+  "context": "\"drug_class\": \"β-内酰胺类抗生素（氨基青霉素）\",",
+  "en": "β-lactam antibiotic (aminopenicillin)"
+ },
+ {
+  "key": "呼吸道、耳鼻喉及幽门螺杆菌联合根除治疗",
+  "file": "drugref.py",
+  "line": 297,
+  "context": "\"indication\": \"呼吸道、耳鼻喉及幽门螺杆菌联合根除治疗\",",
+  "en": "Respiratory and ear, nose and throat infections; Helicobacter pylori eradication therapy"
+ },
+ {
+  "key": "靶点为细菌青霉素结合蛋白（PBP），无人类 HGNC 对应基因；原型经肾排泄。",
+  "file": "drugref.py",
+  "line": 302,
+  "context": "\"notes\": \"靶点为细菌青霉素结合蛋白（PBP），无人类 HGNC 对应基因；原型经肾排泄。\",",
+  "en": "Targets bacterial penicillin-binding proteins (PBPs), with no human HGNC counterpart; excreted unchanged in urine."
+ },
+ {
+  "key": "氟喹诺酮类抗生素",
+  "file": "drugref.py",
+  "line": 307,
+  "context": "\"drug_class\": \"氟喹诺酮类抗生素\",",
+  "en": "Fluoroquinolone antibiotic"
+ },
+ {
+  "key": "革兰阴性菌感染、尿路感染",
+  "file": "drugref.py",
+  "line": 309,
+  "context": "\"indication\": \"革兰阴性菌感染、尿路感染\",",
+  "en": "Gram-negative infections and urinary tract infections"
+ },
+ {
+  "key": "靶点为细菌 DNA 旋转酶/拓扑异构酶 IV；可抑制 CYP1A2。",
+  "file": "drugref.py",
+  "line": 314,
+  "context": "\"notes\": \"靶点为细菌 DNA 旋转酶/拓扑异构酶 IV；可抑制 CYP1A2。\",",
+  "en": "Targets bacterial DNA gyrase/topoisomerase IV; inhibits CYP1A2."
+ },
+ {
+  "key": "三唑类抗真菌药",
+  "file": "drugref.py",
+  "line": 319,
+  "context": "\"drug_class\": \"三唑类抗真菌药\",",
+  "en": "Triazole antifungal"
+ },
+ {
+  "key": "念珠菌、隐球菌感染",
+  "file": "drugref.py",
+  "line": 321,
+  "context": "\"indication\": \"念珠菌、隐球菌感染\",",
+  "en": "Candida and Cryptococcus infections"
+ },
+ {
+  "key": "靶点为真菌 CYP51（ERG11）；同时是人类 CYP2C9/CYP3A4 抑制剂。",
+  "file": "drugref.py",
+  "line": 326,
+  "context": "\"notes\": \"靶点为真菌 CYP51（ERG11）；同时是人类 CYP2C9/CYP3A4 抑制剂。\",",
+  "en": "Targets fungal CYP51 (ERG11); also a human CYP2C9/CYP3A4 inhibitor."
+ },
+ {
+  "key": "神经氨酸酶抑制剂（前药）",
+  "file": "drugref.py",
+  "line": 331,
+  "context": "\"drug_class\": \"神经氨酸酶抑制剂（前药）\",",
+  "en": "Neuraminidase inhibitor (prodrug)"
+ },
+ {
+  "key": "甲型/乙型流感治疗与预防",
+  "file": "drugref.py",
+  "line": 333,
+  "context": "\"indication\": \"甲型/乙型流感治疗与预防\",",
+  "en": "Treatment and prevention of influenza A/B"
+ },
+ {
+  "key": "经肝酯酶转化为活性羧酸；靶点为流感病毒神经氨酸酶。",
+  "file": "drugref.py",
+  "line": 338,
+  "context": "\"notes\": \"经肝酯酶转化为活性羧酸；靶点为流感病毒神经氨酸酶。\",",
+  "en": "Converted by hepatic esterases to the active carboxylic acid; the target is influenza virus neuraminidase."
+ },
+ {
+  "key": "BCR-ABL 酪氨酸激酶抑制剂",
+  "file": "drugref.py",
+  "line": 343,
+  "context": "\"drug_class\": \"BCR-ABL 酪氨酸激酶抑制剂\",",
+  "en": "BCR-ABL tyrosine kinase inhibitor"
+ },
+ {
+  "key": "慢性髓性白血病、胃肠道间质瘤",
+  "file": "drugref.py",
+  "line": 345,
+  "context": "\"indication\": \"慢性髓性白血病、胃肠道间质瘤\",",
+  "en": "Chronic myeloid leukemia and gastrointestinal stromal tumor"
+ },
+ {
+  "key": "2-苯氨基嘧啶骨架，ATP 竞争性抑制剂。",
+  "file": "drugref.py",
+  "line": 350,
+  "context": "\"notes\": \"2-苯氨基嘧啶骨架，ATP 竞争性抑制剂。\",",
+  "en": "2-phenylaminopyrimidine scaffold; ATP-competitive inhibitor."
+ },
+ {
+  "key": "EGFR 酪氨酸激酶抑制剂",
+  "file": "drugref.py",
+  "line": 355,
+  "context": "\"drug_class\": \"EGFR 酪氨酸激酶抑制剂\",",
+  "en": "EGFR tyrosine kinase inhibitor"
+ },
+ {
+  "key": "EGFR 突变非小细胞肺癌、胰腺癌",
+  "file": "drugref.py",
+  "line": 357,
+  "context": "\"indication\": \"EGFR 突变非小细胞肺癌、胰腺癌\",",
+  "en": "EGFR-mutant non-small cell lung cancer and pancreatic cancer"
+ },
+ {
+  "key": "喹唑啉骨架，可逆 ATP 竞争性抑制 EGFR。",
+  "file": "drugref.py",
+  "line": 362,
+  "context": "\"notes\": \"喹唑啉骨架，可逆 ATP 竞争性抑制 EGFR。\",",
+  "en": "Quinazoline scaffold; reversibly inhibits EGFR in an ATP-competitive manner."
+ },
+ {
+  "key": "EGFR 突变非小细胞肺癌",
+  "file": "drugref.py",
+  "line": 369,
+  "context": "\"indication\": \"EGFR 突变非小细胞肺癌\",",
+  "en": "EGFR-mutant non-small cell lung cancer"
+ },
+ {
+  "key": "首个获批的 EGFR TKI，喹唑啉骨架。",
+  "file": "drugref.py",
+  "line": 374,
+  "context": "\"notes\": \"首个获批的 EGFR TKI，喹唑啉骨架。\",",
+  "en": "First approved EGFR TKI; quinazoline scaffold."
+ },
+ {
+  "key": "多激酶抑制剂",
+  "file": "drugref.py",
+  "line": 379,
+  "context": "\"drug_class\": \"多激酶抑制剂\",",
+  "en": "Multikinase inhibitor"
+ },
+ {
+  "key": "肝细胞癌、肾细胞癌、甲状腺癌",
+  "file": "drugref.py",
+  "line": 381,
+  "context": "\"indication\": \"肝细胞癌、肾细胞癌、甲状腺癌\",",
+  "en": "Hepatocellular carcinoma, renal cell carcinoma and thyroid cancer"
+ },
+ {
+  "key": "同时抑制 RAF 与 VEGFR/PDGFR；UGT1A9 也参与代谢。",
+  "file": "drugref.py",
+  "line": 386,
+  "context": "\"notes\": \"同时抑制 RAF 与 VEGFR/PDGFR；UGT1A9 也参与代谢。\",",
+  "en": "Inhibits RAF and VEGFR/PDGFR; UGT1A9 also contributes to metabolism."
+ },
+ {
+  "key": "DPP-4 抑制剂",
+  "file": "drugref.py",
+  "line": 391,
+  "context": "\"drug_class\": \"DPP-4 抑制剂\",",
+  "en": "DPP-4 inhibitor"
+ },
+ {
+  "key": "2 型糖尿病",
+  "file": "drugref.py",
+  "line": 393,
+  "context": "\"indication\": \"2 型糖尿病\",",
+  "en": "Type 2 diabetes"
+ },
+ {
+  "key": "多以原型经肾排泄，CYP 代谢占比很小。",
+  "file": "drugref.py",
+  "line": 398,
+  "context": "\"notes\": \"多以原型经肾排泄，CYP 代谢占比很小。\",",
+  "en": "Largely excreted unchanged in urine; CYP metabolism is minimal."
+ },
+ {
+  "key": "SGLT2 抑制剂",
+  "file": "drugref.py",
+  "line": 403,
+  "context": "\"drug_class\": \"SGLT2 抑制剂\",",
+  "en": "SGLT2 inhibitor"
+ },
+ {
+  "key": "2 型糖尿病、心力衰竭",
+  "file": "drugref.py",
+  "line": 405,
+  "context": "\"indication\": \"2 型糖尿病、心力衰竭\",",
+  "en": "Type 2 diabetes and heart failure"
+ },
+ {
+  "key": "葡萄糖苷类结构，阻断肾小管葡萄糖重吸收；主要经 UGT 葡萄糖醛酸化。",
+  "file": "drugref.py",
+  "line": 410,
+  "context": "\"notes\": \"葡萄糖苷类结构，阻断肾小管葡萄糖重吸收；主要经 UGT 葡萄糖醛酸化。\",",
+  "en": "Glucoside structure; blocks renal tubular glucose reabsorption; eliminated mainly by UGT glucuronidation."
+ },
+ {
+  "key": "糖皮质激素（前药）",
+  "file": "drugref.py",
+  "line": 415,
+  "context": "\"drug_class\": \"糖皮质激素（前药）\",",
+  "en": "Glucocorticoid (prodrug)"
+ },
+ {
+  "key": "炎症、自身免疫病、血液系统疾病",
+  "file": "drugref.py",
+  "line": 417,
+  "context": "\"indication\": \"炎症、自身免疫病、血液系统疾病\",",
+  "en": "Inflammatory, autoimmune and hematologic disorders"
+ },
+ {
+  "key": "经 11β-羟基类固醇脱氢酶转化为活性泼尼松龙。",
+  "file": "drugref.py",
+  "line": 422,
+  "context": "\"notes\": \"经 11β-羟基类固醇脱氢酶转化为活性泼尼松龙。\",",
+  "en": "Converted by 11β-hydroxysteroid dehydrogenase to active prednisolone."
+ },
+ {
+  "key": "糖皮质激素",
+  "file": "drugref.py",
+  "line": 427,
+  "context": "\"drug_class\": \"糖皮质激素\",",
+  "en": "Glucocorticoid"
+ },
+ {
+  "key": "炎症、脑水肿、化疗相关恶心呕吐",
+  "file": "drugref.py",
+  "line": 429,
+  "context": "\"indication\": \"炎症、脑水肿、化疗相关恶心呕吐\",",
+  "en": "Inflammation, cerebral edema and chemotherapy-induced nausea and vomiting"
+ },
+ {
+  "key": "9α-氟-16α-甲基结构，抗炎活性强而盐皮质激素作用弱。",
+  "file": "drugref.py",
+  "line": 434,
+  "context": "\"notes\": \"9α-氟-16α-甲基结构，抗炎活性强而盐皮质激素作用弱。\",",
+  "en": "9α-fluoro-16α-methyl structure; potent anti-inflammatory activity with weak mineralocorticoid effects."
+ },
+ {
+  "key": "叶酸拮抗剂",
+  "file": "drugref.py",
+  "line": 439,
+  "context": "\"drug_class\": \"叶酸拮抗剂\",",
+  "en": "Folate antagonist"
+ },
+ {
+  "key": "类风湿关节炎、肿瘤、异位妊娠",
+  "file": "drugref.py",
+  "line": 441,
+  "context": "\"indication\": \"类风湿关节炎、肿瘤、异位妊娠\",",
+  "en": "Rheumatoid arthritis, cancer and ectopic pregnancy"
+ },
+ {
+  "key": "多聚谷氨酸化后在细胞内长期滞留；主要经肾排泄，半衰期随剂量与肾功能变化大。",
+  "file": "drugref.py",
+  "line": 446,
+  "context": "\"notes\": \"多聚谷氨酸化后在细胞内长期滞留；主要经肾排泄，半衰期随剂量与肾功能变化大。\",",
+  "en": "Polyglutamation causes prolonged intracellular retention; eliminated mainly renally, and the half-life varies widely with dose and renal function."
+ },
+ {
+  "key": "选择性雌激素受体调节剂（SERM）",
+  "file": "drugref.py",
+  "line": 451,
+  "context": "\"drug_class\": \"选择性雌激素受体调节剂（SERM）\",",
+  "en": "Selective estrogen receptor modulator (SERM)"
+ },
+ {
+  "key": "雌激素受体阳性乳腺癌",
+  "file": "drugref.py",
+  "line": 453,
+  "context": "\"indication\": \"雌激素受体阳性乳腺癌\",",
+  "en": "Estrogen receptor-positive breast cancer"
+ },
+ {
+  "key": "经 CYP2D6 生成 4-羟基他莫昔芬等活性代谢物。",
+  "file": "drugref.py",
+  "line": 458,
+  "context": "\"notes\": \"经 CYP2D6 生成 4-羟基他莫昔芬等活性代谢物。\",",
+  "en": "CYP2D6 forms active metabolites including 4-hydroxytamoxifen."
+ },
+ {
+  "key": "芳香化酶抑制剂",
+  "file": "drugref.py",
+  "line": 463,
+  "context": "\"drug_class\": \"芳香化酶抑制剂\",",
+  "en": "Aromatase inhibitor"
+ },
+ {
+  "key": "绝经后雌激素受体阳性乳腺癌",
+  "file": "drugref.py",
+  "line": 465,
+  "context": "\"indication\": \"绝经后雌激素受体阳性乳腺癌\",",
+  "en": "Estrogen receptor-positive breast cancer in postmenopausal women"
+ },
+ {
+  "key": "三唑类结构，抑制雄激素向雌激素转化。",
+  "file": "drugref.py",
+  "line": 470,
+  "context": "\"notes\": \"三唑类结构，抑制雄激素向雌激素转化。\",",
+  "en": "Triazole structure; inhibits the conversion of androgens to estrogens."
+ },
+ {
+  "key": "PDE5 抑制剂",
+  "file": "drugref.py",
+  "line": 475,
+  "context": "\"drug_class\": \"PDE5 抑制剂\",",
+  "en": "PDE5 inhibitor"
+ },
+ {
+  "key": "勃起功能障碍、肺动脉高压",
+  "file": "drugref.py",
+  "line": 477,
+  "context": "\"indication\": \"勃起功能障碍、肺动脉高压\",",
+  "en": "Erectile dysfunction and pulmonary arterial hypertension"
+ },
+ {
+  "key": "吡唑并嘧啶酮骨架；与硝酸酯类药物联用为禁忌。",
+  "file": "drugref.py",
+  "line": 482,
+  "context": "\"notes\": \"吡唑并嘧啶酮骨架；与硝酸酯类药物联用为禁忌。\",",
+  "en": "Pyrazolopyrimidinone scaffold; contraindicated with nitrates."
+ },
+ {
+  "key": "苯二氮卓类",
+  "file": "drugref.py",
+  "line": 487,
+  "context": "\"drug_class\": \"苯二氮卓类\",",
+  "en": "Benzodiazepine"
+ },
+ {
+  "key": "焦虑、癫痫持续状态、肌肉痉挛",
+  "file": "drugref.py",
+  "line": 489,
+  "context": "\"indication\": \"焦虑、癫痫持续状态、肌肉痉挛\",",
+  "en": "Anxiety, status epilepticus and muscle spasms"
+ },
+ {
+  "key": "正性调节 GABA-A 受体；活性代谢物去甲西泮半衰期长。",
+  "file": "drugref.py",
+  "line": 494,
+  "context": "\"notes\": \"正性调节 GABA-A 受体；活性代谢物去甲西泮半衰期长。\",",
+  "en": "Positive modulator of GABA-A receptors; the active metabolite nordiazepam has a long half-life."
+ },
+ {
+  "key": "选择性 5-HT 再摄取抑制剂（SSRI）",
+  "file": "drugref.py",
+  "line": 499,
+  "context": "\"drug_class\": \"选择性 5-HT 再摄取抑制剂（SSRI）\",",
+  "en": "Selective serotonin reuptake inhibitor (SSRI)"
+ },
+ {
+  "key": "抑郁症、强迫症、创伤后应激障碍",
+  "file": "drugref.py",
+  "line": 501,
+  "context": "\"indication\": \"抑郁症、强迫症、创伤后应激障碍\",",
+  "en": "Depression, obsessive-compulsive disorder and post-traumatic stress disorder"
+ },
+ {
+  "key": "抑制 5-HT 转运体 SERT，代谢物去甲舍曲林活性较弱。",
+  "file": "drugref.py",
+  "line": 506,
+  "context": "\"notes\": \"抑制 5-HT 转运体 SERT，代谢物去甲舍曲林活性较弱。\",",
+  "en": "Inhibits the serotonin transporter SERT; the metabolite norsertraline is less active."
+ },
+ {
+  "key": "抑郁症、广泛性焦虑障碍",
+  "file": "drugref.py",
+  "line": 513,
+  "context": "\"indication\": \"抑郁症、广泛性焦虑障碍\",",
+  "en": "Depression and generalized anxiety disorder"
+ },
+ {
+  "key": "西酞普兰的 S-对映体，SERT 抑制作用更强。",
+  "file": "drugref.py",
+  "line": 518,
+  "context": "\"notes\": \"西酞普兰的 S-对映体，SERT 抑制作用更强。\",",
+  "en": "S-enantiomer of citalopram with stronger SERT inhibition."
+ },
+ {
+  "key": "非典型抗精神病药",
+  "file": "drugref.py",
+  "line": 523,
+  "context": "\"drug_class\": \"非典型抗精神病药\",",
+  "en": "Atypical antipsychotic"
+ },
+ {
+  "key": "精神分裂症、双相障碍",
+  "file": "drugref.py",
+  "line": 525,
+  "context": "\"indication\": \"精神分裂症、双相障碍\",",
+  "en": "Schizophrenia and bipolar disorder"
+ },
+ {
+  "key": "噻吩并苯二氮平骨架；吸烟诱导 CYP1A2 可降低暴露。",
+  "file": "drugref.py",
+  "line": 530,
+  "context": "\"notes\": \"噻吩并苯二氮平骨架；吸烟诱导 CYP1A2 可降低暴露。\",",
+  "en": "Thienobenzodiazepine scaffold; smoking-induced CYP1A2 can reduce exposure."
+ },
+ {
+  "key": "精神分裂症、双相躁狂",
+  "file": "drugref.py",
+  "line": 537,
+  "context": "\"indication\": \"精神分裂症、双相躁狂\",",
+  "en": "Schizophrenia and bipolar mania"
+ },
+ {
+  "key": "活性代谢物 9-羟基利培酮由 CYP2D6 生成，半衰期更长。",
+  "file": "drugref.py",
+  "line": 542,
+  "context": "\"notes\": \"活性代谢物 9-羟基利培酮由 CYP2D6 生成，半衰期更长。\",",
+  "en": "The active metabolite 9-hydroxyrisperidone is formed by CYP2D6 and has a longer half-life."
+ },
+ {
+  "key": "乙酰胆碱酯酶抑制剂",
+  "file": "drugref.py",
+  "line": 547,
+  "context": "\"drug_class\": \"乙酰胆碱酯酶抑制剂\",",
+  "en": "Acetylcholinesterase inhibitor"
+ },
+ {
+  "key": "阿尔茨海默病",
+  "file": "drugref.py",
+  "line": 549,
+  "context": "\"indication\": \"阿尔茨海默病\",",
+  "en": "Alzheimer's disease"
+ },
+ {
+  "key": "哌啶类可逆性乙酰胆碱酯酶抑制剂。",
+  "file": "drugref.py",
+  "line": 554,
+  "context": "\"notes\": \"哌啶类可逆性乙酰胆碱酯酶抑制剂。\",",
+  "en": "Piperidine-type reversible acetylcholinesterase inhibitor."
+ },
+ {
+  "key": "抗癫痫药（钠通道阻滞）",
+  "file": "drugref.py",
+  "line": 559,
+  "context": "\"drug_class\": \"抗癫痫药（钠通道阻滞）\",",
+  "en": "Antiepileptic (sodium channel blocker)"
+ },
+ {
+  "key": "癫痫、三叉神经痛、双相障碍",
+  "file": "drugref.py",
+  "line": 561,
+  "context": "\"indication\": \"癫痫、三叉神经痛、双相障碍\",",
+  "en": "Epilepsy, trigeminal neuralgia and bipolar disorder"
+ },
+ {
+  "key": "自身诱导代谢，连续用药后半衰期缩短，相互作用多。",
+  "file": "drugref.py",
+  "line": 566,
+  "context": "\"notes\": \"自身诱导代谢，连续用药后半衰期缩短，相互作用多。\",",
+  "en": "Autoinduces its own metabolism; the half-life shortens with continued dosing and interactions are common."
+ },
+ {
+  "key": "黄嘌呤氧化酶抑制剂",
+  "file": "drugref.py",
+  "line": 571,
+  "context": "\"drug_class\": \"黄嘌呤氧化酶抑制剂\",",
+  "en": "Xanthine oxidase inhibitor"
+ },
+ {
+  "key": "痛风、高尿酸血症",
+  "file": "drugref.py",
+  "line": 573,
+  "context": "\"indication\": \"痛风、高尿酸血症\",",
+  "en": "Gout and hyperuricemia"
+ },
+ {
+  "key": "经黄嘌呤氧化酶转化为活性氧嘌呤醇，后者半衰期更长。",
+  "file": "drugref.py",
+  "line": 578,
+  "context": "\"notes\": \"经黄嘌呤氧化酶转化为活性氧嘌呤醇，后者半衰期更长。\",",
+  "en": "Converted by xanthine oxidase to active oxypurinol, which has a longer half-life."
+ },
+ {
+  "key": "精简参考药清单，供前端下拉选择。",
+  "file": "drugref.py",
+  "line": 584,
+  "context": "\"\"\"精简参考药清单，供前端下拉选择。\"\"\"",
+  "en": "Compact reference drug list for the front-end dropdown."
+ },
+ {
+  "key": "最大公共子结构原子数与相对比例（相对较小分子重原子数）。",
+  "file": "drugref.py",
+  "line": 701,
+  "context": "\"\"\"最大公共子结构原子数与相对比例（相对较小分子重原子数）。\"\"\"",
+  "en": "Number and relative fraction of maximum common substructure atoms (relative to the heavy-atom count of the smaller molecule)."
+ },
+ {
+  "key": "MW/logP/TPSA/HBD/HBA/QED 的标准化绝对差，0–100。",
+  "file": "drugref.py",
+  "line": 721,
+  "context": "\"\"\"MW/logP/TPSA/HBD/HBA/QED 的标准化绝对差，0–100。\"\"\"",
+  "en": "Normalized absolute differences in MW/logP/TPSA/HBD/HBA/QED, 0–100."
+ },
+ {
+  "key": "基于 hERG/CYP3A4/CYP2D6/Ames/半衰期差异的 0–100 相似度。",
+  "file": "drugref.py",
+  "line": 731,
+  "context": "\"\"\"基于 hERG/CYP3A4/CYP2D6/Ames/半衰期差异的 0–100 相似度。\"\"\"",
+  "en": "Similarity from 0 to 100 based on differences in hERG/CYP3A4/CYP2D6/Ames/half-life."
+ },
+ {
+  "key": "候选分子",
+  "file": "drugref.py",
+  "line": 753,
+  "context": "candidate_name: str = \"候选分子\",",
+  "en": "Candidate molecule"
+ },
+ {
+  "key": "把候选分子与 FDA 参考集逐项比较，返回排序后的参考列表。",
+  "file": "drugref.py",
+  "line": 757,
+  "context": "\"\"\"把候选分子与 FDA 参考集逐项比较，返回排序后的参考列表。\"\"\"",
+  "en": "Compare a candidate molecule with the FDA reference set item by item and return a ranked reference list."
+ },
+ {
+  "key": "无法解析候选分子 SMILES：",
+  "file": "drugref.py",
+  "line": 760,
+  "context": "raise ValueError(f\"无法解析候选分子 SMILES：{str(candidate_smiles)[:80]}\")",
+  "en": "Cannot parse candidate SMILES: "
+ },
+ {
+  "key": "；主要靶点",
+  "file": "drugref.py",
+  "line": 837,
+  "context": "f\"{entry['drug_class']}；主要靶点 \"",
+  "en": "; main targets "
+ },
+ {
+  "key": "未列",
+  "file": "drugref.py",
+  "line": 838,
+  "context": "f\"{'/'.join(record['targets']) or '未列'}\"",
+  "en": "not listed"
+ },
+ {
+  "key": "结构：RDKit Morgan 指纹（radius=2, 2048 bit）Tanimoto + Bemis–Murcko 骨架 + 最大公共子结构（rdFMCS，仅对相似度前 20 名计算，timeout 2 s）；靶点：候选靶点与各药 HGNC 靶点集合的 Jaccard；ADMET：admet.profile_smiles 的 hERG/CYP3A4/CYP2D6/Ames/预测半衰期，按归一化差异折算 0–100 相似度；属性：MW、logP、TPSA、HBD、HBA、QED 的标准化绝对差。综合分 = 0.45×Tanimoto + 0.25×靶点 Jaccard + 0.20×ADMET 相似度 + 0.10×属性相似度（未提供候选靶点时在剩余权重上归一化），属启发式排序，不是概率或置信度。",
+  "file": "drugref.py",
+  "line": 883,
+  "context": "\"结构：RDKit Morgan 指纹（radius=2, 2048 bit）Tanimoto + Bemis–Murcko 骨架 + \"",
+  "en": "Structure: RDKit Morgan fingerprint (radius=2, 2048 bit) Tanimoto + Bemis–Murcko scaffold + maximum common substructure (rdFMCS, computed only for the top 20 by similarity, timeout 2 s); targets: Jaccard between the candidate targets and each drug's HGNC target set; ADMET: hERG/CYP3A4/CYP2D6/Ames/predicted half-life from admet.profile_smiles, converted to a 0–100 similarity from normalized differences; properties: normalized absolute differences in MW, logP, TPSA, HBD, HBA and QED. Composite score = 0.45×Tanimoto + 0.25×target Jaccard + 0.20×ADMET similarity + 0.10×property similarity (renormalized over the remaining weights when no candidate targets are supplied); this is a heuristic ranking, not a probability or confidence."
+ },
+ {
+  "key": "参考集仅含",
+  "file": "drugref.py",
+  "line": 893,
+  "context": "f\"参考集仅含 {len(records)} 个结构简单、靶点明确的 FDA 已上市药物，\"",
+  "en": "The reference set contains only "
+ },
+ {
+  "key": "个结构简单、靶点明确的 FDA 已上市药物，不代表全部上市药物；靶点取自说明书中的已知主要靶点，缺少脱靶谱与定量亲和力，因此不给出 pIC50 等药效数值，只用靶点重叠与机制邻近做参考。ADMET、QED 与半衰期均为计算预测，可能与实测值有数量级差异；Tanimoto 与 MCS 只反映二维结构相似，不反映三维构象或结合模式。综合分为经验权重，仅用于排序与假设生成，不能作为疗效或安全性结论，也不能替代临床或实验数据。",
+  "file": "drugref.py",
+  "line": 893,
+  "context": "f\"参考集仅含 {len(records)} 个结构简单、靶点明确的 FDA 已上市药物，\"",
+  "en": "structurally simple, well-characterized FDA-approved drugs and is not representative of all marketed drugs. Targets are the known primary targets from the labels; off-target profiles and quantitative affinities are not included, so no pIC50 or other pharmacodynamic values are given and target overlap and mechanism proximity are used only for reference. ADMET, QED and half-life are all computational predictions and may differ from measured values by orders of magnitude; Tanimoto and MCS reflect only two-dimensional structural similarity, not three-dimensional conformation or binding mode. The composite score uses empirical weights and is intended only for ranking and hypothesis generation; it cannot be used as a conclusion on efficacy or safety and does not replace clinical or experimental data."
+ },
+ {
+  "key": "输出 A4 竖版 CNS 风格参考分析图（多面板）。",
+  "file": "drugref.py",
+  "line": 927,
+  "context": "\"\"\"输出 A4 竖版 CNS 风格参考分析图（多面板）。\"\"\"",
+  "en": "Render the A4 portrait CNS-style reference analysis figure (multiple panels)."
+ },
+ {
+  "key": "图 19　FDA 已上市药物参考分析",
+  "file": "drugref.py",
+  "line": 943,
+  "context": "\"图 19　FDA 已上市药物参考分析\",",
+  "en": "Figure 19. FDA-approved drug reference analysis"
+ },
+ {
+  "key": "与",
+  "file": "drugref.py",
+  "line": 944,
+  "context": "f\"{_truncate(name, 28)}　与 {len(references)} 个已上市药物的结构、靶点与 ADMET 比较\",",
+  "en": "vs"
+ },
+ {
+  "key": "个已上市药物的结构、靶点与 ADMET 比较",
+  "file": "drugref.py",
+  "line": 944,
+  "context": "f\"{_truncate(name, 28)}　与 {len(references)} 个已上市药物的结构、靶点与 ADMET 比较\",",
+  "en": "approved drugs: structure, target and ADMET comparison"
+ },
+ {
+  "key": "无可用参考药物",
+  "file": "drugref.py",
+  "line": 974,
+  "context": "ax.text(0.5, 0.5, \"无可用参考药物\", ha=\"center\", va=\"center\",",
+  "en": "No reference drug available"
+ },
+ {
+  "key": "结构相似度（Morgan 指纹 Tanimoto，前 15 位）",
+  "file": "drugref.py",
+  "line": 976,
+  "context": "ax.set_title(\"结构相似度（Morgan 指纹 Tanimoto，前 15 位）\", loc=\"left\",",
+  "en": "Structural similarity (Morgan fingerprint Tanimoto, top 15)"
+ },
+ {
+  "key": "未提供候选靶点\nJaccard 按 0 计",
+  "file": "drugref.py",
+  "line": 1001,
+  "context": "0.04, 0.92, \"未提供候选靶点\\nJaccard 按 0 计\",",
+  "en": "No candidate targets provided\nJaccard set to 0"
+ },
+ {
+  "key": "靶点 Jaccard（与候选）",
+  "file": "drugref.py",
+  "line": 1035,
+  "context": "ax.set_xlabel(\"靶点 Jaccard（与候选）\", fontsize=11.5)",
+  "en": "Target Jaccard (vs candidate)"
+ },
+ {
+  "key": "结构相似度与靶点重叠",
+  "file": "drugref.py",
+  "line": 1043,
+  "context": "ax.set_title(\"结构相似度与靶点重叠\", loc=\"left\", fontsize=13, pad=8)",
+  "en": "Structural similarity and target overlap"
+ },
+ {
+  "key": "候选",
+  "file": "drugref.py",
+  "line": 1061,
+  "context": "\"候选\", width=2.2, alpha=0.10)",
+  "en": "Candidate"
+ },
+ {
+  "key": "无 ADMET 数据",
+  "file": "drugref.py",
+  "line": 1090,
+  "context": "ax.text(0.5, 0.5, \"无 ADMET 数据\", ha=\"center\", va=\"center\",",
+  "en": "No ADMET data"
+ },
+ {
+  "key": "ADMET 雷达（候选 vs 综合分前 3）",
+  "file": "drugref.py",
+  "line": 1092,
+  "context": "ax.set_title(\"ADMET 雷达（候选 vs 综合分前 3）\", fontsize=12.4, pad=16)",
+  "en": "ADMET radar (candidate vs top 3 by composite score)"
+ },
+ {
+  "key": "药物",
+  "file": "drugref.py",
+  "line": 1097,
+  "context": "\"药物\", \"类别\", \"靶点\", \"相似度\", \"QED\", \"logP\", \"TPSA\",",
+  "en": "Drug"
+ },
+ {
+  "key": "类别",
+  "file": "drugref.py",
+  "line": 1097,
+  "context": "\"药物\", \"类别\", \"靶点\", \"相似度\", \"QED\", \"logP\", \"TPSA\",",
+  "en": "Class"
+ },
+ {
+  "key": "靶点",
+  "file": "drugref.py",
+  "line": 1097,
+  "context": "\"药物\", \"类别\", \"靶点\", \"相似度\", \"QED\", \"logP\", \"TPSA\",",
+  "en": "Target"
+ },
+ {
+  "key": "相似度",
+  "file": "drugref.py",
+  "line": 1097,
+  "context": "\"药物\", \"类别\", \"靶点\", \"相似度\", \"QED\", \"logP\", \"TPSA\",",
+  "en": "Similarity"
+ },
+ {
+  "key": "综合分",
+  "file": "drugref.py",
+  "line": 1098,
+  "context": "\"hERG\", \"CYP3A4\", \"t½\", \"综合分\",",
+  "en": "Composite"
+ },
+ {
+  "key": "结构不可用",
+  "file": "drugref.py",
+  "line": 1141,
+  "context": "ax.text(0.5, 0.5, \"结构不可用\", ha=\"center\", va=\"center\",",
+  "en": "Structure unavailable"
+ },
+ {
+  "key": "Morgan 指纹（radius 2、2048 bit）Tanimoto 相似度前 15 位。结构相似度与靶点 Jaccard 联合分布，星标为候选自身锚点，横向微抖动仅为避免点重叠。候选与综合分前 3 药物的 ADMET 雷达（0–100）。（d）参考药属性汇总；hERG 与 CYP3A4 为预测抑制风险（%），预测 t½ 单位为小时。（e）综合分前 3 药物的二维结构。综合分 = 0.45×Tanimoto + 0.25×靶点 Jaccard + 0.20×ADMET 相似度 + 0.10×属性相似度，仅为启发式排序。药物信息汇总自公开 FDA 标签与 DrugBank/PubChem/ChEMBL；ADMET 为计算值，不能替代临床或实验数据。",
+  "file": "drugref.py",
+  "line": 1153,
+  "context": "\"（a）Morgan 指纹（radius 2、2048 bit）Tanimoto 相似度前 15 位。\"",
+  "en": "(a) Top 15 drugs by Morgan fingerprint (radius 2, 2048 bit) Tanimoto similarity. (b) Joint distribution of structural similarity and target Jaccard; the star marks the candidate itself, and the slight horizontal jitter only prevents point overlap. (c) ADMET radar (0–100) for the candidate and the top 3 drugs by composite score. (d) Summary of reference drug properties; hERG and CYP3A4 are predicted inhibition risks (%), and predicted t½ is in hours. (e) 2D structures of the top 3 drugs by composite score. Composite score = 0.45×Tanimoto + 0.25×target Jaccard + 0.20×ADMET similarity + 0.10×property similarity, for heuristic ranking only. Drug information is summarized from public FDA labels and DrugBank/PubChem/ChEMBL; ADMET values are computational and cannot replace clinical or experimental data."
+ },
+ {
+  "key": "磺酸",
+  "file": "profiling.py",
+  "line": 59,
+  "context": "(\"磺酸\", \"[SX4](=O)(=O)[OX2H1]\", 1.0),",
+  "en": "Sulfonic acid"
+ },
+ {
+  "key": "磷酸",
+  "file": "profiling.py",
+  "line": 60,
+  "context": "(\"磷酸\", \"[PX4](=O)([OX2H1])\", 2.1),",
+  "en": "Phosphoric acid"
+ },
+ {
+  "key": "羧酸",
+  "file": "profiling.py",
+  "line": 61,
+  "context": "(\"羧酸\", \"[CX3](=O)[OX2H1]\", 4.5),",
+  "en": "Carboxylic acid"
+ },
+ {
+  "key": "四唑",
+  "file": "profiling.py",
+  "line": 62,
+  "context": "(\"四唑\", \"[nH]1nnnc1\", 4.5),",
+  "en": "Tetrazole"
+ },
+ {
+  "key": "酚羟基",
+  "file": "profiling.py",
+  "line": 63,
+  "context": "(\"酚羟基\", \"[OX2H][c]\", 10.0),",
+  "en": "Phenolic hydroxyl"
+ },
+ {
+  "key": "胍",
+  "file": "profiling.py",
+  "line": 67,
+  "context": "(\"胍\", \"[NX3][CX3](=[NX2])[NX3]\", 12.5),",
+  "en": "Guanidine"
+ },
+ {
+  "key": "脒",
+  "file": "profiling.py",
+  "line": 68,
+  "context": "(\"脒\", \"[CX3](=[NX2])[NX3]\", 11.0),",
+  "en": "Amidine"
+ },
+ {
+  "key": "咪唑",
+  "file": "profiling.py",
+  "line": 69,
+  "context": "(\"咪唑\", \"[nX2;r5]\", 6.8),",
+  "en": "Imidazole"
+ },
+ {
+  "key": "吡啶",
+  "file": "profiling.py",
+  "line": 70,
+  "context": "(\"吡啶\", \"[nX2]\", 5.2),",
+  "en": "Pyridine"
+ },
+ {
+  "key": "脂肪胺",
+  "file": "profiling.py",
+  "line": 71,
+  "context": "(\"脂肪胺\", \"[NX3;H2,H1,H0;!$(N-a);!$(N-C=O);!$(N-S);!$(N-C=[O,N,S]);!$([N+])]\", 9.5),",
+  "en": "Aliphatic amine"
+ },
+ {
+  "key": "芳香胺",
+  "file": "profiling.py",
+  "line": 72,
+  "context": "(\"芳香胺\", \"[NX3][c]\", 4.6),",
+  "en": "Aromatic amine"
+ },
+ {
+  "key": "N-脱烷基",
+  "file": "profiling.py",
+  "line": 76,
+  "context": "(\"N-脱烷基\", \"[NX3;!$(N-C=O);!$(N-S(=O)=O)][CH2][CH3]\", 1.6, 2),",
+  "en": "N-dealkylation"
+ },
+ {
+  "key": "O-脱烷基",
+  "file": "profiling.py",
+  "line": 77,
+  "context": "(\"O-脱烷基\", \"[OX2][CH3]\", 1.5, 2),",
+  "en": "O-dealkylation"
+ },
+ {
+  "key": "硫氧化",
+  "file": "profiling.py",
+  "line": 78,
+  "context": "(\"硫氧化\", \"[SX2]\", 1.5, 2),",
+  "en": "Sulfoxidation"
+ },
+ {
+  "key": "苄位氧化",
+  "file": "profiling.py",
+  "line": 79,
+  "context": "(\"苄位氧化\", \"[CH2,CH3;!$([CH3][CX3]=O)][c]\", 1.3, 2),",
+  "en": "Benzylic oxidation"
+ },
+ {
+  "key": "烯丙位氧化",
+  "file": "profiling.py",
+  "line": 80,
+  "context": "(\"烯丙位氧化\", \"[CH2,CH3][CX3]=[CX3]\", 1.2, 2),",
+  "en": "Allylic oxidation"
+ },
+ {
+  "key": "酚羟基结合",
+  "file": "profiling.py",
+  "line": 81,
+  "context": "(\"酚羟基结合\", \"[OX2H][c]\", 1.0, 2),",
+  "en": "Phenolic hydroxyl conjugation"
+ },
+ {
+  "key": "芳环氧化",
+  "file": "profiling.py",
+  "line": 82,
+  "context": "(\"芳环氧化\", \"a1ccccc1\", 0.7, 1),",
+  "en": "Aromatic ring oxidation"
+ },
+ {
+  "key": "低渗透",
+  "file": "profiling.py",
+  "line": 197,
+  "context": "return \"低渗透\"",
+  "en": "Low permeability"
+ },
+ {
+  "key": "没有可用于可开发性分析的分子",
+  "file": "profiling.py",
+  "line": 301,
+  "context": "raise ValueError(\"没有可用于可开发性分析的分子\")",
+  "en": "No molecules available for developability analysis"
+ },
+ {
+  "key": "图 11　类药性与可开发性",
+  "file": "profiling.py",
+  "line": 306,
+  "context": "\"图 11　类药性与可开发性\",",
+  "en": "Figure 11. Drug-likeness and developability"
+ },
+ {
+  "key": "BOILED-Egg 吸收判别、CNS MPO、logD7.4 与结构警示",
+  "file": "profiling.py",
+  "line": 307,
+  "context": "\"BOILED-Egg 吸收判别、CNS MPO、logD7.4 与结构警示\",",
+  "en": "BOILED-Egg absorption discrimination, CNS MPO, logD7.4 and structural alerts"
+ },
+ {
+  "key": "BOILED-Egg 风格吸收与入脑判别",
+  "file": "profiling.py",
+  "line": 359,
+  "context": "ax.set_title(\"BOILED-Egg 风格吸收与入脑判别\", loc=\"left\", fontsize=13.5, pad=8)",
+  "en": "BOILED-Egg style absorption and brain-penetration classification"
+ },
+ {
+  "key": "CNS MPO（0–6，越高越有利）",
+  "file": "profiling.py",
+  "line": 380,
+  "context": "ax.set_xlabel(\"CNS MPO（0–6，越高越有利）\", fontsize=10)",
+  "en": "CNS MPO (0–6, higher is better)"
+ },
+ {
+  "key": "CNS 多参数成药性",
+  "file": "profiling.py",
+  "line": 381,
+  "context": "ax.set_title(\"CNS 多参数成药性\", loc=\"left\", fontsize=13.5, pad=8)",
+  "en": "CNS multiparameter drug-likeness"
+ },
+ {
+  "key": "合成可及性 SAscore（1 易 – 10 难）",
+  "file": "profiling.py",
+  "line": 416,
+  "context": "ax.set_xlabel(\"合成可及性 SAscore（1 易 – 10 难）\", fontsize=11)",
+  "en": "Synthetic accessibility SAscore (1 easy – 10 hard)"
+ },
+ {
+  "key": "可合成性与亲脂性窗口",
+  "file": "profiling.py",
+  "line": 418,
+  "context": "ax.set_title(\"可合成性与亲脂性窗口\", loc=\"left\", fontsize=13.5, pad=8)",
+  "en": "Synthesizability and lipophilicity window"
+ },
+ {
+  "key": "结构警示命中数",
+  "file": "profiling.py",
+  "line": 444,
+  "context": "ax.set_xlabel(\"结构警示命中数\", fontsize=10.5)",
+  "en": "Structural alert hits"
+ },
+ {
+  "key": "PAINS / Brenk / NIH 警示",
+  "file": "profiling.py",
+  "line": 445,
+  "context": "ax.set_title(\"PAINS / Brenk / NIH 警示\", loc=\"left\", fontsize=13.5, pad=8)",
+  "en": "PAINS / Brenk / NIH alerts"
+ },
+ {
+  "key": "BOILED-Egg 风格判别：横轴为 Crippen WLOGP，纵轴为 TPSA；内层椭圆为 BBB 渗透区，外层为 HIA 吸收区，阈值取自 Egan/Clark 经验规则。Wager CNS MPO 六项评分（cLogP、cLogD、MW、HBD、TPSA、pKa），4 分以上视为中枢神经系统候选。合成可及性 SAscore 与 logD7.4 的可开发性窗口，虚线为常用参考线。（d）PAINS、Brenk 与 NIH 结构警示命中数；警示只提示需要人工复核，不等于化合物不可用。所有端点均为描述符规则或公开经验模型，用于同系列分子的相对排序，不能替代实验测定。",
+  "file": "profiling.py",
+  "line": 462,
+  "context": "\"（a）BOILED-Egg 风格判别：横轴为 Crippen WLOGP，纵轴为 TPSA；内层椭圆为 \"",
+  "en": "(a) BOILED-Egg style discrimination: the x-axis is Crippen WLOGP and the y-axis is TPSA; the inner ellipse is the BBB penetration region and the outer ellipse the HIA absorption region, with thresholds taken from the empirical Egan/Clark rules. (b) Wager CNS MPO six-component score (cLogP, cLogD, MW, HBD, TPSA, pKa); a score of 4 or more is considered a CNS candidate. (c) Developability window of synthetic accessibility SAscore versus logD7.4, with dashed lines marking the usual reference limits. (d) Number of PAINS, Brenk and NIH structural alert hits; alerts only indicate that manual review is needed and do not mean the compound is unusable. All endpoints are descriptor rules or published empirical models, intended for relative ranking within a series and not a substitute for experimental measurement."
+ },
+ {
+  "key": "至少需要两个分子才能构建化学空间",
+  "file": "profiling.py",
+  "line": 495,
+  "context": "raise ValueError(\"至少需要两个分子才能构建化学空间\")",
+  "en": "At least two molecules are required to construct a chemical space"
+ },
+ {
+  "key": "图 12　化学空间与骨架多样性",
+  "file": "profiling.py",
+  "line": 514,
+  "context": "\"图 12　化学空间与骨架多样性\",",
+  "en": "Figure 12. Chemical space and scaffold diversity"
+ },
+ {
+  "key": "Tanimoto 相似性聚类、Murcko 骨架与多维尺度投影",
+  "file": "profiling.py",
+  "line": 515,
+  "context": "\"Tanimoto 相似性聚类、Murcko 骨架与多维尺度投影\",",
+  "en": "Tanimoto similarity clustering, Murcko scaffolds and multidimensional scaling projection"
+ },
+ {
+  "key": "Tanimoto 相似性聚类热图",
+  "file": "profiling.py",
+  "line": 531,
+  "context": "ax_heat.set_title(\"Tanimoto 相似性聚类热图\", loc=\"left\", fontsize=13.5, pad=8)",
+  "en": "Tanimoto similarity clustering heatmap"
+ },
+ {
+  "key": "化学空间投影（经典 MDS）",
+  "file": "profiling.py",
+  "line": 569,
+  "context": "ax_mds.set_title(\"化学空间投影（经典 MDS）\", loc=\"left\", fontsize=13.5, pad=8)",
+  "en": "Chemical space projection (classical MDS)"
+ },
+ {
+  "key": "个分子 ·",
+  "file": "profiling.py",
+  "line": 604,
+  "context": "f\"{len(mols)} 个分子 · {unique} 个唯一 Murcko 骨架 · \"",
+  "en": "molecules ·"
+ },
+ {
+  "key": "个唯一 Murcko 骨架 · 骨架多样性",
+  "file": "profiling.py",
+  "line": 604,
+  "context": "f\"{len(mols)} 个分子 · {unique} 个唯一 Murcko 骨架 · \"",
+  "en": "unique Murcko scaffolds · scaffold diversity"
+ },
+ {
+  "key": "· 平均最近邻相似度",
+  "file": "profiling.py",
+  "line": 605,
+  "context": "f\"骨架多样性 {unique / max(len(mols), 1):.2f} · \"",
+  "en": "· mean nearest-neighbor similarity"
+ },
+ {
+  "key": "Morgan 指纹（半径 2，2048 bit）的 Tanimoto 相似矩阵，按平均连接层次聚类排序，颜色越深表示越相似。由同一相似矩阵经经典多维尺度（MDS）投影得到的化学空间，颜色表示 Vina 打分。出现频率最高的四个 Murcko 骨架；骨架多样性 = 唯一骨架数 / 分子数。该图用于判断候选是集中在单一骨架还是覆盖多个化学型，为骨架跃迁与专利空间规避提供依据。",
+  "file": "profiling.py",
+  "line": 613,
+  "context": "\"（a）Morgan 指纹（半径 2，2048 bit）的 Tanimoto 相似矩阵，按平均连接层次聚类排序，\"",
+  "en": "(a) Tanimoto similarity matrix of Morgan fingerprints (radius 2, 2048 bit), ordered by average-linkage hierarchical clustering; darker colours indicate greater similarity. (b) Chemical space obtained by projecting the same similarity matrix with classical multidimensional scaling (MDS); colour encodes the Vina score. (c) The four most frequent Murcko scaffolds; scaffold diversity = number of unique scaffolds / number of molecules. The figure shows whether the candidates concentrate on a single scaffold or span several chemotypes, providing a basis for scaffold hopping and patent-space avoidance."
+ },
+ {
+  "key": "没有可用于代谢软点分析的分子",
+  "file": "profiling.py",
+  "line": 671,
+  "context": "raise ValueError(\"没有可用于代谢软点分析的分子\")",
+  "en": "No molecules available for metabolic soft-spot analysis"
+ },
+ {
+  "key": "图 13　代谢软点预测",
+  "file": "profiling.py",
+  "line": 675,
+  "context": "\"图 13　代谢软点预测\",",
+  "en": "Figure 13. Metabolic soft-spot prediction"
+ },
+ {
+  "key": "规则式 CYP 氧化与脱烷基位点标注",
+  "file": "profiling.py",
+  "line": 676,
+  "context": "\"规则式 CYP 氧化与脱烷基位点标注\",",
+  "en": "Rule-based annotation of CYP oxidation and dealkylation sites"
+ },
+ {
+  "key": "代谢软点风险分",
+  "file": "profiling.py",
+  "line": 699,
+  "context": "ax.set_xlabel(\"代谢软点风险分\", fontsize=10.5)",
+  "en": "Metabolic soft-spot risk score"
+ },
+ {
+  "key": "系列风险排序",
+  "file": "profiling.py",
+  "line": 700,
+  "context": "ax.set_title(\"系列风险排序\", loc=\"left\", fontsize=13.5, pad=8)",
+  "en": "Series risk ranking"
+ },
+ {
+  "key": "· 风险",
+  "file": "profiling.py",
+  "line": 723,
+  "context": "f\"{_short_name(entry['profile']['name'], 10)} · \"",
+  "en": "· risk"
+ },
+ {
+  "key": "红圈：规则命中的潜在氧化 / 脱烷基位点",
+  "file": "profiling.py",
+  "line": 731,
+  "context": "\"红圈：规则命中的潜在氧化 / 脱烷基位点\",",
+  "en": "Red circles: potential oxidation / dealkylation sites flagged by the rules"
+ },
+ {
+  "key": "按规则命中加权得到的代谢软点风险分（0–100）；风险最高的六个分子的二维结构，红圈标出可能发生 CYP 氧化、N-/O-脱烷基、硫氧化或酚羟基结合的原子。规则基于常见 CYP 反应类型，不区分同工酶、不预测代谢速率，只用于优先安排代谢稳定性实验与结构封闭策略。",
+  "file": "profiling.py",
+  "line": 739,
+  "context": "\"（a）按规则命中加权得到的代谢软点风险分（0–100）；\"",
+  "en": "(a) Metabolic soft-spot risk score (0–100) obtained by weighting rule hits; (b) 2D structures of the six highest-risk molecules, with red circles marking atoms that may undergo CYP oxidation, N-/O-dealkylation, sulfoxidation or phenolic hydroxyl conjugation. The rules are based on common CYP reaction types; they do not distinguish isoforms or predict metabolic rates and are intended only to prioritize metabolic stability experiments and structure-blocking strategies."
+ }
+]
