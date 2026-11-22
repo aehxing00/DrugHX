@@ -43,47 +43,56 @@ def _looks_like_smiles(token: str) -> bool:
         return False
 
 
-def _smiles_score(token: str) -> int:
-    return sum(token.count(char) for char in "=#[]()@+-/\\") + int(
-        any(char.isdigit() for char in token)
-    )
-
-
 def read_smiles_lines(text: str) -> list[tuple[str, str]]:
-    """Parse 'SMILES name' or 'name SMILES' lines, auto-detecting the columns."""
+    """Parse 'SMILES name' or 'name SMILES' lines, auto-detecting the columns.
+
+    Everything after the first whitespace is kept as the name, so names with
+    spaces (for example ``Salvianolic acid G``) survive intact.  A name-first
+    line is still accepted when the last whitespace-separated token is a valid
+    SMILES.
+    """
     out = []
     for i, raw in enumerate(text.splitlines(), start=1):
         line = raw.strip()
         if not line or line.startswith("#") or line.startswith("//"):
             continue
-        separator = "\t" if "\t" in line else (" " if " " in line else None)
-        if separator is None and ("," in line or ";" in line):
-            line = line.replace(";", ",")
-            parts = [item.strip() for item in line.split(",") if item.strip()]
+        if ("," in line or ";" in line) and "\t" not in line:
+            parts = [
+                item.strip()
+                for item in line.replace(";", ",").split(",")
+                if item.strip()
+            ]
+            if len(parts) >= 2 and _looks_like_smiles(parts[0]):
+                out.append((", ".join(parts[1:]) or f"ligand_{i}", parts[0]))
+                continue
+            if len(parts) >= 2 and _looks_like_smiles(parts[1]):
+                out.append((parts[0] or f"ligand_{i}", parts[1]))
+                continue
+        if "\t" in line:
+            head, sep, tail = line.partition("\t")
+        elif " " in line:
+            head, tail = line.split(None, 1)
+            sep = " "
         else:
-            parts = line.split()
-        if not parts:
+            head, tail, sep = line, "", ""
+        head = head.strip()
+        tail = tail.strip()
+        if head and _looks_like_smiles(head):
+            out.append((tail or f"ligand_{i}", head))
             continue
-        if len(parts) == 1:
-            out.append((f"ligand_{i}", parts[0]))
-            continue
-        first, second = parts[0], parts[1]
-        first_smiles = _looks_like_smiles(first)
-        second_smiles = _looks_like_smiles(second)
-        if first_smiles and not second_smiles:
-            smiles, name = first, " ".join(parts[1:])
-        elif second_smiles and not first_smiles:
-            name, smiles = first, second
-        elif first_smiles and second_smiles:
-            if _smiles_score(second) > _smiles_score(first):
-                name, smiles = first, second
-            else:
-                smiles, name = first, second
-        else:
-            raise ValueError(
-                f"第 {i} 行无法识别 SMILES：{line[:80]}"
-            )
-        out.append((name.strip() or f"ligand_{i}", smiles.strip()))
+        if tail:
+            matched = False
+            for separator_char in ("\t", " "):
+                name_part, last_sep, last = line.rpartition(separator_char)
+                if last_sep and _looks_like_smiles(last.strip()):
+                    out.append(
+                        (name_part.strip() or f"ligand_{i}", last.strip())
+                    )
+                    matched = True
+                    break
+            if matched:
+                continue
+        raise ValueError(f"第 {i} 行无法识别 SMILES：{line[:80]}")
     return out
 
 

@@ -9,7 +9,7 @@ from pathlib import Path
 
 APP_NAME = "DrugHX"
 APP_AUTHOR = "HX"
-APP_VERSION = "2.13.0"
+APP_VERSION = "2.15.0"
 
 # 商业合规模式：默认关闭，全部在线功能保持可用。设置环境变量
 # DRUGHX_COMMERCIAL=1 后，软件会自动跳过仅授权学术使用的数据源
@@ -124,6 +124,21 @@ DEFAULT_DOCK_PARAMS = {
     "gpu_replicas": 1,
 }
 
+# Default drug-likeness bounds.  Users can override every value in the manual
+# and automatic preparation panels; filters.normalize_limits clamps them.
+FILTER_LIMIT_DEFAULTS = {
+    "mw": 500.0,
+    "logp": 4.5,
+    "tpsa": 140.0,
+    "hbd": 5,
+    "hba": 10,
+    "rotb": 10,
+    "heavy": 45,
+    "rings": 6,
+    "max_ring": 8,
+    "qed": 0.30,
+}
+
 DEFAULT_LIGAND_OPTIONS = {
     "protonation": "ph7.4",   # keep | neutral | ph7.4
     "minimize": True,
@@ -132,6 +147,7 @@ DEFAULT_LIGAND_OPTIONS = {
     # Reject PAINS / non-drug-like molecules before 3D embedding and PDBQT
     # generation.  Can be switched off in the manual preparation panel.
     "filter": True,
+    "filter_limits": dict(FILTER_LIMIT_DEFAULTS),
 }
 
 # One-click docking presets.  Defaults target a 16-core / 32-thread desktop

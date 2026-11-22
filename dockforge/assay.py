@@ -239,6 +239,7 @@ def calibrate(
         "slope": None,
         "intercept": None,
         "verdict": "样本不足（至少需要 4 个可匹配的实测点）",
+        "verdict_en": "Insufficient data (at least 4 matched measurements are required)",
         "level": "warn",
     }
     if len(matched) >= 4:
@@ -265,15 +266,31 @@ def calibrate(
         rho = spearman if spearman is not None else 0.0
         if rho <= -0.60:
             summary["verdict"] = "对接打分与实测活性同向且相关较强，可用于本系列排序"
+            summary["verdict_en"] = (
+                "Docking scores agree with measured potency and correlate strongly; "
+                "usable for ranking this series"
+            )
             summary["level"] = "ok"
         elif rho <= -0.30:
             summary["verdict"] = "相关性中等，只能用于粗排；建议增加实测点并复核质子化状态与结合盒"
+            summary["verdict_en"] = (
+                "Moderate correlation; coarse ranking only. Add measurements and re-check "
+                "protonation states and the binding box."
+            )
             summary["level"] = "warn"
         elif rho >= 0.30:
             summary["verdict"] = "相关性方向相反，请检查名称/SMILES 是否对应同一分子，或确认实验读出不是效价"
+            summary["verdict_en"] = (
+                "The correlation has the wrong sign; check that name/SMILES map to the same "
+                "compound and that the readout is a potency value."
+            )
             summary["level"] = "bad"
         else:
             summary["verdict"] = "相关性弱，当前打分不能用于本系列排序；建议改用 MM-GBSA 或自由能微扰复核"
+            summary["verdict_en"] = (
+                "Weak correlation; the current scores cannot rank this series. "
+                "Use MM-GBSA or free-energy perturbation for confirmation."
+            )
             summary["level"] = "bad"
     matched.sort(key=lambda item: -item["p_activity"])
     return {
@@ -283,5 +300,10 @@ def calibrate(
         "note": (
             "pActivity = 9 − log10(IC50/nM)。预期相关性为负：对接打分越负、pActivity 越高。"
             "相关性只反映本系列内的排序能力，不代表绝对结合自由能。"
+        ),
+        "note_en": (
+            "pActivity = 9 − log10(IC50/nM). The expected correlation is negative: a more "
+            "negative docking score corresponds to a higher pActivity. Correlation reflects "
+            "ranking ability within this series only, not absolute binding free energy."
         ),
     }

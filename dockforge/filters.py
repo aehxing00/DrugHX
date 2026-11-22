@@ -20,22 +20,14 @@ from rdkit import Chem, RDLogger
 from rdkit.Chem import Descriptors, QED, rdMolDescriptors
 from rdkit.Chem.FilterCatalog import FilterCatalog, FilterCatalogParams
 
+from .config import FILTER_LIMIT_DEFAULTS
+
 RDLogger.DisableLog("rdApp.*")
 
 # Hard limits: outside this box a molecule is not a developable non-covalent
 # small molecule (peptides, PROTAC-like huge molecules, polymers, dyes).
-LIMITS = {
-    "mw": 500.0,
-    "logp": 4.5,
-    "tpsa": 140.0,
-    "hbd": 5,
-    "hba": 10,
-    "rotb": 10,
-    "heavy": 45,
-    "rings": 6,
-    "max_ring": 8,
-    "qed": 0.30,
-}
+# These are defaults only; every value can be overridden per preparation run.
+LIMITS = dict(FILTER_LIMIT_DEFAULTS)
 
 # Softer limits reported as warnings so the user can still see why a molecule
 # looks unusual without losing it from the run.
@@ -47,6 +39,45 @@ WARN = {
     "max_ring": 7,
     "qed": 0.50,
 }
+
+_INTEGER_KEYS = ("hbd", "hba", "rotb", "heavy", "rings", "max_ring")
+
+
+def normalize_limits(limits: dict | None = None) -> dict:
+    """Merge user overrides into the defaults and clamp to sane ranges."""
+    merged = dict(LIMITS)
+    for key, value in (limits or {}).items():
+        if key not in merged:
+            continue
+        try:
+            merged[key] = float(value)
+        except (TypeError, ValueError):
+            continue
+    for key in _INTEGER_KEYS:
+        merged[key] = int(round(merged[key]))
+    merged["mw"] = max(100.0, min(1000.0, merged["mw"]))
+    merged["logp"] = max(-2.0, min(10.0, merged["logp"]))
+    merged["tpsa"] = max(20.0, min(300.0, merged["tpsa"]))
+    merged["hbd"] = max(0, min(20, merged["hbd"]))
+    merged["hba"] = max(0, min(30, merged["hba"]))
+    merged["rotb"] = max(0, min(50, merged["rotb"]))
+    merged["heavy"] = max(5, min(100, merged["heavy"]))
+    merged["rings"] = max(1, min(20, merged["rings"]))
+    merged["max_ring"] = max(3, min(20, merged["max_ring"]))
+    merged["qed"] = max(0.0, min(0.90, merged["qed"]))
+    return merged
+
+
+def warning_limits(limits: dict) -> dict:
+    """Derive warnings from the effective hard limits (same defaults as WARN)."""
+    return {
+        "mw": max(100.0, limits["mw"] * 0.90),
+        "logp": limits["logp"] - 0.50,
+        "tpsa": max(20.0, limits["tpsa"] - 20.0),
+        "rotb": max(1, limits["rotb"] - 2),
+        "max_ring": max(3, limits["max_ring"] - 1),
+        "qed": min(0.95, limits["qed"] + 0.20),
+    }
 
 # Brenk flags some ordinary oral drugs (e.g. gefitinib) with this purely
 # topological alert; it is a chain-length heuristic, not a reactivity or
@@ -104,8 +135,8 @@ def properties(mol: Chem.Mol) -> dict:
     }
 
 
-def evaluate(mol: Chem.Mol, name: str = "") -> dict:
-    """Return ``{passed, reasons, warnings, pains, alerts, props}``."""
+def evaluate(mol: Chem.Mol, name: str = "", limits: dict | None = None) -> dict:
+    """Return ``{passed, reasons, warnings, pains, alerts, props, limits}``."""
     if mol is None:
         return {
             "passed": False,
@@ -114,45 +145,48 @@ def evaluate(mol: Chem.Mol, name: str = "") -> dict:
             "pains": [],
             "alerts": [],
             "props": {},
+            "limits": normalize_limits(limits),
         }
+    limits = normalize_limits(limits)
+    warn = warning_limits(limits)
     props = properties(mol)
     reasons: list[str] = []
     warnings: list[str] = []
 
-    if props["mw"] > LIMITS["mw"]:
-        reasons.append(f"分子量 {props['mw']:.0f} > {LIMITS['mw']:.0f}")
-    elif props["mw"] > WARN["mw"]:
+    if props["mw"] > limits["mw"]:
+        reasons.append(f"分子量 {props['mw']:.0f} > {limits['mw']:.0f}")
+    elif props["mw"] > warn["mw"]:
         warnings.append(f"分子量偏大（{props['mw']:.0f}）")
-    if props["heavy"] > LIMITS["heavy"]:
-        reasons.append(f"重原子数 {props['heavy']} > {LIMITS['heavy']}")
-    if props["logp"] > LIMITS["logp"]:
-        reasons.append(f"cLogP {props['logp']:.1f} > {LIMITS['logp']:.1f}")
-    elif props["logp"] > WARN["logp"]:
+    if props["heavy"] > limits["heavy"]:
+        reasons.append(f"重原子数 {props['heavy']} > {limits['heavy']}")
+    if props["logp"] > limits["logp"]:
+        reasons.append(f"cLogP {props['logp']:.1f} > {limits['logp']:.1f}")
+    elif props["logp"] > warn["logp"]:
         warnings.append(f"cLogP 偏高（{props['logp']:.1f}）")
-    if props["tpsa"] > LIMITS["tpsa"]:
-        reasons.append(f"TPSA {props['tpsa']:.0f} > {LIMITS['tpsa']:.0f}")
-    elif props["tpsa"] > WARN["tpsa"]:
+    if props["tpsa"] > limits["tpsa"]:
+        reasons.append(f"TPSA {props['tpsa']:.0f} > {limits['tpsa']:.0f}")
+    elif props["tpsa"] > warn["tpsa"]:
         warnings.append(f"TPSA 偏高（{props['tpsa']:.0f}）")
-    if props["hbd"] > LIMITS["hbd"]:
-        reasons.append(f"氢键供体 {props['hbd']} > {LIMITS['hbd']}")
-    if props["hba"] > LIMITS["hba"]:
-        reasons.append(f"氢键受体 {props['hba']} > {LIMITS['hba']}")
-    if props["rotb"] > LIMITS["rotb"]:
-        reasons.append(f"可旋转键 {props['rotb']} > {LIMITS['rotb']}")
-    elif props["rotb"] > WARN["rotb"]:
+    if props["hbd"] > limits["hbd"]:
+        reasons.append(f"氢键供体 {props['hbd']} > {limits['hbd']}")
+    if props["hba"] > limits["hba"]:
+        reasons.append(f"氢键受体 {props['hba']} > {limits['hba']}")
+    if props["rotb"] > limits["rotb"]:
+        reasons.append(f"可旋转键 {props['rotb']} > {limits['rotb']}")
+    elif props["rotb"] > warn["rotb"]:
         warnings.append(f"可旋转键偏多（{props['rotb']}）")
-    if props["rings"] > LIMITS["rings"]:
-        reasons.append(f"环数 {props['rings']} > {LIMITS['rings']}")
-    if props["max_ring"] >= LIMITS["max_ring"]:
-        reasons.append(f"大环：最大环 {props['max_ring']} 元 ≥ {LIMITS['max_ring']}")
-    elif props["max_ring"] >= WARN["max_ring"]:
+    if props["rings"] > limits["rings"]:
+        reasons.append(f"环数 {props['rings']} > {limits['rings']}")
+    if props["max_ring"] >= limits["max_ring"]:
+        reasons.append(f"大环：最大环 {props['max_ring']} 元 ≥ {limits['max_ring']}")
+    elif props["max_ring"] >= warn["max_ring"]:
         warnings.append(f"大环（最大环 {props['max_ring']} 元）")
     if props["qed"] is not None:
-        if props["qed"] < LIMITS["qed"]:
+        if props["qed"] < limits["qed"]:
             reasons.append(
-                f"QED {props['qed']:.2f} < {LIMITS['qed']:.2f}（类药性不足）"
+                f"QED {props['qed']:.2f} < {limits['qed']:.2f}（类药性不足）"
             )
-        elif props["qed"] < WARN["qed"]:
+        elif props["qed"] < warn["qed"]:
             warnings.append(f"QED 偏低（{props['qed']:.2f}）")
 
     pains: list[str] = []
@@ -188,6 +222,7 @@ def evaluate(mol: Chem.Mol, name: str = "") -> dict:
         "pains": pains,
         "alerts": alerts,
         "props": props,
+        "limits": limits,
         "name": name,
     }
 

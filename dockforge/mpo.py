@@ -32,6 +32,13 @@ MPO_WEIGHTS = {
     "safety": 0.25,
 }
 
+STAGE_EN = {
+    "起点": "Start",
+    "命中": "Hit",
+    "先导": "Lead",
+    "候选": "Candidate",
+}
+
 # Species body weights (kg) used by the dose projection.  They mirror the
 # physiology table in ``pharm`` but stay local so this module has no import
 # cycle.
@@ -209,6 +216,7 @@ def score(
         "components": components,
         "mpo": round(mpo, 1),
         "stage": stage,
+        "stage_en": STAGE_EN.get(stage, stage),
         "novelty": novelty(smiles),
     }
 

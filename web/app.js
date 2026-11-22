@@ -223,6 +223,32 @@
 
   const FINE_LIMIT = 200;
 
+  const FILTER_LIMIT_DEFAULTS = {
+    mw: 500, logp: 4.5, tpsa: 140, hbd: 5, hba: 10,
+    rotb: 10, heavy: 45, rings: 6, max_ring: 8, qed: 0.30,
+  };
+
+  function filterLimitGrid(limits) {
+    const values = { ...FILTER_LIMIT_DEFAULTS, ...(limits || {}) };
+    const fields = [
+      ["mw", "分子量上限", 10],
+      ["logp", "cLogP 上限", 0.1],
+      ["tpsa", "TPSA 上限", 5],
+      ["hbd", "氢键供体上限", 1],
+      ["hba", "氢键受体上限", 1],
+      ["rotb", "可旋转键上限", 1],
+      ["heavy", "重原子上限", 1],
+      ["rings", "环数上限", 1],
+      ["max_ring", "最大环上限", 1],
+      ["qed", "QED 下限", 0.05],
+    ];
+    return fields.map(([key, label, step]) => `<div class="field">
+      <label>${label}</label>
+      <input class="input" type="number" data-filter-limit="${key}" step="${step}" value="${Number(values[key])}">
+    </div>`).join("");
+  }
+
+
   let viewer = null;
 
   /* ------------------------------------------------------------------ utils */
@@ -776,6 +802,8 @@
             </div>
             <div class="field" style="margin-top:8px"><label>或：氨基酸序列（ESMFold 在线预测，建议 ≤600 aa；请勿提交人类遗传资源或个人信息）</label><textarea class="textarea mono" id="auto-receptor-sequence" rows="3" placeholder="MKTAYIAKQRQISFVKSHFSRQ..."></textarea></div>
             <label class="check" style="margin-top:10px"><input type="checkbox" id="auto-online-intel" checked> 自动获取在线靶点与最优分子情报（需联网，可关闭）</label>
+            <label class="check" style="margin-top:10px"><input type="checkbox" id="auto-filter" checked> 配体准备前启用成药性过滤（总开关）</label>
+            <div id="auto-filter-grid" class="params-grid" style="margin-top:8px">${filterLimitGrid(S.ligOptions?.filter_limits)}</div>
             <div class="field" style="margin-top:12px"><label>配体文件（可多选，.sdf / .mol / .mol2 / .smi / .pdb / .pdbqt）</label><input class="input" type="file" id="auto-ligands" accept=".sdf,.sd,.mol,.mol2,.smi,.smiles,.pdb,.pdbqt" multiple></div>
             <div class="row" style="margin-top:14px;flex-wrap:wrap">
               <button class="btn primary" type="submit" ${running ? "disabled" : ""}>开始全自动分析</button>
@@ -954,12 +982,12 @@
               <input type="file" data-upload="ligand" accept=".sdf,.sd,.mol,.mdl,.mol2,.pdb,.pdbqt,.smi,.txt,.csv,.tsv" multiple>
               <svg viewBox="0 0 24 24" fill="none"><path d="M12 16V4m0 0L7 9m5-5l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 16v3a1 1 0 001 1h14a1 1 0 001-1v-3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
               <strong>拖拽配体文件（可多选）</strong>
-              <span>SDF（多记录）· CSV/TSV · SMI · MOL2 · PDBQT</span>
+              <span>SDF（多记录）· CSV/TSV · SMI（名称可含空格）· MOL2 · PDBQT</span>
             </label>
             <form data-form="add-smiles" style="display:flex;flex-direction:column;gap:9px">
               <div class="field">
-                <label>直接输入 SMILES（每行一个，<span class="mono">名称 SMILES</span> 或 <span class="mono">SMILES 名称</span> 自动识别）</label>
-                <textarea class="textarea" id="smiles-input" placeholder="aspirin CC(=O)Oc1ccccc1C(=O)O&#10;caffeine Cn1c(=O)c2c(ncn2C)n(C)c1=O&#10;CC(=O)Oc1ccccc1C(=O)O aspirin_2"></textarea>
+                <label>直接输入 SMILES（每行一个，<span class="mono">SMILES 名称</span> 或 <span class="mono">名称 SMILES</span> 自动识别；名称可含空格，如 <span class="mono">Salvianolic acid G</span>）</label>
+                <textarea class="textarea" id="smiles-input" placeholder="aspirin CC(=O)Oc1ccccc1C(=O)O&#10;caffeine Cn1c(=O)c2c(ncn2C)n(C)c1=O&#10;CC(=O)Oc1ccccc1C(=O)O aspirin_2&#10;CC(=O)O Salvianolic acid G"></textarea>
               </div>
               <button class="btn" type="submit" style="align-self:flex-start">添加 SMILES</button>
             </form>
@@ -1006,9 +1034,15 @@
             </label>
             <label class="check" style="align-self:end;padding-bottom:10px">
               <input type="checkbox" data-opt="lig_filter" ${opts.filter === false ? "" : "checked"}>
-              准备前过滤 PAINS / 超大环 / 非成药分子
+              启用成药性过滤（总开关）
             </label>
           </div>
+          <div class="divider"></div>
+          <div class="row" style="margin-bottom:6px">
+            <strong style="font-size:11.5px">成药性过滤参数</strong>
+            <span class="muted" style="font-size:10.5px">关闭总开关后不生效；警告阈值按上限自动收紧</span>
+          </div>
+          <div class="params-grid" style="${opts.filter === false ? "opacity:.5" : ""}">${filterLimitGrid(opts.filter_limits)}</div>
           <div class="divider"></div>
           <div class="row">
             <span class="chip">已选 <strong>${S.selectedLigands.size}</strong> / ${FINE_LIMIT}</span>
@@ -1063,8 +1097,9 @@
             </label>
             <label class="check" style="align-self:end;padding-bottom:10px">
               <input type="checkbox" id="bulk-filter" checked>
-              准备前过滤 PAINS / 超大环 / 非成药分子
+              启用成药性过滤（总开关）
             </label>
+            <div class="params-grid" style="grid-column:1/-1;margin-top:6px">${filterLimitGrid(opts.filter_limits)}</div>
           </div>
           <div class="divider"></div>
           <div class="row" style="flex-wrap:wrap;gap:8px">
@@ -3732,6 +3767,16 @@
         S.autoSelect = false;
         if (el.checked) S.selectedLigands.add(id); else S.selectedLigands.delete(id);
         render({ viewer: false });
+      } else if (el.matches('[data-filter-limit]')) {
+        const key = el.dataset.filterLimit;
+        const value = Number(el.value);
+        if (key && Number.isFinite(value)) {
+          S.ligOptions = S.ligOptions || {};
+          S.ligOptions.filter_limits = {
+            ...(S.ligOptions.filter_limits || {}),
+            [key]: value,
+          };
+        }
       } else if (el.matches('[data-opt]')) {
         const key = el.dataset.opt;
         if (key === "lig_minimize") {
@@ -3796,6 +3841,15 @@
           [...ligandInput.files].forEach((file) => body.append("ligands", file));
           body.append("species", $("#auto-species")?.value || "human");
           body.append("online_intel", $("#auto-online-intel")?.checked ? "true" : "false");
+          const autoFilterLimits = {};
+          $$("#auto-filter-grid [data-filter-limit]").forEach((el) => {
+            const value = Number(el.value);
+            if (Number.isFinite(value)) autoFilterLimits[el.dataset.filterLimit] = value;
+          });
+          body.append("ligand_options", JSON.stringify({
+            filter: $("#auto-filter")?.checked !== false,
+            filter_limits: autoFilterLimits,
+          }));
           body.append("project_name", $("#auto-project-name")?.value.trim() || "");
           body.append("report_lang", $("#auto-lang")?.value || "zh");
           S.autoResult = null;
@@ -4210,6 +4264,7 @@
           protonation: $("#bulk-protonation")?.value || "ph7.4",
           minimize: Boolean($("#bulk-minimize")?.checked),
           filter: Boolean($("#bulk-filter")?.checked),
+          filter_limits: S.ligOptions?.filter_limits || {},
           seed: Number($("#bulk-seed")?.value) || 42,
           threads: Math.max(1, Math.min(32, Number($("#bulk-threads")?.value) || 8)),
         };

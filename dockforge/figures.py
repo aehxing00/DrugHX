@@ -368,13 +368,24 @@ def _nearest_ligand_name(
 
 
 def _style_cjk():
+    english = i18n.get_lang() == "en"
     _style()
     plt.rcParams.update(
         {
-            "font.sans-serif": [
-                "Microsoft YaHei", "SimHei", "Noto Sans CJK SC",
-                "Arial", "DejaVu Sans",
-            ],
+            "font.sans-serif": (
+                ["Arial", "Helvetica Neue", "Helvetica", "DejaVu Sans", "Microsoft YaHei"]
+                if english
+                else [
+                    "Microsoft YaHei", "SimHei", "Noto Sans CJK SC",
+                    "Arial", "DejaVu Sans",
+                ]
+            ),
+            "font.size": 13.5 if english else 12,
+            "axes.labelsize": 14.5 if english else 13,
+            "axes.titlesize": 16.0 if english else 16,
+            "xtick.labelsize": 12.5 if english else 11,
+            "ytick.labelsize": 12.5 if english else 11,
+            "legend.fontsize": 12.0 if english else 11,
         }
     )
 
@@ -1399,7 +1410,7 @@ def _a4_page(title: str, subtitle: str = "", tag: str = "", footer: str = "") ->
     fig = plt.figure(figsize=(8.27, 11.69))
     fig.patch.set_facecolor("white")
     english = i18n.get_lang() == "en"
-    title_size = 17.5 if english else 21
+    title_size = 19.0 if english else 21
     title_text = _wrap_cjk(title, 58) if english else title
     fig.text(
         0.07, 0.958, title_text, fontsize=title_size, fontweight="bold",
@@ -1409,7 +1420,7 @@ def _a4_page(title: str, subtitle: str = "", tag: str = "", footer: str = "") ->
     sub_y = 0.958 - 0.024 * title_lines - 0.014
     if subtitle:
         sub_text = _wrap_cjk(subtitle, 96 if english else 78)
-        fig.text(0.07, sub_y, sub_text, fontsize=10.8 if english else 11.5,
+        fig.text(0.07, sub_y, sub_text, fontsize=12.0 if english else 11.5,
                  color=MUTED, va="top")
         sub_y -= 0.0165 * (sub_text.count("\n") + 1) + 0.006
     fig.add_artist(
@@ -1664,7 +1675,8 @@ def _compact_frame(ax, grid_axis: str = "x"):
     ax.tick_params(colors=MUTED)
 
 
-def _caption(fig, text: str, y: float = 0.148, width: int = 92):
+def _caption(fig, text: str, y: float = 0.148, width: int = 92,
+             split: bool = True):
     """Figure caption placed on the same page, above the footer.
 
     Long captions are split into a method paragraph and a result paragraph so
@@ -1675,21 +1687,26 @@ def _caption(fig, text: str, y: float = 0.148, width: int = 92):
                transform=fig.transFigure, color=GRID, linewidth=0.8)
     )
     text = i18n.tr(text)
-    if "\n\n" not in text and len(text) > 90:
+    if split and "\n\n" not in text and len(text) > 90:
         if i18n.get_lang() == "en":
             parts = [part.strip() for part in re.split(r"(?<=[.!?])\s+", text) if part.strip()]
         else:
             parts = [part.strip() for part in re.split(r"(?<=[。！？])", text) if part.strip()]
         if len(parts) >= 3:
             middle = max(1, len(parts) // 2)
-            head = "Methods: " if i18n.get_lang() == "en" else "方法："
-            tail = "Results: " if i18n.get_lang() == "en" else "结果："
-            text = head + "".join(parts[:middle]) + "\n\n" + tail + "".join(parts[middle:])
-    wrapped = _wrap_cjk(text, int(width * 1.13) if i18n.get_lang() == "en" else width)
+            english = i18n.get_lang() == "en"
+            sep = " " if english else ""
+            head = "Methods: " if english else "方法："
+            tail = "Results: " if english else "结果："
+            text = (
+                head + sep.join(parts[:middle]) + "\n\n"
+                + tail + sep.join(parts[middle:])
+            )
+    wrapped = _wrap_cjk(text, int(width * 1.10) if i18n.get_lang() == "en" else width)
     lines = wrapped.count("\n") + 1
-    size = 9.2 if i18n.get_lang() == "en" else 9.8
+    size = 10.6 if i18n.get_lang() == "en" else 9.8
     # Shrink long captions so they never collide with the page footer.
-    while y - lines * size * 1.55 / 842.0 < 0.068 and size > 7.6:
+    while y - lines * size * 1.55 / 842.0 < 0.082 and size > 8.4:
         size -= 0.3
     fig.text(
         0.07, y, wrapped, fontsize=size, color=MUTED,
@@ -1810,14 +1827,15 @@ def _page_landscape(pdf, results: list[dict]):
         for index, value in enumerate(scores):
             ax.text(
                 -value + 0.16, index, f"{-value:.1f}", va="center", ha="left",
-                fontsize=11.5, color=INK, fontweight="bold",
+                fontsize=12.5, color=INK, fontweight="bold",
             )
         ax.set_yticks(y)
-        ax.set_yticklabels(names, fontsize=11.5)
+        ax.set_yticklabels(names, fontsize=13.0)
         ax.invert_yaxis()
-        ax.set_xlabel("结合亲和力 −ΔG$_{bind}$ (kcal/mol)", fontsize=13)
-        ax.set_title("按 Vina 打分排序的配体", loc="left", fontsize=14.5, pad=14)
+        ax.set_xlabel("结合亲和力 −ΔG$_{bind}$ (kcal/mol)", fontsize=14.5)
+        ax.set_title("按 Vina 打分排序的配体", loc="left", fontsize=16, pad=14)
         ax.set_xlim(0, max(-min(scores), 1.0) * 1.16)
+        _panel_tag(ax, "a", x=-0.075)
         _compact_frame(ax)
 
     ax2 = fig.add_subplot(grid[1])
@@ -1839,21 +1857,22 @@ def _page_landscape(pdf, results: list[dict]):
                  linestyle=(0, (5, 3)), label="y = x", zorder=2)
         correlation = float(np.corrcoef(vina, vinardo)[0, 1])
         rho = _spearman(pairs)
-        rho_text = f"　Spearman ρ = {rho:.3f}" if rho is not None else ""
         ax2.text(
-            0.04, 0.94,
-            f"Pearson r = {correlation:.3f}{rho_text}　n = {len(pairs)}",
-            transform=ax2.transAxes, fontsize=11.5, color=INK, va="top",
+            0.04, 0.95,
+            f"r = {correlation:.3f} · ρ = {rho:.3f}\nn = {len(pairs)}" if rho is not None
+            else f"r = {correlation:.3f}\nn = {len(pairs)}",
+            transform=ax2.transAxes, fontsize=11.0, color=INK, va="top",
             bbox={"boxstyle": "round,pad=0.35", "facecolor": "white",
                   "edgecolor": GRID, "linewidth": 0.8},
         )
         ax2.set_xlim(low, high)
         ax2.set_ylim(low, high)
         ax2.set_aspect("equal", adjustable="box")
-        ax2.set_xlabel("Vina 打分 (kcal/mol)", fontsize=13)
-        ax2.set_ylabel("Vinardo 打分 (kcal/mol)", fontsize=13)
-        ax2.set_title("两套打分函数的一致性", loc="left", fontsize=14.5, pad=12)
+        ax2.set_xlabel("Vina 打分 (kcal/mol)", fontsize=14.5)
+        ax2.set_ylabel("Vinardo 打分 (kcal/mol)", fontsize=14.5)
+        ax2.set_title("两套打分函数的一致性", loc="left", fontsize=16, pad=12)
         ax2.legend(frameon=False, loc="lower right")
+        _panel_tag(ax2, "b", x=-0.075)
         _compact_frame(ax2, "both")
     elif len(shown) == 1:
         _single_pose_panel(ax2, shown[0])
@@ -1870,20 +1889,38 @@ def _page_landscape(pdf, results: list[dict]):
             ),
             ha="center", va="center", fontsize=12.5, color=MUTED,
         )
-    _caption(
-        fig,
-        (
-            f"{shown[0].get('ligand_name', '配体')} 的 Vina 与 Vinardo 打分概览；"
-            f"本次只有 1 个成功配体，因此不计算跨配体均值、中位数区间或 Vina–Vinardo 相关性。"
-            "该配体全部输出构象的能量–RMSD 分布，红圈标出最优构象；"
-            "RMSD 为相对最优构象的重原子偏差，用于判断构象采样是否收敛。"
-            if len(shown) == 1
-            else "按 AutoDock Vina 打分升序排列的配体，条形长度为 −ΔG_bind，"
-            "末端标注数值（kcal/mol）。Vina 与 Vinardo 两套经验打分的散点比较，"
-            "虚线为 y = x；左上角给出 Pearson r、Spearman ρ 与样本量 n。"
-            "仅当两套函数高度相关（|r| ≥ 0.8）时，才可认为排序不依赖单一打分函数。"
-        ),
-    )
+    if len(shown) == 1:
+        _caption(
+            fig,
+            _L(
+                f"{shown[0].get('ligand_name', '配体')} 的 Vina 打分概览；本次只有 1 个成功配体，"
+                "因此不计算跨配体均值、中位数区间或 Vina–Vinardo 相关性。"
+                "该配体全部输出构象的能量–RMSD 分布，红圈标出最优构象；"
+                "RMSD 为相对最优构象的重原子偏差，用于判断构象采样是否收敛。",
+                f"Vina score overview for {shown[0].get('ligand_name', 'the ligand')}; with only one "
+                "successfully docked ligand, cross-ligand means, median ranges and the Vina–Vinardo "
+                "correlation are not computed. Energy–RMSD distribution of all output conformations, "
+                "with the best pose circled in red; RMSD is the heavy-atom deviation from the best pose "
+                "and indicates whether conformational sampling has converged.",
+            ),
+            width=104,
+            split=False,
+        )
+    else:
+        _caption(
+            fig,
+            _L(
+                "按 AutoDock Vina 打分升序排列的配体，条形长度为 −ΔG_bind，末端标注数值（kcal/mol）。"
+                "Vina 与 Vinardo 两套经验打分的散点比较，虚线为 y = x；左上角给出 Pearson r、Spearman ρ "
+                "与样本量 n，仅当 |r| ≥ 0.8 时排序才不依赖单一打分函数。",
+                "Ligands sorted by ascending AutoDock Vina score, with bar length equal to −ΔG_bind and "
+                "values (kcal/mol) at the bar ends. Scatter comparison of the Vina and Vinardo empirical "
+                "scores with the dashed line y = x; Pearson r, Spearman ρ and sample size n are given in "
+                "the upper-left. The ranking is independent of a single scoring function only when |r| ≥ 0.8.",
+            ),
+            width=104,
+            split=False,
+        )
     pdf.savefig(fig, facecolor="white")
     plt.close(fig)
 
@@ -1927,22 +1964,23 @@ def _page_efficiency(pdf, results: list[dict], props: dict):
             x_label = min(span * 0.97, 0.90 * top / le)
             ax.text(
                 x_label - 0.4, le * x_label, f"LE {le:.1f}",
-                fontsize=9.5, color=MUTED, ha="right", va="bottom",
+                fontsize=10.5, color=MUTED, ha="right", va="bottom",
             )
         order = np.argsort(-energy)[:1]
-        for index in order:
-            ax.annotate(
-                points[index][2][:16],
-                (heavy[index], energy[index]),
-                textcoords="offset points", xytext=(-10, -18),
-                ha="right", fontsize=10, color=INK,
-                arrowprops={"arrowstyle": "-", "color": MUTED, "linewidth": 0.8},
-            )
+        if len(points) <= 4:
+            for index in order:
+                ax.annotate(
+                    points[index][2][:16],
+                    (heavy[index], energy[index]),
+                    textcoords="offset points", xytext=(-10, -18),
+                    ha="right", fontsize=10.5, color=INK,
+                    arrowprops={"arrowstyle": "-", "color": MUTED, "linewidth": 0.8},
+                )
         ax.set_xlim(0, span * 1.12)
         ax.set_ylim(0, top)
-        ax.set_xlabel("重原子数", fontsize=13)
-        ax.set_ylabel(_L("−ΔGbind（kcal/mol，经验打分）", "−ΔGbind (kcal/mol, empirical)"), fontsize=13)
-        ax.set_title("配体效率等值线", loc="left", fontsize=14.5, pad=12)
+        ax.set_xlabel("重原子数", fontsize=14)
+        ax.set_ylabel(_L("−ΔGbind（kcal/mol，经验打分）", "−ΔGbind (kcal/mol, empirical)"), fontsize=14)
+        ax.set_title("配体效率等值线", loc="left", fontsize=15.5, pad=12)
         mean_le = float(np.mean([point[3] for point in points]))
         le_text = (
             _L(
@@ -1987,21 +2025,21 @@ def _page_efficiency(pdf, results: list[dict], props: dict):
             )
         )
         ax2.text(202, 5.2, "类药空间上限（MW ≤ 500，cLogP ≤ 5）",
-                 fontsize=9.8, color=MUTED, va="bottom")
+                 fontsize=10.5, color=MUTED, va="bottom")
         ax2.add_patch(
             Rectangle(
                 (250, -1.0), 200, 4.5, fill=False, edgecolor=TEAL,
                 linewidth=1.1, linestyle=(0, (2, 2)),
             )
         )
-        ax2.text(252, -1.35, "lead-like 区间", fontsize=9.8, color=TEAL,
-                 va="top")
+        ax2.text(253, -0.90, "lead-like 区间", fontsize=10.5, color=TEAL,
+                 va="bottom")
         cbar = fig.colorbar(scatter, ax=ax2, fraction=0.035, pad=0.02)
-        cbar.set_label("Vina 打分 (kcal/mol)", fontsize=11)
-        cbar.ax.tick_params(labelsize=10)
-        ax2.set_xlabel("分子量 (Da)", fontsize=13)
-        ax2.set_ylabel("cLogP", fontsize=13)
-        ax2.set_title("分子量–脂溶性化学空间", loc="left", fontsize=14.5,
+        cbar.set_label("Vina 打分 (kcal/mol)", fontsize=11.5)
+        cbar.ax.tick_params(labelsize=10.5)
+        ax2.set_xlabel("分子量 (Da)", fontsize=14)
+        ax2.set_ylabel("cLogP", fontsize=14)
+        ax2.set_title("分子量–脂溶性化学空间", loc="left", fontsize=15.5,
                       pad=12)
         _compact_frame(ax2, "both")
     else:
@@ -2010,10 +2048,19 @@ def _page_efficiency(pdf, results: list[dict], props: dict):
                  fontsize=13, color=MUTED)
     _caption(
         fig,
-        "−ΔG_bind 随重原子数的变化，虚线为配体效率等值线（LE = 0.2–0.5 kcal/mol/HA）；"
-        "位于同一等值线上的分子具有可比性，落在右下方（同尺寸但 −ΔG 偏低）的分子效率较差。"
-        "分子量–cLogP 化学空间，点色表示 Vina 打分；虚线框为类药空间上限"
-        "（MW ≤ 500、cLogP ≤ 5），点线框为 lead-like 区间（MW 250–450、cLogP −1–3.5）。",
+        _L(
+            "−ΔG_bind 随重原子数的变化，虚线为配体效率等值线（LE = 0.2–0.5 kcal/mol/HA）；"
+            "同一等值线上的分子可直接比较，右下方（同尺寸但 −ΔG 偏低）的分子效率较差。"
+            "分子量–cLogP 化学空间，点色表示 Vina 打分；虚线框为类药空间上限（MW ≤ 500、cLogP ≤ 5），"
+            "点线框为 lead-like 区间（MW 250–450、cLogP −1–3.5）。",
+            "−ΔG_bind versus heavy-atom count, with dashed ligand-efficiency contours "
+            "(LE = 0.2–0.5 kcal/mol/HA); molecules on the same contour are directly comparable, and "
+            "those lower right (same size but lower −ΔG) are less efficient. Molecular weight–cLogP "
+            "space with point colour showing the Vina score; dashed box, drug-like limit (MW ≤ 500, "
+            "cLogP ≤ 5); dotted box, lead-like region (MW 250–450, cLogP −1–3.5).",
+        ),
+        width=104,
+        split=False,
     )
     pdf.savefig(fig, facecolor="white")
     plt.close(fig)
@@ -2049,7 +2096,7 @@ def _page_interactions(pdf, results: list[dict], analyses: dict[int, dict]):
         for j in range(matrix_arr.shape[1]):
             value = int(matrix_arr[i, j])
             ax.text(
-                j, i, str(value), ha="center", va="center", fontsize=10,
+                j, i, str(value), ha="center", va="center", fontsize=11,
                 color="white" if value > maximum * 0.55 else INK,
             )
     ax.set_xticks(np.arange(-0.5, len(INTERACTION_LABELS), 1), minor=True)
@@ -2057,9 +2104,9 @@ def _page_interactions(pdf, results: list[dict], analyses: dict[int, dict]):
     ax.grid(which="minor", color="white", linewidth=1.4)
     ax.tick_params(which="minor", length=0)
     cbar = fig.colorbar(image, ax=ax, fraction=0.032, pad=0.02)
-    cbar.set_label("作用力数量", fontsize=10.5)
-    cbar.ax.tick_params(labelsize=9.5)
-    ax.set_title("作用力计数矩阵", loc="left", fontsize=14.5, pad=12)
+    cbar.set_label("作用力数量", fontsize=11.5)
+    cbar.ax.tick_params(labelsize=10.5)
+    ax.set_title("作用力计数矩阵", loc="left", fontsize=16, pad=12)
 
     classes = [
         ("hbonds", "氢键", "#b45309"),
@@ -2099,12 +2146,12 @@ def _page_interactions(pdf, results: list[dict], analyses: dict[int, dict]):
             )
             left += values
         ax2.set_yticks(y)
-        ax2.set_yticklabels(labels, fontsize=11)
+        ax2.set_yticklabels(labels, fontsize=12)
         ax2.invert_yaxis()
-        ax2.set_xlabel("发生该作用的配体数", fontsize=13)
-        ax2.set_title("关键残基接触频率", loc="left", fontsize=14.5, pad=12)
+        ax2.set_xlabel("发生该作用的配体数", fontsize=14.5)
+        ax2.set_title("关键残基接触频率", loc="left", fontsize=16, pad=12)
         ax2.legend(
-            frameon=False, ncol=3, loc="lower right", fontsize=10.5,
+            frameon=False, ncol=3, loc="lower right", fontsize=11.5,
             handlelength=1.2,
         )
         _compact_frame(ax2)
@@ -2132,8 +2179,8 @@ def _page_poses(pdf, results: list[dict]):
         "Fig. 4　Pose ensemble",
     )
     grid = fig.add_gridspec(
-        2, 1, height_ratios=[1.25, 1.0], hspace=0.72,
-        left=0.20, right=0.93, top=0.842, bottom=0.205,
+        2, 1, height_ratios=[1.25, 1.0], hspace=0.62,
+        left=0.20, right=0.93, top=0.842, bottom=0.250,
     )
     ax = fig.add_subplot(grid[0])
     for index, item in enumerate(shown):
@@ -2145,14 +2192,14 @@ def _page_poses(pdf, results: list[dict]):
         ax.scatter(
             rmsd, energy, s=55, color=color, edgecolor="white",
             linewidth=0.8, zorder=3,
-            label=_trunc(item.get("ligand_name", "ligand"), 16),
+            label=_trunc(item.get("ligand_name", "ligand"), 18),
         )
-    ax.set_xlabel("相对最优构象的 RMSD (Å)", fontsize=13)
-    ax.set_ylabel("Vina 打分 (kcal/mol)", fontsize=13)
-    ax.set_title("构象空间采样", loc="left", fontsize=14.5, pad=12)
+    ax.set_xlabel("相对最优构象的 RMSD (Å)", fontsize=14.5)
+    ax.set_ylabel("Vina 打分 (kcal/mol)", fontsize=14.5)
+    ax.set_title("构象空间采样", loc="left", fontsize=16, pad=12)
     ax.legend(
-        frameon=False, fontsize=8.6, ncol=3, loc="upper center",
-        bbox_to_anchor=(0.5, -0.18), handlelength=1.6, columnspacing=1.4,
+        frameon=False, fontsize=10.2, ncol=3, loc="upper center",
+        bbox_to_anchor=(0.5, -0.18), handlelength=1.5, columnspacing=1.2,
     )
     _compact_frame(ax, "both")
 
@@ -2163,29 +2210,36 @@ def _page_poses(pdf, results: list[dict]):
     for item in shown:
         modes = item["modes"]
         energies = [float(mode.get("affinity", 0.0)) for mode in modes]
-        names.append(_trunc(item.get("ligand_name", "ligand"), 14))
+        names.append(_trunc(item.get("ligand_name", "ligand"), 16))
         spans.append(max(energies) - min(energies) if energies else 0.0)
         counts.append(len(modes))
     y = np.arange(len(names))
     ax2.barh(y, spans, color=TEAL, height=0.6, edgecolor="none")
     for index, (span, count) in enumerate(zip(spans, counts)):
         ax2.text(span + 0.04, index, f"{span:.2f}　({count} 个构象)",
-                 va="center", fontsize=10.5, color=INK)
+                 va="center", fontsize=11.5, color=INK)
     ax2.set_yticks(y)
-    ax2.set_yticklabels(names, fontsize=11)
+    ax2.set_yticklabels(names, fontsize=12)
     ax2.invert_yaxis()
-    ax2.set_xlabel("构象打分跨度 (kcal/mol)", fontsize=13)
+    ax2.set_xlabel("构象打分跨度 (kcal/mol)", fontsize=14.5)
     convergence_title = "构象收敛性（跨度越小越集中）"
     if i18n.get_lang() == "en":
-        convergence_title = _wrap_cjk(i18n.tr(convergence_title), 30)
-    ax2.set_title(convergence_title, loc="left", fontsize=12.5, pad=10)
+        convergence_title = "Conformational convergence (tighter clustering)"
+    ax2.set_title(convergence_title, loc="left", fontsize=14.5, pad=10)
     ax2.set_xlim(0, max(spans) * 1.45 if max(spans) > 0 else 1.0)
     _compact_frame(ax2)
     _caption(
         fig,
-        "每个配体输出的全部构象的 Vina 打分与其相对最优构象的重原子 RMSD；同一条线上的点越靠左且越靠下，"
-        "说明高分组装越接近全局最优。各配体构象打分跨度，括号内为输出构象数；跨度越小表示构象越集中。"
-        "本图只反映单次运行的构象采样，不等同于多随机种子的重复性验证。",
+        _L(
+            "每个配体全部构象的 Vina 打分与其相对最优构象的重原子 RMSD；点越靠左下，高分组装越接近全局最优。"
+            "右图为各配体的构象打分跨度，括号内为构象数。本图仅反映单次运行的构象采样，"
+            "不等同于多随机种子的重复性验证。",
+            "Vina score of every output conformation versus its heavy-atom RMSD from the best pose; "
+            "points lower and further left indicate poses closer to the global optimum. "
+            "Right, conformational score span per ligand, with the number of output conformations in parentheses. "
+            "Single-run sampling only; not a multi-seed reproducibility test.",
+        ),
+        y=0.198,
     )
     pdf.savefig(fig, facecolor="white")
     plt.close(fig)
@@ -2237,8 +2291,8 @@ def _page_optimization(pdf, parent: dict, rows: list[dict]):
     lowest = min([base] + [float(row["affinity"]) for row in rows])
     highest = max([base] + [float(row["affinity"]) for row in rows])
     ax.set_xlim(lowest - 1.0, highest + 2.0)
-    ax.set_xlabel("Vina 打分 (kcal/mol)", fontsize=13)
-    ax.set_title("结合能变化（哑铃图）", loc="left", fontsize=14.5, pad=12)
+    ax.set_xlabel("Vina 打分 (kcal/mol)", fontsize=14)
+    ax.set_title("结合能变化（哑铃图）", loc="left", fontsize=15.5, pad=12)
     _compact_frame(ax)
 
     metrics = [
@@ -2273,15 +2327,24 @@ def _page_optimization(pdf, parent: dict, rows: list[dict]):
                 f"{value:.{int(decimals)}f}",
                 ha="center", va="bottom", fontsize=11.5, fontweight="bold",
             )
-        ax2.set_title(label, fontsize=12.5, pad=8)
+        ax2.set_title(label, fontsize=13.5, pad=8)
         top_value = max(parent_value, best_value, 0.001)
         ax2.set_ylim(0, top_value * 1.28)
         _compact_frame(ax2, "y")
     _caption(
         fig,
-        "优化母体（空心点与虚线）与各改造候选（实心点）的结合能哑铃图，青色表示相对母体改善、"
-        "红色表示下降，括号内为 ΔVina（kcal/mol）；母体与最佳候选的分子量、cLogP、QED 与配体效率对比。"
-        "所有候选与母体使用同一受体、同一结合盒与同一打分函数，ΔVina 仅表示相对排序，不代表实验结合自由能。",
+        _L(
+            "优化母体（空心点与虚线）与各改造候选（实心点）的结合能哑铃图，青色表示相对母体改善、"
+            "红色表示下降，括号内为 ΔVina（kcal/mol）；下方为母体与最佳候选的分子量、cLogP、QED 与配体效率。"
+            "ΔVina 仅表示相对排序，不代表实验结合自由能。",
+            "Dumbbell plot of docking energies for the parent (open circle, dashed line) and optimized "
+            "candidates (filled circles); teal indicates improvement and red a decrease, with ΔVina "
+            "(kcal/mol) in parentheses. Below, molecular weight, cLogP, QED and ligand efficiency of the "
+            "parent versus the best candidate. ΔVina is a relative ranking only, not an experimental "
+            "binding free energy.",
+        ),
+        width=104,
+        split=False,
     )
     pdf.savefig(fig, facecolor="white")
     plt.close(fig)
@@ -2317,7 +2380,7 @@ def _page_design(pdf, parent: dict, rows: list[dict]):
         "Fig. 6　Scaffold enumeration",
     )
     grid = fig.add_gridspec(
-        2, 2, height_ratios=[1.15, 1.0], hspace=0.50, wspace=0.38,
+        2, 2, height_ratios=[1.15, 1.0], hspace=0.50, wspace=0.62,
         left=0.400, right=0.93, top=0.812, bottom=0.215,
     )
     ax = fig.add_subplot(grid[0, :])
@@ -2333,13 +2396,13 @@ def _page_design(pdf, parent: dict, rows: list[dict]):
         ax.text(
             -float(row["affinity"]) + 0.15, index,
             f"{-float(row['affinity']):.2f}{suffix}", va="center",
-            ha="left", fontsize=10.5, color=INK,
+            ha="left", fontsize=11.0, color=INK,
         )
     ax.set_yticks(y)
-    ax.set_yticklabels(names, fontsize=11)
+    ax.set_yticklabels(names, fontsize=11.5)
     ax.invert_yaxis()
-    ax.set_xlabel("结合亲和力 −ΔG (kcal/mol)", fontsize=13)
-    ax.set_title("设计分子打分排序", loc="left", fontsize=14.5, pad=12)
+    ax.set_xlabel("结合亲和力 −ΔG (kcal/mol)", fontsize=14)
+    ax.set_title("设计分子打分排序", loc="left", fontsize=15.5, pad=12)
     ax.set_xlim(0, max(-min(scores), 1.0) * 1.34)
     _compact_frame(ax)
 
@@ -2363,9 +2426,12 @@ def _page_design(pdf, parent: dict, rows: list[dict]):
             [masses[0]], [logps[0]], s=260, facecolor="none",
             edgecolor=AMBER, linewidth=2.0, zorder=4, label="最优设计",
         )
-    ax2.set_xlabel("分子量 (Da)", fontsize=12.5)
-    ax2.set_ylabel("cLogP", fontsize=12.5)
-    ax2.set_title("设计分子化学空间", loc="left", fontsize=13.5, pad=10)
+        cbar = fig.colorbar(scatter, ax=ax2, fraction=0.035, pad=0.01)
+        cbar.set_label("Vina 打分 (kcal/mol)", fontsize=9.5)
+        cbar.ax.tick_params(labelsize=9.0)
+    ax2.set_xlabel("分子量 (Da)", fontsize=13.5)
+    ax2.set_ylabel("cLogP", fontsize=13.5)
+    ax2.set_title("设计分子化学空间", loc="left", fontsize=14.5, pad=10)
     _compact_frame(ax2, "both")
 
     ax3 = fig.add_subplot(grid[1, 1], polar=True)
@@ -2387,21 +2453,29 @@ def _page_design(pdf, parent: dict, rows: list[dict]):
         ax3.plot(angles, loop, color=color, linewidth=1.6, label=label)
         ax3.fill(angles, loop, color=color, alpha=0.14)
     ax3.set_xticks(angles[:-1])
-    ax3.set_xticklabels(labels, fontsize=10.5, color=INK)
+    ax3.set_xticklabels(labels, fontsize=11.5, color=INK)
     ax3.set_ylim(0, 1.05)
     ax3.set_yticks([0.25, 0.5, 0.75, 1.0])
     ax3.set_yticklabels(["", "", "", ""])
     ax3.grid(color=GRID, linewidth=0.8)
     ax3.spines["polar"].set_color(GRID)
-    ax3.set_title("类药性雷达", fontsize=13.5, pad=18)
-    ax3.legend(frameon=False, fontsize=9.5, loc="lower center",
-               bbox_to_anchor=(0.5, -0.24), ncol=2)
+    ax3.set_title("类药性雷达", fontsize=14.5, pad=18)
     _caption(
         fig,
-        "骨架枚举设计分子的打分排序，条形长度为 −ΔG，末端标注数值与 QED。设计分子在分子量–cLogP "
-        "空间中的分布，颜色由深到浅表示 Vina 打分由优到劣，橙色圆环标记最优设计。"
-        "最优设计与全部设计中位数的类药性雷达，各轴按 0–1 归一化。"
-        "设计分子由核心骨架与取代基枚举生成，并非严格意义上的全新骨架设计。",
+        _L(
+            "骨架枚举设计分子的打分排序，条形长度为 −ΔG，末端标注数值与 QED。设计分子在分子量–cLogP "
+            "空间中的分布，颜色由深到浅表示 Vina 打分由优到劣，橙色圆环标记最优设计。"
+            "最优设计与全部设计中位数的类药性雷达，各轴按 0–1 归一化（青色为最优设计，灰色为设计中位数）。"
+            "设计分子由核心骨架与取代基枚举生成，并非严格意义上的全新骨架设计。",
+            "Score ranking of scaffold-enumerated designs, with bar length equal to −ΔG and QED "
+            "annotated at the bar ends. Designs in molecular weight–cLogP space, coloured from dark "
+            "to light as the Vina score worsens, with the best design circled in amber. Drug-likeness "
+            "radar of the best design versus the median of all designs, each axis normalized to 0–1 "
+            "(teal, best design; grey, median). "
+            "Designs are enumeration-based, not de novo scaffolds.",
+        ),
+        width=104,
+        split=False,
     )
     pdf.savefig(fig, facecolor="white")
     plt.close(fig)
@@ -2436,10 +2510,13 @@ def _page_validation(pdf, validation: dict):
     ax.set_yticks(y)
     ax.set_yticklabels(names, fontsize=11)
     ax.invert_yaxis()
-    ax.set_xlabel("对称校正重原子 RMSD (Å)", fontsize=13)
-    ax.set_title("重对接构象与晶体构象的偏差", loc="left", fontsize=14.5, pad=12)
+    ax.set_xlabel("对称校正重原子 RMSD (Å)", fontsize=14)
+    ax.set_title(
+        _L("重对接构象与晶体的偏差", "Deviation from the crystal conformation"),
+        loc="left", fontsize=15, pad=12,
+    )
     ax.set_xlim(0, max(max(rmsds) + 0.9, 3.0))
-    if len(rows) <= 2:
+    if len(rows) == 1:
         ax.set_ylim(0.62, -0.95)
         verdict = "通过" if rows[0].get("passed") else "未通过"
         ax.text(
@@ -2478,13 +2555,20 @@ def _page_validation(pdf, validation: dict):
         ax2.axis("off")
         ax2.text(0.5, 0.5, "缺少可供叠合的晶体构象", ha="center", va="center",
                  fontsize=13, color=MUTED)
-    passed = sum(1 for row in rows if row.get("passed"))
     _caption(
         fig,
-        "重对接配体的对称校正重原子 RMSD，虚线为 2.0 Å 判据；绿色通过、红色未通过。"
-        "晶体构象（灰色圆点）与对接构象（青色叉号）沿主平面的叠合投影，细线连接对应原子。"
-        f"本次共 {len(rows)} 个配体参与验证，{passed} 个通过。若晶体配体为共价抑制剂，"
-        "Vina 无法描述共价键，RMSD 与打分只反映非共价部分的叠合程度，需改用共价对接或非共价阳性对照复核。",
+        _L(
+            "重对接配体的对称校正重原子 RMSD，虚线为 2.0 Å 判据；绿色通过、红色未通过。"
+            "晶体构象（灰色圆点）与对接构象（青色叉号）沿主平面的叠合投影，细线连接对应原子。"
+            "若晶体配体为共价抑制剂，Vina 无法描述共价键，RMSD 与打分只反映非共价部分的叠合程度。",
+            "Symmetry-corrected heavy-atom RMSD of re-docked ligands, with the dashed line marking the "
+            "2.0 Å criterion; green passes, red fails. Overlay projection of the crystal (grey dots) and "
+            "docked (teal crosses) conformations onto the principal plane, with thin lines connecting "
+            "corresponding atoms. For covalent crystal ligands, Vina cannot describe the covalent bond "
+            "and RMSD reflects only the non-covalent overlay.",
+        ),
+        width=104,
+        y=0.165,
     )
     pdf.savefig(fig, facecolor="white")
     plt.close(fig)
@@ -2619,21 +2703,23 @@ def _page_mpo(pdf, payload: dict | None):
             s=70 if item.get("pareto") else 38, color=color,
             edgecolor="white", linewidth=0.8, zorder=3,
         )
-    top = sorted(items, key=lambda item: -float(item["mpo"]))[:5]
-    for item in top:
+    top = sorted(items, key=lambda item: -float(item["mpo"]))[:3]
+    for index, item in enumerate(top):
+        offset = (6, 8) if index % 2 == 0 else (6, -16)
         ax.annotate(
             _trunc(item.get("name") or "", 18),
             (float(item["affinity"]), float(item["mpo"])),
-            xytext=(4, 4), textcoords="offset points",
-            fontsize=8.2, color=INK,
+            xytext=offset, textcoords="offset points",
+            fontsize=9.6, color=INK,
         )
-    ax.set_xlabel(_L("Vina 对接打分 (kcal/mol)", "Vina docking score (kcal/mol)"), fontsize=12)
-    ax.set_ylabel("MPO", fontsize=12)
+    ax.set_xlabel(_L("Vina 对接打分 (kcal/mol)", "Vina docking score (kcal/mol)"), fontsize=13.5)
+    ax.set_ylabel("MPO", fontsize=13.5)
     ax.set_title(
         _L("综合评分与 Pareto 前沿（青色为未被支配的候选）",
            "MPO versus docking score (teal = Pareto front)"),
-        loc="left", fontsize=13.5, pad=10,
+        loc="left", fontsize=15, pad=10,
     )
+    _panel_tag(ax, "a", x=-0.075)
     _compact_frame(ax)
 
     ax2 = fig.add_subplot(grid[1])
@@ -2653,10 +2739,10 @@ def _page_mpo(pdf, payload: dict | None):
             "—" if item.get("sa") is None else f"{float(item['sa']):.1f}",
             f"{float(item.get('safety') or 0):.0f}",
             f"{float(item['mpo']):.1f}",
-            str(item.get("stage") or "—"),
+            _L(str(item.get("stage") or "—"), str(item.get("stage_en") or item.get("stage") or "—")),
             _trunc(str(novelty_label), 18),
         ])
-    _table(fig, 0.455, rows, [0.28, 0.10, 0.07, 0.07, 0.06, 0.08, 0.07, 0.08, 0.18], fontsize=8.4, row_height=0.022)
+    _table(fig, 0.455, rows, [0.28, 0.10, 0.07, 0.07, 0.06, 0.08, 0.07, 0.08, 0.18], fontsize=9.4, row_height=0.022)
     _caption(
         fig,
         _L(
@@ -2696,18 +2782,19 @@ def _page_assay(pdf, payload: dict | None):
         pad = (x_max - x_min) * 0.08 or 0.5
         line_x = [x_min - pad, x_max + pad]
         ax.plot(line_x, [slope * x + intercept for x in line_x], color=AMBER, linewidth=1.4, linestyle=(0, (4, 3)))
-    for row in rows[:8]:
+    for row in rows[:4]:
         ax.annotate(
             _trunc(row.get("name") or "", 16),
             (float(row["affinity"]), float(row["p_activity"])),
-            xytext=(4, 4), textcoords="offset points", fontsize=8.2, color=INK,
+            xytext=(4, 4), textcoords="offset points", fontsize=9.6, color=INK,
         )
-    ax.set_xlabel(_L("Vina 对接打分 (kcal/mol)", "Vina docking score (kcal/mol)"), fontsize=12)
-    ax.set_ylabel(_L("实测 pActivity", "Measured pActivity"), fontsize=12)
+    ax.set_xlabel(_L("Vina 对接打分 (kcal/mol)", "Vina docking score (kcal/mol)"), fontsize=13.5)
+    ax.set_ylabel(_L("实测 pActivity", "Measured pActivity"), fontsize=13.5)
     ax.set_title(
         _L("实测效价与对接打分", "Measured potency versus docking score"),
-        loc="left", fontsize=13.5, pad=10,
+        loc="left", fontsize=15, pad=10,
     )
+    _panel_tag(ax, "a", x=-0.075)
     _compact_frame(ax)
 
     rho = summary.get("spearman")
@@ -2719,18 +2806,21 @@ def _page_assay(pdf, payload: dict | None):
             f"Spearman ρ = {'—' if rho is None else f'{rho:.2f}'}，"
             f"Pearson r = {'—' if pearson is None else f'{pearson:.2f}'}。",
             f"Matched {summary.get('matched', 0)}/{summary.get('total', 0)} rows; "
-            f"Spearman rho = {'n/a' if rho is None else f'{rho:.2f}'}, "
+            f"Spearman ρ = {'n/a' if rho is None else f'{rho:.2f}'}, "
             f"Pearson r = {'n/a' if pearson is None else f'{pearson:.2f}'}.",
         ),
-        fontsize=11, color=INK, va="top",
+        fontsize=12, color=INK, va="top",
     )
     fig.text(
         0.10, 0.448,
         _wrap_cjk(
-            _L(f"判断：{summary.get('verdict', '—')}", f"Verdict: {summary.get('verdict', '—')}"),
+            _L(
+                f"判断：{summary.get('verdict', '—')}",
+                f"Verdict: {summary.get('verdict_en') or summary.get('verdict', '—')}",
+            ),
             96 if i18n.get_lang() == "en" else 66,
         ),
-        fontsize=10.2, color=TEAL, fontweight="bold", va="top",
+        fontsize=11.0, color=TEAL, fontweight="bold", va="top",
     )
     header = [
         _L("配体", "Ligand"), _L("实测值", "Measured"), _L("pActivity", "pActivity"),
@@ -2738,14 +2828,18 @@ def _page_assay(pdf, payload: dict | None):
     ]
     table_rows = [header]
     for row in rows[:8]:
+        try:
+            measured = f"{float(row.get('value')):.4g}"
+        except (TypeError, ValueError):
+            measured = str(row.get("value") or "—")
         table_rows.append([
             _trunc(row.get("name") or "", 24),
-            f"{row.get('value')} {row.get('unit') or ''}".strip(),
+            f"{measured} {row.get('unit') or ''}".strip(),
             f"{float(row['p_activity']):.2f}",
             f"{float(row['affinity']):.2f}",
-            str(row.get("matched_by") or "—"),
+            "Name" if str(row.get("matched_by")) == "名称" else str(row.get("matched_by") or "—"),
         ])
-    _table(fig, 0.405, table_rows, [0.30, 0.20, 0.12, 0.12, 0.12], fontsize=8.8, row_height=0.023)
+    _table(fig, 0.405, table_rows, [0.30, 0.20, 0.12, 0.12, 0.12], fontsize=9.8, row_height=0.023)
     _caption(
         fig,
         _L(
@@ -2753,8 +2847,8 @@ def _page_assay(pdf, payload: dict | None):
             "ρ ≤ −0.60 表示排序可用于本系列；−0.60 < ρ ≤ −0.30 仅可粗排；|ρ| < 0.30 或方向为正时，"
             "说明当前打分不能用于排序，应检查名称/SMILES 对应关系、实验条件，并考虑 MM-GBSA 或自由能微扰复核。",
             "pActivity = 9 − log10(IC50/nM). The expected correlation is negative. "
-            "rho ≤ −0.60 supports ranking within this series; −0.60 < rho ≤ −0.30 supports only coarse ranking; "
-            "|rho| < 0.30 or a positive sign means the score cannot rank this series, so check name/SMILES "
+            "ρ ≤ −0.60 supports ranking within this series; −0.60 < ρ ≤ −0.30 supports only coarse ranking; "
+            "|ρ| < 0.30 or a positive sign means the score cannot rank this series, so check name/SMILES "
             "matching, assay conditions and consider MM-GBSA or free-energy perturbation.",
         ),
         width=104,
@@ -2776,8 +2870,14 @@ def _page_trust(pdf, payload: dict | None):
         _L("Fig. TRUST　可信度证据", "Fig. TRUST　Confidence evidence"),
     )
     components = payload.get("components") or []
-    ax = fig.add_axes([0.30, 0.50, 0.60, 0.33])
-    labels = [str(item.get("label") or item.get("key")) for item in components]
+    ax = fig.add_axes([0.30, 0.55, 0.62, 0.30])
+    labels = [
+        _L(
+            str(item.get("label") or item.get("key")),
+            str(item.get("label_en") or item.get("label") or item.get("key")),
+        )
+        for item in components
+    ]
     scores = [float(item.get("score") or 0) for item in components]
     confidences = [float(item.get("weight") or 0) for item in components]
     y = np.arange(len(components))
@@ -2786,44 +2886,71 @@ def _page_trust(pdf, payload: dict | None):
     for index, (score, weight) in enumerate(zip(scores, confidences)):
         ax.text(
             min(score + 1.5, 98), index,
-            f"{score:.0f} · 权重 {weight * 100:.0f}%",
-            va="center", fontsize=9.6, color=INK,
+            f"{score:.0f} · {_L('权重', 'weight')} {weight * 100:.0f}%",
+            va="center", fontsize=10.5, color=INK,
         )
     ax.set_yticks(y)
-    ax.set_yticklabels(labels, fontsize=10.2)
+    ax.set_yticklabels(labels, fontsize=12)
     ax.invert_yaxis()
     ax.set_xlim(0, 108)
-    ax.set_xlabel(_L("分项可信度（0–100）", "Component confidence (0–100)"), fontsize=11.5)
+    ax.set_xlabel(_L("分项可信度（0–100）", "Component confidence (0–100)"), fontsize=13.5)
     ax.set_title(
-        _L("分项证据", "Component evidence"), loc="left", fontsize=13.5, pad=10,
+        _L("分项证据", "Component evidence"), loc="left", fontsize=16, pad=10,
     )
     _compact_frame(ax)
 
     score = float(payload.get("score") or 0)
     color = TEAL if score >= 75 else AMBER if score >= 55 else RED
     fig.text(
-        0.10, 0.445, f"{score:.0f}",
+        0.10, 0.505, f"{score:.0f}",
         fontsize=34, fontweight="bold", color=color, va="top",
     )
     fig.text(
-        0.10, 0.375,
-        _L(f"总体可信度：{payload.get('level', '—')}", f"Overall confidence: {payload.get('level', '—')}"),
-        fontsize=13, color=INK, va="top",
+        0.10, 0.435,
+        _L(
+            f"总体可信度：{payload.get('level', '—')}",
+            f"Overall confidence: {payload.get('level_en') or payload.get('level', '—')}",
+        ),
+        fontsize=14, color=INK, va="top",
     )
     fig.text(
-        0.10, 0.345,
-        _wrap_cjk(str(payload.get("advice") or ""), 96 if i18n.get_lang() == "en" else 64),
-        fontsize=10.4, color=color, va="top", linespacing=1.4,
+        0.10, 0.405,
+        _wrap_cjk(
+            _L(
+                str(payload.get("advice") or ""),
+                str(payload.get("advice_en") or payload.get("advice") or ""),
+            ),
+            40 if i18n.get_lang() == "en" else 26,
+        ),
+        fontsize=11.2, color=color, va="top", linespacing=1.4,
     )
-    notes = [
-        f"{item.get('label')}: {item.get('note')}"
-        for item in components if item.get("note")
-    ]
-    _text_blocks(
-        fig, 0.245,
-        [(_L("证据说明", "Evidence"), notes)],
-        width=42, size=9.8,
+    fig.text(
+        0.46, 0.478, _L("证据说明", "Evidence"),
+        fontsize=12.5, fontweight="bold", color=TEAL, va="top",
     )
+    note_y = 0.445
+    note_size = 9.5
+    for item in components:
+        if not item.get("note"):
+            continue
+        label = _L(
+            str(item.get("label") or item.get("key")),
+            str(item.get("label_en") or item.get("label") or item.get("key")),
+        )
+        note = _L(
+            str(item.get("note") or ""),
+            str(item.get("note_en") or item.get("note") or ""),
+        )
+        if len(note) > 190:
+            note = note[:187].rstrip() + "…"
+        wrapped = _wrap_cjk(f"{label}: {note}", 56 if i18n.get_lang() == "en" else 34)
+        fig.text(
+            0.46, note_y, wrapped, fontsize=note_size, color=INK, va="top",
+            linespacing=1.35,
+        )
+        note_y -= 0.00194 * note_size * (wrapped.count("\n") + 1) * (
+            0.92 if i18n.get_lang() == "en" else 1.0
+        ) + 0.007
     _caption(
         fig,
         _L(
@@ -2837,6 +2964,7 @@ def _page_trust(pdf, payload: dict | None):
             "disagreement; calibration is the rank correlation with project assays.",
         ),
         width=104,
+        y=0.180,
     )
     pdf.savefig(fig, facecolor="white")
     plt.close(fig)
@@ -2878,7 +3006,7 @@ def _page_mmp(pdf, payload: dict | None):
     _table(
         fig, 0.845, rows,
         [0.30, 0.08, 0.09, 0.08, 0.08, 0.09, 0.20],
-        fontsize=8.2, row_height=0.024,
+        fontsize=9.2, row_height=0.024,
     )
     _caption(
         fig,
@@ -2934,16 +3062,17 @@ def _page_pbpk(pdf, payload: dict | None):
             continue
         ax.plot(time_days, np.maximum(values, 1e-6), color=color, linestyle=style, linewidth=width, label=labels[key])
     ax.set_yscale("log")
-    ax.set_xlabel(_L("时间（天）", "Time (days)"), fontsize=12)
-    ax.set_ylabel(_L("浓度（mg/L 或 mg/kg）", "Concentration (mg/L or mg/kg)"), fontsize=12)
+    ax.set_xlabel(_L("时间（天）", "Time (days)"), fontsize=13.5)
+    ax.set_ylabel(_L("浓度（mg/L 或 mg/kg）", "Concentration (mg/L or mg/kg)"), fontsize=13.5)
     ax.set_title(
         _L(
             f"{payload.get('species', '—')} · {payload.get('route', '—')} · {float(payload.get('dose_mg_kg') or 0):.2f} mg/kg",
             f"{payload.get('species', '—')} · {payload.get('route', '—')} · {float(payload.get('dose_mg_kg') or 0):.2f} mg/kg",
         ),
-        loc="left", fontsize=13.5, pad=10,
+        loc="left", fontsize=15, pad=10,
     )
-    ax.legend(frameon=False, fontsize=9.5, ncol=3)
+    ax.legend(frameon=False, fontsize=10.5, ncol=3)
+    _panel_tag(ax, "a", x=-0.075)
     _compact_frame(ax)
 
     ax2 = fig.add_subplot(grid[1])
@@ -2965,7 +3094,7 @@ def _page_pbpk(pdf, payload: dict | None):
     if len(table_rows) > 1:
         table = ax2.table(cellText=table_rows, loc="upper center", cellLoc="left")
         table.auto_set_font_size(False)
-        table.set_fontsize(9.0)
+        table.set_fontsize(9.6)
         table.scale(1.0, 1.35)
         for (row, _col), cell in table.get_celld().items():
             cell.set_edgecolor(GRID)
@@ -3019,7 +3148,7 @@ def _page_active(pdf, payload: dict | None):
             "—" if item.get("ei") is None else f"{float(item['ei']):.2f}",
             _trunc(item.get("reason") or "", 34),
         ])
-    _table(fig, 0.845, rows, [0.26, 0.10, 0.16, 0.10, 0.09, 0.29], fontsize=8.6, row_height=0.025)
+    _table(fig, 0.845, rows, [0.26, 0.10, 0.16, 0.10, 0.09, 0.29], fontsize=9.4, row_height=0.025)
     mode_note = (
         _L("当前实测点不足 4 个，返回对接最优候选；导入更多实测数据后自动切换为主动学习。", "Fewer than four measurements: docking top candidates are returned until more assay data are imported.")
         if payload.get("mode") == "fallback"
@@ -3055,12 +3184,13 @@ def _page_benchmark(pdf, payload: dict | None):
     ax.plot([0, 1], [0, 1], color=MUTED, linewidth=1.1, linestyle=(0, (4, 3)), label=_L("随机", "Random"))
     ax.set_xlim(0, 1)
     ax.set_ylim(0, 1.02)
-    ax.set_xlabel(_L("累计筛选比例", "Fraction of library screened"), fontsize=12)
-    ax.set_ylabel(_L("累计找到的活性物比例", "Fraction of actives recovered"), fontsize=12)
+    ax.set_xlabel(_L("累计筛选比例", "Fraction of library screened"), fontsize=13.5)
+    ax.set_ylabel(_L("累计找到的活性物比例", "Fraction of actives recovered"), fontsize=13.5)
     ax.set_title(
-        _L("富集曲线", "Enrichment curve"), loc="left", fontsize=13.5, pad=10,
+        _L("富集曲线", "Enrichment curve"), loc="left", fontsize=15, pad=10,
     )
-    ax.legend(frameon=False, fontsize=10, loc="lower right")
+    ax.legend(frameon=False, fontsize=11, loc="lower right")
+    _panel_tag(ax, "a", x=-0.075)
     _compact_frame(ax)
 
     ax2 = fig.add_subplot(grid[1])
@@ -3078,7 +3208,7 @@ def _page_benchmark(pdf, payload: dict | None):
     ]]
     table = ax2.table(cellText=metrics_rows, loc="upper center", cellLoc="center")
     table.auto_set_font_size(False)
-    table.set_fontsize(9.2)
+    table.set_fontsize(10.0)
     table.scale(1.0, 1.35)
     for (row, _col), cell in table.get_celld().items():
         cell.set_edgecolor(GRID)
@@ -3104,7 +3234,7 @@ def _page_benchmark(pdf, payload: dict | None):
         )
         fig.text(
             0.12, 0.335, "\n".join(text_lines),
-            fontsize=9.4, color=INK, va="top", linespacing=1.5,
+            fontsize=10.2, color=INK, va="top", linespacing=1.5,
         )
     else:
         fig.text(
@@ -4527,11 +4657,17 @@ def _methods_pages(pdf):
     blocks = [
         (
             "1.25 多引擎对接",
-            ["除 AutoDock Vina 1.2.5 与 Vina-GPU 2.0 外，命令行层集成 smina 与 QuickVina 2。两者与 Vina 共享 receptor/ligand/center/size 参数，但 smina 不传 --scoring，QuickVina 2 进一步去掉 --energy_range、--cpu 与 --verbosity。程序按所选引擎校验可执行文件，缺失时给出放置路径与环境变量提示；非 Vina 引擎从 PDBQT 的 REMARK VINA RESULT 解析打分，不执行 Vinardo 复算。不同引擎的打分尺度不可直接混用，跨引擎比较只作趋势参考。"],
+            [_L(
+                "除 AutoDock Vina 1.2.5 与 Vina-GPU 2.0 外，命令行层集成 smina 与 QuickVina 2。两者与 Vina 共享 receptor/ligand/center/size 参数，但 smina 不传 --scoring，QuickVina 2 进一步去掉 --energy_range、--cpu 与 --verbosity。程序按所选引擎校验可执行文件，缺失时给出放置路径与环境变量提示；非 Vina 引擎从 PDBQT 的 REMARK VINA RESULT 解析打分，不执行 Vinardo 复算。不同引擎的打分尺度不可直接混用，跨引擎比较只作趋势参考。",
+                "In addition to AutoDock Vina 1.2.5 and Vina-GPU 2.0, smina and QuickVina 2 are integrated at the command-line level. Both share the receptor/ligand/center/size parameters with Vina, but smina omits --scoring and QuickVina 2 additionally drops --energy_range, --cpu and --verbosity. The program validates the executable for the selected engine and reports the expected path or environment variable when missing; non-Vina engines parse scores from the PDBQT REMARK VINA RESULT block and do not run Vinardo rescoring. Scores from different engines are not on the same scale, and cross-engine comparisons are only indicative.",
+            )],
         ),
         (
             "1.26 药物–药物相互作用",
-            ["以候选分子为中心，与联用药物逐项计算：共享靶点（候选靶点与参考药已知主要靶点的交集）、CYP3A4/2D6 竞争（候选的 CYP 抑制风险 × 联用药是否经该酶代谢）、hERG 风险叠加（两者预测风险之和）以及结构/类别相似度。四项按 0.38、0.27、0.20、0.15 加权为 0–100 的综合风险，分为高/中/低/信息不足。共享靶点不代表同向或拮抗，CYP 与 hERG 为计算风险，结果只用于优先核查。"],
+            [_L(
+                "以候选分子为中心，与联用药物逐项计算：共享靶点（候选靶点与参考药已知主要靶点的交集）、CYP3A4/2D6 竞争（候选的 CYP 抑制风险 × 联用药是否经该酶代谢）、hERG 风险叠加（两者预测风险之和）以及结构/类别相似度。四项按 0.38、0.27、0.20、0.15 加权为 0–100 的综合风险，分为高/中/低/信息不足。共享靶点不代表同向或拮抗，CYP 与 hERG 为计算风险，结果只用于优先核查。",
+                "Each co-administered drug is assessed against the candidate by four items: shared targets (intersection of candidate targets and the known primary targets of the reference drug), CYP3A4/2D6 competition (candidate CYP-inhibition risk × whether the co-drug is metabolised by that enzyme), additive hERG risk (sum of the two predicted risks), and structural/class similarity. The four items are weighted 0.38, 0.27, 0.20 and 0.15 into a 0–100 composite risk, graded high/medium/low/insufficient information. Shared targets do not imply agonism or antagonism; CYP and hERG are computational risks, and the output is for prioritised review only.",
+            )],
         ),
         (
             "1.27 FDA 已上市药物参考",
@@ -6132,49 +6268,84 @@ def _tool_index_page(pdf) -> None:
 def _acknowledgements_page(pdf) -> None:
     """Acknowledgement of the software, databases and methods used by DrugHX."""
     fig = _a4_page(
-        "致谢",
-        "DrugHX 使用的软件、数据库、评分方法与开源工具",
+        _L("致谢", "Acknowledgements"),
+        _L(
+            "DrugHX 使用的软件、数据库、评分方法与开源工具",
+            "Software, databases, scoring methods and open-source tools used by DrugHX",
+        ),
         "Acknowledgements",
     )
     blocks = [
         (
-            "软件与计算引擎",
+            _L("软件与计算引擎", "Software and computational engines"),
             [
-                "AutoDock Vina 1.2.5、Vina-GPU 2.0、smina 与 QuickVina 2 提供分子对接与打分；"
-                "Meeko 负责配体 PDBQT 准备，RDKit 提供化学信息学、构象生成、指纹、骨架与反应模板，"
-                "Open Babel 用于部分格式转换与电荷检查。",
+                _L(
+                    "AutoDock Vina 1.2.5、Vina-GPU 2.0、smina 与 QuickVina 2 提供分子对接与打分；"
+                    "Meeko 负责配体 PDBQT 准备，RDKit 提供化学信息学、构象生成、指纹、骨架与反应模板，"
+                    "Open Babel 用于部分格式转换与电荷检查。",
+                    "AutoDock Vina 1.2.5, Vina-GPU 2.0, smina and QuickVina 2 provide docking and "
+                    "scoring; Meeko prepares ligand PDBQT files; RDKit provides cheminformatics, "
+                    "conformer generation, fingerprints, scaffolds and reaction templates; Open Babel "
+                    "is used for selected format conversions and charge checks.",
+                ),
             ],
         ),
         (
-            "数据库与网络资源",
+            _L("数据库与网络资源", "Databases and web resources"),
             [
-                "RCSB PDB 提供蛋白结构；ChEMBL、BindingDB、DGIdb、PubChem 与 Open Targets 提供活性、"
-                "药物–基因关系与靶点证据；STRING 提供蛋白互作网络；Enrichr（KEGG、GO、Reactome、"
-                "WikiPathways、DisGeNET、MSigDB Hallmark）提供富集分析；FDA 标签、DrugBank 与 PubChem "
-                "用于已上市药物的结构与靶点参考。",
+                _L(
+                    "RCSB PDB 提供蛋白结构；ChEMBL、BindingDB、DGIdb、PubChem 与 Open Targets 提供活性、"
+                    "药物–基因关系与靶点证据；STRING 提供蛋白互作网络；Enrichr（KEGG、GO、Reactome、"
+                    "WikiPathways、DisGeNET、MSigDB Hallmark）提供富集分析；FDA 标签、DrugBank 与 PubChem "
+                    "用于已上市药物的结构与靶点参考。",
+                    "RCSB PDB provides protein structures; ChEMBL, BindingDB, DGIdb, PubChem and Open "
+                    "Targets provide activity, drug–gene relationships and target evidence; STRING "
+                    "provides protein interaction networks; Enrichr (KEGG, GO, Reactome, WikiPathways, "
+                    "DisGeNET and MSigDB Hallmark) provides enrichment analysis; FDA labels, DrugBank "
+                    "and PubChem provide structures and target references for marketed drugs.",
+                ),
             ],
         ),
         (
-            "评分与可视化方法",
+            _L("评分与可视化方法", "Scoring and visualisation methods"),
             [
-                "SAscore 基于 Ertl 与 Schuffenhauer 的相对可合成性评分；BOILED-Egg 基于 Daina 与 Zoete "
-                "的 WLOGP–TPSA 判别；CNS MPO 参考 Wager 等的多参数优化；PAINS、Brenk 与 NIH 警示来自"
-                "公开过滤规则；Bemis–Murcko 骨架与 rdFMCS 用于结构比较。图形使用 matplotlib 与 RDKit 绘制，"
-                "PDF 合并与页面处理使用 pypdf 与 PyMuPDF。",
+                _L(
+                    "SAscore 基于 Ertl 与 Schuffenhauer 的相对可合成性评分；BOILED-Egg 基于 Daina 与 Zoete "
+                    "的 WLOGP–TPSA 判别；CNS MPO 参考 Wager 等的多参数优化；PAINS、Brenk 与 NIH 警示来自"
+                    "公开过滤规则；Bemis–Murcko 骨架与 rdFMCS 用于结构比较。图形使用 matplotlib 与 RDKit 绘制，"
+                    "PDF 合并与页面处理使用 pypdf。",
+                    "SAscore follows the relative synthesizability score of Ertl and Schuffenhauer; "
+                    "BOILED-Egg uses the WLOGP–TPSA discrimination of Daina and Zoete; CNS MPO follows "
+                    "the multi-parameter optimisation of Wager et al.; PAINS, Brenk and NIH alerts come "
+                    "from public filter rules; Bemis–Murcko scaffolds and rdFMCS are used for structure "
+                    "comparison. Figures are drawn with matplotlib and RDKit; PDF merging and page "
+                    "handling use pypdf.",
+                ),
             ],
         ),
         (
-            "致谢",
+            _L("致谢", "Acknowledgements"),
             [
-                "感谢上述开源软件、公共数据库与方法作者的工作，使本软件能够在本地完成从结构准备、"
-                "分子对接、ADMET、靶点垂钓、网络药理学、可合成性到 FDA 参考与药物互作的完整分析。"
-                "软件作者：HX。",
-                "所有预测结果均为计算推断，不构成实验结论或临床建议；使用者应结合实验数据、"
-                "药物说明书与领域专家判断。",
+                _L(
+                    "感谢上述开源软件、公共数据库与方法作者的工作，使本软件能够在本地完成从结构准备、"
+                    "分子对接、ADMET、靶点垂钓、网络药理学、可合成性到 FDA 参考与药物互作的完整分析。"
+                    "软件作者：HX。",
+                    "We thank the authors of the open-source software, public databases and methods "
+                    "listed above, which make it possible to run structure preparation, docking, ADMET, "
+                    "target fishing, network pharmacology, synthesizability, FDA reference and drug–drug "
+                    "interaction analysis locally. Software author: HX.",
+                ),
+                _L(
+                    "所有预测结果均为计算推断，不构成实验结论或临床建议；使用者应结合实验数据、"
+                    "药物说明书与领域专家判断。",
+                    "All predictions are computational inferences and do not constitute experimental "
+                    "conclusions or clinical advice; users should combine them with experimental data, "
+                    "drug labels and expert judgement.",
+                ),
             ],
         ),
     ]
-    _text_blocks(fig, 0.885, blocks, width=46, size=10.6)
+    _text_blocks(fig, 0.885, blocks, width=46, size=11.8)
     pdf.savefig(fig, facecolor="white")
     plt.close(fig)
 

@@ -961,6 +961,17 @@ def _prepare_ligands_task(
         with STATE.lock:
             index = {item["id"]: item for item in project.data["ligands"]}
         threads = max(1, min(int(options.get("threads", 4) or 4), 32))
+        filter_limits = ligfilters.normalize_limits(options.get("filter_limits"))
+        if not options.get("filter", True):
+            job.log("[准备] 成药性过滤已关闭（按用户设置）")
+        else:
+            job.log(
+                "[准备] 成药性过滤："
+                f"MW≤{filter_limits['mw']:.0f}，cLogP≤{filter_limits['logp']:.1f}，"
+                f"TPSA≤{filter_limits['tpsa']:.0f}，QED≥{filter_limits['qed']:.2f}，"
+                f"HBD≤{filter_limits['hbd']}，HBA≤{filter_limits['hba']}，"
+                f"可旋转键≤{filter_limits['rotb']}，环数≤{filter_limits['rings']}"
+            )
         job.log(f"[准备] 并行线程 {threads}，共 {total} 个配体")
         flush_every = max(1, min(500, max(1, total) // 20))
         log_every = max(1, min(200, max(1, total) // 20))
@@ -994,7 +1005,9 @@ def _prepare_ligands_task(
                     except Exception:
                         mol = None
                     if mol is not None:
-                        verdict = ligfilters.evaluate(mol, ligand["name"])
+                        verdict = ligfilters.evaluate(
+                            mol, ligand["name"], limits=filter_limits
+                        )
                 if options.get("filter", True):
                     if verdict and not verdict["passed"]:
                         return lid, {"filtered": True, "filter": verdict}, None
@@ -1010,6 +1023,8 @@ def _prepare_ligands_task(
                             "alerts": [],
                             "props": {},
                         }
+                elif verdict is not None:
+                    verdict = {**verdict, "skipped_by_user": True}
                 return lid, {"skip": True, "filter": verdict}, None
             mol = None
             if ligand.get("smiles"):
@@ -1023,7 +1038,9 @@ def _prepare_ligands_task(
                     raise ValueError("无法读取分子")
                 mol = mols[0][1]
             verdict = (
-                ligfilters.evaluate(mol, ligand["name"]) if mol is not None else None
+                ligfilters.evaluate(mol, ligand["name"], limits=filter_limits)
+                if mol is not None
+                else None
             )
             if (
                 options.get("filter", True)
@@ -1031,6 +1048,8 @@ def _prepare_ligands_task(
                 and not verdict["passed"]
             ):
                 return lid, {"filtered": True, "filter": verdict}, None
+            if verdict is not None and not options.get("filter", True):
+                verdict = {**verdict, "skipped_by_user": True}
             mol3d, pdbqt, meta = ligmod.prepare_mol_for_docking(
                 mol,
                 protonation=ligand.get("protonation_hint") or options.get("protonation", "ph7.4"),
@@ -2232,6 +2251,7 @@ def _run_auto_pipeline(
     langs: list[str],
     job,
     online_intel: bool = True,
+    ligand_options: dict | None = None,
 ) -> None:
     """Receptor → ligands → screen → consensus docking → optimisation → report."""
     job.log(f"[自动] 项目 {project.data['name']}，输出目录 {project.root}")
@@ -2244,10 +2264,18 @@ def _run_auto_pipeline(
         raise RuntimeError("没有导入任何有效配体")
     job.log(f"[自动] 已导入 {len(targets)} 个配体")
 
+    prep_options = dict(DEFAULT_LIGAND_OPTIONS)
+    prep_options.update(ligand_options or {})
+    prep_options["filter_limits"] = ligfilters.normalize_limits(
+        prep_options.get("filter_limits")
+    )
+    with STATE.lock:
+        project.data["ligand_options"] = dict(prep_options)
+        project.save()
     _prepare_ligands_task(
         project,
         targets,
-        dict(DEFAULT_LIGAND_OPTIONS),
+        prep_options,
         job,
         progress_from=0.10,
         progress_to=0.24,
@@ -2734,6 +2762,7 @@ async def auto_pipeline(
     receptor_sequence: str = Form(""),
     species: str = Form("human"),
     online_intel: bool = Form(True),
+    ligand_options: str = Form("{}"),
 ):
     """One receptor (file / gene / sequence) + ligands → automatic full report."""
     _ensure_no_active_job()
@@ -2794,6 +2823,12 @@ async def auto_pipeline(
 
     choice = str(report_lang).lower()
     langs = ["zh", "en"] if choice == "both" else (["en"] if choice.startswith("en") else ["zh"])
+    try:
+        auto_options = json.loads(ligand_options or "{}")
+        if not isinstance(auto_options, dict):
+            auto_options = {}
+    except json.JSONDecodeError:
+        auto_options = {}
     name = project_name.strip() or f"Auto_{datetime.now():%Y%m%d_%H%M}"
     with STATE.lock:
         project = Project.create(name)
@@ -2809,6 +2844,7 @@ async def auto_pipeline(
             langs,
             job,
             online_intel=bool(online_intel),
+            ligand_options=auto_options,
         )
 
     job = STATE.jobs.create("auto", f"全自动分析 · {project.data['name']}", task)
