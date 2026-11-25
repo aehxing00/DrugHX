@@ -518,9 +518,10 @@ def _recommendations(metrics: dict, routes: list[dict], flags: list[str]) -> lis
     if routes:
         best = routes[0]
         if i18n.get_lang() == "en":
+            step_count = len(best["steps"])
             advice.append(
                 f"The preferred route is {best['label']}, with an estimated "
-                f"{len(best['steps'])} steps and an overall yield of about "
+                f"{step_count} step{'s' if step_count != 1 else ''} and an overall yield of about "
                 f"{best['overall_yield']:.0f}%; confirm the first step on a small scale."
             )
         else:
@@ -566,6 +567,35 @@ def _recommendations(metrics: dict, routes: list[dict], flags: list[str]) -> lis
             "以上路线来自规则模板，不是 SYNTHIA 级全库逆合成；产率为经验估计，必须经实验验证。"
         )
     return advice[:5]
+
+
+_VERDICT_EN = {
+    "未安装 SAscore，无法判定": "SAscore unavailable",
+    "易合成": "Easy to synthesize",
+    "中等": "Moderate",
+    "偏难": "Difficult",
+    "困难": "Very difficult",
+}
+
+
+def _verdict_for_sa(sa: float | None) -> str:
+    """Language-aware synthesizability verdict derived from the SAscore.
+
+    The English words are kept local because the shared translation table maps
+    "中等" to "Moderately soluble" for the solubility module, which would be
+    wrong as a synthesizability verdict.
+    """
+    if sa is None:
+        zh = "未安装 SAscore，无法判定"
+    elif sa <= 3.0:
+        zh = "易合成"
+    elif sa <= 4.0:
+        zh = "中等"
+    elif sa <= 5.0:
+        zh = "偏难"
+    else:
+        zh = "困难"
+    return _VERDICT_EN[zh] if i18n.get_lang() == "en" else zh
 
 
 def assess(smiles: str, name: str = "") -> dict:
@@ -617,16 +647,7 @@ def assess(smiles: str, name: str = "") -> dict:
     for index, route in enumerate(routes[:8], start=1):
         route["rank"] = index
     routes = routes[:8]
-    if parent_sa is None:
-        verdict = "未安装 SAscore，无法判定"
-    elif parent_sa <= 3.0:
-        verdict = "易合成"
-    elif parent_sa <= 4.0:
-        verdict = "中等"
-    elif parent_sa <= 5.0:
-        verdict = "偏难"
-    else:
-        verdict = "困难"
+    verdict = _verdict_for_sa(parent_sa)
     flags = _flags(mol, routes)
     advice = _recommendations(metrics, routes, flags)
     return {
@@ -714,6 +735,8 @@ def _mol_image(smiles: str, width: int = 360, height: int = 240):
 
 
 def _gauge(ax, sa: float | None, verdict: str):
+    import textwrap
+
     from matplotlib.patches import Wedge
 
     ax.set_aspect("equal")
@@ -746,16 +769,20 @@ def _gauge(ax, sa: float | None, verdict: str):
             zorder=7,
         )
         ax.text(
-            0, 0.28, f"{sa:.2f}", ha="center", va="center",
-            fontsize=21, fontweight="bold", color="#0f172a", zorder=10,
+            0, 0.46, f"{sa:.2f}", ha="center", va="center",
+            fontsize=20, fontweight="bold", color="#0f172a", zorder=10,
         )
+    verdict_text = textwrap.fill(
+        str(verdict or "—"), 16 if i18n.get_lang() == "en" else 5
+    )
     ax.text(
-        0, 0.02, verdict, ha="center", va="center",
-        fontsize=13.0, fontweight="bold", color="#0f172a", zorder=10,
+        0, 0.06, verdict_text, ha="center", va="center",
+        fontsize=10.5, fontweight="bold", color="#0f172a", zorder=10,
+        linespacing=1.25,
     )
     ax.text(
         0, -0.17, "SAscore", ha="center", va="center",
-        fontsize=9.0, color="#64748b", zorder=10,
+        fontsize=9.5, color="#64748b", zorder=10,
     )
 
 
@@ -811,14 +838,14 @@ def overview_pdf(data: dict, outpath: Path) -> Path:
         left=0.10, right=0.93, top=0.845, bottom=0.235,
     )
     ax1 = fig.add_subplot(grid[0, 0])
-    _gauge(ax1, data.get("sa"), data.get("verdict", "—"))
-    ax1.set_title("合成可及性", loc="left", fontsize=13.5, pad=12)
+    _gauge(ax1, data.get("sa"), _verdict_for_sa(data.get("sa")))
+    ax1.set_title("合成可及性", loc="left", fontsize=15, pad=12)
     figures._panel_tag(ax1, "a", x=-0.18, y=1.08)
     ax1.text(
         0.0, -0.36,
         f"MW {metrics.get('mw', 0):.0f} · 重原子 {metrics.get('heavy', 0)}\n"
         f"环 {metrics.get('rings', 0)} · 手性 {metrics.get('stereocenters', 0)}",
-        ha="center", va="top", fontsize=8.2, color="#64748b",
+        ha="center", va="top", fontsize=9.4, color="#64748b",
         linespacing=1.30,
     )
 
@@ -836,14 +863,14 @@ def overview_pdf(data: dict, outpath: Path) -> Path:
                 item["score"] + 1.5, index,
                 f"{item['score']:.1f} · {item['step_count']} 步 · "
                 f"{item['overall_yield']:.0f}%",
-                va="center", fontsize=8.8, color="#0f172a",
+                va="center", fontsize=9.6, color="#0f172a",
             )
         ax2.set_yticks(y)
-        ax2.set_yticklabels(labels, fontsize=8.6)
+        ax2.set_yticklabels(labels, fontsize=9.6)
         ax2.set_ylim(max(len(shown) - 0.4, 0.9), -0.7)
         ax2.set_xlim(0, 108)
-        ax2.set_xlabel("路线评分（0–100）", fontsize=10.5)
-        ax2.set_title("候选路线排序", loc="left", fontsize=13.5, pad=12)
+        ax2.set_xlabel("路线评分（0–100）", fontsize=12)
+        ax2.set_title("候选路线排序", loc="left", fontsize=15, pad=12)
         figures._compact_frame(ax2)
     else:
         ax2.axis("off")
@@ -871,19 +898,26 @@ def overview_pdf(data: dict, outpath: Path) -> Path:
                     s=70, color=color, edgecolor="white", linewidth=0.8,
                     label=label, zorder=3,
                 )
+        grouped: dict[tuple[int, int], list[str]] = {}
         for index, leaf in enumerate(unique_leaves.values()):
+            key = (int(xs[index]), int(round(float(ys[index]))))
+            grouped.setdefault(key, []).append(leaf.get("formula", ""))
+        for offset_index, ((x_value, y_value), formulas) in enumerate(grouped.items()):
+            offset = (6, 6) if offset_index % 2 == 0 else (-6, -12)
+            ha = "left" if offset_index % 2 == 0 else "right"
             ax3.annotate(
-                leaf.get("formula", ""), (xs[index], ys[index]),
-                xytext=(4, 4), textcoords="offset points",
-                fontsize=7.4, color="#64748b",
+                " / ".join(item for item in formulas if item),
+                (x_value, y_value),
+                xytext=offset, textcoords="offset points",
+                ha=ha, fontsize=8.6, color="#64748b",
             )
         ax3.axvline(12, color="#cbd5e1", linewidth=0.8, linestyle="--")
         ax3.axhline(3.5, color="#cbd5e1", linewidth=0.8, linestyle="--")
-        ax3.set_xlabel("砌块重原子数", fontsize=10.5)
-        ax3.set_ylabel("砌块 SAscore", fontsize=10.5)
-        ax3.set_title("末端砌块复杂度", loc="left", fontsize=13.5, pad=12)
+        ax3.set_xlabel("砌块重原子数", fontsize=12)
+        ax3.set_ylabel("砌块 SAscore", fontsize=12)
+        ax3.set_title("末端砌块复杂度", loc="left", fontsize=15, pad=12)
         ax3.margins(x=0.16, y=0.22)
-        ax3.legend(frameon=False, fontsize=8.2, loc="lower right")
+        ax3.legend(frameon=False, fontsize=9.6, loc="lower right")
         figures._compact_frame(ax3, "both")
     else:
         ax3.axis("off")
@@ -893,23 +927,30 @@ def overview_pdf(data: dict, outpath: Path) -> Path:
 
     ax4 = fig.add_subplot(grid[1, 1])
     ax4.axis("off")
-    ax4.set_title("硬步骤与建议", loc="left", fontsize=13.5, pad=12)
+    ax4.set_title("硬步骤与建议", loc="left", fontsize=15, pad=12)
     english = i18n.get_lang() == "en"
+    mol = Chem.MolFromSmiles((data.get("compound") or {}).get("smiles") or "")
+    flags = _flags(mol, routes) if mol is not None else (data.get("flags") or [])
+    advice_list = (
+        _recommendations(metrics, routes, flags)
+        if mol is not None
+        else (data.get("recommendations") or [])
+    )
     lines = []
-    for flag in (data.get("flags") or [])[:3 if english else 4]:
+    for flag in flags[:3 if english else 4]:
         lines.append(
-            textwrap.fill("• " + figures._trunc(flag, 150), 30 if english else 24)
+            textwrap.fill("• " + figures._trunc(flag, 220), 38 if english else 26)
         )
-    for advice in (data.get("recommendations") or [])[:1 if english else 2]:
+    for advice in advice_list[:2]:
         lines.append(
-            textwrap.fill("→ " + figures._trunc(advice, 150), 30 if english else 24)
+            textwrap.fill("→ " + figures._trunc(advice, 260), 38 if english else 26)
         )
     if not lines:
         lines.append("未发现明显硬步骤；仍建议逐条核对文献与供应商目录。")
     ax4.text(
         0.0, 0.98, "\n\n".join(lines), ha="left", va="top",
-        fontsize=7.2 if english else 8.2, color="#334155",
-        linespacing=1.30 if english else 1.40,
+        fontsize=8.6 if english else 8.4, color="#334155",
+        linespacing=1.35,
     )
     figures._panel_tag(ax4, "d", x=-0.12, y=1.08)
     figures._caption(

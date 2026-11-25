@@ -62,6 +62,86 @@ def _interaction_labels() -> list[tuple[str, str]]:
     ]
 
 
+_SYNTH_VERDICT_EN = {
+    "易合成": "Easy to synthesise",
+    "中等": "Moderate",
+    "偏难": "Difficult",
+    "困难": "Very difficult",
+    "未安装 SAscore，无法判定": "SAscore unavailable",
+}
+
+_SYNTH_VERDICT_ZH = {
+    "Easy": "易合成",
+    "Easy to synthesize": "易合成",
+    "Easy to synthesise": "易合成",
+    "Moderate": "中等",
+    "Moderately soluble": "中等",
+    "Difficult": "偏难",
+    "Very difficult": "困难",
+    "SAscore unavailable": "未安装 SAscore，无法判定",
+}
+
+
+def _synth_verdict(payload: dict | None) -> str:
+    value = str((payload or {}).get("verdict") or "—")
+    if i18n.get_lang() == "en":
+        return _SYNTH_VERDICT_EN.get(value, value)
+    return _SYNTH_VERDICT_ZH.get(value, value)
+
+
+_MMP_DIRECTION_EN = {"改善": "Improves", "降低": "Reduces"}
+_MMP_CONFIDENCE_EN = {"高": "High", "中": "Medium", "低": "Low"}
+_BENCH_FEATURE_EN = {
+    "potency": "Potency (−Vina)",
+    "le": "Ligand efficiency",
+    "qed": "QED",
+    "sa": "Synthesizability (inverse)",
+    "safety": "Safety",
+}
+
+
+def _benchmark_verdict(comparison: dict) -> str:
+    """English fallback for benchmark payloads written before verdict_en existed."""
+    if comparison.get("cv_auc") is None or comparison.get("expert_auc") is None:
+        return "too few labelled molecules with SMILES to fit weights; enrichment metrics only"
+    level = comparison.get("level")
+    if level == "bad":
+        return (
+            "both weightings are close to random (AUC < 0.60); do not change weights until "
+            "the docking box, actives or decoys have been reviewed"
+        )
+    if level == "ok":
+        return (
+            "fitted weights outperform the expert weights and can be tested on this target series"
+        )
+    return (
+        "fitted weights do not clearly outperform the expert weights; keep the current MPO weights"
+    )
+
+
+_ACTIVE_REASON_EN = {
+    "实测点不足 4 个，按对接打分排序（先积累实验数据）": "Low assay count; docking rank",
+    "EI 高且与已选分子结构差异足够": "High EI; structurally distinct",
+    "EI 补充（多样性约束下不足批次）": "EI fill (diversity)",
+}
+_ACTIVE_NOTE_EN = {
+    "当前对接集中的分子都已有实测数据；请先对接新一批候选，或等待新实验数据后再运行主动学习。": (
+        "All molecules in this docking set already have measurements; dock a new batch or "
+        "wait for new assay data before running active learning."
+    ),
+    "至少需要 4 个实测 pActivity 才能启用主动学习；当前返回对接最优未测候选。": (
+        "At least four measured pActivity values are required for active learning; the top "
+        "unmeasured docking candidates are returned."
+    ),
+    "高斯过程：0.75×Morgan/Tanimoto 核 + 0.25×对接打分核，噪声 0.12；EI 采用当前最优实测值 + 0.1 探索项；批次选择加入 Tanimoto ≤ 0.85 的多样性约束。预测用于下一轮实验排序，不是活性结论。": (
+        "Gaussian process with a 0.75×Morgan/Tanimoto + 0.25×docking-score kernel (noise 0.12); "
+        "EI uses the best measured value plus a 0.1 exploration term; batch selection enforces "
+        "Tanimoto ≤ 0.85 diversity. Predictions prioritise the next experiment round and are not "
+        "activity conclusions."
+    ),
+}
+
+
 def _style():
     plt.rcParams.update(
         {
@@ -1719,7 +1799,7 @@ def _single_ligand_panel(ax, item: dict):
     ax.set_xlim(0, 1)
     ax.set_ylim(0, 1)
     ax.axis("off")
-    ax.set_title("单配体打分概览", loc="left", fontsize=14.5, pad=14)
+    ax.set_title("单配体打分概览", loc="left", fontsize=15.5, pad=14)
     vina = float(item.get("affinity") or 0)
     vinardo = item.get("vinardo")
     rows = [("Vina", abs(vina), TEAL, f"{vina:.2f}")]
@@ -1742,11 +1822,11 @@ def _single_ligand_panel(ax, item: dict):
         )
         ax.text(
             0.10, y, label, ha="right", va="center",
-            fontsize=11.5, color=INK,
+            fontsize=12.5, color=INK,
         )
         ax.text(
             0.12 + 0.72 * value / scale + 0.02, y, text,
-            ha="left", va="center", fontsize=12.5, color=color,
+            ha="left", va="center", fontsize=13.5, color=color,
             fontweight="bold",
         )
     modes = item.get("modes") or []
@@ -1759,7 +1839,7 @@ def _single_ligand_panel(ax, item: dict):
             ),
             46,
         ),
-        fontsize=9.0, color=MUTED, va="bottom", linespacing=1.35,
+        fontsize=10.0, color=MUTED, va="bottom", linespacing=1.35,
     )
     ax.plot([0.12, 0.84], [0.225, 0.225], color=GRID, linewidth=0.8)
 
@@ -1771,9 +1851,8 @@ def _single_pose_panel(ax, item: dict):
         (
             float(mode.get("affinity", 0)),
             float(mode.get("rmsd_lb", 0)),
-            int(mode.get("mode", index + 1)),
         )
-        for index, mode in enumerate(modes)
+        for mode in modes
     ]
     if not points:
         ax.axis("off")
@@ -1782,9 +1861,8 @@ def _single_pose_panel(ax, item: dict):
         return
     scores = np.array([point[0] for point in points])
     rmsd = np.array([point[1] for point in points])
-    labels = [point[2] for point in points]
-    scatter = ax.scatter(
-        scores, rmsd, c=labels, cmap="viridis", s=95,
+    ax.scatter(
+        scores, rmsd, color=TEAL, s=95,
         edgecolor="white", linewidth=1.0, zorder=3,
     )
     best = int(np.argmin(scores))
@@ -1792,14 +1870,14 @@ def _single_pose_panel(ax, item: dict):
         [scores[best]], [rmsd[best]], s=190, facecolor="none",
         edgecolor=RED, linewidth=1.6, zorder=4,
     )
-    ax.set_xlabel("Vina 打分 (kcal/mol)", fontsize=12.5)
-    ax.set_ylabel("相对最优构象 RMSD (Å)", fontsize=12.5)
+    ax.set_xlabel("Vina 打分 (kcal/mol)", fontsize=13.5)
+    ax.set_ylabel("相对最优构象 RMSD (Å)", fontsize=13.5)
     ax.set_title(
         _wrap_cjk(
             i18n.tr(f"构象能量–RMSD 分布（{len(points)} 个输出构象）"),
             46,
         ),
-        loc="left", fontsize=12.5, pad=10,
+        loc="left", fontsize=13.5, pad=10,
     )
     _compact_frame(ax, "both")
 
@@ -2991,21 +3069,23 @@ def _page_mmp(pdf, payload: dict | None):
     rows = [header]
     for rule in rules[:12]:
         example = (rule.get("examples") or [{}])[0]
+        direction = str(rule.get("direction") or "—")
+        confidence = str(rule.get("confidence") or "—")
         rows.append([
             _trunc(f"{rule.get('from')} >> {rule.get('to')}", 34),
             str(rule.get("n") or 0),
             f"{float(rule.get('mean_delta') or 0):+.2f}",
             f"{float(rule.get('sd') or 0):.2f}",
-            str(rule.get("direction") or "—"),
-            str(rule.get("confidence") or "—"),
+            _L(direction, _MMP_DIRECTION_EN.get(direction, direction)),
+            _L(confidence, _MMP_CONFIDENCE_EN.get(confidence, confidence)),
             _trunc(
                 f"{example.get('from', '')} → {example.get('to', '')}",
-                24,
+                20,
             ),
         ])
     _table(
         fig, 0.845, rows,
-        [0.30, 0.08, 0.09, 0.08, 0.08, 0.09, 0.20],
+        [0.30, 0.06, 0.08, 0.06, 0.10, 0.13, 0.19],
         fontsize=9.2, row_height=0.024,
     )
     _caption(
@@ -3126,35 +3206,41 @@ def _page_active(pdf, payload: dict | None):
     if not items:
         return
     fig = _a4_page(
-        _L("2.16　下一轮实验推荐（主动学习）", "2.16　Next-batch recommendations (active learning)"),
+        _L("2.16　下一轮实验推荐（主动学习）", "2.16　Next-batch recommendations"),
         _L(
             "以实测 pActivity 为标签的高斯过程 + Expected Improvement + 多样性约束",
-            "Gaussian process on measured pActivity with Expected Improvement and a diversity constraint",
+            "Gaussian process with Expected Improvement and a diversity constraint",
         ),
         _L("Fig. AL　实验推荐", "Fig. AL　Experiment recommendation"),
     )
     header = [
-        _L("配体", "Ligand"), "Vina", _L("预测 pActivity", "Predicted pActivity"),
+        _L("配体", "Ligand"), "Vina", _L("预测 pActivity", "Pred. pAct."),
         _L("不确定度", "SD"), "EI", _L("说明", "Rationale"),
     ]
     rows = [header]
     for item in items[:12]:
         predicted = item.get("predicted_pactivity")
+        reason = str(item.get("reason") or "")
         rows.append([
             _trunc(item.get("name") or "", 26),
             f"{float(item.get('affinity') or 0):.2f}",
             "—" if predicted is None else f"{float(predicted):.2f}",
             "—" if item.get("sd") is None else f"±{float(item['sd']):.2f}",
             "—" if item.get("ei") is None else f"{float(item['ei']):.2f}",
-            _trunc(item.get("reason") or "", 34),
+            _trunc(
+                _L(reason, item.get("reason_en") or _ACTIVE_REASON_EN.get(reason, reason)),
+                34,
+            ),
         ])
-    _table(fig, 0.845, rows, [0.26, 0.10, 0.16, 0.10, 0.09, 0.29], fontsize=9.4, row_height=0.025)
+    _table(fig, 0.845, rows, [0.26, 0.09, 0.17, 0.08, 0.08, 0.32], fontsize=9.4, row_height=0.025)
     mode_note = (
         _L("当前实测点不足 4 个，返回对接最优候选；导入更多实测数据后自动切换为主动学习。", "Fewer than four measurements: docking top candidates are returned until more assay data are imported.")
         if payload.get("mode") == "fallback"
         else _L(f"训练集 {payload.get('train', 0)} 个实测分子，候选池 {payload.get('pool', 0)} 个。", f"Training set {payload.get('train', 0)} measured compounds; pool {payload.get('pool', 0)}.")
     )
-    _caption(fig, mode_note + " " + str(payload.get("note") or ""), width=104)
+    note = str(payload.get("note") or "")
+    note_text = _L(note, payload.get("note_en") or _ACTIVE_NOTE_EN.get(note, note))
+    _caption(fig, (mode_note + " " + note_text).strip(), width=104)
     pdf.savefig(fig, facecolor="white")
     plt.close(fig)
 
@@ -3196,8 +3282,8 @@ def _page_benchmark(pdf, payload: dict | None):
     ax2 = fig.add_subplot(grid[1])
     ax2.axis("off")
     metrics_rows = [[
-        "EF1%", "EF5%", "AUC", "BEDROC", _L("最佳活性物排名", "Best active rank"),
-        _L("活性物中位排名", "Median active rank"),
+        "EF1%", "EF5%", "AUC", "BEDROC", _L("最佳排名", "Best rank"),
+        _L("中位排名", "Median rank"),
     ], [
         f"{metrics.get('ef1', '—')}",
         f"{metrics.get('ef5', '—')}",
@@ -3219,17 +3305,29 @@ def _page_benchmark(pdf, payload: dict | None):
     weights = (payload or {}).get("weights") or {}
     labels = (payload or {}).get("feature_labels") or {}
     comparison = (payload or {}).get("comparison") or {}
+    verdict_text = _L(
+        str(comparison.get("verdict") or ""),
+        comparison.get("verdict_en") or _benchmark_verdict(comparison),
+    )
     if weights:
         expert = {"potency": 0.30, "le": 0.15, "qed": 0.20, "sa": 0.10, "safety": 0.25}
         text_lines = [_L("权重对比（拟合 vs 专家）", "Weights (fitted vs expert)")]
         for key, value in weights.items():
-            text_lines.append(f"{labels.get(key, key)}: {value:.2f} vs {expert.get(key, 0):.2f}")
+            label_text = (
+                labels.get(key, key)
+                if i18n.get_lang() != "en"
+                else _BENCH_FEATURE_EN.get(key, labels.get(key, key))
+            )
+            text_lines.append(f"{label_text}: {value:.2f} vs {expert.get(key, 0):.2f}")
         text_lines.append(
-            _L(
-                f"5 折交叉验证 AUC {comparison.get('cv_auc', '—')}，专家权重 AUC "
-                f"{comparison.get('expert_auc', '—')}；{comparison.get('verdict', '')}",
-                f"5-fold CV AUC {comparison.get('cv_auc', 'n/a')}, expert AUC "
-                f"{comparison.get('expert_auc', 'n/a')}; {comparison.get('verdict', '')}",
+            _wrap_cjk(
+                _L(
+                    f"5 折交叉验证 AUC {comparison.get('cv_auc', '—')}，专家权重 AUC "
+                    f"{comparison.get('expert_auc', '—')}；{verdict_text}",
+                    f"5-fold CV AUC {comparison.get('cv_auc', 'n/a')}, expert AUC "
+                    f"{comparison.get('expert_auc', 'n/a')}; {verdict_text}",
+                ),
+                96 if i18n.get_lang() == "en" else 46,
             )
         )
         fig.text(
@@ -4589,7 +4687,10 @@ def _methods_pages(pdf):
         ),
         (
             "1.11 可视化与统计",
-            ["所有图像由 Matplotlib 直接输出 PDF 矢量图，字体以 Type 42 嵌入；配色采用色盲友好的深青/琥珀双色方案；每张图均为 A4 单页，图注紧随其下，便于连续阅读。图像为中文标注版本，投稿英文期刊时可据此重排标签，数据与坐标无需改动。"],
+            [_L(
+                "所有图像由 Matplotlib 直接输出 PDF 矢量图，字体以 Type 42 嵌入；配色采用色盲友好的深青/琥珀双色方案；每张图均为 A4 单页，图注紧随其下，便于连续阅读。图像标注随报告语言生成（中文或英文），矢量文本可编辑，投稿时可按期刊格式调整标签，数据与坐标无需改动。",
+                "All figures are exported directly from Matplotlib as vector PDFs with Type 42 embedded fonts; the palette uses a colour-blind-friendly deep-teal/amber scheme; each figure occupies a single A4 page with its caption immediately below. Figure labels follow the report language (Chinese or English), and the vector text stays editable, so labels can be adapted to journal style without changing the data or coordinates.",
+            )],
         ),
         (
             "1.12 可重复性与局限",
@@ -4766,15 +4867,15 @@ def _abstract_page(
         overview = [
             f"This report consolidates the docking results of project "
             f"\"{project_info.get('name', '—')}\" generated with DrugHX. "
-            f"{stats['count']} docked ligand conformations were included; the receptor was "
-            f"{best.get('receptor_name', '—') if best else '—'}. This run is classified as "
+            f"{stats['count']} docked ligands were included (each with its output conformations); "
+            f"the receptor was {best.get('receptor_name', '—') if best else '—'}. This run is classified as "
             f"{mode_info['label']} (exhaustiveness {mode_info['exhaustiveness']}, "
             f"{mode_info['count']} successful results)."
         ]
     else:
         overview = [
             f"本报告基于 DrugHX 计算平台，对项目「{project_info.get('name', '—')}」的分子对接结果进行系统整理。"
-            f"共纳入 {stats['count']} 个完成对接的配体构象，靶点为 "
+            f"共纳入 {stats['count']} 个完成对接的配体（每个配体保留多个输出构象），靶点为 "
             f"{best.get('receptor_name', '—') if best else '—'}；"
             f"本次运行属于{mode_info['label']}"
             f"（exhaustiveness {mode_info['exhaustiveness']}，"
@@ -4789,17 +4890,48 @@ def _abstract_page(
             "本次排序据此定位为假设生成。"
         )
     if best:
+        heavy_value = best_props.get("heavy")
+        le_value = (best_props.get("efficiency") or {}).get("le")
+        qed_value = best_props.get("qed")
+        heavy_text = "—" if heavy_value is None else str(heavy_value)
+        le_text = "—" if le_value is None else f"{float(le_value):.2f}"
+        qed_text = "—" if qed_value is None else f"{float(qed_value):.2f}"
         findings.append(
-            f"最优配体为 {best.get('ligand_name', '—')}，Vina 打分 {float(best.get('affinity', 0)):.2f} kcal/mol；"
-            f"重原子 {best_props.get('heavy', '—')} 个，配体效率 LE = "
-            f"{(best_props.get('efficiency') or {}).get('le', 0):.2f} kcal/mol/HA，"
-            f"QED = {best_props.get('qed', 0):.2f}。"
+            _L(
+                f"最优配体为 {best.get('ligand_name', '—')}，Vina 打分 {float(best.get('affinity', 0)):.2f} kcal/mol；"
+                f"重原子 {heavy_text} 个，配体效率 LE = {le_text} kcal/mol/HA，QED = {qed_text}。",
+                f"The best ligand was {best.get('ligand_name', '—')} with a Vina score of "
+                f"{float(best.get('affinity', 0)):.2f} kcal/mol; {heavy_text} heavy atoms, "
+                f"ligand efficiency LE = {le_text} kcal/mol/HA and QED = {qed_text}.",
+            )
         )
-        findings.append(
-            f"该结合模式形成 {counts.get('hbonds', 0)} 个氢键、{counts.get('hydrophobic', 0)} 处疏水接触、"
-            f"{counts.get('salt_bridges', 0)} 个盐桥与 {counts.get('pi_stacking', 0)} 处 π-堆积，"
-            f"作用力网络与结合口袋的几何互补性良好。"
+        interaction_total = sum(
+            int(counts.get(key) or 0)
+            for key in ("hbonds", "hydrophobic", "salt_bridges", "pi_stacking", "halogens", "metals")
         )
+        if interaction_total:
+            findings.append(
+                _L(
+                    f"该结合模式形成 {counts.get('hbonds', 0)} 个氢键、{counts.get('hydrophobic', 0)} 处疏水接触、"
+                    f"{counts.get('salt_bridges', 0)} 个盐桥与 {counts.get('pi_stacking', 0)} 处 π-堆积，"
+                    "可作为骨架修饰与选择性设计的参照。",
+                    f"This binding mode formed {counts.get('hbonds', 0)} hydrogen bonds, "
+                    f"{counts.get('hydrophobic', 0)} hydrophobic contacts, "
+                    f"{counts.get('salt_bridges', 0)} salt bridges and "
+                    f"{counts.get('pi_stacking', 0)} π-stacking interactions, which can guide "
+                    "scaffold modification and selectivity design.",
+                )
+            )
+        else:
+            findings.append(
+                _L(
+                    "本次分析未识别到氢键、疏水接触等作用力（可能缺少作用力分析或构象文件），"
+                    "请结合图 3 与三维构象人工核对，不能据此推断口袋互补性。",
+                    "No hydrogen bonds or hydrophobic contacts were detected for this pose (the "
+                    "interaction analysis may be unavailable); inspect Figure 3 and the 3D pose "
+                    "manually instead of inferring pocket complementarity.",
+                )
+            )
     if stats["mean"] is not None:
         if stats["count"] <= 1:
             findings.append(
@@ -4880,19 +5012,33 @@ def _abstract_page(
         route = synthesis_data.get("best_route") or {}
         if route:
             findings.append(
-                f"可合成性评估为“{synthesis_data.get('verdict', '—')}”"
-                f"（SAscore {float(synthesis_data.get('sa') or 0):.2f}）；"
-                f"首选模板路线为 {route.get('label', '—')}，"
-                f"约 {route.get('step_count', 0)} 步、估计总产率 "
-                f"{float(route.get('overall_yield') or 0):.0f}%，路线评分 "
-                f"{float(route.get('score') or 0):.1f}/100。"
-                "该路线来自有限反应模板库，需文献与小试验证。"
+                _L(
+                    f"可合成性评估为“{_synth_verdict(synthesis_data)}”"
+                    f"（SAscore {float(synthesis_data.get('sa') or 0):.2f}）；"
+                    f"首选模板路线为 {route.get('label', '—')}，"
+                    f"约 {route.get('step_count', 0)} 步、估计总产率 "
+                    f"{float(route.get('overall_yield') or 0):.0f}%，路线评分 "
+                    f"{float(route.get('score') or 0):.1f}/100。"
+                    "该路线来自有限反应模板库，需文献与小试验证。",
+                    f"Synthesizability was assessed as “{_synth_verdict(synthesis_data)}” "
+                    f"(SAscore {float(synthesis_data.get('sa') or 0):.2f}); the preferred template "
+                    f"route is {route.get('label', '—')}, about {route.get('step_count', 0)} steps, "
+                    f"estimated overall yield {float(route.get('overall_yield') or 0):.0f}% and "
+                    f"route score {float(route.get('score') or 0):.1f}/100. The route comes from a "
+                    "limited reaction-template library and needs literature and bench validation.",
+                )
             )
         else:
             findings.append(
-                f"可合成性评估为“{synthesis_data.get('verdict', '—')}”"
-                f"（SAscore {float(synthesis_data.get('sa') or 0):.2f}），"
-                "但当前模板库没有匹配到完整逆合成路线；已给出硬步骤与砌块建议。"
+                _L(
+                    f"可合成性评估为“{_synth_verdict(synthesis_data)}”"
+                    f"（SAscore {float(synthesis_data.get('sa') or 0):.2f}），"
+                    "但当前模板库没有匹配到完整逆合成路线；已给出硬步骤与砌块建议。",
+                    f"Synthesizability was assessed as “{_synth_verdict(synthesis_data)}” "
+                    f"(SAscore {float(synthesis_data.get('sa') or 0):.2f}), but no complete "
+                    "retrosynthetic route matched the current template library; hard steps and "
+                    "building-block suggestions are provided.",
+                )
             )
     fish_targets = (fishing_data or {}).get("targets") or []
     if fish_targets:
@@ -5617,7 +5763,7 @@ def _discussion_pages(
         best_route = synthesis_data.get("best_route") or {}
         synthesis_text.append(
             f"主配体的 SAscore 为 {float(synthesis_data.get('sa') or 0):.2f}"
-            f"（{synthesis_data.get('verdict', '—')}），"
+            f"（{_synth_verdict(synthesis_data)}），"
             f"重原子 {((synthesis_data.get('metrics') or {}).get('heavy', 0))} 个、"
             f"手性中心 {((synthesis_data.get('metrics') or {}).get('stereocenters', 0))} 个。"
         )
@@ -6628,13 +6774,13 @@ def _conclusion_page(
         route = synthesis_data.get("best_route") or {}
         findings.append(
             _L(
-                f"合成层面：SAscore {_num(sa)}，可合成性评级“{synthesis_data.get('verdict', '—')}”"
+                f"合成层面：SAscore {_num(sa)}，可合成性评级“{_synth_verdict(synthesis_data)}”"
                 + (
                     f"，首选模板路线 {route.get('label', '—')} 约 {route.get('step_count', 0)} 步。"
                     if route
                     else "，暂未匹配完整模板路线。"
                 ),
-                f"Synthesis: SAscore {_num(sa)} ({synthesis_data.get('verdict', '—')})"
+                f"Synthesis: SAscore {_num(sa)} ({_synth_verdict(synthesis_data)})"
                 + (
                     f", first template route {route.get('label', '—')}, "
                     f"about {route.get('step_count', 0)} steps."

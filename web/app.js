@@ -3769,6 +3769,7 @@
         render({ viewer: false });
       } else if (el.matches('[data-filter-limit]')) {
         const key = el.dataset.filterLimit;
+        if (!el.value.trim()) return;
         const value = Number(el.value);
         if (key && Number.isFinite(value)) {
           S.ligOptions = S.ligOptions || {};
@@ -3843,6 +3844,7 @@
           body.append("online_intel", $("#auto-online-intel")?.checked ? "true" : "false");
           const autoFilterLimits = {};
           $$("#auto-filter-grid [data-filter-limit]").forEach((el) => {
+            if (!el.value.trim()) return;
             const value = Number(el.value);
             if (Number.isFinite(value)) autoFilterLimits[el.dataset.filterLimit] = value;
           });

@@ -83,6 +83,18 @@ _SOM_RULES = [
     ("芳环氧化", "a1ccccc1", 0.7, 1, 0),
 ]
 
+# Short English labels for the narrow structure panels; the full names used in
+# the report text would overflow the three-column layout.
+_SOM_LABEL_EN = {
+    "N-脱烷基": "N-dealkyl.",
+    "O-脱烷基": "O-dealkyl.",
+    "硫氧化": "S-oxidation",
+    "苄位氧化": "Benzylic ox.",
+    "烯丙位氧化": "Allylic ox.",
+    "酚羟基结合": "Phenol conj.",
+    "芳环氧化": "Aromatic ox.",
+}
+
 # Wager (2010) CNS MPO thresholds.
 _CNS_MPO = [
     ("cLogP", "logp", 3.0, 5.0),
@@ -474,14 +486,21 @@ def developability_pdf(records: list[dict], outpath: Path) -> Path:
 
     figures._caption(
         fig,
-        "BOILED-Egg 风格判别：横轴为 Crippen WLOGP，纵轴为 TPSA；内层椭圆为 "
-        "BBB 渗透区，外层为 HIA 吸收区，阈值取自 Egan/Clark 经验规则。"
-        "Wager CNS MPO 六项评分（cLogP、cLogD、MW、HBD、TPSA、pKa），"
-        "4 分以上视为中枢神经系统候选。"
-        "合成可及性 SAscore 与 logD7.4 的可开发性窗口，虚线为常用参考线。"
-        "（d）PAINS、Brenk 与 NIH 结构警示命中数；警示只提示需要人工复核，"
-        "不等于化合物不可用。所有端点均为描述符规则或公开经验模型，"
-        "用于同系列分子的相对排序，不能替代实验测定。",
+        figures._L(
+            "BOILED-Egg 判别：横轴 Crippen WLOGP、纵轴 TPSA，内层椭圆为 BBB 渗透区，"
+            "外层为 HIA 吸收区（Egan/Clark 经验阈值）。Wager CNS MPO 六项评分，"
+            "4 分以上视为中枢神经系统候选。SAscore 与 logD7.4 虚线为常用可开发性窗口。"
+            "PAINS/Brenk/NIH 警示仅提示人工复核，不等于化合物不可用；"
+            "全部端点为描述符规则，不能替代实验测定。",
+            "BOILED-Egg discrimination: Crippen WLOGP versus TPSA, with the inner "
+            "ellipse marking BBB penetration and the outer ellipse HIA absorption "
+            "(Egan/Clark rules). Wager CNS MPO scores six properties; 4 or more "
+            "indicates a CNS candidate. Dashed lines mark the usual SAscore and "
+            "logD7.4 windows. PAINS/Brenk/NIH alerts flag structures for manual "
+            "review only; all endpoints are descriptor rules, not experimental "
+            "measurements.",
+        ),
+        y=0.170, width=94, split=False,
     )
     with PdfPages(outpath) as pdf:
         pdf.savefig(fig, facecolor="white")
@@ -678,17 +697,17 @@ def chemspace_pdf(records: list[dict], outpath: Path) -> Path:
     ax_heat = fig.add_subplot(grid[0, 0])
     image = ax_heat.imshow(ordered, cmap="YlGnBu", vmin=0, vmax=1, aspect="auto")
     ax_heat.set_xticks(range(len(ordered_names)))
-    ax_heat.set_xticklabels(ordered_names, rotation=90, fontsize=6.6)
+    ax_heat.set_xticklabels(ordered_names, rotation=90, fontsize=8.2)
     ax_heat.set_yticks(range(len(ordered_names)))
-    ax_heat.set_yticklabels(ordered_names, fontsize=6.6)
-    ax_heat.set_title("Tanimoto 相似性聚类热图", loc="left", fontsize=13.5, pad=8)
+    ax_heat.set_yticklabels(ordered_names, fontsize=8.2)
+    ax_heat.set_title("Tanimoto 相似性聚类热图", loc="left", fontsize=15, pad=8)
     for i in range(len(ordered_names)):
         for j in range(len(ordered_names)):
             value = ordered[i, j]
             if len(ordered_names) <= 14:
                 ax_heat.text(
                     j, i, f"{value:.2f}", ha="center", va="center",
-                    fontsize=6.0,
+                    fontsize=7.2,
                     color="white" if value > 0.62 else figures.INK,
                 )
 
@@ -711,15 +730,17 @@ def chemspace_pdf(records: list[dict], outpath: Path) -> Path:
     best_index = int(np.nanargmin(affinity)) if np.isfinite(affinity).any() else 0
     ax_mds.annotate(
         names[best_index], (coords[best_index, 0], coords[best_index, 1]),
-        xytext=(8, 10), textcoords="offset points", fontsize=8.0,
+        xytext=(8, 10), textcoords="offset points", fontsize=9.5,
         color=figures.INK,
         arrowprops={"arrowstyle": "-", "color": figures.MUTED, "linewidth": 0.8},
     )
     colorbar = fig.colorbar(scatter, ax=ax_mds, fraction=0.045, pad=0.02,
                             shrink=0.82)
-    colorbar.set_label("Vina (kcal/mol)", fontsize=8.2)
-    colorbar.ax.tick_params(labelsize=7.4)
-    ax_mds.set_title("化学空间投影（经典 MDS）", loc="left", fontsize=13.5, pad=8)
+    colorbar.set_label("Vina (kcal/mol)", fontsize=9.5)
+    colorbar.ax.tick_params(labelsize=8.6)
+    ax_mds.set_title("化学空间投影（经典 MDS）", loc="left", fontsize=15, pad=8)
+    ax_mds.set_xlabel("MDS 1", fontsize=10.5, color=figures.MUTED)
+    ax_mds.set_ylabel("MDS 2", fontsize=10.5, color=figures.MUTED)
     ax_mds.set_xticks([])
     ax_mds.set_yticks([])
     for side in ("top", "right", "bottom", "left"):
@@ -745,7 +766,7 @@ def chemspace_pdf(records: list[dict], outpath: Path) -> Path:
         mol = scaffold_mol.get(scaffold)
         if mol is not None and mol.GetNumAtoms():
             figures._draw_molecule(sub_ax, mol, compact=True)
-        sub_ax.set_title(f"n = {frequency}", fontsize=9.2,
+        sub_ax.set_title(f"n = {frequency}", fontsize=10.5,
                          color=figures.MUTED, pad=2)
     unique = len(scaffold_counts)
     nearest = []
@@ -759,17 +780,27 @@ def chemspace_pdf(records: list[dict], outpath: Path) -> Path:
         f"平均最近邻相似度 {np.mean(nearest):.2f}"
         if nearest else ""
     )
-    fig.text(0.07, 0.883, stats_text, fontsize=9.8, color=figures.MUTED,
+    fig.text(0.07, 0.883, stats_text, fontsize=10.5, color=figures.MUTED,
              va="bottom")
     figures._caption(
         fig,
-        "Morgan 指纹（半径 2，2048 bit）的 Tanimoto 相似矩阵，按平均连接层次聚类排序，"
-        "颜色越深表示越相似。"
-        "由同一相似矩阵经经典多维尺度（MDS）投影得到的化学空间，颜色表示 Vina 打分。"
-        "出现频率最高的四个 Murcko 骨架；骨架多样性 = 唯一骨架数 / 分子数。"
-        "该图用于判断候选是集中在单一骨架还是覆盖多个化学型，"
-        "为骨架跃迁与专利空间规避提供依据。",
-        y=0.155,
+        figures._L(
+            "Morgan 指纹（半径 2，2048 bit）的 Tanimoto 相似矩阵，按平均连接层次聚类排序，"
+            "颜色越深表示越相似。由同一相似矩阵经经典多维尺度（MDS）投影得到的化学空间，"
+            "颜色表示 Vina 打分。出现频率最高的四个 Murcko 骨架；骨架多样性 = 唯一骨架数 / 分子数。"
+            "该图用于判断候选是集中在单一骨架还是覆盖多个化学型，"
+            "为骨架跃迁与专利空间规避提供依据。",
+            "Tanimoto similarity matrix of Morgan fingerprints (radius 2, 2048 bit), ordered by "
+            "average-linkage hierarchical clustering, with darker colour indicating greater similarity. "
+            "Chemical space obtained by classical multidimensional scaling (MDS) of the same matrix, "
+            "with colour showing the Vina score. The four most frequent Murcko scaffolds; scaffold "
+            "diversity = unique scaffolds / molecules. The figure shows whether candidates concentrate "
+            "on a single scaffold or span several chemotypes, providing a basis for scaffold hopping "
+            "and patent-space avoidance.",
+        ),
+        width=104,
+        y=0.205,
+        split=False,
     )
     figures._panel_tag(ax_heat, "a", x=-0.22, y=1.06)
     figures._panel_tag(ax_mds, "b", x=-0.16, y=1.06)
@@ -891,7 +922,13 @@ def metabolism_pdf(records: list[dict], outpath: Path) -> Path:
                 [point[0]], [point[1]], s=110, facecolor="none",
                 edgecolor=figures.RED, linewidth=1.7, zorder=6,
             )
-        labels = "、".join(entry["spots"]["labels"][:2])
+        labels_list = entry["spots"]["labels"][:2]
+        if i18n.get_lang() == "en":
+            labels = ", ".join(
+                _SOM_LABEL_EN.get(label, i18n.tr(label)) for label in labels_list
+            )
+        else:
+            labels = "、".join(labels_list)
         title = (
             f"{_short_name(entry['profile']['name'], 10)} · "
             f"风险 {entry['spots']['score']:.0f}"

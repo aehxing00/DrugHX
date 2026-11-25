@@ -1138,14 +1138,14 @@ def _bar_panel(ax, labels, values, colors, title):
     for index, value in enumerate(values):
         ax.text(
             max(value, 0) + 1.5, index, f"{value:.1f}",
-            va="center", fontsize=8.6, color=figures.INK,
+            va="center", fontsize=9.4, color=figures.INK,
         )
     ax.set_yticks(y)
-    ax.set_yticklabels(labels, fontsize=8.8, color=figures.INK)
-    ax.invert_yaxis()
+    ax.set_yticklabels(labels, fontsize=9.8, color=figures.INK)
+    ax.set_ylim(len(labels) - 0.45, -0.85)
     ax.set_xlim(0, 110)
-    ax.set_xlabel("0–100", fontsize=8.2, color=figures.MUTED)
-    ax.set_title(title, loc="left", fontsize=11.2, pad=6, color=figures.INK)
+    ax.set_xlabel("0–100", fontsize=9.0, color=figures.MUTED)
+    ax.set_title(title, loc="left", fontsize=12.5, pad=8, color=figures.INK)
     for spine in ("top", "right", "left"):
         ax.spines[spine].set_visible(False)
     ax.tick_params(axis="y", length=0)
@@ -1201,7 +1201,7 @@ def pharm_pdf(data: dict, outpath: Path) -> Path:
                 ),
             ],
         )
-        ax = fig.add_axes([0.19, 0.43, 0.74, 0.27])
+        ax = fig.add_axes([0.19, 0.43, 0.74, 0.23])
         labels = [
             T("口服暴露", "Oral exposure"),
             T("瘤胃过瘤胃", "Rumen bypass"),
